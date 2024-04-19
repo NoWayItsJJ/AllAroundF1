@@ -1,6 +1,8 @@
 <html>
 <head>
-    <title>Backend</title>
+    <title>Ferrari Backend</title>
+    <link rel="icon" href="../img/logo/white-horse.svg" type="image/x-icon">
+
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
 </head>
