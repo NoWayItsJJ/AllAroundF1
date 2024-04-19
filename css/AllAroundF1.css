@@ -47,3 +47,10 @@
 .red-text{
     color: var(--red-text-color);
 }
+
+h1, h2, h3, h4, h5, h6{
+    color: var(--primary-text-color);
+    font-weight: 400;
+    margin-block: 0;
+    margin-inline: 0;
+}

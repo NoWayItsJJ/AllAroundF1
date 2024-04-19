@@ -66,5 +66,99 @@
             </ul>
         </div>
     </nav>
+    <section id="dashboard" class="scrollable-section">
+        <div class="dashboard-grid">
+            <div class="dashboard-card grid-col-span-2">
+                <div class="card-header">
+                    <i class="bi bi-calendar-week"></i>
+                    <h3>Calendar</h3>
+                </div>
+                <div class="card-content">
+                </div>
+                <div class="card-footer">
+                    <div class="card-link">
+                        <i class="bi bi-arrow-down-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="bi bi-currency-exchange"></i>
+                    <h3>Finances</h3>
+                </div>
+                <div class="card-content">
+                </div>
+                <div class="card-footer">
+                    <div class="card-link">
+                        <i class="bi bi-arrow-down-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card grid-row-span-2">
+                <div class="card-header">
+                    <i class="bi bi-people"></i>
+                    <h3>Staff</h3>
+                </div>
+                <div class="card-content">
+                </div>
+                <div class="card-footer">
+                    <div class="card-link">
+                        <i class="bi bi-arrow-down-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card grid-row-span-2">
+                <div class="card-header">
+                    <i class="bi bi-box"></i>
+                    <h3>Logistics</h3>
+                </div>
+                <div class="card-content">
+                </div>
+                <div class="card-footer">
+                    <div class="card-link">
+                        <i class="bi bi-arrow-down-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card grid-col-span-2">
+                <div class="card-header">
+                    <i class="bi bi-gear"></i>
+                    <h3>Factory</h3>
+                </div>
+                <div class="card-content">
+                </div>
+                <div class="card-footer">
+                    <div class="card-link">
+                        <i class="bi bi-arrow-down-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="bi bi-megaphone"></i>
+                    <h3>Marketing</h3>
+                </div>
+                <div class="card-content">
+                </div>
+                <div class="card-footer">
+                    <div class="card-link">
+                        <i class="bi bi-arrow-down-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card grid-col-span-2">
+                <div class="card-header">
+                    <h3>Drivers</h3>
+                </div>
+                <div class="card-content">
+                </div>
+                <div class="card-footer">
+                    <div class="card-link">
+                        <i class="bi bi-arrow-down-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
 </body>
 </html>
