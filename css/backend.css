@@ -185,17 +185,61 @@ nav {
 						display: flex;
 						align-items: center;
 						justify-content: center;
+						font-size: var(--xl-font-size);
 						gap: 8px;
+					}
 
-						.calendar-header-nav {
-							display: flex;
-							align-items: center;
-							justify-content: center;
-						}
+					.calendar-header-nav {
+						display: flex;
+						align-items: center;
+						justify-content: center;
 					}
 				}
 
 				.calendar-content {
+					display: flex;
+					flex-direction: column;
+					align-items: start;
+					justify-content: center;
+					gap: 8px;
+
+					tr {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						flex-direction: row;
+						gap: 8px;
+					}
+
+					tr:first-of-type {
+						align-items: start;
+						justify-content: start;
+
+						th {
+							min-width: 32px;
+						}
+					}
+
+					td {
+						width: 32px;
+						height: 32px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						border-radius: 50%;
+						transition: all 0.3s ease;
+						cursor: pointer;
+					}
+					.current-day {
+						background-color: var(--secondary-color);
+						color: var(--primary-text-color);
+						border-radius: 50%;
+						width: 32px;
+						height: 32px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
 				}
 			}
 		}
