@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2024 at 07:44 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Creato il: Apr 20, 2024 alle 11:49
+-- Versione del server: 10.4.27-MariaDB
+-- Versione PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,121 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ruoli`
+-- Struttura della tabella `articoli`
+--
+
+CREATE TABLE `articoli` (
+  `id_articolo` int(11) NOT NULL,
+  `numero_inventario` varchar(32) NOT NULL,
+  `tipologia` set('cappellino','maglietta','felpa','bomber') NOT NULL,
+  `quantita` int(64) NOT NULL,
+  `img` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `calendario`
+--
+
+CREATE TABLE `calendario` (
+  `id_evento` int(11) NOT NULL,
+  `tipologia` varchar(32) NOT NULL,
+  `data` datetime(6) NOT NULL,
+  `fk_id_utente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `componenti`
+--
+
+CREATE TABLE `componenti` (
+  `id_componente` int(11) NOT NULL,
+  `numero_inventario` varchar(32) NOT NULL,
+  `tipologia` set('chassis','floor','suspension','brake','front wing','rear wing','power unit','sidepod') NOT NULL,
+  `versione` int(16) NOT NULL,
+  `fk_id_utente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `contratti`
+--
+
+CREATE TABLE `contratti` (
+  `id_contratto` int(11) NOT NULL,
+  `stipendio` int(16) NOT NULL,
+  `data_inizio` date NOT NULL,
+  `data_fine` date NOT NULL,
+  `fk_id_utente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `finanze`
+--
+
+CREATE TABLE `finanze` (
+  `id_transazione` int(11) NOT NULL,
+  `tipo` set('entrata','uscita') NOT NULL,
+  `importo` double NOT NULL,
+  `causale` set('contratto','nuovo componente','logistica','multa','sponsor','sviluppo','marketing','ordini') NOT NULL,
+  `descrizione` varchar(128) NOT NULL,
+  `fk_id_item` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `logistica`
+--
+
+CREATE TABLE `logistica` (
+  `id_spostamento` int(11) NOT NULL,
+  `partenza` varchar(32) NOT NULL,
+  `destinazione` varchar(32) NOT NULL,
+  `mezzo_trasporto` set('airplane','ship','truck','car','bus') NOT NULL,
+  `data_partenza` datetime(6) NOT NULL,
+  `data_arrivo` datetime(6) NOT NULL,
+  `tipo` set('person','item') NOT NULL,
+  `fk_id_item` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `ordinazioni`
+--
+
+CREATE TABLE `ordinazioni` (
+  `id_ordine` int(11) NOT NULL,
+  `quantita` int(16) NOT NULL,
+  `fk_id_articolo` int(11) NOT NULL,
+  `fk_id_utente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `produzioni`
+--
+
+CREATE TABLE `produzioni` (
+  `id_produzione` int(11) NOT NULL,
+  `tipologia` set('chassis','floor','suspension','brake','front wing','rear wing','power unit','sidepod') NOT NULL,
+  `versione` int(16) NOT NULL,
+  `data_fine` date NOT NULL,
+  `fk_id_utente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `ruoli`
 --
 
 CREATE TABLE `ruoli` (
@@ -33,7 +147,7 @@ CREATE TABLE `ruoli` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `ruoli`
+-- Dump dei dati per la tabella `ruoli`
 --
 
 INSERT INTO `ruoli` (`id_ruolo`, `nome_ruolo`) VALUES
@@ -46,7 +160,22 @@ INSERT INTO `ruoli` (`id_ruolo`, `nome_ruolo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utenti`
+-- Struttura della tabella `sponsor`
+--
+
+CREATE TABLE `sponsor` (
+  `id_sponsor` int(11) NOT NULL,
+  `tipologia` varchar(32) NOT NULL,
+  `importo` double NOT NULL,
+  `data_inizio` date NOT NULL,
+  `data_fine` date NOT NULL,
+  `img` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `utenti`
 --
 
 CREATE TABLE `utenti` (
@@ -65,44 +194,140 @@ CREATE TABLE `utenti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `ruoli`
+-- Indici per le tabelle `articoli`
+--
+ALTER TABLE `articoli`
+  ADD PRIMARY KEY (`id_articolo`);
+
+--
+-- Indici per le tabelle `calendario`
+--
+ALTER TABLE `calendario`
+  ADD PRIMARY KEY (`id_evento`);
+
+--
+-- Indici per le tabelle `componenti`
+--
+ALTER TABLE `componenti`
+  ADD PRIMARY KEY (`id_componente`);
+
+--
+-- Indici per le tabelle `finanze`
+--
+ALTER TABLE `finanze`
+  ADD PRIMARY KEY (`id_transazione`);
+
+--
+-- Indici per le tabelle `logistica`
+--
+ALTER TABLE `logistica`
+  ADD PRIMARY KEY (`id_spostamento`);
+
+--
+-- Indici per le tabelle `ordinazioni`
+--
+ALTER TABLE `ordinazioni`
+  ADD PRIMARY KEY (`id_ordine`);
+
+--
+-- Indici per le tabelle `produzioni`
+--
+ALTER TABLE `produzioni`
+  ADD PRIMARY KEY (`id_produzione`);
+
+--
+-- Indici per le tabelle `ruoli`
 --
 ALTER TABLE `ruoli`
   ADD PRIMARY KEY (`id_ruolo`);
 
 --
--- Indexes for table `utenti`
+-- Indici per le tabelle `sponsor`
+--
+ALTER TABLE `sponsor`
+  ADD PRIMARY KEY (`id_sponsor`);
+
+--
+-- Indici per le tabelle `utenti`
 --
 ALTER TABLE `utenti`
   ADD PRIMARY KEY (`id_utente`),
   ADD KEY `fk_id_ruolo` (`fk_id_ruolo`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `ruoli`
+-- AUTO_INCREMENT per la tabella `articoli`
+--
+ALTER TABLE `articoli`
+  MODIFY `id_articolo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `calendario`
+--
+ALTER TABLE `calendario`
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `componenti`
+--
+ALTER TABLE `componenti`
+  MODIFY `id_componente` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `finanze`
+--
+ALTER TABLE `finanze`
+  MODIFY `id_transazione` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `logistica`
+--
+ALTER TABLE `logistica`
+  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `ordinazioni`
+--
+ALTER TABLE `ordinazioni`
+  MODIFY `id_ordine` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `produzioni`
+--
+ALTER TABLE `produzioni`
+  MODIFY `id_produzione` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `ruoli`
 --
 ALTER TABLE `ruoli`
   MODIFY `id_ruolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `utenti`
+-- AUTO_INCREMENT per la tabella `sponsor`
+--
+ALTER TABLE `sponsor`
+  MODIFY `id_sponsor` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
   MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `utenti`
+-- Limiti per la tabella `utenti`
 --
 ALTER TABLE `utenti`
   ADD CONSTRAINT `utenti_ibfk_1` FOREIGN KEY (`fk_id_ruolo`) REFERENCES `ruoli` (`id_ruolo`);
