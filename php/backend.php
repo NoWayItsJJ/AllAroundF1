@@ -5,8 +5,10 @@
 
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
+
+    <script src="../js/calendar.js"></script>
 </head>
-<body>
+<body onload="calendar()">
     <nav>
         <div class="logo">
             <a href="backend.php"><img src="../img/logo/white-horse.svg" alt=""></a>
@@ -76,6 +78,19 @@
                     <h3>Calendar</h3>
                 </div>
                 <div class="card-content">
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <div class="calendar-header-month">
+                                <h4 id="month"></h4>
+                            </div>
+                            <div class="calendar-header-nav">
+                                <button class="button-invisible-background" onclick="prevMonth()"><i class="bi bi-arrow-left"></i></button>
+                                <button class="button-invisible-background" onclick="displayToday()">today</button>
+                                <button class="button-invisible-background" onclick="nextMonth()"><i class="bi bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                        <div id="calendar"></div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="card-link">
