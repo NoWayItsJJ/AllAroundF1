@@ -1,20 +1,3 @@
-<?php 
-    session_start();
-    include_once 'db.php';
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $sql = "SELECT * FROM utenti WHERE email = '$email' AND password = '$password'";
-    $result = $conn->query($sql);
-    if($result->num_rows > 0){
-        $row = $result->fetch_assoc();
-        $_SESSION['user'] = $row;
-        header('Location: ../index.php');
-    }else{
-        header('Location: ../login.php');
-    }
-    $conn->close();
-?>
-
 <html>
     <head>
         <title>Login</title>
