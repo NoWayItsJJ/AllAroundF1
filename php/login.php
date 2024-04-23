@@ -1,47 +1,22 @@
+<?php
+session_start();
+if(isset($_SESSION['user_id'])) {
+    header('Location: account.php');
+    exit;
+}
+?>
 <html>
-    <head>
-        <title>Login</title>
-    </head>
-    <body>
-        <form id="emailForm" action="login.php" method="post">
-            <input type="email" id="email" name="email" placeholder="Email">
-            <button id="confirmEmail">Avanti</button>
-        </form>
-        <script>
-            document.getElementById("confirmEmail").addEventListener("click", function() {
-                echo ("Funziona");
-                var email = document.getElementById("email").value;
-                if (email == "") {
-                    alert("Inserisci un'email valida");
-                    return;
-                }
-                fetch('checkEmail.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: 'email=' + encodeURIComponent(email),
-                })
-                .then(response => response.text())
-                .then(data => {
-                    if(data === 'exists') {
-                        document.getElementById('confirmEmail').hidden = true;
-                        // Se l'email esiste, mostra il campo password
-                        var passwordField = document.createElement('input');
-                        passwordField.type = 'password';
-                        passwordField.name = 'password';
-                        passwordField.placeholder = 'Password';
-                        document.getElementById('emailForm').appendChild(passwordField);
-                        // Mostra il pulsante di login
-                        var loginButton = document.createElement('button');
-                        loginButton.type = 'submit';
-                        document.getElementById('emailForm').appendChild(loginButton);
-                    } else {
-                        // Altrimenti, mostra un messaggio di errore
-                        alert("Email non registrata");
-                    }
-                });
-            });
-        </script>
-    </body>
+	<head>
+		<title>Login</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<form id="emailForm" action="" method="post">
+			<input type="email" id="email" name="email" placeholder="Email" />
+			<input type="password" name="password" id="password" placeholder="Password" style="display: none" />
+			<a id="confirmEmail" href="#">Continua</a>
+			<a id="confirmPassword" style="display: none" href="#">Continua</a>
+		</form>
+	</body>
+	<script src="../js/login.js"></script>
 </html>

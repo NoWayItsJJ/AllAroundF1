@@ -8,4 +8,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
+
+/*SESSION VARIABLES*/
+// user_id: id utente
+// user_type: tipologia utente
+
 ?>
