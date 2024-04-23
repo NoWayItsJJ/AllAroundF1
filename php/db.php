@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root"; // Sostituisci con il tuo nome utente del database
 $password = ""; // Sostituisci con la tua password del database
-$dbname = "saro_tecnoteca"; // Sostituisci con il nome del tuo database
+$dbname = "all_around_f1"; // Sostituisci con il nome del tuo database
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
