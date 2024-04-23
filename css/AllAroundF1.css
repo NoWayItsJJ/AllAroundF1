@@ -43,6 +43,11 @@
 	font-family: var(--main-font);
 }
 
+html, body {
+    min-height: 650px;
+    min-width: 1200px;
+}
+
 .red-text {
 	color: var(--red-text-color);
 }
@@ -57,6 +62,26 @@ h6 {
 	font-weight: 400;
 	margin-block: 0;
 	margin-inline: 0;
+}
+
+h1 {
+    font-size: var(--title-font-size);
+}
+
+h2 {
+    font-size: var(--subtitle-font-size);
+}
+
+h3 {
+    font-size: var(--xxxl-font-size);
+}
+
+h4 {
+    font-size: var(--xxl-font-size);
+}
+
+h5 {
+    font-size: var(--xl-font-size);
 }
 
 .scrollable-section {
@@ -89,12 +114,12 @@ h6 {
 	cursor: pointer;
 	font-size: var(--m-font-size);
 	outline: none;
-	padding: 4px 8px;
+	padding: 4px 4px;
 	text-align: center;
 	border-radius: var(--border-radius);
 
 	&:hover {
-		background-color: var(--secondary-text-color);
-		color: var(--primary-color);
+		background-color: #00000027;
+        color: var(--yellow-text-color);
 	}
 }
