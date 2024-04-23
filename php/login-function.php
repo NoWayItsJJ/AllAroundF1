@@ -49,7 +49,7 @@ function checkPassword($email, $password, $conn) {
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT * FROM utenti WHERE email = ? AND passmd5 = ?");
+    $stmt = $conn->prepare("SELECT * FROM utenti WHERE email = ? AND password = ?");
     $hashed_password = md5($password);
     $stmt->bind_param('ss', $email, $hashed_password);
 
@@ -60,8 +60,8 @@ function checkPassword($email, $password, $conn) {
         session_start();
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['id_utente'];
-        $_SESSION['user_type'] = $row['tipologia_utente'];
-        echo json_encode(array('passwordCorrect' => true));
+        $_SESSION['user_type'] = $row['fk_id_ruolo'];
+        echo json_encode(array('passwordCorrect' => true, 'userType' => $row['fk_id_ruolo']));
     } else {
         echo json_encode(array('passwordCorrect' => false));
     }

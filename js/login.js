@@ -12,17 +12,13 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function (response) {
-                try {
-                    if (response.emailExists) {
-                        $('#email').prop('readonly', true);
-                        $('#password').css('display', 'block');
-                        $('#confirmEmail').css('display', 'none');
-                        $('#confirmPassword').css('display', 'block');
-                    } else {
-                        $('#email').css('border-color', 'red');
-                    }
-                } catch (e) {
-                    console.error('Invalid JSON:', response);
+                if (response.emailExists) {
+                    $('#email').prop('readonly', true);
+                    $('#password').css('display', 'block');
+                    $('#confirmEmail').css('display', 'none');
+                    $('#confirmPassword').css('display', 'block');
+                } else {
+                    $('#email').css('border-color', 'red');
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -48,8 +44,11 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 if (response.passwordCorrect) {
-                    // Redirect in base alla tipologia di utente
-                    window.location.href = 'home.html';
+                    if (response.userType != 5) {
+                        window.location.href = './backend.php';
+                    } else {
+                        window.location.href = '../index.php';
+                    }
                 } else {
                     $('#password').css('border-color', 'red');
                 }
