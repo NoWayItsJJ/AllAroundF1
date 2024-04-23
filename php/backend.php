@@ -8,7 +8,7 @@
 
     <script src="../js/calendar.js"></script>
 </head>
-<body onload="calendar()">
+<body>
     <nav>
         <div class="logo">
             <a href="backend.php"><img src="../img/logo/white-horse.svg" alt=""></a>
@@ -70,112 +70,123 @@
             </ul>
         </div>
     </nav>
-    <section id="dashboard" class="scrollable-section">
-        <div class="dashboard-grid">
-            <div class="dashboard-card grid-col-span-2">
-                <div class="card-header">
-                    <i class="bi bi-calendar-week"></i>
-                    <h3>Calendar</h3>
-                </div>
-                <div class="card-content">
-                    <div class="calendar">
-                        <div class="calendar-header">
-                            <div class="calendar-header-month">
-                                <h4 id="month"></h4>
-                            </div>
-                            <div class="calendar-header-nav">
-                                <button class="button-invisible-background" onclick="prevMonth()"><i class="bi bi-arrow-left"></i></button>
-                                <button class="button-invisible-background" onclick="displayToday()">today</button>
-                                <button class="button-invisible-background" onclick="nextMonth()"><i class="bi bi-arrow-right"></i></button>
-                            </div>
+<section id="dashboard" class="scrollable-section">
+    <div class="dashboard-grid">
+        <div class="dashboard-card red grid-col-span-2">
+            <div class="card-header">
+                <i class="bi bi-calendar-week"></i>
+                <h4>Calendar</h4>
+            </div>
+            <div class="card-content">
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-header-month">
+                            <h5 id="month"></h5>
                         </div>
-                        <div id="calendar"></div>
+                        <div class="calendar-header-nav">
+                            <button class="button-invisible-background" onclick="prevMonth()"><i class="bi bi-chevron-left"></i></button>
+                            <button class="button-invisible-background" onclick="displayToday()">today</button>
+                            <button class="button-invisible-background" onclick="nextMonth()"><i class="bi bi-chevron-right"></i></button>
+                        </div>
                     </div>
+                    <div id="calendar"></div>
                 </div>
-                <div class="card-footer">
-                    <div class="card-link">
-                        <i class="bi bi-arrow-down-right"></i>
+                <div class="date">
+                    <div class="date-day">
+                        <button class="button-invisible-background" onclick="nextDay()"><i class="bi bi-chevron-up"></i></button>
+                        <h5 class="big-date" id="day"></h5>
+                        <h1 class="big-date" id="day-number"></h1>
+                        <h5 class="big-date" id="day-month"></h5>
+                        <h5 class="big-date" id="day-year"></h5>
+                        <button class="button-invisible-background" onclick="prevDay()"><i class="bi bi-chevron-down"></i></button>
                     </div>
+                    <div class="date-hours"></div>
                 </div>
             </div>
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <i class="bi bi-currency-exchange"></i>
-                    <h3>Finances</h3>
-                </div>
-                <div class="card-content">
-                </div>
-                <div class="card-footer">
-                    <div class="card-link">
-                        <i class="bi bi-arrow-down-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-card grid-row-span-2">
-                <div class="card-header">
-                    <i class="bi bi-people"></i>
-                    <h3>Staff</h3>
-                </div>
-                <div class="card-content">
-                </div>
-                <div class="card-footer">
-                    <div class="card-link">
-                        <i class="bi bi-arrow-down-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-card grid-row-span-2">
-                <div class="card-header">
-                    <i class="bi bi-box"></i>
-                    <h3>Logistics</h3>
-                </div>
-                <div class="card-content">
-                </div>
-                <div class="card-footer">
-                    <div class="card-link">
-                        <i class="bi bi-arrow-down-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-card grid-col-span-2">
-                <div class="card-header">
-                    <i class="bi bi-gear"></i>
-                    <h3>Factory</h3>
-                </div>
-                <div class="card-content">
-                </div>
-                <div class="card-footer">
-                    <div class="card-link">
-                        <i class="bi bi-arrow-down-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <i class="bi bi-megaphone"></i>
-                    <h3>Marketing</h3>
-                </div>
-                <div class="card-content">
-                </div>
-                <div class="card-footer">
-                    <div class="card-link">
-                        <i class="bi bi-arrow-down-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-card grid-col-span-2">
-                <div class="card-header">
-                    <h3>Drivers</h3>
-                </div>
-                <div class="card-content">
-                </div>
-                <div class="card-footer">
-                    <div class="card-link">
-                        <i class="bi bi-arrow-down-right"></i>
-                    </div>
+            <div class="card-footer">
+                <div class="card-link">
+                    <i class="bi bi-arrow-down-right"></i>
                 </div>
             </div>
         </div>
-    </section>    
+        <div class="dashboard-card">
+            <div class="card-header">
+                <i class="bi bi-currency-exchange"></i>
+                <h4>Finances</h4>
+            </div>
+            <div class="card-content">
+            </div>
+            <div class="card-footer">
+                <div class="card-link">
+                    <i class="bi bi-arrow-down-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card grid-row-span-2">
+            <div class="card-header">
+                <i class="bi bi-people"></i>
+                <h4>Staff</h4>
+            </div>
+            <div class="card-content">
+            </div>
+            <div class="card-footer">
+                <div class="card-link">
+                    <i class="bi bi-arrow-down-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card grid-row-span-2">
+            <div class="card-header">
+                <i class="bi bi-box"></i>
+                <h4>Logistics</h4>
+            </div>
+            <div class="card-content">
+            </div>
+            <div class="card-footer">
+                <div class="card-link">
+                    <i class="bi bi-arrow-down-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card grid-col-span-2">
+            <div class="card-header">
+                <i class="bi bi-gear"></i>
+                <h4>Factory</h4>
+            </div>
+            <div class="card-content">
+            </div>
+            <div class="card-footer">
+                <div class="card-link">
+                    <i class="bi bi-arrow-down-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <div class="card-header">
+                <i class="bi bi-megaphone"></i>
+                <h4>Marketing</h4>
+            </div>
+            <div class="card-content">
+            </div>
+            <div class="card-footer">
+                <div class="card-link">
+                    <i class="bi bi-arrow-down-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-card grid-col-span-2">
+            <div class="card-header">
+                <h4>Drivers</h4>
+            </div>
+            <div class="card-content">
+            </div>
+            <div class="card-footer">
+                <div class="card-link">
+                    <i class="bi bi-arrow-down-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
