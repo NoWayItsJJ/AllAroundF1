@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 20, 2024 alle 11:49
--- Versione del server: 10.4.27-MariaDB
--- Versione PHP: 8.2.0
+-- Generation Time: Apr 23, 2024 at 06:27 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `articoli`
+-- Table structure for table `articoli`
 --
 
 CREATE TABLE `articoli` (
@@ -38,7 +38,7 @@ CREATE TABLE `articoli` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `calendario`
+-- Table structure for table `calendario`
 --
 
 CREATE TABLE `calendario` (
@@ -51,7 +51,7 @@ CREATE TABLE `calendario` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `componenti`
+-- Table structure for table `componenti`
 --
 
 CREATE TABLE `componenti` (
@@ -65,7 +65,7 @@ CREATE TABLE `componenti` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `contratti`
+-- Table structure for table `contratti`
 --
 
 CREATE TABLE `contratti` (
@@ -79,7 +79,7 @@ CREATE TABLE `contratti` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `finanze`
+-- Table structure for table `finanze`
 --
 
 CREATE TABLE `finanze` (
@@ -94,7 +94,7 @@ CREATE TABLE `finanze` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `logistica`
+-- Table structure for table `logistica`
 --
 
 CREATE TABLE `logistica` (
@@ -111,7 +111,7 @@ CREATE TABLE `logistica` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ordinazioni`
+-- Table structure for table `ordinazioni`
 --
 
 CREATE TABLE `ordinazioni` (
@@ -124,7 +124,7 @@ CREATE TABLE `ordinazioni` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `produzioni`
+-- Table structure for table `produzioni`
 --
 
 CREATE TABLE `produzioni` (
@@ -138,7 +138,7 @@ CREATE TABLE `produzioni` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ruoli`
+-- Table structure for table `ruoli`
 --
 
 CREATE TABLE `ruoli` (
@@ -147,7 +147,7 @@ CREATE TABLE `ruoli` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `ruoli`
+-- Dumping data for table `ruoli`
 --
 
 INSERT INTO `ruoli` (`id_ruolo`, `nome_ruolo`) VALUES
@@ -160,7 +160,7 @@ INSERT INTO `ruoli` (`id_ruolo`, `nome_ruolo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `sponsor`
+-- Table structure for table `sponsor`
 --
 
 CREATE TABLE `sponsor` (
@@ -175,7 +175,7 @@ CREATE TABLE `sponsor` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `utenti`
+-- Table structure for table `utenti`
 --
 
 CREATE TABLE `utenti` (
@@ -194,140 +194,151 @@ CREATE TABLE `utenti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indici per le tabelle scaricate
+-- Dumping data for table `utenti`
+--
+
+INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `indirizzo`, `citta`, `CAP`, `stato`, `img`, `email`, `password`, `archiviato`, `fk_id_ruolo`) VALUES
+(1, 'riccardo', 'saro', 'via amalteo 25', 'fontanafredda', 33074, 'italia', '', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 4),
+(2, 'fabio', 'pauletta', 'via tasso 14', 'maniago', 33085, 'italia', '', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 3),
+(3, 'pippo', 'de pippis', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 2),
+(4, 'paperon', 'de paperoni', 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 5),
+(5, 'ayrton', 'senna', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 1);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `articoli`
+-- Indexes for table `articoli`
 --
 ALTER TABLE `articoli`
   ADD PRIMARY KEY (`id_articolo`);
 
 --
--- Indici per le tabelle `calendario`
+-- Indexes for table `calendario`
 --
 ALTER TABLE `calendario`
   ADD PRIMARY KEY (`id_evento`);
 
 --
--- Indici per le tabelle `componenti`
+-- Indexes for table `componenti`
 --
 ALTER TABLE `componenti`
   ADD PRIMARY KEY (`id_componente`);
 
 --
--- Indici per le tabelle `finanze`
+-- Indexes for table `finanze`
 --
 ALTER TABLE `finanze`
   ADD PRIMARY KEY (`id_transazione`);
 
 --
--- Indici per le tabelle `logistica`
+-- Indexes for table `logistica`
 --
 ALTER TABLE `logistica`
   ADD PRIMARY KEY (`id_spostamento`);
 
 --
--- Indici per le tabelle `ordinazioni`
+-- Indexes for table `ordinazioni`
 --
 ALTER TABLE `ordinazioni`
   ADD PRIMARY KEY (`id_ordine`);
 
 --
--- Indici per le tabelle `produzioni`
+-- Indexes for table `produzioni`
 --
 ALTER TABLE `produzioni`
   ADD PRIMARY KEY (`id_produzione`);
 
 --
--- Indici per le tabelle `ruoli`
+-- Indexes for table `ruoli`
 --
 ALTER TABLE `ruoli`
   ADD PRIMARY KEY (`id_ruolo`);
 
 --
--- Indici per le tabelle `sponsor`
+-- Indexes for table `sponsor`
 --
 ALTER TABLE `sponsor`
   ADD PRIMARY KEY (`id_sponsor`);
 
 --
--- Indici per le tabelle `utenti`
+-- Indexes for table `utenti`
 --
 ALTER TABLE `utenti`
   ADD PRIMARY KEY (`id_utente`),
   ADD KEY `fk_id_ruolo` (`fk_id_ruolo`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `articoli`
+-- AUTO_INCREMENT for table `articoli`
 --
 ALTER TABLE `articoli`
   MODIFY `id_articolo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `calendario`
+-- AUTO_INCREMENT for table `calendario`
 --
 ALTER TABLE `calendario`
   MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `componenti`
+-- AUTO_INCREMENT for table `componenti`
 --
 ALTER TABLE `componenti`
   MODIFY `id_componente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `finanze`
+-- AUTO_INCREMENT for table `finanze`
 --
 ALTER TABLE `finanze`
   MODIFY `id_transazione` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `logistica`
+-- AUTO_INCREMENT for table `logistica`
 --
 ALTER TABLE `logistica`
   MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `ordinazioni`
+-- AUTO_INCREMENT for table `ordinazioni`
 --
 ALTER TABLE `ordinazioni`
   MODIFY `id_ordine` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `produzioni`
+-- AUTO_INCREMENT for table `produzioni`
 --
 ALTER TABLE `produzioni`
   MODIFY `id_produzione` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `ruoli`
+-- AUTO_INCREMENT for table `ruoli`
 --
 ALTER TABLE `ruoli`
   MODIFY `id_ruolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT per la tabella `sponsor`
+-- AUTO_INCREMENT for table `sponsor`
 --
 ALTER TABLE `sponsor`
   MODIFY `id_sponsor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `utenti`
+-- AUTO_INCREMENT for table `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `utenti`
+-- Constraints for table `utenti`
 --
 ALTER TABLE `utenti`
   ADD CONSTRAINT `utenti_ibfk_1` FOREIGN KEY (`fk_id_ruolo`) REFERENCES `ruoli` (`id_ruolo`);
