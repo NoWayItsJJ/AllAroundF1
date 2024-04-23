@@ -42,14 +42,26 @@ $(document).ready(function() {
         e.preventDefault();
         var email = $('#email').val();
         var password = $('#password').val();
+        var name = $('#name').val();
+        var surname = $('#surname').val();
+        var address = $('#address').val();
+        var city = $('#city').val();
+        var cap = $('#cap').val();
+        var state = $('#state').val();
 
         $.ajax({
             type: 'POST',
-            url: '../php/login-function.php',
+            url: '../php/signin-function.php',
             data: { 
                 email: email, 
                 password: password, 
-                action: 'checkPassword' 
+                name: name,
+                surname: surname,
+                address: address,
+                city: city,
+                cap: cap,
+                state: state,
+                action: 'registerUser' 
             },
             dataType: 'json',
             success: function(response) {
