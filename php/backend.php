@@ -1,5 +1,5 @@
 <?php
-    /*session_start();
+    session_start();
     if (isset($_SESSION['user_type'])) {
         $user_type = $_SESSION['user_type'];
         if ($user_type == 5) {
@@ -9,7 +9,7 @@
     } else {
         header('Location: ../php/login.php');
         exit();
-    }*/
+    }
 ?>
 <html>
 <head>

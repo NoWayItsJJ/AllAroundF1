@@ -1,10 +1,10 @@
 <?php
-$userType = $_SESSION['userType']; 
+$userType = $_SESSION['user_type']; 
 
 if($userType == 5) {
     header('Location: access_denied.php');
     exit();
-} else if (!isset($_SESSION['userType'])){
+} else if (!isset($_SESSION['user_type'])){
     header('Location: ../html/login.html');
     exit();
 }
@@ -40,7 +40,7 @@ if($userType == 4) {
 }
 
 // Logistics
-if($userType == 4) {
+if($userType == 4 || $userType == 6) {
     echo '
     <li>
         <a href="./logistics.php">
@@ -51,7 +51,7 @@ if($userType == 4) {
 }
 
 // Staff
-if($userType == 4) {
+if($userType == 4 || $userType == 6) {
     echo '
     <li>
         <a href="./staff.php">
@@ -90,6 +90,116 @@ if($userType == 4) {
         <a href="./calendar.php">
             <i class="bi bi-calendar-week"></i>
             <span class="nav-text">Calendar</span>
+        </a>
+    </li>';
+}
+
+// Orders
+if($userType == 7) {
+    echo '
+    <li>
+        <a href="./orders.php">
+            <i class="bi bi-cart"></i>
+            <span class="nav-text">Orders</span>
+        </a>
+    </li>';
+}
+
+// Articles
+if($userType == 7) {
+    echo '
+    <li>
+        <a href="./articles.php">
+            <i class="bi bi-newspaper"></i>
+            <span class="nav-text">Articles</span>
+        </a>
+    </li>';
+}
+
+// Social
+if($userType == 7) {
+    echo '
+    <li>
+        <a href="./social.php">
+            <i class="bi bi-people"></i>
+            <span class="nav-text">Social</span>
+        </a>
+    </li>';
+}
+
+// Clients
+if($userType == 7) {
+    echo '
+    <li>
+        <a href="./clients.php">
+            <i class="bi bi-person"></i>
+            <span class="nav-text">Clients</span>
+        </a>
+    </li>';
+}
+
+// Events
+if($userType == 7) {
+    echo '
+    <li>
+        <a href="./events.php">
+            <i class="bi bi-calendar-week"></i>
+            <span class="nav-text">Events</span>
+        </a>
+    </li>';
+}
+
+// Contracts
+if($userType == 6) {
+    echo '
+    <li>
+        <a href="./contracts.php">
+            <i class="bi bi-file-earmark-text"></i>
+            <span class="nav-text">Contracts</span>
+        </a>
+    </li>';
+}
+
+// Car
+if($userType == 3) {
+    echo '
+    <li>
+        <a href="./car.php">
+            <i class="bi bi-gear"></i>
+            <span class="nav-text">Car</span>
+        </a>
+    </li>';
+}
+
+// Production 
+if($userType == 3) {
+    echo '
+    <li>
+        <a href="./production.php">
+            <i class="bi bi-gear"></i>
+            <span class="nav-text">Production</span>
+        </a>
+    </li>';
+}
+
+// Development
+if($userType == 3) {
+    echo '
+    <li>
+        <a href="./development.php">
+            <i class="bi bi-tools"></i>
+            <span class="nav-text">Development</span>
+        </a>
+    </li>';
+}
+
+// Components
+if($userType == 3) {
+    echo '
+    <li>
+        <a href="./components.php">
+            <i class="bi bi-gear-wide-connected"></i>
+            <span class="nav-text">Components</span>
         </a>
     </li>';
 }
