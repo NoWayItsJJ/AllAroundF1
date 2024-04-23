@@ -1,3 +1,16 @@
+<?php
+    /*session_start();
+    if (isset($_SESSION['user_type'])) {
+        $user_type = $_SESSION['user_type'];
+        if ($user_type == 5) {
+            header('Location: access_denied.php');
+            exit();
+        }
+    } else {
+        header('Location: ../php/login.php');
+        exit();
+    }*/
+?>
 <html>
 <head>
     <title>Ferrari Backend</title>
@@ -22,48 +35,7 @@
         </div>
         <div class="links">
             <ul>
-                <li>
-                    <a href="./backend.php" class="red-text">
-                        <i class="bi bi-house"></i>
-                        <span class="nav-text">Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./factory.php">
-                        <i class="bi bi-gear"></i>
-                        <span class="nav-text">Factory</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./logistics.php">
-                        <i class="bi bi-box"></i>
-                        <span class="nav-text">Logistics</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./staff.php">
-                        <i class="bi bi-people"></i>
-                        <span class="nav-text">Staff</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./finances.php">
-                        <i class="bi bi-currency-exchange"></i>
-                        <span class="nav-text">Finances</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./marketing.php">
-                        <i class="bi bi-megaphone"></i>
-                        <span class="nav-text">Marketing</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./calendar.php">
-                        <i class="bi bi-calendar-week"></i>
-                        <span class="nav-text">Calendar</span>
-                    </a>
-                </li>
+                <?php include 'navbar-backend.php'; ?>
             </ul>
         </div>
         <div class="account">

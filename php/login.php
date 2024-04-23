@@ -14,8 +14,8 @@ if(isset($_SESSION['user_id'])) {
 		<form id="emailForm" action="" method="post">
 			<input type="email" id="email" name="email" placeholder="Email" />
 			<input type="password" name="password" id="password" placeholder="Password" style="display: none" />
-			<a id="confirmEmail" href="#">Continua</a>
-			<a id="confirmPassword" style="display: none" href="#">Continua</a>
+			<button id="confirmEmail">Continua</button>
+			<button id="confirmPassword" style="display: none">Continua</button>
 		</form>
 	</body>
 	<script src="../js/login.js"></script>
