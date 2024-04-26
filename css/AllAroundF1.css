@@ -107,23 +107,6 @@ h5 {
 	background: #555;
 }
 
-.button-invisible-background {
-	background-color: transparent;
-	border: none;
-	color: var(--primary-text-color);
-	cursor: pointer;
-	font-size: var(--m-font-size);
-	outline: none;
-	padding: 4px 4px;
-	text-align: center;
-	border-radius: var(--border-radius);
-
-	&:hover {
-		background-color: #00000027;
-        color: var(--yellow-text-color);
-	}
-}
-
 .no-js #loader {
 	display: none;
 }
@@ -155,5 +138,58 @@ h5 {
 			width: 100px;
 			height: 100px;
 		}
+	}
+}
+
+.button-invisible-background {
+	background-color: transparent;
+	border: none;
+	color: var(--primary-text-color);
+	cursor: pointer;
+	font-size: var(--m-font-size);
+	outline: none;
+	padding: 4px 4px;
+	text-align: center;
+	border-radius: var(--border-radius);
+
+	&:hover {
+		background-color: #00000027;
+		color: var(--yellow-text-color);
+	}
+}
+
+.button-primary {
+	background-color: var(--secondary-color);
+	border: none;
+	color: var(--primary-text-color);
+	cursor: pointer;
+	font-size: var(--m-font-size);
+	outline: none;
+	padding: 8px 16px;
+	text-align: center;
+	border-radius: var(--border-radius);
+
+	&:hover {
+		background-color: #da2119;
+	}
+}
+
+.button-outline {
+	background-color: transparent;
+	border: 2px solid var(--primary-text-color);
+	color: var(--primary-text-color);
+	cursor: pointer;
+	font-size: var(--m-font-size);
+	outline: none;
+	padding: 8px 16px;
+	text-align: center;
+	border-radius: var(--border-radius);
+	transition: all 0.3s ease;
+
+	&:hover {
+		background-color: var(--primary-text-color);
+		color: var(--primary-color);
+		border-color: none;
+		transform: scale3d(1.1, 1.1, 1.1);
 	}
 }

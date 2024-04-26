@@ -1,0 +1,64 @@
+@import url("AllAroundF1.css");
+
+#account{
+    margin-left: 80px;
+    padding: 16px;
+    width: calc(100% - 80px);
+    height: 100vh;
+    min-height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .user-profile{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        min-width: 1024px;
+        margin: 32px;
+
+        .user-info{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+
+            .user-avatar{
+                width: 128px;
+                height: 128px;
+                border-radius: 50%;
+                margin-right: 16px;
+                background-color: var(--primary-color);
+            }
+
+            .user-details{
+                display: flex;
+                justify-content: start;
+                align-items: start;
+                flex-direction: column;
+
+                h3{
+                    font-size: 32px;
+                    margin: 0;
+                    margin-bottom: 6px;
+                }
+
+                p{
+                    font-size: 15px;
+                    margin: 0;
+                    color: var(--secondary-text-color);
+                }
+            }
+        }
+    }
+
+
+    .account-card{
+        background-color: var(--primary-color);
+        border-radius: var(--border-radius);
+        padding: 16px;
+        min-width: 1024px;
+    }
+}
