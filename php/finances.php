@@ -20,7 +20,7 @@
         <div class="account">
             <ul>
                 <li>
-                    <a href="./account.php">
+                    <a href="./account-backend.php">
                         <i class="bi bi-person"></i>
                         <span class="nav-text">Account</span>
                     </a>
