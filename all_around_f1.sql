@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 06:27 PM
+-- Generation Time: Apr 26, 2024 at 09:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,8 +43,8 @@ CREATE TABLE `articoli` (
 
 CREATE TABLE `calendario` (
   `id_evento` int(11) NOT NULL,
-  `tipologia` varchar(32) NOT NULL,
-  `data` datetime(6) NOT NULL,
+  `tipologia` set('Meeting','Call','Conference','Interview','Test','Race Weekend') NOT NULL,
+  `data_evento` datetime(6) NOT NULL,
   `fk_id_utente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
