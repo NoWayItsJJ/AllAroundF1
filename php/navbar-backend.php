@@ -1,13 +1,7 @@
 <?php
 $userType = $_SESSION['user_type']; 
 
-if($userType == 5) {
-    header('Location: access_denied.php');
-    exit();
-} else if (!isset($_SESSION['user_type'])){
-    header('Location: ../html/login.html');
-    exit();
-}
+include_once 'security.php';
 
 /*
 utenti:
