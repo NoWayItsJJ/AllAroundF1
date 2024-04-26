@@ -65,7 +65,7 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function(response) {
-                if (response.passwordCorrect) {
+                if (response.SignedIn) {
                     if (response.userType != 5) {
                         window.location.href = './backend.php';
                     } else {
