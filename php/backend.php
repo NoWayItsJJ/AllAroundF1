@@ -67,7 +67,9 @@
                             <h5 class="big-date" id="day-year"></h5>
                             <button class="button-invisible-background" onclick="prevDay()"><i class="bi bi-chevron-down"></i></button>
                         </div>
-                        <div class="date-hours"></div>
+                        <div class="date-hours">
+                            <div id="event"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">

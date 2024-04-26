@@ -9,7 +9,6 @@ window.onload = function () {
 };
 
 function calendar() {
-	console.log('calendar');
 	var today = new Date();
 	var currentDay = today.getDate();
 	var daydate = date.getDate();
@@ -85,6 +84,8 @@ function updateDateInfo(date) {
     document.getElementById('day-number').innerHTML = dayNumber;
     document.getElementById('day-month').innerHTML = month;
     document.getElementById('day-year').innerHTML = year;
+
+	retrieveEvents(date.toISOString());
 }
 
 function prevMonth() {
@@ -234,4 +235,31 @@ function displayToday() {
 
 function daysInMonth(month, year) {
 	return new Date(year, month + 1, 0).getDate();
+}
+
+function retrieveEvents(data) {
+	$.ajax({
+		type: 'POST',
+		url: '../php/calendar-function.php',
+		data: { 
+			data: data,
+			action: 'retreiveEvents' 
+		},
+		dataType: 'json',
+		success: function (response) {
+			if (response.retrieveEvents) {
+				var events = response.events;
+				events.forEach(element => {
+					console.log(element);
+					$('#event').append('<h1>' + element + '</h1>');
+				});
+			} else {
+				$('.date-hours').empty().append('<h1>No events</h1>');
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.error('Error:', textStatus, errorThrown);
+			console.error('Response:', jqXHR.responseText);
+		}
+	});
 }
