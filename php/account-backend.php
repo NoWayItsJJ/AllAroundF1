@@ -49,9 +49,70 @@
         <div class="account-card">
             <div class="account-card-header">
                 <h3>Info utente</h3>
-                <img src="" alt="">
+                <img src="../img/logo/logo-scuderia.png" alt="">
+            </div>
+            <div class="line"></div>
+            <div class="account-card-content">
+                <div class="account-card-row">
+                    <p><strong>Name</strong></p>
+                    <div class="account-card-row-dx">
+                        <p><?php echo ucfirst($userName); ?></p>
+                        <div class="i-button">
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="account-card-row">
+                    <p><strong>Surname</strong></p>
+                    <div class="account-card-row-dx">
+                        <p><?php echo ucfirst($userSurame); ?></p>
+                        <div class="i-button">
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="account-card-row">
+                    <p><strong>Email</strong></p>
+                    <div class="account-card-row-dx">
+                        <p><?php echo $userEmail; ?></p>
+                        <div class="i-button">
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="account-card-row">
+                    <p><strong>Password</strong></p>
+                    <div class="account-card-row-dx">
+                        <p class="password">
+                            <i class="bi bi-dot"></i>                                <i class="bi bi-dot"></i>
+                            <i class="bi bi-dot"></i>
+                            <i class="bi bi-dot"></i>
+                            <i class="bi bi-dot"></i>
+                            <i class="bi bi-dot"></i>
+                            <i class="bi bi-dot"></i>
+                            <i class="bi bi-dot"></i>
+                        </p>
+                        <div class="i-button">
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="account-card-row">
+                    <p><strong>Address</strong></p>
+                    <div class="account-card-row-dx">
+                        <p><?php echo $userAddress; ?></p>
+                        <div class="i-button">
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <a href="./logout.php" class="exit" role="button"><strong>Esci</strong></a>
     </section>
 </body>
 </html>
