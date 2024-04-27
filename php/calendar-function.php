@@ -35,7 +35,12 @@ function retrieveEvents($data, $conn) {
     $result = $stmt->get_result();
 
     while ($row = $result->fetch_assoc()) {
-        $events[] = $row['tipologia'];
+        $date = new DateTime($row['data_evento']);
+        $orario = $date->format('H:i');
+        $events[] = array(
+            'tipologia' => $row['tipologia'],
+            'orario' => $orario
+        );
     }
 
     if($result->num_rows > 0){
