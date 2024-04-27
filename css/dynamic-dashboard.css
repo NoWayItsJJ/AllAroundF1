@@ -63,16 +63,24 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				margin-bottom: 16px;
+				flex-direction: row;
+				margin: 16px 24px;
 
 				h3 {
-					font-size: var(--xl-font-size);
-					font-weight: 700;
+					font-size: 32px;
+					margin: 0;
 				}
+			}
 
-				i {
-					font-size: var(--xl-font-size);
-					color: var(--yellow-text-color);
+			.list-content {
+				display: flex;
+				justify-content: center;
+				align-items: start;
+				height: 100%;
+				width: 100%;
+
+				table {
+					width: 100%;
 				}
 			}
 		}
