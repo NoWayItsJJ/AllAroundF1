@@ -28,6 +28,13 @@
             </ul>
         </div>
     </nav>
-    
+    <section id="dynamic-dashboard">
+        <div class="dynamic-dashbord-grid">
+            <div class="dynamic-dashbord-card"></div>
+            <div class="dynamic-dashbord-card"></div>
+            <div class="dynamic-dashbord-card"></div>
+            <div class="dynamic-dashbord-card"></div>
+        </div>
+    </section>
 </body>
 </html>
