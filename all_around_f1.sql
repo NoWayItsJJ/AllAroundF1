@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2024 at 09:03 PM
+-- Generation Time: Apr 30, 2024 at 06:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -48,6 +48,13 @@ CREATE TABLE `calendario` (
   `fk_id_utente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `calendario`
+--
+
+INSERT INTO `calendario` (`id_evento`, `tipologia`, `data_evento`, `fk_id_utente`) VALUES
+(1, 'Test', '2024-04-28 06:00:00.000000', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +82,13 @@ CREATE TABLE `contratti` (
   `data_fine` date NOT NULL,
   `fk_id_utente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contratti`
+--
+
+INSERT INTO `contratti` (`id_contratto`, `stipendio`, `data_inizio`, `data_fine`, `fk_id_utente`) VALUES
+(1, 10000000, '2024-04-30', '2024-06-08', 1);
 
 -- --------------------------------------------------------
 
@@ -227,6 +241,13 @@ ALTER TABLE `componenti`
   ADD PRIMARY KEY (`id_componente`);
 
 --
+-- Indexes for table `contratti`
+--
+ALTER TABLE `contratti`
+  ADD PRIMARY KEY (`id_contratto`),
+  ADD KEY `fk_id_utente` (`fk_id_utente`);
+
+--
 -- Indexes for table `finanze`
 --
 ALTER TABLE `finanze`
@@ -283,13 +304,19 @@ ALTER TABLE `articoli`
 -- AUTO_INCREMENT for table `calendario`
 --
 ALTER TABLE `calendario`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `componenti`
 --
 ALTER TABLE `componenti`
   MODIFY `id_componente` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `contratti`
+--
+ALTER TABLE `contratti`
+  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `finanze`
@@ -336,6 +363,12 @@ ALTER TABLE `utenti`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `contratti`
+--
+ALTER TABLE `contratti`
+  ADD CONSTRAINT `contratti_ibfk_1` FOREIGN KEY (`fk_id_utente`) REFERENCES `utenti` (`id_utente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `utenti`

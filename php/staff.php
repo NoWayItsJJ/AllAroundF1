@@ -60,15 +60,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>O</td>
-                                    <td>John</td>
-                                    <td>Pluto</td>
-                                    <td>Ingegnere</td>
-                                    <td>1000000</td>
-                                    <td>2022-12-31</td>
-                                </tr>
-                                <?php //include 'staff-list.php'; ?>
+                                <?php include 'staff-list.php'; ?>
                             </tbody>
                         </table>
                     </div>
