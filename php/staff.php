@@ -31,7 +31,13 @@
     </nav>
     <section id="dynamic-dashboard">
         <div class="dynamic-dashboard-grid">
-            <div class="dynamic-dashboard-card grid-col-span-4"></div>
+            <div class="dynamic-dashboard-card grid-col-span-4">
+                <?php 
+                    $role = "1";
+                    include('staff_count.php'); 
+                    //questo snippet ogni volta che vuoi un conteggio di un ruolo (con id del ruolo)
+                ?>
+            </div>
             <div class="dynamic-dashboard-card">
                 <div class="new-button">
                     <i class="bi bi-plus"></i>

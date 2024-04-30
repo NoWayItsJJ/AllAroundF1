@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2024 at 06:42 PM
+-- Generation Time: Apr 30, 2024 at 07:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -53,7 +53,8 @@ CREATE TABLE `calendario` (
 --
 
 INSERT INTO `calendario` (`id_evento`, `tipologia`, `data_evento`, `fk_id_utente`) VALUES
-(1, 'Test', '2024-04-28 06:00:00.000000', 2);
+(1, 'Test', '2024-04-28 06:00:00.000000', 2),
+(2, 'Meeting', '2024-04-28 18:53:05.000000', 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +170,9 @@ INSERT INTO `ruoli` (`id_ruolo`, `nome_ruolo`) VALUES
 (2, 'ingegnere di pista'),
 (3, 'ingegnere meccanico'),
 (4, 'dirigente'),
-(5, 'cliente');
+(5, 'cliente'),
+(6, 'amministrazione'),
+(7, 'marketing');
 
 -- --------------------------------------------------------
 
@@ -216,7 +219,9 @@ INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `indirizzo`, `citta`, `CAP
 (2, 'fabio', 'pauletta', 'via tasso 14', 'maniago', 33085, 'italia', '', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 3),
 (3, 'pippo', 'de pippis', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 2),
 (4, 'paperon', 'de paperoni', 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 5),
-(5, 'ayrton', 'senna', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 1);
+(5, 'ayrton', 'senna', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 1),
+(6, 'fatturo', 'tanto', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 7),
+(7, 'ocyo', 'kecasko', 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 6);
 
 --
 -- Indexes for dumped tables
@@ -304,7 +309,7 @@ ALTER TABLE `articoli`
 -- AUTO_INCREMENT for table `calendario`
 --
 ALTER TABLE `calendario`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `componenti`
@@ -346,7 +351,7 @@ ALTER TABLE `produzioni`
 -- AUTO_INCREMENT for table `ruoli`
 --
 ALTER TABLE `ruoli`
-  MODIFY `id_ruolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_ruolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sponsor`
@@ -358,7 +363,7 @@ ALTER TABLE `sponsor`
 -- AUTO_INCREMENT for table `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

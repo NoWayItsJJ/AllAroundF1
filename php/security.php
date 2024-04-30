@@ -7,9 +7,11 @@
 
     /*
     utenti:
-    - dirigente (4)
-    - ingegnere (3)(poi in base al tipo)
     - pilota (1)
+    - ingegnere di pista(2)
+    - ingegnere meccanico(3)
+    - dirigente (4)
+    - cliente (5)
     - amministrazione/risorse umane (6)
     - marketing (7)
     */
