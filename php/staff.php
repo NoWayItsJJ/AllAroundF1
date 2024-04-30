@@ -47,20 +47,28 @@
                             <i class="bi bi-search"></i>
                         </div>
                     </div>
+                    <div class="line"></div>
                     <div class="list-content">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Staff ID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Position</th>
                                     <th>Salary</th>
-                                    <th>Actions</th>
+                                    <th>Contract end</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                <tr>
+                                    <td>O</td>
+                                    <td>John</td>
+                                    <td>Pluto</td>
+                                    <td>Ingegnere</td>
+                                    <td>1000000</td>
+                                    <td>2022-12-31</td>
+                                </tr>
+                                <?php //include 'staff-list.php'; ?>
                             </tbody>
                         </table>
                     </div>
