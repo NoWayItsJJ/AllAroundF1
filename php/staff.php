@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
     <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="../js/staff.js"></script>
 </head>
 <body>
     <nav>
@@ -72,7 +75,10 @@
                     </div>
                 </div>
             </div>
-            <div class="dynamic-dashboard-card grid-row-span-5"></div>
+            <div class="dynamic-dashboard-card grid-row-span-5">
+                <input id="details-nome"></input>
+                <input id="details-cognome"></input>
+            </div>
         </div>
     </section>
 </body>
