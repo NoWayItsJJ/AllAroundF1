@@ -12,8 +12,9 @@ $result = $conn->query($sql);
 if($result->num_rows > 0) {
 
     $row = $result->fetch_assoc();
+    $userId = $row['id_utente'];
     $userName = $row['nome'];
-    $userSurame = $row['cognome'];
+    $userSurname = $row['cognome'];
     $userEmail = $row['email'];
     $userImage = empty($row['img']) ? 'user-default.jpg' : $row['idutente'].$row['img'];
     $userAddress = $row['indirizzo'];
@@ -25,4 +26,13 @@ if($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $userRole = $row['nome_ruolo'];
     }
+
+    $sql3 = "SELECT * FROM contratti WHERE fk_id_utente = $userId";
+    $result = $conn->query($sql3);
+
+    if($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $endContract = $row['data_fine'];
+    }
+
 }

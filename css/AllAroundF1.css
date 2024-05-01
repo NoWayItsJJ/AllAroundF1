@@ -18,7 +18,7 @@
 	--yellow-secondary-text-color: #968b00;
 
 	--error-color: #ff0000;
-	--success-color: #00ff00;
+	--success-color: #43a701;
 	--warning-color: #ff9100;
 
 	--main-font: "SF Pro Display", sans-serif;
@@ -87,8 +87,6 @@ h5 {
 
 .scrollable-section {
 	overflow-y: auto;
-	height: 100%;
-	width: 100%;
 }
 
 .scrollable-section::-webkit-scrollbar {
@@ -199,5 +197,81 @@ h5 {
 		color: var(--primary-color);
 		border-color: none;
 		transform: scale3d(1.1, 1.1, 1.1);
+	}
+}
+
+.overlay {
+	display: none;
+	position: relative;
+	top: -100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.616);
+}
+
+.screen-overlay{
+	display: none;
+	z-index: 9999;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.616);
+}
+
+.open-overlay{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.popup{
+	width: auto;
+	height: auto;
+	background-color: var(--primary-text-color);
+	color: var(--primary-color);
+	border-radius: var(--border-radius);
+	padding: 16px;
+
+	.popup-header{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid var(--secondary-text-color);
+		border: 0;
+
+		h3{
+			font-size: var(--xl-font-size);
+			color: var(--primary-color);
+		}
+
+		i{
+			cursor: pointer;
+			font-size: var(--xl-font-size);
+		}
+	}
+
+	.popup-content{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		min-height: 100px;
+	}
+}
+
+input[type="text"],[type="password"],[type="email"]{
+	background-color: transparent;
+	color: var(--primary-text-color);
+	border: none;
+	border-bottom: 0.5px solid var(--secondary-text-color);
+	transition: all 0.2s ease;
+	padding-bottom: 2px;
+	font-size: var(--l-font-size);
+
+	&:focus{
+		outline: none;
+		border-bottom: 2px solid var(--tertiary-color);
 	}
 }

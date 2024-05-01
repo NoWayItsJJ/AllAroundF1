@@ -37,6 +37,17 @@
 					height: 100%;
 					border-radius: 50%;
 				}
+
+				.overlay i{
+					color: var(--yellow-text-color);
+					font-size: 48px;
+				}
+
+				&:hover .overlay {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
 			}
 
 			.user-details {
@@ -65,6 +76,8 @@
 		background-color: var(--primary-color);
 		border-radius: var(--border-radius);
 		min-width: 1024px;
+		transform-origin: top;
+		transition: all 0.2s ease-in-out;
 
 		.account-card-header {
 			display: flex;
@@ -92,47 +105,99 @@
 
 			.account-card-row {
 				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				flex-direction: row;
+				justify-content: center;
+				flex-direction: column;
+				align-items: start;
 				width: calc(100% - 48px);
 				margin: 8px 24px;
+				transition: all 0.5s ease-in-out;
 
-				p {
-					letter-spacing: 1.1;
-				}
-
-				.account-card-row-dx {
+				.account-card-line{
+					width: 100%;
 					display: flex;
 					justify-content: space-between;
-					align-items: center;
+					align-items: center;	
 					flex-direction: row;
 
-					.password {
-						margin-right: 11px;
-						i {
-							font-size: 28px;
-							margin-right: -22px;
+					p {
+						letter-spacing: 1.1;
+					}
+					
+					.account-card-row-dx {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						flex-direction: row;
+					
+						.password {
+							margin-right: 11px;
+				
+							i {
+								font-size: 28px;
+								margin-right: -22px;
+							}
+						}
+					
+						.i-button {
+							width: 24px;
+							height: 24px;
+							margin-left: 8px;
+							border-radius: 50%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							background-color: transparent;
+							cursor: pointer;
+				
+							i {
+								color: var(--yellow-text-color);
+								transition: all 0.2s ease-in-out;
+							}
+
+							.rotate {
+								transform: rotate(-90deg);
+							}
+					
+							&:hover {
+								background-color: #fcfcfc27;
+							}
 						}
 					}
+				}
 
-					.i-button {
-						width: 24px;
-						height: 24px;
-						margin-left: 8px;
-						border-radius: 50%;
+				form {
+					opacity: 0;
+					width: 100%;
+					transform: scaleY(0);
+					transform-origin: top;
+					transition: all 0.2s ease-in-out;
+					display: none;
+					padding: 16px 0;
+
+					label {
+						font-size: var(--s-font-size);
+					}
+
+					.form-row{
 						display: flex;
-						justify-content: center;
+						justify-content: space-between;
 						align-items: center;
-						background-color: transparent;
+						flex-direction: row;
+					}
 
-						i {
-							color: var(--yellow-text-color);
-						}
-
-						&:hover {
-							background-color: #fcfcfc27;
-						}
+					.form-button{
+						display: flex;
+						gap: 16px;
+						align-items: center;
+						flex-direction: row;
+					}
+				
+					&.active {
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						opacity: 1;
+						transform: scaleY(1);
 					}
 				}
 			}
@@ -154,4 +219,42 @@
 			color: var(--red-secondary-text-color);
 		}
 	}
+}
+
+.fill-button{
+	background-color: var(--primary-text-color);
+	color: var(--primary-color);
+	border: none;
+	cursor: pointer;
+	font-size: var(--m-font-size);
+	outline: none;
+	padding: 8px 16px;
+	text-align: center;
+	border-radius: 100px;
+
+	&:hover {
+		background-color: var(--secondary-color);
+	}
+}
+
+.green-button{
+	background-color: var(--success-color);
+	color: var(--primary-text-color);
+
+	&:hover {
+		background-color: #4fc500;
+	}
+}
+
+.red-button{
+	background-color: var(--red-text-color);
+	color: var(--primary-text-color);
+
+	&:hover {
+		background-color: #d9534f;
+	}
+}
+
+.small-button{
+	padding: 4px 8px;
 }
