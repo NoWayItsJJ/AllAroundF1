@@ -21,6 +21,12 @@
         <div class="account">
             <ul>
                 <li>
+                    <a href="./logout.php">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span class="nav-text">Loguot</span>
+                    </a>
+                </li>
+                <li>
                     <a href="./account-backend.php">
                         <i class="bi bi-person"></i>
                         <span class="nav-text">Account</span>
@@ -199,11 +205,13 @@
                             </div>
                         </div>
                     </div>
-                    <div id="contractDetails"></div>
+                    <div id="contractDetails">
+
+                    </div>
                 </div>
             </div>
         </div>
-        <a href="./logout.php" class="exit" role="button"><strong>Esci</strong></a>
+        <a href="./logout.php" class="exit" role="button"><strong>Logout</strong></a>
     </section>
 </body>
 <script>

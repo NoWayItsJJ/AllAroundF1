@@ -165,7 +165,7 @@
 					}
 				}
 
-				form {
+				#contractDetails, form {
 					opacity: 0;
 					width: 100%;
 					transform: scaleY(0);
