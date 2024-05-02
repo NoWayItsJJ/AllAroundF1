@@ -31,7 +31,7 @@
                 <li>
                     <a href="./logout.php">
                         <i class="bi bi-box-arrow-right"></i>
-                        <span class="nav-text">Loguot</span>
+                        <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
