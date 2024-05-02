@@ -45,7 +45,7 @@
             <div class="popup-content">
                 <form action="" method="post" enctype="multipart/form-data">
                     <input type="file" name="file" id="file" class="inputfile" accept="image/*">
-                    <button type="submit" name="submit" class="fill-button green-button">Upload</button>
+                    <button type="submit" name="image" class="fill-button green-button">Upload</button>
                 </form>
             </div>
         </div>
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formNome" action="" method="post">
+                    <form id="formNome" action="account-changes.php" method="post">
                         <label for="name">New Name</label>
                         <div class="form-row">
                             <input id="inputNome" type="text" name="name" placeholder="<?php echo ucfirst($userName); ?>">
@@ -108,10 +108,10 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formCognome" action="" method="post">
+                    <form id="formCognome" action="account-changes.php" method="post">
                         <label for="surname">New Surname</label>
                         <div class="form-row">
-                            <input id="inputCognome" type="text" name="name" placeholder="<?php echo ucfirst($userSurname); ?>">
+                            <input id="inputCognome" type="text" name="surname" placeholder="<?php echo ucfirst($userSurname); ?>">
                             <div class="form-button">
                                 <button type="submit" onclick="toggleForm('formCognome', 'cr-cognome'); clearInput('inputCognome')" class="fill-button red-button small-button">Cancel</button>
                                 <button type="submit" name="submit" class="fill-button green-button small-button">Save</button>
@@ -130,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formEmail" action="" method="post">
+                    <form id="formEmail" action="account-changes.php" method="post">
                         <label for="email">New Email</label>
                         <div class="form-row">
                             <input id="inputEmail" type="email" name="email" placeholder="<?php echo $userEmail; ?>">
@@ -161,7 +161,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formPassword" action="" method="post">
+                    <form id="formPassword" action="account-changes.php" method="post">
                         <label for="password">New Password</label>
                         <div class="form-row">
                             <input id="inputPassword" type="password" name="password" placeholder="********">
@@ -183,7 +183,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formAddress" action="" method="post">
+                    <form id="formAddress" action="account-changes.php" method="post">
                         <label for="address">New Address</label>
                         <div class="form-row">
                             <input id="inputAddress" type="text" name="address" placeholder="<?php echo $userAddress; ?>">
