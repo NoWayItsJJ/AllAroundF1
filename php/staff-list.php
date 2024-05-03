@@ -9,9 +9,9 @@ $sql = "SELECT id_utente, nome, cognome, img, nome_ruolo, stipendio, data_fine
         FROM utenti u
         JOIN ruoli r ON u.fk_id_ruolo = r.id_ruolo
         JOIN contratti c ON c.fk_id_utente = u.id_utente
-        WHERE 1=1";
+        WHERE id_utente IS NOT NULL";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' || $roleId != '') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $roleId != '') {
 
     if ($roleId == 'all') {
         $sql .= " AND u.fk_id_ruolo != 5";

@@ -157,6 +157,11 @@
 					background-color: #00000029;
 					color: var(--primary-text-color);
 					font-size: 24px;
+
+					&.active {
+						background-color: var(--tertiary-color);
+						color: var(--primary-color);
+					}
 				}
 			
 				.statistic-data {

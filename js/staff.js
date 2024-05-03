@@ -32,13 +32,11 @@ $(document).ready(function() {
         var roleId = $(this).data('role-id');
 
         $('.statistic-icon').each(function() {
-            this.style.setProperty('background-color', '');
-            this.style.setProperty('color', '');
+            $(this).removeClass('active');
         });
 
         $(this).find('.statistic-icon').each(function() {
-            this.style.setProperty('background-color', 'var(--tertiary-color)');
-            this.style.setProperty('color', 'var(--primary-color)');
+            $(this).addClass('active');
         });
 
         $.ajax({
@@ -53,11 +51,15 @@ $(document).ready(function() {
 
     $('#search').keyup(function() {
         var search = $(this).val();
+        var roleId = $('.statistic-icon.active').parent().data('role-id');
+        console.log(roleId);
 
         $.ajax({
             url: 'staff-list.php',
             type: 'POST',
-            data: { 'search': search },
+            data: { 'search': search,
+                    'fk_id_ruolo': roleId
+             },
             success: function (response) {
                 console.log(response);
                 $('#list-result').html(response);
