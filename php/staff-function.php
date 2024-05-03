@@ -31,7 +31,9 @@ function getDetails($id, $conn) {
     $result = $stmt->get_result();
 
     while ($row = $result->fetch_assoc()) {
-        $details[] = $row;
+        foreach ($row as $key => $value) {
+            $details[$key] = $value;
+        }
     }
 
     if($result->num_rows > 0){

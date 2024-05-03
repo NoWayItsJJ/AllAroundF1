@@ -14,9 +14,7 @@ $(document).ready(function() {
             success: function (response) {
                 if (response.getDetails) {
                     console.log(response.details);
-                    $('#details-nome').val(response.details[0].nome);
-                    $('#details-cognome').val(response.details[0].cognome);
-                    $('#details-email').val(response.details[0].email);
+                    
                 }
                 else {
                     console.log('Error');
@@ -28,5 +26,42 @@ $(document).ready(function() {
             }
         });
         
+    });
+
+    $('.statistic').click(function() {
+        var roleId = $(this).data('role-id');
+
+        $('.statistic-icon').each(function() {
+            this.style.setProperty('background-color', '');
+            this.style.setProperty('color', '');
+        });
+
+        $(this).find('.statistic-icon').each(function() {
+            this.style.setProperty('background-color', 'var(--tertiary-color)');
+            this.style.setProperty('color', 'var(--primary-color)');
+        });
+
+        $.ajax({
+            url: 'staff-list.php',
+            type: 'POST',
+            data: { 'fk_id_ruolo': roleId },
+            success: function(response) {
+                $('#list-result').html(response);
+            }
+        });
+    });
+
+    $('#search').keyup(function() {
+        var search = $(this).val();
+
+        $.ajax({
+            url: 'staff-list.php',
+            type: 'POST',
+            data: { 'search': search },
+            success: function (response) {
+                console.log(response);
+                $('#list-result').html(response);
+            }
+        });
     });
 });

@@ -53,7 +53,7 @@
                     <div class="list-header">
                         <h3>Staff</h3>
                         <div class="search">
-                            <input type="text" placeholder="Search">
+                            <input type="text" id="search" placeholder="Search">                            
                             <i class="bi bi-search"></i>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                                     <th>Contract end</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="list-result">
                                 <?php include 'staff-list.php'; ?>
                             </tbody>
                         </table>
@@ -79,13 +79,34 @@
             <div class="dynamic-dashboard-card grid-row-span-5">
                 <div class="details">
                     <div class="details-header">
-                        <div class="item-img"></div>
-                        <div class="item-header-info"></div>
+                        <div class="item-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="item-header-info">
+                            <h3></h3>
+                            <p></p>
+                        </div>
                     </div>
                     <div class="details-content">
                         <div class="details-content-info">
-                            
+                            <h4>Personal Info</h4>
+                            <div id="personal-info">
+                                <p><strong>Age</strong></p>
+                                <p><strong>Nationality</strong></p>
+                                <p><strong>Email</strong></p>
+                                <p><strong>Specialization</strong></p>
+                            </div>
+                            <h4>Contract Info</h4>
+                            <div id="contract-info">
+                                <p><strong>Salary</strong></p>
+                                <p><strong>Contract end</strong></p>
+                                <p><strong>Bonus</strong></p>
+                            </div>
                         </div>
+                    </div>
+                    <div class="details-buttons">
+                        <button class="btn">Fire</button>
+                        <button class="btn">Renew</button>
                     </div>
                 </div>
             </div>
