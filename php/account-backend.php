@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
     <link rel="stylesheet" type="text/css" href="../css/account-backend.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <nav>
@@ -162,9 +164,16 @@
                         </div>
                     </div>
                     <form id="formPassword" action="account-changes.php" method="post">
-                        <label for="password">New Password</label>
+                        <label for="confirm">Confirm Password</label>
                         <div class="form-row">
-                            <input id="inputPassword" type="password" name="password" placeholder="********">
+                            <div class="form-col">
+                                <label for="password">New Password</label>
+                                <input id="inputPassword" type="password" name="password" placeholder="********">
+                            </div>
+                            <div class="form-col">
+                                <label for="confirm">Confirm Password</label>
+                                <input id="confirmPassword" type="password" name="confirm" placeholder="********">
+                            </div>
                             <div class="form-button">
                                 <button type="submit" onclick="toggleForm('formPassword', 'cr-password'); clearInput('inputPassword')" class="fill-button red-button small-button">Cancel</button>
                                 <button type="submit" name="submit" class="fill-button green-button small-button">Save</button>
@@ -257,5 +266,20 @@ function openPopup() {
     var popup = document.getElementById('screen-overlay');
     popup.classList.add('open-overlay');
 }
+
+$(document).ready(function() {
+    $('#confirmPassword').on('input', function() {
+        if ($('#confirmPassword').val() == '') {
+            $('#confirmPassword').removeClass('valid invalid');
+        } else if ($('#inputPassword').val() != $('#confirmPassword').val()) {
+            $('#confirmPassword').removeClass('valid');
+            $('#confirmPassword').addClass('invalid');
+        } else {
+            $('#confirmPassword').removeClass('invalid');
+            $('#confirmPassword').addClass('valid');
+        }
+    });
+    
+});
 </script>
 </html>

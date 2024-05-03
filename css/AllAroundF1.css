@@ -274,4 +274,12 @@ input[type="text"],[type="password"],[type="email"]{
 		outline: none;
 		border-bottom: 2px solid var(--tertiary-color);
 	}
+
+	&.invalid {
+		border-bottom: 2px solid var(--error-color);
+	}
+
+	&.valid {
+		border-bottom: 2px solid var(--success-color);
+	}
 }

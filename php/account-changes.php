@@ -37,11 +37,15 @@
     else if(isset($_POST['password']))
     {
         $password = $_POST['password'];
+        $confrimPassword = $_POST['confirm'];
         $id = $_SESSION['user_id'];
-        $hashedPassword = md5($password);
+        if($password == $confrimPassword)
+        {
+            $hashedPassword = md5($password);
 
-        $sql = "UPDATE utenti SET password = '$hashedPassword' WHERE id_utente = $id";
-        $conn->query($sql);
+            $sql = "UPDATE utenti SET password = '$hashedPassword' WHERE id_utente = $id";
+            $conn->query($sql);
+        }
     }
     else if(isset($_POST['image']))
     {
