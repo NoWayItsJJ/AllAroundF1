@@ -47,13 +47,38 @@
             $conn->query($sql);
         }
     }
-    else if(isset($_POST['image']))
+    else if(isset($_FILES['image']))
     {
-        $image = $_POST['image'];
-        $id = $_SESSION['user_id'];
+        $file = $_FILES['image'];
 
-        $sql = "UPDATE utenti SET img = '$image' WHERE id_utente = $id";
-        $conn->query($sql);
+        $originalFileName = $file['name'];
+        $userID = $_SESSION['user_id']; 
+
+        $newFileName = $userID . '_' . $originalFileName;
+
+        $uploadDir = '../img/utenti/';
+
+        $sql = "SELECT img FROM utenti WHERE id_utente = $userID";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $currentImage = $row['img'];
+
+            if (file_exists($uploadDir . $currentImage)) {
+                unlink($uploadDir . $currentImage);
+            }
+        }
+
+        if (move_uploaded_file($file['tmp_name'], $uploadDir . $newFileName)) {
+            $sql = "UPDATE utenti SET img = '$newFileName' WHERE id_utente = $userID";
+            if ($conn->query($sql) === TRUE) {
+                header('Location: ./account-backend.php');
+            } else {
+                echo "Error updating profile image: " . $conn->error;
+            }
+        } else {
+            echo "Si è verificato un errore durante il caricamento del file.";
+        }
     }
 
     header('Location: account-backend.php');

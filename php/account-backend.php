@@ -42,12 +42,19 @@
         <div id="popup" class="popup">
             <div class="popup-header">
                 <h3>Modifica foto profilo</h3>
-                <i class="bi bi-x" onclick="document.getElementById('screen-overlay').classList.remove('open-overlay')"></i>
+                <i class="bi bi-x" onclick="closePopup()"></i>
             </div>
             <div class="popup-content">
-                <form action="" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file" id="file" class="inputfile" accept="image/*">
-                    <button type="submit" name="image" class="fill-button green-button">Upload</button>
+                <form action="account-changes.php" method="post" enctype="multipart/form-data">
+                    <div class="form-img">
+                        <img id="preview" src="" alt="Image preview" style="display: none;">
+                        <p id="filename" style="display: none;"></p>
+                    </div>
+                    <div class="form-buttons">
+                        <label for="file" class="custom-file-upload">Upload File</label>
+                        <input type="file" name="image" id="file" class="inputfile" accept="image/*">
+                        <button type="submit" name="image" class="fill-button green-button">Save</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -267,6 +274,19 @@ function openPopup() {
     popup.classList.add('open-overlay');
 }
 
+function closePopup() {
+    document.getElementById('screen-overlay').classList.remove('open-overlay');
+    document.getElementById('file').value = '';
+    var preview = document.getElementById('preview');
+    var filenameElement = document.getElementById('filename');
+    
+    preview.src = '';
+    filenameElement.textContent = '';
+
+    preview.style.display = 'none';
+    filenameElement.style.display = 'none';
+}
+
 $(document).ready(function() {
     $('#confirmPassword').on('input', function() {
         if ($('#confirmPassword').val() == '') {
@@ -280,6 +300,23 @@ $(document).ready(function() {
         }
     });
     
+});
+
+document.getElementById('file').addEventListener('change', function(e) {
+    var fileName = e.target.files[0].name;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var preview = document.getElementById('preview');
+        var filenameElement = document.getElementById('filename');
+        
+        preview.src = e.target.result;
+        filenameElement.textContent = fileName;
+
+        // Mostra gli elementi
+        preview.style.display = 'block';
+        filenameElement.style.display = 'block';
+    };
+    reader.readAsDataURL(e.target.files[0]);
 });
 </script>
 </html>

@@ -16,7 +16,7 @@ if($result->num_rows > 0) {
     $userName = $row['nome'];
     $userSurname = $row['cognome'];
     $userEmail = $row['email'];
-    $userImage = empty($row['img']) ? 'user-default.jpg' : $row['idutente'].$row['img'];
+    $userImage = empty($row['img']) ? 'user-default.jpg' : $row['img'];
     $userAddress = $row['indirizzo'];
 
     $sql2 = "SELECT * FROM ruoli WHERE id_ruolo = $userRole";

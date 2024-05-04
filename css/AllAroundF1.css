@@ -211,7 +211,7 @@ h5 {
 	background-color: rgba(0, 0, 0, 0.616);
 }
 
-.screen-overlay{
+.screen-overlay {
 	display: none;
 	z-index: 9999;
 	position: fixed;
@@ -220,48 +220,107 @@ h5 {
 	background-color: rgba(0, 0, 0, 0.616);
 }
 
-.open-overlay{
+.open-overlay {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.popup{
+.popup {
 	width: auto;
 	height: auto;
-	background-color: var(--primary-text-color);
-	color: var(--primary-color);
+	background-color: var(--primary-color);
+	color: var(--primary-text-color);
 	border-radius: var(--border-radius);
 	padding: 16px;
+	min-width: 300px;
 
-	.popup-header{
+	.popup-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		border-bottom: 1px solid var(--secondary-text-color);
 		border: 0;
 
-		h3{
+		h3 {
 			font-size: var(--xl-font-size);
-			color: var(--primary-color);
+			color: var(--primary-text-color);
 		}
 
-		i{
+		i {
 			cursor: pointer;
 			font-size: var(--xl-font-size);
 		}
 	}
 
-	.popup-content{
+	.popup-content {
 		display: flex;
-		justify-content: center;
+		justify-content: end;
 		align-items: center;
 		flex-direction: column;
 		min-height: 100px;
+
+		input[type="file"] {
+			display: none;
+		}
+
+		form {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			width: 100%;
+
+			.form-img {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				width: 100%;
+
+				img {
+					margin: 16px;
+				}
+
+				.custom-file-upload {
+					display: inline-block;
+					padding: 6px 12px;
+					cursor: pointer;
+					color: white;
+
+					&:hover {
+						background-color: #00000027;
+						border-radius: var(--border-radius);
+					}
+				}
+			}
+
+			.form-buttons {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: row;
+				width: 100%;
+
+				.custom-file-upload {
+					display: inline-block;
+					padding: 6px 12px;
+					cursor: pointer;
+					color: white;
+
+					&:hover {
+						background-color: #00000027;
+						border-radius: var(--border-radius);
+					}
+				}
+			}
+		}
 	}
 }
 
-input[type="text"],[type="password"],[type="email"]{
+input[type="text"],
+[type="password"],
+[type="email"] {
 	background-color: transparent;
 	color: var(--primary-text-color);
 	border: none;
@@ -270,7 +329,7 @@ input[type="text"],[type="password"],[type="email"]{
 	padding-bottom: 2px;
 	font-size: var(--l-font-size);
 
-	&:focus{
+	&:focus {
 		outline: none;
 		border-bottom: 2px solid var(--tertiary-color);
 	}

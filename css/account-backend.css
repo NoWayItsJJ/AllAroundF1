@@ -36,9 +36,10 @@
 					width: 100%;
 					height: 100%;
 					border-radius: 50%;
+					object-fit: cover;
 				}
 
-				.overlay i{
+				.overlay i {
 					color: var(--yellow-text-color);
 					font-size: 48px;
 				}
@@ -112,32 +113,32 @@
 				margin: 8px 24px;
 				transition: all 0.5s ease-in-out;
 
-				.account-card-line{
+				.account-card-line {
 					width: 100%;
 					display: flex;
 					justify-content: space-between;
-					align-items: center;	
+					align-items: center;
 					flex-direction: row;
 
 					p {
 						letter-spacing: 1.1;
 					}
-					
+
 					.account-card-row-dx {
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
 						flex-direction: row;
-					
+
 						.password {
 							margin-right: 11px;
-				
+
 							i {
 								font-size: 28px;
 								margin-right: -22px;
 							}
 						}
-					
+
 						.i-button {
 							width: 24px;
 							height: 24px;
@@ -148,7 +149,7 @@
 							align-items: center;
 							background-color: transparent;
 							cursor: pointer;
-				
+
 							i {
 								color: var(--yellow-text-color);
 								transition: all 0.2s ease-in-out;
@@ -157,7 +158,7 @@
 							.rotate {
 								transform: rotate(-90deg);
 							}
-					
+
 							&:hover {
 								background-color: #fcfcfc27;
 							}
@@ -165,7 +166,8 @@
 					}
 				}
 
-				#contractDetails, form {
+				#contractDetails,
+				form {
 					opacity: 0;
 					width: 100%;
 					transform: scaleY(0);
@@ -178,19 +180,19 @@
 						font-size: var(--s-font-size);
 					}
 
-					.form-row{
+					.form-row {
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
 						flex-direction: row;
 
-						.form-col{
+						.form-col {
 							display: flex;
 							justify-content: start;
 							align-items: start;
 							flex-direction: column;
 
-							.error-message{
+							.error-message {
 								color: var(--red-text-color);
 								font-size: var(--xs-font-size);
 								margin: 0;
@@ -198,13 +200,13 @@
 						}
 					}
 
-					.form-button{
+					.form-button {
 						display: flex;
 						gap: 16px;
 						align-items: center;
 						flex-direction: row;
 					}
-				
+
 					&.active {
 						display: flex;
 						flex-direction: column;
@@ -234,7 +236,7 @@
 	}
 }
 
-.fill-button{
+.fill-button {
 	background-color: var(--primary-text-color);
 	color: var(--primary-color);
 	border: none;
@@ -250,7 +252,7 @@
 	}
 }
 
-.green-button{
+.green-button {
 	background-color: var(--success-color);
 	color: var(--primary-text-color);
 
@@ -259,7 +261,7 @@
 	}
 }
 
-.red-button{
+.red-button {
 	background-color: var(--red-text-color);
 	color: var(--primary-text-color);
 
@@ -268,6 +270,6 @@
 	}
 }
 
-.small-button{
+.small-button {
 	padding: 4px 8px;
 }
