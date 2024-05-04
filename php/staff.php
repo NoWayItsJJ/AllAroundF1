@@ -87,40 +87,38 @@
                         </div>
                     </div>
                     <div class="details-content">
-                        <div class="details-content-info">
-                            <h4>Personal Info</h4>
-                            <div id="personal-info">
-                                <div class="personal-info-row">
-                                    <p id="age"><strong>Age</strong></p>
-                                    <p></p>
-                                </div>
-                                <div class="personal-info-row">
-                                    <p id="nationality"><strong>Nationality</strong></p>
-                                    <p></p>
-                                </div>
-                                <div class="personal-info-row">
-                                    <p id="email"><strong>Email</strong></p>
-                                    <p></p>
-                                </div>
-                                <div class="personal-info-row">
-                                    <p id="specialization"><strong>Specialization</strong></p>
-                                    <p></p>
-                                </div>
+                        <h4>Personal Info</h4>
+                        <div id="personal-info">
+                            <div class="personal-info-row">
+                                <p id="age"><strong>Age</strong></p>
+                                <p></p>
                             </div>
-                            <h4>Contract Info</h4>
-                            <div id="contract-info">
-                                <div class="contract-info-row">
-                                    <p id="salary"><strong>Salary</strong></p>
-                                    <p></p>
-                                </div>
-                                <div class="contract-info-row">
-                                    <p id="end"><strong>Contract end</strong></p>
-                                    <p></p>
-                                </div>
-                                <div class="contract-info-row">
-                                    <p id="bonus"><strong>Bonus</strong></p>
-                                    <p></p>
-                                </div>
+                            <div class="personal-info-row">
+                                <p id="nationality"><strong>Nationality</strong></p>
+                                <p></p>
+                            </div>
+                            <div class="personal-info-row">
+                                <p id="email"><strong>Email</strong></p>
+                                <p></p>
+                            </div>
+                            <div class="personal-info-row">
+                                <p id="specialization"><strong>Specialization</strong></p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <h4>Contract Info</h4>
+                        <div id="contract-info">
+                            <div class="contract-info-row">
+                                <p id="salary"><strong>Salary</strong></p>
+                                <p></p>
+                            </div>
+                            <div class="contract-info-row">
+                                <p id="end"><strong>Contract end</strong></p>
+                                <p></p>
+                            </div>
+                            <div class="contract-info-row">
+                                <p id="bonus"><strong>Bonus</strong></p>
+                                <p></p>
                             </div>
                         </div>
                     </div>

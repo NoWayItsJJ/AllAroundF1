@@ -244,14 +244,52 @@
 				height: 100%;
 				margin-top: 16px;
 
-				.presonal-info-row {
+				#personal-info {
 					display: flex;
-					flex-direction: row;
-					justify-content: space-between;
-					align-items: center;
+					flex-direction: column;
+					justify-content: start;
+					align-items: start;
 					width: 100%;
-					height: 32px;
-					margin-bottom: 8px;
+					gap: 4px;
+
+					.personal-info-row {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						align-items: center;
+						width: calc(100% - 16px);
+						height: 32px;
+						margin: 0 8px;
+
+						p {
+							font-size: 14px;
+							margin: 0;
+						}
+					}
+				}
+
+				#contract-info {
+					display: flex;
+					flex-direction: column;
+					justify-content: start;
+					align-items: start;
+					width: 100%;
+					gap: 4px;
+
+					.contract-info-row {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						align-items: center;
+						width: calc(100% - 16px);
+						height: 32px;
+						margin: 0 8px;
+
+						p {
+							font-size: 14px;
+							margin: 0;
+						}
+					}
 				}
 			}
 
