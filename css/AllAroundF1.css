@@ -200,6 +200,28 @@ h5 {
 	}
 }
 
+.green-button {
+	background-color: var(--success-color);
+	color: var(--primary-text-color);
+
+	&:hover {
+		background-color: #4fc500;
+	}
+}
+
+.red-button {
+	background-color: var(--red-text-color);
+	color: var(--primary-text-color);
+
+	&:hover {
+		background-color: #d9534f;
+	}
+}
+
+.small-button {
+	padding: 4px 8px;
+}
+
 .overlay {
 	display: none;
 	position: relative;
