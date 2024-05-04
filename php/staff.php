@@ -37,7 +37,6 @@
             <div class="dynamic-dashboard-card grid-col-span-4">
                 <div class="card-row">
                 <?php 
-                    $role = "1";
                     include('staff_count.php'); 
                 ?>
                 </div>
@@ -83,30 +82,51 @@
                             <img src="" alt="">
                         </div>
                         <div class="item-header-info">
-                            <h3></h3>
-                            <p></p>
+                            <h3>Pippo Pluto</h3>
+                            <p>ingegnere</p>
                         </div>
                     </div>
                     <div class="details-content">
                         <div class="details-content-info">
                             <h4>Personal Info</h4>
                             <div id="personal-info">
-                                <p id="age"><strong>Age</strong></p>
-                                <p id="nationality"><strong>Nationality</strong></p>
-                                <p id="email"><strong>Email</strong></p>
-                                <p id="specialization"><strong>Specialization</strong></p>
+                                <div class="personal-info-row">
+                                    <p id="age"><strong>Age</strong></p>
+                                    <p></p>
+                                </div>
+                                <div class="personal-info-row">
+                                    <p id="nationality"><strong>Nationality</strong></p>
+                                    <p></p>
+                                </div>
+                                <div class="personal-info-row">
+                                    <p id="email"><strong>Email</strong></p>
+                                    <p></p>
+                                </div>
+                                <div class="personal-info-row">
+                                    <p id="specialization"><strong>Specialization</strong></p>
+                                    <p></p>
+                                </div>
                             </div>
                             <h4>Contract Info</h4>
                             <div id="contract-info">
-                                <p id="salary"><strong>Salary</strong></p>
-                                <p id="end"><strong>Contract end</strong></p>
-                                <p id="bonus"><strong>Bonus</strong></p>
+                                <div class="contract-info-row">
+                                    <p id="salary"><strong>Salary</strong></p>
+                                    <p></p>
+                                </div>
+                                <div class="contract-info-row">
+                                    <p id="end"><strong>Contract end</strong></p>
+                                    <p></p>
+                                </div>
+                                <div class="contract-info-row">
+                                    <p id="bonus"><strong>Bonus</strong></p>
+                                    <p></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="details-buttons">
-                        <button class="btn">Fire</button>
-                        <button class="btn">Renew</button>
+                    <div class="details-footer">
+                        <button class="button-primary red-button button-max-width">Fire</button>
+                        <button class="button-primary green-button button-max-width">Renew</button>
                     </div>
                 </div>
             </div>
