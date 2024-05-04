@@ -91,16 +91,16 @@
                         <div class="details-content-info">
                             <h4>Personal Info</h4>
                             <div id="personal-info">
-                                <p><strong>Age</strong></p>
-                                <p><strong>Nationality</strong></p>
-                                <p><strong>Email</strong></p>
-                                <p><strong>Specialization</strong></p>
+                                <p id="age"><strong>Age</strong></p>
+                                <p id="nationality"><strong>Nationality</strong></p>
+                                <p id="email"><strong>Email</strong></p>
+                                <p id="specialization"><strong>Specialization</strong></p>
                             </div>
                             <h4>Contract Info</h4>
                             <div id="contract-info">
-                                <p><strong>Salary</strong></p>
-                                <p><strong>Contract end</strong></p>
-                                <p><strong>Bonus</strong></p>
+                                <p id="salary"><strong>Salary</strong></p>
+                                <p id="end"><strong>Contract end</strong></p>
+                                <p id="bonus"><strong>Bonus</strong></p>
                             </div>
                         </div>
                     </div>

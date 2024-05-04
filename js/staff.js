@@ -14,6 +14,16 @@ $(document).ready(function () {
 			success: function (response) {
 				if (response.getDetails) {
 					console.log(response.details);
+					$("#age").append(" <strong>" + response.details.eta + "</strong>");
+					$("#nationality").append(
+						" <strong>" + response.details.nazionalita + "</strong>"
+					);
+					$("#email").append(
+						" <strong>" + response.details.email + "</strong>"
+					);
+					$("#specialization").append(
+						" <strong>" + response.details.specializzazione + "</strong>"
+					);
 				} else {
 					console.log("Error");
 				}
