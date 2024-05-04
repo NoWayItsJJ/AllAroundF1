@@ -7,7 +7,7 @@ if (isset($_POST['action'])) {
 
     switch ($action) {
         case 'retrieveEvents':
-            retrieveEvents($_POST['day'], $_POST['month'], $_POST['year'], $conn);
+            retrieveEvents($_POST['data'], $conn);
             break;
         default:
             echo json_encode(array('error' => 'Invalid action'));
@@ -17,31 +17,30 @@ if (isset($_POST['action'])) {
     echo json_encode(array('error' => 'No action specified'));
 }
 
-function retrieveEvents($day, $month, $year, $conn) {
-    if (!isset($_POST['day'])) {
-        echo json_encode(array('error' => 'No day provided'));
-        exit;
-    }
-    if (!isset($_POST['month'])) {
-        echo json_encode(array('error' => 'No month provided'));
-        exit;
-    }
-    if (!isset($_POST['year'])) {
-        echo json_encode(array('error' => 'No year provided'));
+function retrieveEvents($data, $conn) {
+    if (!isset($_POST['data'])) {
+        echo json_encode(array('error' => 'No date provided'));
         exit;
     }
 
-    $date = $year . '-' . $month . '-' . $day;
+    $date = new DateTime($data);
+    $date->setTime(0, 0, 0);
+    $data = $date->format('Y-m-d H:i:s');
 
-    $stmt = $conn->prepare("SELECT * FROM calendario WHERE data_evento = ?");
-    $stmt->bind_param('s', $date);
+    $stmt = $conn->prepare("SELECT * FROM calendario WHERE DATE(data_evento) = DATE(?)");
+    $stmt->bind_param('s', $data);
 
     $stmt->execute();
 
     $result = $stmt->get_result();
 
     while ($row = $result->fetch_assoc()) {
-        $events[] = $row;
+        $date = new DateTime($row['data_evento']);
+        $orario = $date->format('H:i');
+        $events[] = array(
+            'tipologia' => $row['tipologia'],
+            'orario' => $orario
+        );
     }
 
     if($result->num_rows > 0){
