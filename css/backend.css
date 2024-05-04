@@ -57,12 +57,26 @@ nav {
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-
-		a {
-			color: var(--yellow-text-color);
-
-			&:hover {
-				color: var(--yellow-secondary-text-color);
+		
+		ul{
+			li {
+				a{
+					color: var(--yellow-text-color);
+					
+					&:hover {
+						color: var(--yellow-secondary-text-color);
+					}
+				}
+			}
+			
+			li:first-of-type {
+				a{
+					color: var(--secondary-color);
+					
+					&:hover {
+						color: var(--red-secondary-text-color);
+					}
+				}
 			}
 		}
 	}
