@@ -28,6 +28,8 @@ $(document).ready(function() {
         
     });
 
+    $('.statistic').first().find('.statistic-icon').addClass('active');
+
     $('.statistic').click(function() {
         var roleId = $(this).data('role-id');
 
