@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $roleId != '') {
 
 if ($searchTerm != '') {
     $searchTerm = $conn->real_escape_string($searchTerm);
-    $sql .= " AND (nome LIKE '{$searchTerm}%' OR cognome LIKE '%{$searchTerm}%' OR nome_ruolo LIKE '{$searchTerm}%')";
+    $sql .= " AND (nome LIKE '{$searchTerm}%' OR cognome LIKE '{$searchTerm}%' OR nome_ruolo LIKE '%{$searchTerm}%')";
 }
 
 $result = $conn->query($sql);
