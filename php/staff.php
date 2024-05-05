@@ -79,7 +79,7 @@
                 <div class="details">
                     <div class="details-header">
                         <div class="item-img">
-                            <img src="" alt="">
+                            <img id="userImage" src="" alt="">
                         </div>
                         <div class="item-header-info">
                             <h3 id="userName"></h3>

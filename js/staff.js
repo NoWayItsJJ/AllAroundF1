@@ -13,6 +13,8 @@ $(document).ready(function () {
 			dataType: "json",
 			success: function (response) {
 				if (response.getDetails) {
+					console.log(response.details.img);
+					$("#userImage").attr("src", "../img/utenti/" + response.details.img);
 					$("#userName").empty().append(" <strong>" + ucfirst(response.details.nome) + " " + ucfirst(response.details.cognome) + "</strong>");
 					$("#userRole").empty().append(" <strong>" + response.details.nome_ruolo + "</strong>");
 					$("#displayAge").empty().append(" <strong>" + response.details.eta + "</strong>");
