@@ -13,11 +13,11 @@ $(document).ready(function () {
 			dataType: "json",
 			success: function (response) {
 				if (response.getDetails) {
-					console.log(response.details);
-					console.log(response.contract);
+					$("#userName").empty().append(" <strong>" + ucfirst(response.details.nome) + " " + ucfirst(response.details.cognome) + "</strong>");
+					$("#userRole").empty().append(" <strong>" + response.details.nome_ruolo + "</strong>");
 					$("#displayAge").empty().append(" <strong>" + response.details.eta + "</strong>");
 					$("#displayNationality").empty().append(
-						" <strong>" + response.details.nazionalita + "</strong>"
+						" <strong>" + response.details.nome_nazionalita + "</strong>"
 					);
 					$("#displayEmail").empty().append(
 						" <strong>" + response.details.email + "</strong>"
@@ -80,3 +80,7 @@ $(document).ready(function () {
 		});
 	});
 });
+
+function ucfirst(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}

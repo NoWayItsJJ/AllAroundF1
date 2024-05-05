@@ -82,8 +82,8 @@
                             <img src="" alt="">
                         </div>
                         <div class="item-header-info">
-                            <h3>Pippo Pluto</h3>
-                            <p>ingegnere</p>
+                            <h3 id="userName"></h3>
+                            <p id="userRole"></p>
                         </div>
                     </div>
                     <div class="details-content">

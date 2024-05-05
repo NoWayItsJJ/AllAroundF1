@@ -23,7 +23,10 @@ function getDetails($id, $conn) {
         exit;
     }
 
-    $userStmt = $conn->prepare("SELECT * FROM utenti WHERE id_utente = ?");
+    $userStmt = $conn->prepare("SELECT * FROM utenti 
+                                JOIN ruoli ON utenti.fk_id_ruolo = ruoli.id_ruolo 
+                                JOIN nazionalita ON utenti.fk_id_nazionalita = nazionalita.id_nazionalita
+                                WHERE id_utente = ?");
     $userStmt->bind_param('i', $id);
 
     $userStmt->execute();
