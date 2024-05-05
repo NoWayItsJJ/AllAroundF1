@@ -23,21 +23,34 @@ function getDetails($id, $conn) {
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT * FROM utenti WHERE id_utente = ?");
-    $stmt->bind_param('i', $id);
+    $userStmt = $conn->prepare("SELECT * FROM utenti WHERE id_utente = ?");
+    $userStmt->bind_param('i', $id);
 
-    $stmt->execute();
+    $userStmt->execute();
 
-    $result = $stmt->get_result();
+    $userResult = $userStmt->get_result();
 
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $userResult->fetch_assoc()) {
         foreach ($row as $key => $value) {
             $details[$key] = $value;
         }
     }
 
+    $contractStmt = $conn->prepare("SELECT * FROM contratti WHERE fk_id_utente = ?");
+    $contractStmt->bind_param('i', $id);
+
+    $contractStmt->execute();
+
+    $result = $contractStmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        foreach ($row as $key => $value) {
+            $contract[$key] = $value;
+        }
+    }
+
     if($result->num_rows > 0){
-        echo json_encode(array('getDetails' => true, 'details' => $details));
+        echo json_encode(array('getDetails' => true, 'details' => $details, 'contract' => $contract));
     } else {
         echo json_encode(array('getDetails' => false));
     }

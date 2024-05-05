@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2024 at 07:04 PM
+-- Generation Time: May 05, 2024 at 07:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -79,6 +79,7 @@ CREATE TABLE `componenti` (
 CREATE TABLE `contratti` (
   `id_contratto` int(11) NOT NULL,
   `stipendio` int(16) NOT NULL,
+  `bonus` int(16) NOT NULL,
   `data_inizio` date NOT NULL,
   `data_fine` date NOT NULL,
   `fk_id_utente` int(11) NOT NULL
@@ -88,8 +89,14 @@ CREATE TABLE `contratti` (
 -- Dumping data for table `contratti`
 --
 
-INSERT INTO `contratti` (`id_contratto`, `stipendio`, `data_inizio`, `data_fine`, `fk_id_utente`) VALUES
-(1, 10000000, '2024-04-30', '2024-06-08', 1);
+INSERT INTO `contratti` (`id_contratto`, `stipendio`, `bonus`, `data_inizio`, `data_fine`, `fk_id_utente`) VALUES
+(1, 10000000, 0, '2024-04-30', '2024-06-08', 1),
+(2, 500000, 250000, '2024-05-05', '2026-05-01', 2),
+(3, 150000, 50000, '2024-03-12', '2024-10-16', 3),
+(4, 12000000, 500000, '2024-09-01', '2025-06-07', 5),
+(5, 50000, 20000, '2024-05-05', '2024-05-11', 6),
+(6, 30000, 30000, '2024-05-12', '2024-05-18', 7),
+(7, 10, 20000, '2024-05-05', '2024-05-05', 8);
 
 -- --------------------------------------------------------
 
@@ -122,6 +129,43 @@ CREATE TABLE `logistica` (
   `tipo` set('person','item') NOT NULL,
   `fk_id_item` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nazionalita`
+--
+
+CREATE TABLE `nazionalita` (
+  `id_nazionalita` int(11) NOT NULL,
+  `nome_nazionalita` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `nazionalita`
+--
+
+INSERT INTO `nazionalita` (`id_nazionalita`, `nome_nazionalita`) VALUES
+(1, 'italiana'),
+(2, 'svizzera'),
+(3, 'spagnola'),
+(4, 'francese'),
+(5, 'tedesca'),
+(6, 'polacca'),
+(7, 'albanese'),
+(8, 'statunitense'),
+(9, 'austriaca'),
+(10, 'britannica'),
+(11, 'irlandese'),
+(12, 'cinese'),
+(13, 'giapponese'),
+(14, 'svedese'),
+(15, 'norvegese'),
+(16, 'finlandese'),
+(17, 'russa'),
+(18, 'danese'),
+(19, 'brasiliana'),
+(20, 'thailandese');
 
 -- --------------------------------------------------------
 
@@ -199,6 +243,7 @@ CREATE TABLE `utenti` (
   `id_utente` int(11) NOT NULL,
   `nome` varchar(32) NOT NULL,
   `cognome` varchar(32) NOT NULL,
+  `eta` int(11) NOT NULL,
   `indirizzo` varchar(64) NOT NULL,
   `citta` varchar(32) NOT NULL,
   `CAP` int(16) NOT NULL,
@@ -207,21 +252,24 @@ CREATE TABLE `utenti` (
   `email` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   `archiviato` tinyint(1) NOT NULL,
-  `fk_id_ruolo` int(11) NOT NULL
+  `specializzazione` varchar(32) NOT NULL,
+  `fk_id_ruolo` int(11) NOT NULL,
+  `fk_id_nazionalita` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `utenti`
 --
 
-INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `indirizzo`, `citta`, `CAP`, `stato`, `img`, `email`, `password`, `archiviato`, `fk_id_ruolo`) VALUES
-(1, 'riccardo', 'saro', 'via amalteo 25', 'fontanafredda', 33074, 'italia', '', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 4),
-(2, 'fabio', 'pauletta', 'via tasso 14', 'maniago', 33085, 'italia', '', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 3),
-(3, 'pippo', 'de pippis', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 2),
-(4, 'paperon', 'de paperoni', 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 5),
-(5, 'ayrton', 'senna', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 1),
-(6, 'fatturo', 'tanto', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 7),
-(7, 'ocyo', 'kecasko', 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 6);
+INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `eta`, `indirizzo`, `citta`, `CAP`, `stato`, `img`, `email`, `password`, `archiviato`, `specializzazione`, `fk_id_ruolo`, `fk_id_nazionalita`) VALUES
+(1, 'riccardo', 'saro', 18, 'via amalteo 25', 'fontanafredda', 33074, 'italia', '', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'hr', 4, 17),
+(2, 'fabio', 'pauletta', 69, 'via tasso 14', 'maniago', 33085, 'italia', '', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'freni', 3, 8),
+(3, 'pippo', 'de pippis', 420, 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'termocoperte', 2, 3),
+(4, 'paperon', 'de paperoni', 123, 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'spendere', 5, 12),
+(5, 'ayrton', 'senna', 64, 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
+(6, 'fatturo', 'tanto', 777, 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
+(7, 'ocyo', 'kecasko', 45, 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
+(8, 'test', 'ingegnere', 1, 'via testing 5', 'maniago', 33085, 'italia', '', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11);
 
 --
 -- Indexes for dumped tables
@@ -265,6 +313,12 @@ ALTER TABLE `logistica`
   ADD PRIMARY KEY (`id_spostamento`);
 
 --
+-- Indexes for table `nazionalita`
+--
+ALTER TABLE `nazionalita`
+  ADD PRIMARY KEY (`id_nazionalita`);
+
+--
 -- Indexes for table `ordinazioni`
 --
 ALTER TABLE `ordinazioni`
@@ -293,7 +347,8 @@ ALTER TABLE `sponsor`
 --
 ALTER TABLE `utenti`
   ADD PRIMARY KEY (`id_utente`),
-  ADD KEY `fk_id_ruolo` (`fk_id_ruolo`);
+  ADD KEY `fk_id_ruolo` (`fk_id_ruolo`),
+  ADD KEY `fk_id_nazionalita` (`fk_id_nazionalita`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -321,7 +376,7 @@ ALTER TABLE `componenti`
 -- AUTO_INCREMENT for table `contratti`
 --
 ALTER TABLE `contratti`
-  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `finanze`
@@ -334,6 +389,12 @@ ALTER TABLE `finanze`
 --
 ALTER TABLE `logistica`
   MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nazionalita`
+--
+ALTER TABLE `nazionalita`
+  MODIFY `id_nazionalita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `ordinazioni`
@@ -363,7 +424,7 @@ ALTER TABLE `sponsor`
 -- AUTO_INCREMENT for table `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -379,7 +440,8 @@ ALTER TABLE `contratti`
 -- Constraints for table `utenti`
 --
 ALTER TABLE `utenti`
-  ADD CONSTRAINT `utenti_ibfk_1` FOREIGN KEY (`fk_id_ruolo`) REFERENCES `ruoli` (`id_ruolo`);
+  ADD CONSTRAINT `utenti_ibfk_1` FOREIGN KEY (`fk_id_ruolo`) REFERENCES `ruoli` (`id_ruolo`),
+  ADD CONSTRAINT `utenti_ibfk_2` FOREIGN KEY (`fk_id_nazionalita`) REFERENCES `nazionalita` (`id_nazionalita`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

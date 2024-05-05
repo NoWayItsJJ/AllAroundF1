@@ -14,16 +14,20 @@ $(document).ready(function () {
 			success: function (response) {
 				if (response.getDetails) {
 					console.log(response.details);
-					$("#age").append(" <strong>" + response.details.eta + "</strong>");
-					$("#nationality").append(
+					console.log(response.contract);
+					$("#displayAge").empty().append(" <strong>" + response.details.eta + "</strong>");
+					$("#displayNationality").empty().append(
 						" <strong>" + response.details.nazionalita + "</strong>"
 					);
-					$("#email").append(
+					$("#displayEmail").empty().append(
 						" <strong>" + response.details.email + "</strong>"
 					);
-					$("#specialization").append(
+					$("#displaySpecialization").empty().append(
 						" <strong>" + response.details.specializzazione + "</strong>"
 					);
+					$("#displaySalary").empty().append(" <strong>" + response.contract.stipendio + "</strong>");
+					$("#displayEnd").empty().append(" <strong>" + response.contract.data_fine + "</strong>");
+					$("#displayBonus").empty().append(" <strong>" + response.contract.bonus + "</strong>");
 				} else {
 					console.log("Error");
 				}

@@ -91,34 +91,34 @@
                         <div id="personal-info">
                             <div class="personal-info-row">
                                 <p id="age"><strong>Age</strong></p>
-                                <p></p>
+                                <p id="displayAge"></p>
                             </div>
                             <div class="personal-info-row">
                                 <p id="nationality"><strong>Nationality</strong></p>
-                                <p></p>
+                                <p id="displayNationality"></p>
                             </div>
                             <div class="personal-info-row">
                                 <p id="email"><strong>Email</strong></p>
-                                <p></p>
+                                <p id="displayEmail"></p>
                             </div>
                             <div class="personal-info-row">
                                 <p id="specialization"><strong>Specialization</strong></p>
-                                <p></p>
+                                <p id="displaySpecialization"></p>
                             </div>
                         </div>
                         <h4>Contract Info</h4>
                         <div id="contract-info">
                             <div class="contract-info-row">
                                 <p id="salary"><strong>Salary</strong></p>
-                                <p></p>
+                                <p id="displaySalary"></p>
                             </div>
                             <div class="contract-info-row">
                                 <p id="end"><strong>Contract end</strong></p>
-                                <p></p>
+                                <p id="displayEnd"></p>
                             </div>
                             <div class="contract-info-row">
                                 <p id="bonus"><strong>Bonus</strong></p>
-                                <p></p>
+                                <p id="displayBonus"></p>
                             </div>
                         </div>
                     </div>

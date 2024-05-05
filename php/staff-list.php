@@ -15,6 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $roleId != '') {
 
     if ($roleId == 'all') {
         $sql .= " AND u.fk_id_ruolo != 5";
+    } else if ($roleId == '2') {
+        $sql .= " AND u.fk_id_ruolo IN (2, 3) ORDER BY u.fk_id_ruolo";
     } else {
         $sql .= " AND u.fk_id_ruolo = $roleId";
     }
