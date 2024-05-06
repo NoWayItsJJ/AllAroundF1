@@ -113,6 +113,12 @@
 								text-align: left;
 								font-size: 16px;
 								color: var(--white-text-color);
+
+								img{
+									width: 24px;
+									height: 24px;
+									border-radius: 50%;
+								}
 							}
 
 							td:nth-child(1) {
