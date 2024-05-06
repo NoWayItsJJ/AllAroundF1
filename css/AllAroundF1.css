@@ -106,6 +106,23 @@ h5 {
 	background: #555;
 }
 
+.button-invisible-background {
+	background-color: transparent;
+	border: none;
+	color: var(--primary-text-color);
+	cursor: pointer;
+	font-size: var(--m-font-size);
+	outline: none;
+	padding: 4px 4px;
+	text-align: center;
+	border-radius: var(--border-radius);
+
+	&:hover {
+		background-color: #00000027;
+		color: var(--yellow-text-color);
+	}
+}
+
 .no-js #loader {
 	display: none;
 }
@@ -362,5 +379,37 @@ input[type="text"],
 
 	&.valid {
 		border-bottom: 2px solid var(--success-color);
+	}
+}
+
+.line {
+	height: 2px;
+	width: 100%;
+	background-color: var(--secondary-text-color);
+}
+
+.search {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 16px;
+	border-radius: var(--border-radius);
+	background-color: transparent;
+	border: 2px solid var(--tertiary-color);
+
+	input {
+		background-color: transparent;
+		border: none;
+		color: var(--primary-text-color);
+		font-size: var(--m-font-size);
+		outline: none;
+		width: 100%;
+	}
+
+	i {
+		color: var(--tertiary-color);
+		font-size: var(--m-font-size);
 	}
 }
