@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="dynamic-dashboard-card grid-row-span-5">
-                <div class="details">
+                <div class="details" id="detailsBlock" style="display: none;">
                     <div class="details-header">
                         <div class="item-img">
                             <img id="userImage" src="" alt="">
