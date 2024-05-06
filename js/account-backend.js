@@ -68,7 +68,7 @@ $(document).ready(function () {
 	});
 });
 
-document.getElementById("file").addEventListener("change", function (e) {
+/*document.getElementById("file").addEventListener("change", function (e) {
 	var fileName = e.target.files[0].name;
 	var reader = new FileReader();
 	reader.onload = function (e) {
@@ -83,4 +83,4 @@ document.getElementById("file").addEventListener("change", function (e) {
 		filenameElement.style.display = "block";
 	};
 	reader.readAsDataURL(e.target.files[0]);
-});
+});*/

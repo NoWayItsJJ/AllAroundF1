@@ -319,6 +319,10 @@ h5 {
 
 				img {
 					margin: 16px;
+					max-height: 200px;
+					max-width: 400px;
+					height: auto;
+					width: auto;
 				}
 
 				.custom-file-upload {

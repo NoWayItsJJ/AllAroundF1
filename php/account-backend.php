@@ -231,4 +231,20 @@
         <a href="./logout.php" class="exit" role="button"><strong>Logout</strong></a>
     </section>
 </body>
+<script>document.getElementById("file").addEventListener("change", function (e) {
+	var fileName = e.target.files[0].name;
+	var reader = new FileReader();
+	reader.onload = function (e) {
+		var preview = document.getElementById("preview");
+		var filenameElement = document.getElementById("filename");
+
+		preview.src = e.target.result;
+		filenameElement.textContent = fileName;
+
+		// Mostra gli elementi
+		preview.style.display = "block";
+		filenameElement.style.display = "block";
+	};
+	reader.readAsDataURL(e.target.files[0]);
+});</script>
 </html>
