@@ -38,6 +38,16 @@
             </ul>
         </div>
     </nav>
+    <div id="screen-overlay" class="screen-overlay">
+        <div id="popup" class="popup">
+            <div class="popup-header">
+            <span class="popup-title"></span>
+                <i class="bi bi-x" onclick="closePopup()"></i>
+            </div>
+            <div id="popup-content" class="popup-content">
+            </div>
+        </div>
+    </div>
     <section id="dynamic-dashboard">
         <div class="dynamic-dashboard-grid">
             <div class="dynamic-dashboard-card grid-col-span-4">
@@ -47,12 +57,12 @@
                 ?>
                 </div>
             </div>
-            <div class="dynamic-dashboard-card">
+            <div class="dynamic-dashboard-card popup-open" data-form-type="newForm" data-header="New emploeey">
                 <div class="new-button">
                     <i class="bi bi-plus"></i>
                     <h3>New</h3>
                 </div>
-            </div>
+            </div> 
             <div class="dynamic-dashboard-card grid-col-span-4 grid-row-span-5">
                 <div class="list">
                     <div class="list-header">
@@ -129,12 +139,13 @@
                         </div>
                     </div>
                     <div class="details-footer">
-                        <button class="button-primary red-button button-max-width">Fire</button>
-                        <button class="button-primary green-button button-max-width">Renew</button>
+                        <button class="button-primary red-button button-max-width popup-open" data-form-type="fireForm" data-header="Fire emploeey">Fire</button>
+                        <button class="button-primary green-button button-max-width popup-open" data-form-type="renewForm" data-header="Renew contract">Renew</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </body>
+
 </html>
