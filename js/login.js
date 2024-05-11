@@ -13,10 +13,8 @@ $(document).ready(function() {
             dataType: 'json',
             success: function (response) {
                 if (response.emailExists) {
-                    $('#email').prop('readonly', true);
-                    $('#password').css('display', 'block');
-                    $('#confirmEmail').css('display', 'none');
-                    $('#confirmPassword').css('display', 'block');
+                    $('#card-password').css('display', 'block');
+                    $('#card-email').css('display', 'none');
                 } else {
                     $('#email').css('border-color', 'red');
                 }
