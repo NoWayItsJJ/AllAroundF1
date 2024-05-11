@@ -92,28 +92,28 @@ $(document).ready(function () {
 					<form id="newForm" style="display: none;">
 						<div class="form-row">
 							<div class="form-col">
-								<h3>Emploeey Info</h3>
+								<h3>Employee Info</h3>
 								<div>
-									<input type="file" name="image" placeholder="Image">
-									<input type="text" name="name" placeholder="First Name">
-									<input type="text" name="surname" placeholder="Last Name">
+									<input id="newUserImage" type="file" name="image" placeholder="Image">
+									<input id="newUserName" type="text" name="name" placeholder="First Name">
+									<input id="newUserSurname" type="text" name="surname" placeholder="Last Name">
 								</div>
-								<input type="text" name="date-birth" placeholder="Date of birth">
-								<input type="text" name="nationality" placeholder="Nationality">
-								<input type="text" name="email" placeholder="Email">
-								<input type="text" name="specialization" placeholder="Specialization">
+								<input id="newUserDateOfBirth" type="date" name="date-birth" placeholder="Date of birth">
+								<select id="newUserNationality" name="nationality" placeholder="Nationality"></select>
+								<input id="newUserEmail" type="text" name="email" placeholder="Email">
+								<input id="newUserSpec" type="text" name="specialization" placeholder="Specialization">
 							</div>
 							<div class="form-col">
-								<h3>Emploeey Contract</h3>
-								<input type="text" name="role" placeholder="Position">
-								<input type="text" name="salary" placeholder="Salary">
-								<input type="text" name="contract-end" placeholder="Contract end">
-								<input type="text" name="bonus" placeholder="Bonus">
+								<h3>Employee Contract</h3>
+								<select id="newUserRole" type="text" name="role" placeholder="Position"></select>
+								<input id="newUserSalary" type="text" name="salary" placeholder="Salary">
+								<input id="newUserContractEnd" type="date" name="contract-end" placeholder="Contract end">
+								<input id="newUserBonus" type="text" name="bonus" placeholder="Bonus">
 							</div>
 						</div>
 						<div class="form-buttons">
 							<input type="reset" value="Reset">
-							<input type="submit" value="Invia">
+							<input id="newUserSubmit" type="button" value="Invia">
 						</div>
 					</form>
 				`;
@@ -132,7 +132,7 @@ $(document).ready(function () {
 					<form id="renewForm" style="display: none;">
 						<div class="form-row">
 							<div class="form-col">
-								<h3>Emploeey Info</h3>
+								<h3>Employee Info</h3>
 								<div>
 									<img src="" alt="">
 									<p name="name">First Name</p>
@@ -171,7 +171,18 @@ $(document).ready(function () {
 		}
 
 		$('.popup-title').text(header);
-		$('.popup-content').html(formContent);		
+		$('.popup-content').html(formContent);
+		$('#newUserSubmit').click(function(e) {
+			e.preventDefault();
+			newUser();
+		});
+
+		var nationalities = getNationalities();
+		$.each(nationalities, function(index, nationality) {
+			console.log(nationalities[index]);
+			$('#newUserNationality').append('<option value="' + nationality.id_nazionalita + '">' + nationality.nome_nazionalita + '</option>');
+		});
+
 		$('#' +formType).css('display', 'block');
 		
 		$('#screen-overlay').addClass('open-overlay');
@@ -181,6 +192,47 @@ $(document).ready(function () {
         $('#screen-overlay').removeClass('open-overlay');
     });
 });
+
+function newUser() {
+	var image = $('#newUserImage').val();
+    var name = $('#newUserName').val();
+    var surname = $('#newUserSurname').val();
+    var dateOfBirth = $('#newUserDateOfBirth').val();
+    var nationality = $('#newUserNationality').val();
+    var email = $('#newUserEmail').val();
+    var specialization = $('#newUserSpec').val();
+    var role = $('#newUserRole').val();
+	var salary = $('#newUserSalary').val();
+	var contractEnd = $('#newUserContractEnd').val();
+	var bonus = $('#newUserBonus').val();
+
+    $.ajax({
+        type: 'POST',
+        url: '../php/staff-function.php',
+        data: { 
+			image: image, 
+			name: name,
+			surname: surname,
+			dateOfBirth: dateOfBirth, 
+			nationality: nationality,
+			email: email,
+			specialization: specialization,
+			role: role,
+			salary: salary,
+			contractEnd: contractEnd,
+			bonus: bonus,
+			action: 'newUser' 
+		},
+		dataType: 'json',
+		success: function() {
+			closePopup();
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.error('Error:', textStatus, errorThrown);
+			console.error('Response:', jqXHR.responseText);
+		}
+	});
+}
 
 function ucfirst(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
@@ -193,4 +245,20 @@ function showMoreInfo(event) {
 
 function closePopup() {
     $('#screen-overlay').removeClass('open-overlay');
+}
+
+function getNationalities() {
+	$.ajax({
+		type: 'POST',
+		url: '../php/staff-function.php',
+		data: { action: 'getNationalities' },
+		dataType: 'json',
+		success: function(response) {
+			return response.nationalities;
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.error('Error:', textStatus, errorThrown);
+			console.error('Response:', jqXHR.responseText);
+		}
+	});
 }

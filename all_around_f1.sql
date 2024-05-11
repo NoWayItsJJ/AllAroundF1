@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2024 at 07:18 PM
+-- Generation Time: May 10, 2024 at 07:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -243,7 +243,7 @@ CREATE TABLE `utenti` (
   `id_utente` int(11) NOT NULL,
   `nome` varchar(32) NOT NULL,
   `cognome` varchar(32) NOT NULL,
-  `eta` int(11) NOT NULL,
+  `data_nascita` date NOT NULL,
   `indirizzo` varchar(64) NOT NULL,
   `citta` varchar(32) NOT NULL,
   `CAP` int(16) NOT NULL,
@@ -261,15 +261,15 @@ CREATE TABLE `utenti` (
 -- Dumping data for table `utenti`
 --
 
-INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `eta`, `indirizzo`, `citta`, `CAP`, `stato`, `img`, `email`, `password`, `archiviato`, `specializzazione`, `fk_id_ruolo`, `fk_id_nazionalita`) VALUES
-(1, 'riccardo', 'saro', 18, 'via amalteo 25', 'fontanafredda', 33074, 'italia', '', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'hr', 4, 17),
-(2, 'fabio', 'pauletta', 69, 'via tasso 14', 'maniago', 33085, 'italia', '', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'freni', 3, 8),
-(3, 'pippo', 'de pippis', 420, 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'termocoperte', 2, 3),
-(4, 'paperon', 'de paperoni', 123, 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'spendere', 5, 12),
-(5, 'ayrton', 'senna', 64, 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
-(6, 'fatturo', 'tanto', 777, 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
-(7, 'ocyo', 'kecasko', 45, 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
-(8, 'test', 'ingegnere', 1, 'via testing 5', 'maniago', 33085, 'italia', '', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11);
+INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `data_nascita`, `indirizzo`, `citta`, `CAP`, `stato`, `img`, `email`, `password`, `archiviato`, `specializzazione`, `fk_id_ruolo`, `fk_id_nazionalita`) VALUES
+(1, 'riccardo', 'saro', '0000-00-00', 'via amalteo 25', 'fontanafredda', 33074, 'italia', '1_sus.jpg', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'hr', 4, 17),
+(2, 'fabio', 'pauletta', '0000-00-00', 'via tasso 14', 'maniago', 33085, 'italia', '', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'freni', 3, 8),
+(3, 'pippo', 'de pippis', '2000-04-20', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'termocoperte', 2, 3),
+(4, 'paperon', 'de paperoni', '2000-01-23', 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'spendere', 5, 12),
+(5, 'ayrton', 'senna', '0000-00-00', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
+(6, 'fatturo', 'tanto', '0000-00-00', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
+(7, 'ocyo', 'kecasko', '0000-00-00', 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
+(8, 'test', 'ingegnere', '0000-00-00', 'via testing 5', 'maniago', 33085, 'italia', '', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11);
 
 --
 -- Indexes for dumped tables

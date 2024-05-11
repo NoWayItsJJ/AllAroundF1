@@ -57,7 +57,7 @@
                 ?>
                 </div>
             </div>
-            <div class="dynamic-dashboard-card popup-open" data-form-type="newForm" data-header="New emploeey">
+            <div class="dynamic-dashboard-card popup-open" data-form-type="newForm" data-header="New employee">
                 <div class="new-button">
                     <i class="bi bi-plus"></i>
                     <h3>New</h3>
