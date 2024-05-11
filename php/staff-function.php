@@ -23,6 +23,7 @@ if (isset($_POST['action'])) {
                     $_POST['bonus'],
                     $conn);
             break;
+            
         case 'getNationalities':
             $nationalityStmt = $conn->prepare("SELECT * FROM nazionalita");
             $nationalityStmt->execute();
@@ -35,6 +36,20 @@ if (isset($_POST['action'])) {
 
             echo json_encode(array('getNationality' => true, 'nationalities' => $nationalities));
             break;
+
+        case 'getRoles':
+            $roleStmt = $conn->prepare("SELECT * FROM ruoli");
+            $roleStmt->execute();
+
+            $result = $roleStmt->get_result();
+
+            while ($row = $result->fetch_assoc()) {
+                $roles[] = $row;
+            }
+
+            echo json_encode(array('getRoles' => true, 'roles' => $roles));
+            break;
+
         default:
             echo json_encode(array('error' => 'Invalid action'));
             break;

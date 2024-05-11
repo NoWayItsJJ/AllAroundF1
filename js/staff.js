@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$(".staff-list-row").click(function (e) {
+	$(document).on("click", ".staff-list-row", function (e) {
 		e.preventDefault();
 		var staffId = $(this).children().first().data("id");
 
@@ -15,21 +15,43 @@ $(document).ready(function () {
 				if (response.getDetails) {
 					$("#detailsBlock").css("display", "");
 					$("#userImage").attr("src", "../img/utenti/" + response.details.img);
-					$("#userName").empty().append(" <strong>" + ucfirst(response.details.nome) + " " + ucfirst(response.details.cognome) + "</strong>");
-					$("#userRole").empty().append(" <strong>" + response.details.nome_ruolo + "</strong>");
-					$("#displayAge").empty().append(" <strong>" + response.details.eta + "</strong>");
-					$("#displayNationality").empty().append(
-						" <strong>" + response.details.nome_nazionalita + "</strong>"
-					);
-					$("#displayEmail").empty().append(
-						" <strong>" + response.details.email + "</strong>"
-					);
-					$("#displaySpecialization").empty().append(
-						" <strong>" + response.details.specializzazione + "</strong>"
-					);
-					$("#displaySalary").empty().append(" <strong>" + response.contract.stipendio + "</strong>");
-					$("#displayEnd").empty().append(" <strong>" + response.contract.data_fine + "</strong>");
-					$("#displayBonus").empty().append(" <strong>" + response.contract.bonus + "</strong>");
+					$("#userName")
+						.empty()
+						.append(
+							" <strong>" +
+								ucfirst(response.details.nome) +
+								" " +
+								ucfirst(response.details.cognome) +
+								"</strong>"
+						);
+					$("#userRole")
+						.empty()
+						.append(" <strong>" + response.details.nome_ruolo + "</strong>");
+					$("#displayAge")
+						.empty()
+						.append(" <strong>" + response.details.eta + "</strong>");
+					$("#displayNationality")
+						.empty()
+						.append(
+							" <strong>" + response.details.nome_nazionalita + "</strong>"
+						);
+					$("#displayEmail")
+						.empty()
+						.append(" <strong>" + response.details.email + "</strong>");
+					$("#displaySpecialization")
+						.empty()
+						.append(
+							" <strong>" + response.details.specializzazione + "</strong>"
+						);
+					$("#displaySalary")
+						.empty()
+						.append(" <strong>" + response.contract.stipendio + "</strong>");
+					$("#displayEnd")
+						.empty()
+						.append(" <strong>" + response.contract.data_fine + "</strong>");
+					$("#displayBonus")
+						.empty()
+						.append(" <strong>" + response.contract.bonus + "</strong>");
 				} else {
 					console.log("Error");
 				}
@@ -43,7 +65,7 @@ $(document).ready(function () {
 
 	$(".statistic").first().find(".statistic-icon").addClass("active");
 
-	$(".statistic").click(function () {
+	$(document).on("click", ".statistic", function () {
 		var search = $("#search").val();
 		var roleId = $(this).data("role-id");
 
@@ -67,7 +89,7 @@ $(document).ready(function () {
 		});
 	});
 
-	$("#search").keyup(function () {
+	$(document).on("keyup", "#search", function () {
 		var search = $(this).val();
 		var roleId = $(".statistic-icon.active").parent().data("role-id");
 
@@ -82,12 +104,12 @@ $(document).ready(function () {
 		});
 	});
 
-	$('.popup-open').click(function() {
-		var header = $(this).data('header');
-		var formType = $(this).data('form-type');
+	$(".popup-open").click(function () {
+		var header = $(this).data("header");
+		var formType = $(this).data("form-type");
 		var formContent;
-		switch(formType) {
-			case 'newForm':
+		switch (formType) {
+			case "newForm":
 				formContent = `
 					<form id="newForm" style="display: none;">
 						<div class="form-row">
@@ -99,13 +121,17 @@ $(document).ready(function () {
 									<input id="newUserSurname" type="text" name="surname" placeholder="Last Name">
 								</div>
 								<input id="newUserDateOfBirth" type="date" name="date-birth" placeholder="Date of birth">
-								<select id="newUserNationality" name="nationality" placeholder="Nationality"></select>
+								<select id="newUserNationality" name="nationality" placeholder="Nationality">
+									<option value="" disabled selected>Nationality</option>
+								</select>
 								<input id="newUserEmail" type="text" name="email" placeholder="Email">
 								<input id="newUserSpec" type="text" name="specialization" placeholder="Specialization">
 							</div>
 							<div class="form-col">
 								<h3>Employee Contract</h3>
-								<select id="newUserRole" type="text" name="role" placeholder="Position"></select>
+								<select id="newUserRole" type="text" name="role" placeholder="Position">
+									<option value="" disabled selected>Position</option>
+								</select>
 								<input id="newUserSalary" type="text" name="salary" placeholder="Salary">
 								<input id="newUserContractEnd" type="date" name="contract-end" placeholder="Contract end">
 								<input id="newUserBonus" type="text" name="bonus" placeholder="Bonus">
@@ -118,7 +144,7 @@ $(document).ready(function () {
 					</form>
 				`;
 				break;
-			case 'fireForm':
+			case "fireForm":
 				formContent = `
 					<form id="fireForm" style="display: none;">
 						<input type="text" name="name" placeholder="fire">
@@ -127,7 +153,7 @@ $(document).ready(function () {
 					</form>
 				`;
 				break;
-			case 'renewForm':
+			case "renewForm":
 				formContent = `
 					<form id="renewForm" style="display: none;">
 						<div class="form-row">
@@ -170,50 +196,47 @@ $(document).ready(function () {
 				break;
 		}
 
-		$('.popup-title').text(header);
-		$('.popup-content').html(formContent);
-		$('#newUserSubmit').click(function(e) {
+		$(".popup-title").text(header);
+		$(".popup-content").html(formContent);
+		$("#newUserSubmit").click(function (e) {
 			e.preventDefault();
 			newUser();
 		});
 
-		var nationalities = getNationalities();
-		$.each(nationalities, function(index, nationality) {
-			console.log(nationalities[index]);
-			$('#newUserNationality').append('<option value="' + nationality.id_nazionalita + '">' + nationality.nome_nazionalita + '</option>');
-		});
+		getNationalities();
+		getRoles();
 
-		$('#' +formType).css('display', 'block');
-		
-		$('#screen-overlay').addClass('open-overlay');
+		$("#" + formType).css("display", "block");
+
+		$("#screen-overlay").addClass("open-overlay");
 	});
 
-    $('.bi-x').click(function() {
-        $('#screen-overlay').removeClass('open-overlay');
-    });
+	$(".bi-x").click(function () {
+		$("#screen-overlay").removeClass("open-overlay");
+	});
 });
 
 function newUser() {
-	var image = $('#newUserImage').val();
-    var name = $('#newUserName').val();
-    var surname = $('#newUserSurname').val();
-    var dateOfBirth = $('#newUserDateOfBirth').val();
-    var nationality = $('#newUserNationality').val();
-    var email = $('#newUserEmail').val();
-    var specialization = $('#newUserSpec').val();
-    var role = $('#newUserRole').val();
-	var salary = $('#newUserSalary').val();
-	var contractEnd = $('#newUserContractEnd').val();
-	var bonus = $('#newUserBonus').val();
+	var image = $("#newUserImage").val();
+	var name = $("#newUserName").val();
+	var surname = $("#newUserSurname").val();
+	var dateOfBirth = $("#newUserDateOfBirth").val();
+	var nationality = $("#newUserNationality").val();
+	var email = $("#newUserEmail").val();
+	var specialization = $("#newUserSpec").val();
+	var role = $("#newUserRole").val();
+	var salary = $("#newUserSalary").val();
+	var contractEnd = $("#newUserContractEnd").val();
+	var bonus = $("#newUserBonus").val();
 
-    $.ajax({
-        type: 'POST',
-        url: '../php/staff-function.php',
-        data: { 
-			image: image, 
+	$.ajax({
+		type: "POST",
+		url: "../php/staff-function.php",
+		data: {
+			image: image,
 			name: name,
 			surname: surname,
-			dateOfBirth: dateOfBirth, 
+			dateOfBirth: dateOfBirth,
 			nationality: nationality,
 			email: email,
 			specialization: specialization,
@@ -221,16 +244,17 @@ function newUser() {
 			salary: salary,
 			contractEnd: contractEnd,
 			bonus: bonus,
-			action: 'newUser' 
+			action: "newUser",
 		},
-		dataType: 'json',
-		success: function() {
+		dataType: "json",
+		success: function () {
 			closePopup();
+			location.reload();
 		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			console.error('Error:', textStatus, errorThrown);
-			console.error('Response:', jqXHR.responseText);
-		}
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("Error:", textStatus, errorThrown);
+			console.error("Response:", jqXHR.responseText);
+		},
 	});
 }
 
@@ -239,26 +263,58 @@ function ucfirst(string) {
 }
 
 function showMoreInfo(event) {
-    event.preventDefault();
-    document.querySelector('#form-more-info').style.display = 'block';
+	event.preventDefault();
+	document.querySelector("#form-more-info").style.display = "block";
 }
 
 function closePopup() {
-    $('#screen-overlay').removeClass('open-overlay');
+	$("#screen-overlay").removeClass("open-overlay");
 }
 
 function getNationalities() {
 	$.ajax({
-		type: 'POST',
-		url: '../php/staff-function.php',
-		data: { action: 'getNationalities' },
-		dataType: 'json',
-		success: function(response) {
-			return response.nationalities;
+		type: "POST",
+		url: "../php/staff-function.php",
+		data: { action: "getNationalities" },
+		dataType: "json",
+		success: function (response) {
+			response.nationalities.forEach(function (nationality) {
+				$("#newUserNationality").append(
+					'<option value="' +
+						nationality.id_nazionalita +
+						'">' +
+						nationality.nome_nazionalita +
+						"</option>"
+				);
+			});
 		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			console.error('Error:', textStatus, errorThrown);
-			console.error('Response:', jqXHR.responseText);
-		}
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("Error:", textStatus, errorThrown);
+			console.error("Response:", jqXHR.responseText);
+		},
+	});
+}
+
+function getRoles() {
+	$.ajax({
+		type: "POST",
+		url: "../php/staff-function.php",
+		data: { action: "getRoles" },
+		dataType: "json",
+		success: function (response) {
+			response.roles.forEach(function (role) {
+				$("#newUserRole").append(
+					'<option value="' +
+						role.id_ruolo +
+						'">' +
+						role.nome_ruolo +
+						"</option>"
+				);
+			});
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("Error:", textStatus, errorThrown);
+			console.error("Response:", jqXHR.responseText);
+		},
 	});
 }
