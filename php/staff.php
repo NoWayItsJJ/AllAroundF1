@@ -106,6 +106,7 @@
                         <h4>Personal Info</h4>
                         <div id="personal-info">
                             <div class="personal-info-row">
+                                <p id="userId" hidden></p>
                                 <p id="age"><strong>Age</strong></p>
                                 <p id="displayAge"></p>
                             </div>

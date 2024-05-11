@@ -25,6 +25,7 @@ $(document).ready(function () {
 					}
 
 					$("#detailsBlock").css("display", "");
+					$("#userId").val(staffId);
 					$("#userImage").attr("src", "../img/utenti/" + response.details.img);
 					$("#userName")
 						.empty()
@@ -116,6 +117,7 @@ $(document).ready(function () {
 	});
 
 	$(".popup-open").click(function () {
+		var id = $("#userId").val();
 		var header = $(this).data("header");
 		var formType = $(this).data("form-type");
 		var formContent;
@@ -172,20 +174,20 @@ $(document).ready(function () {
 								<h3>Employee Info</h3>
 								<div>
 									<img src="" alt="">
-									<p name="name">First Name</p>
-									<p name="surname">Last Name</p>
+									<p id="currentName"></p>
+									<p id="currentSurname"></p>
 								</div>
-								<div class="form-row"><p name="date-birth">Date of birth</p></div>
-								<div class="form-row"><p name="nationality">Nationality</p></div>
-								<div class="form-row"><p name="email">Email</p></div>
-								<div class="form-row"><p name="specialization">Specialization</p></div>
+								<div class="form-row"><p id="current-date-birth"></p></div>
+								<div class="form-row"><p id="currentNationality"></p></div>
+								<div class="form-row"><p id="currentEmail"></p></div>
+								<div class="form-row"><p id="currentSpecialization"></p></div>
 							</div>
 							<div class="form-col">
-								<h3>Emploeey Contract</h3>
-								<div class="form-info"><p name="role">Position</p></div>
-								<div class="form-info"><p name="salary">Salary</p></div>
-								<div class="form-info"><p name="contract-end">Contract end</p></div>
-								<div class="form-info"><p name="bonus">Bonus</p></div>
+								<h3>Employee Contract</h3>
+								<div class="form-info"><p id="currentRole"></p></div>
+								<div class="form-info"><p id="currentSalary"></p></div>
+								<div class="form-info"><p id="current-contract-end"></p></div>
+								<div class="form-info"><p id="currentBonus"></p></div>
 							</div>
 						</div>
 						<div id="form-more-info" style="display: none;">
@@ -209,14 +211,22 @@ $(document).ready(function () {
 
 		$(".popup-title").text(header);
 		$(".popup-content").html(formContent);
-		$("#newUserSubmit").click(function (e) {
-			e.preventDefault();
-			newUser();
-		});
 
-		getNationalities();
-		getRoles();
-
+		switch (formType) {
+			case "newForm":
+				$("#newUserSubmit").click(function (e) {
+					e.preventDefault();
+					newUser();
+				});
+				getNationalities();
+				getRoles();
+				break;
+			case "fireForm":
+				break;
+			case "renewForm":
+				displayUserDetails(id);
+				break;
+		}
 		$("#" + formType).css("display", "block");
 
 		$("#screen-overlay").addClass("open-overlay");
@@ -261,6 +271,46 @@ function newUser() {
 		success: function () {
 			closePopup();
 			location.reload();
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("Error:", textStatus, errorThrown);
+			console.error("Response:", jqXHR.responseText);
+		},
+	});
+}
+
+function displayUserDetails(id_received) {
+	$.ajax({
+		type: "POST",
+		url: "../php/staff-function.php",
+		data: { id: id_received, action: "getUserDetails" },
+		dataType: "json",
+		success: function (response) {
+			console.log(response);
+			$("#currentName").append("<strong>" + response.user.nome + "</strong>");
+			$("#currentSurname").append(
+				"<strong>" + response.user.cognome + "</strong>"
+			);
+			$("#current-date-birth").append(
+				"<strong>" + response.user.data_nascita + "</strong>"
+			);
+			$("#currentNationality").append(
+				"<strong>" + response.user.nome_nazionalita + "</strong>"
+			);
+			$("#currentEmail").append("<strong>" + response.user.email + "</strong>");
+			$("#currentSpecialization").append(
+				"<strong>" + response.user.specializzazione + "</strong>"
+			);
+			$("#currentRole").append(
+				"<strong>" + response.user.nome_ruolo + "</strong>"
+			);
+			$("#currentSalary").append(
+				"<strong>" + response.user.stipendio + "</strong>"
+			);
+			$("#current-contract-end").append(
+				"<strong>" + response.user.data_fine + "</strong>"
+			);
+			$("#currentBonus").append("<strong>" + response.user.bonus + "</strong>");
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
 			console.error("Error:", textStatus, errorThrown);

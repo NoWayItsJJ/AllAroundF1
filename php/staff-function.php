@@ -50,6 +50,23 @@ if (isset($_POST['action'])) {
             echo json_encode(array('getRoles' => true, 'roles' => $roles));
             break;
 
+        case 'getUserDetails':
+            $userStmt = $conn->prepare("SELECT * FROM utenti 
+                                        JOIN ruoli ON utenti.fk_id_ruolo = ruoli.id_ruolo
+                                        JOIN nazionalita ON utenti.fk_id_nazionalita = nazionalita.id_nazionalita
+                                        JOIN contratti ON utenti.id_utente = contratti.fk_id_utente
+                                        WHERE id_utente = ?");
+            $userStmt->bind_param('i', $_POST['id']);
+            $userStmt->execute();
+
+            $result = $userStmt->get_result();
+
+            while ($row = $result->fetch_assoc()) {
+                $user = $row;
+            }
+
+            echo json_encode(array('getUserDetails' => true, 'user' => $user));
+            break;
         default:
             echo json_encode(array('error' => 'Invalid action'));
             break;
