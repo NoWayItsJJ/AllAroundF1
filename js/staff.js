@@ -13,6 +13,17 @@ $(document).ready(function () {
 			dataType: "json",
 			success: function (response) {
 				if (response.getDetails) {
+					var birthDate = new Date(response.details.data_nascita);
+					var currentDate = new Date();
+					var age = currentDate.getFullYear() - birthDate.getFullYear();
+					var m = currentDate.getMonth() - birthDate.getMonth();
+					if (
+						m < 0 ||
+						(m === 0 && currentDate.getDate() < birthDate.getDate())
+					) {
+						age--;
+					}
+
 					$("#detailsBlock").css("display", "");
 					$("#userImage").attr("src", "../img/utenti/" + response.details.img);
 					$("#userName")
@@ -29,7 +40,7 @@ $(document).ready(function () {
 						.append(" <strong>" + response.details.nome_ruolo + "</strong>");
 					$("#displayAge")
 						.empty()
-						.append(" <strong>" + response.details.eta + "</strong>");
+						.append(" <strong>" + age + "</strong>");
 					$("#displayNationality")
 						.empty()
 						.append(

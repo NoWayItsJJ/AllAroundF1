@@ -151,7 +151,7 @@ function newUser($image, $name, $surname, $dateOfBirth, $nationality, $email, $s
 
     $userStmt = $conn->prepare("INSERT INTO utenti (nome, cognome, data_nascita, img, email, password, archiviato, specializzazione, fk_id_ruolo, fk_id_nazionalita) 
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $userStmt->bind_param('ssssssisii', $name, $surname, $dateOfBirth, $image, $email, $defaultPassword, $archived, $specialization, $role, $nationality);
+    $userStmt->bind_param('ssssssisii', $name, $surname, $dateOfBirth, $image, $email, md5($defaultPassword), $archived, $specialization, $role, $nationality);
 
     $userStmt->execute();
 
