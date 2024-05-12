@@ -33,7 +33,8 @@ function checkEmail($email, $conn) {
 
     $result = $stmt->get_result();
     if($result->num_rows > 0){
-        echo json_encode(array('emailExists' => true));
+        $row = $result->fetch_assoc();
+        echo json_encode(array('emailExists' => true, 'userEmail' => $row['email'], 'userImage' => $row['img']));
     } else {
         echo json_encode(array('emailExists' => false));
     }

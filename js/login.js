@@ -15,8 +15,10 @@ $(document).ready(function() {
                 if (response.emailExists) {
                     $('#card-password').css('display', 'block');
                     $('#card-email').css('display', 'none');
-                } else {
-                    $('#email').css('border-color', 'red');
+                    document.querySelector('#user-img').src = "../img/utenti/"+response.userImage;
+                    document.querySelector('#user-email').innerHTML = response.userEmail;
+                }else {
+                    $('#email').addClass("invalid");
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -24,6 +26,12 @@ $(document).ready(function() {
                 console.error('Response:', jqXHR.responseText);
             }
         });
+    });
+
+    document.querySelector('#email').addEventListener('input', function() {
+        if (this.value.trim() === '') {
+            this.classList.remove('invalid');
+        }
     });
 
     $('#confirmPassword').click(function (e) {

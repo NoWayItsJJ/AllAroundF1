@@ -7,7 +7,8 @@ if (isset($_POST['action'])) {
 
     switch ($action) {
         case 'registerUser':
-            registerUser($_POST['email'],
+            registerUser(
+                         $_POST['email'],
                          $_POST['password'],
                          $_POST['name'],
                          $_POST['surname'],
@@ -25,7 +26,11 @@ if (isset($_POST['action'])) {
     echo json_encode(array('error' => 'No action specified'));
 }
 
-function registerUser($email, $password, $name, $surname, $address, $city, $cap, $state, $conn) {
+function registerUser( $email, $password, $name, $surname, $address, $city, $cap, $state, $conn) {
+    /*if (!isset($_POST['img'])) {
+        echo json_encode(array('error' => 'No img provided'));
+        exit;
+    }*/
     if (!isset($_POST['email'])) {
         echo json_encode(array('error' => 'No email provided'));
         exit;
@@ -73,6 +78,11 @@ function registerUser($email, $password, $name, $surname, $address, $city, $cap,
     if($result->num_rows > 0){
         session_start();
         $row = $result->fetch_assoc();
+
+        /*$stmt = $conn->prepare("UPDATE utenti SET img = ? WHERE id_utente = ?");
+        $stmt->bind_param('si',$img ,$row['id_utente']);
+        $stmt->execute();*/
+
         $_SESSION['user_id'] = $row['id_utente'];
         $_SESSION['user_type'] = $row['fk_id_ruolo'];
         echo json_encode(array('SignedIn' => true, 'userType' => $row['fk_id_ruolo']));

@@ -13,13 +13,15 @@ $(document).ready(function() {
             dataType: 'json',
             success: function (response) {
                 if (response.emailExists) {
-                    $('#email').css('border-color', 'red');
+                    $('#email').addClass("invalid");
                     $('#password').val('');
                     $('#confirmFirstStep').prop('disabled', true);
                 }
                 else {
-                    $('#firstSigninForm').css('display', 'none');
-                    $('#secondSigninForm').css('display', 'block');
+                    $('#card-email-password').css('display', 'none');
+                    $('#card-more-info').css('display', 'block');
+                    document.querySelector('#user-img').src = "../img/utenti/user-default.jpg";
+                    document.querySelector('#user-email').innerHTML = email;
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -29,17 +31,29 @@ $(document).ready(function() {
         });
     });
 
-    $('#email').blur(function() {
-        var email = $('#email').val();
+    document.querySelector('#email').addEventListener('input', function() {
+        if (this.value.trim() === '') {
+            this.classList.remove('invalid');
+        }
+    });
 
-        if (email != '') {
-            $('#confirmFirstStep').prop('disabled', false);
-            $('#email').css('border-color', '');
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            document.getElementById('user-img').src = reader.result;
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            document.getElementById('user-img').src = "";
         }
     });
 
     $('#confirmSignin').click(function (e) {
         e.preventDefault();
+        /*var img = $('#user-img').attr('src');
+        console.log(img);*/
         var email = $('#email').val();
         var password = $('#password').val();
         var name = $('#name').val();
