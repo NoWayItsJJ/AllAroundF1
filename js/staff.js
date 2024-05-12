@@ -41,14 +41,14 @@ $(document).ready(function () {
 						);
 					$("#userRole")
 						.empty()
-						.append(" <strong>" + response.details.nome_ruolo + "</strong>");
+						.append(" <strong>" + ucfirst(response.details.nome_ruolo) + "</strong>");
 					$("#displayAge")
 						.empty()
 						.append(" <strong>" + age + "</strong>");
 					$("#displayNationality")
 						.empty()
 						.append(
-							" <strong>" + response.details.nome_nazionalita + "</strong>"
+							" <strong>" + ucfirst(response.details.nome_nazionalita) + "</strong>"
 						);
 					$("#displayEmail")
 						.empty()
@@ -56,7 +56,7 @@ $(document).ready(function () {
 					$("#displaySpecialization")
 						.empty()
 						.append(
-							" <strong>" + response.details.specializzazione + "</strong>"
+							" <strong>" + ucfirst(response.details.specializzazione) + "</strong>"
 						);
 					$("#displaySalary")
 						.empty()
@@ -296,22 +296,22 @@ function displayUserDetails(id_received) {
 		dataType: "json",
 		success: function (response) {
 			console.log(response);
-			$("#currentName").append("<strong>" + response.user.nome + "</strong>");
+			$("#currentName").append("<strong>" + ucfirst(response.user.nome) + "</strong>");
 			$("#currentSurname").append(
-				"<strong>" + response.user.cognome + "</strong>"
+				"<strong>" + ucfirst(response.user.cognome) + "</strong>"
 			);
 			$("#current-date-birth").append(
 				"<strong>" + response.user.data_nascita + "</strong>"
 			);
 			$("#currentNationality").append(
-				"<strong>" + response.user.nome_nazionalita + "</strong>"
+				"<strong>" + ucfirst(response.user.nome_nazionalita) + "</strong>"
 			);
 			$("#currentEmail").append("<strong>" + response.user.email + "</strong>");
 			$("#currentSpecialization").append(
-				"<strong>" + response.user.specializzazione + "</strong>"
+				"<strong>" + ucfirst(response.user.specializzazione) + "</strong>"
 			);
 			$("#currentRole").append(
-				"<strong>" + response.user.nome_ruolo + "</strong>"
+				"<strong>" + ucfirst(response.user.nome_ruolo) + "</strong>"
 			);
 			$("#currentSalary").append(
 				"<strong>" + response.user.stipendio + "</strong>"
@@ -354,7 +354,7 @@ function getNationalities() {
 					'<option value="' +
 						nationality.id_nazionalita +
 						'">' +
-						nationality.nome_nazionalita +
+						ucfirst(nationality.nome_nazionalita) +
 						"</option>"
 				);
 			});
@@ -379,7 +379,7 @@ function getRoles(id_role) {
 						'<option value="' +
 							role.id_ruolo +
 							'" selected>' +
-							role.nome_ruolo +
+							ucfirst(role.nome_ruolo) +
 							"</option>"
 					);
 				} else {
@@ -387,7 +387,7 @@ function getRoles(id_role) {
 						'<option value="' +
 							role.id_ruolo +
 							'">' +
-							role.nome_ruolo +
+							ucfirst(role.nome_ruolo) +
 							"</option>"
 					);
 				}
