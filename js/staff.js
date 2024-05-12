@@ -162,9 +162,31 @@ $(document).ready(function () {
 			case "fireForm":
 				formContent = `
 					<form id="fireForm" style="display: none;">
-						<input type="text" name="name" placeholder="fire">
-						<input type="email" name="email" placeholder="Email">
-						<input type="submit" value="Invia">
+						<div class="form-row">
+							<div class="form-col">
+								<h3>Employee Info</h3>
+								<div>
+									<img src="" alt="">
+									<p id="currentName"></p>
+									<p id="currentSurname"></p>
+								</div>
+								<div class="form-row"><p id="current-date-birth"></p></div>
+								<div class="form-row"><p id="currentNationality"></p></div>
+								<div class="form-row"><p id="currentEmail"></p></div>
+								<div class="form-row"><p id="currentSpecialization"></p></div>
+							</div>
+							<div class="form-col">
+								<h3>Employee Contract</h3>
+								<div class="form-info"><p id="currentRole"></p></div>
+								<div class="form-info"><p id="currentSalary"></p></div>
+								<div class="form-info"><p id="current-contract-end"></p></div>
+								<div class="form-info"><p id="currentBonus"></p></div>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<button class="button-primary red-button button-max-width">Cancel</button>
+							<input id="fireFormSubmit" class="button-primary green-button button-max-width" type="submit" value="Fire">
+						</div>
 					</form>
 				`;
 				break;
@@ -224,6 +246,11 @@ $(document).ready(function () {
 				getRoles();
 				break;
 			case "fireForm":
+				displayUserDetails(id);
+				$("#fireFormSubmit").click(function (e) {
+					e.preventDefault();
+					fireEmployee(id);
+				});
 				break;
 			case "renewForm":
 				getRoles($("#roleId").val());
@@ -460,4 +487,24 @@ function updateContract() {
 			},
 		});
 	}
+}
+
+function fireEmployee(id) {
+	$.ajax({
+		type: "POST",
+		url: "../php/staff-function.php",
+		data: {
+			id: id,
+			action: "fireEmployee",
+		},
+		dataType: "json",
+		success: function () {
+			closePopup();
+			location.reload();
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("Error:", textStatus, errorThrown);
+			console.error("Response:", jqXHR.responseText);
+		},
+	});
 }

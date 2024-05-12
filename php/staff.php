@@ -141,7 +141,7 @@
                         </div>
                     </div>
                     <div class="details-footer">
-                        <button class="button-primary red-button button-max-width popup-open" data-form-type="fireForm" data-header="Fire emploeey">Fire</button>
+                        <button class="button-primary red-button button-max-width popup-open" data-form-type="fireForm" data-header="Fire employee">Fire</button>
                         <button class="button-primary green-button button-max-width popup-open" data-form-type="renewForm" data-header="Renew contract">Renew</button>
                     </div>
                 </div>

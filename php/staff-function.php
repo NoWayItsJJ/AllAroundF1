@@ -85,6 +85,15 @@ if (isset($_POST['action'])) {
 
             echo json_encode(array('renewContract' => true));
             break;
+
+        case 'fireEmployee':
+            $deleteUser = $conn->prepare("DELETE FROM utenti WHERE id_utente = ?");
+            $deleteUser->bind_param('i', $_POST['id']);
+            $deleteUser->execute();
+
+            echo json_encode(array('fireEmployee' => true));
+            break;
+
         default:
             echo json_encode(array('error' => 'Invalid action'));
             break;
