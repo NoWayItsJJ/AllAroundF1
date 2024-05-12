@@ -58,14 +58,32 @@ if (isset($_POST['action'])) {
                                         WHERE id_utente = ?");
             $userStmt->bind_param('i', $_POST['id']);
             $userStmt->execute();
-
             $result = $userStmt->get_result();
-
             while ($row = $result->fetch_assoc()) {
                 $user = $row;
             }
 
             echo json_encode(array('getUserDetails' => true, 'user' => $user));
+            break;
+
+        case 'updateContract':
+            $contractStmt = $conn->prepare("UPDATE contratti SET stipendio = ?, bonus = ?, data_fine = ? WHERE fk_id_utente = ?");
+            $contractStmt->bind_param('iisi', $_POST['salary'], $_POST['bonus'], $_POST['contractEnd'], $_POST['id']);
+            $contractStmt->execute();
+
+            $roleStmt = $conn->prepare("UPDATE utenti SET fk_id_ruolo = ? WHERE id_utente = ?");
+            $roleStmt->bind_param('ii', $_POST['role'], $_POST['id']);
+            $roleStmt->execute();
+
+            echo json_encode(array('updateContract' => true));
+            break;
+        
+        case 'renewContract':
+            $contractStmt = $conn->prepare("UPDATE contratti SET data_fine = ? WHERE fk_id_utente = ?");
+            $contractStmt->bind_param('si', $_POST['contractEnd'], $_POST['id']);
+            $contractStmt->execute();
+
+            echo json_encode(array('renewContract' => true));
             break;
         default:
             echo json_encode(array('error' => 'Invalid action'));
