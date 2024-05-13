@@ -3,70 +3,42 @@ $(document).ready(function () {
 
 	$(document).on("click", ".staff-list-row", function (e) {
 		e.preventDefault();
-		var staffId = $(this).children().first().data("id");
+		var transactionId = $(this).children().first().data("id");
 
 		$.ajax({
 			type: "POST",
-			url: "../php/staff-function.php",
+			url: "../php/finances-function.php",
 			data: {
-				id: staffId,
+				id: transactionId,
 				action: "getDetails",
 			},
 			dataType: "json",
 			success: function (response) {
 				if (response.getDetails) {
-					var birthDate = new Date(response.details.data_nascita);
-					var currentDate = new Date();
-					var age = currentDate.getFullYear() - birthDate.getFullYear();
-					var m = currentDate.getMonth() - birthDate.getMonth();
-					if (
-						m < 0 ||
-						(m === 0 && currentDate.getDate() < birthDate.getDate())
-					) {
-						age--;
-					}
-
 					$("#detailsBlock").css("display", "");
-					$("#userId").val(staffId);
-					$("#roleId").val(response.details.fk_id_ruolo);
-					$("#userImage").attr("src", "../img/utenti/" + response.details.img);
-					$("#userName")
+					$("#transactionId").val(transactionId);
+					$("#itemId").val(response.details.fk_id_item);
+					$("#reason")
 						.empty()
 						.append(
 							" <strong>" +
-								ucfirst(response.details.nome) +
-								" " +
-								ucfirst(response.details.cognome) +
+								ucfirst(response.details.causale) +
 								"</strong>"
 						);
-					$("#userRole")
+					$("#displayType")
 						.empty()
-						.append(" <strong>" + ucfirst(response.details.nome_ruolo) + "</strong>");
-					$("#displayAge")
+						.append(" <strong>" + ucfirst(response.details.tipo) + "</strong>");
+					$("#displayAmount")
 						.empty()
-						.append(" <strong>" + age + "</strong>");
-					$("#displayNationality")
-						.empty()
-						.append(
-							" <strong>" + ucfirst(response.details.nome_nazionalita) + "</strong>"
-						);
-					$("#displayEmail")
-						.empty()
-						.append(" <strong>" + response.details.email + "</strong>");
-					$("#displaySpecialization")
+						.append(" <strong>" + response.details.importo + "</strong>");
+					$("#displayDescription")
 						.empty()
 						.append(
-							" <strong>" + ucfirst(response.details.specializzazione) + "</strong>"
+							" <strong>" + ucfirst(response.details.descrizione) + "</strong>"
 						);
-					$("#displaySalary")
+					$("#displayItemName")
 						.empty()
-						.append(" <strong>" + response.contract.stipendio + "</strong>");
-					$("#displayEnd")
-						.empty()
-						.append(" <strong>" + response.contract.data_fine + "</strong>");
-					$("#displayBonus")
-						.empty()
-						.append(" <strong>" + response.contract.bonus + "</strong>");
+						.append(" <strong>" + response.details.fk_id_item + "</strong>");
 				} else {
 					console.log("Error");
 				}

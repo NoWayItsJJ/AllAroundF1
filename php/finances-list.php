@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $icon = $row['tipo'] == 'uscita' ? 'bi-arrow-up' : 'bi-arrow-down';
         echo '<tr class="staff-list-row">
-                <td data-type="' . $row["id_transazione"] . '"><i class="bi '. $icon .'"></i></td>
+                <td data-id="' . $row["id_transazione"] . '"><i class="bi '. $icon .'"></i></td>
                 <td>' . $row['importo'] . '</td>
                 <td>' . $row['causale'] . '</td>
                 <td>' . $row['descrizione'] . '</td>

@@ -92,41 +92,34 @@
             <div class="dynamic-dashboard-card grid-row-span-5">
                 <div class="details" id="detailsBlock" style="display: none;">
                     <div class="details-header">
-                        <div class="item-img">
-                            <img id="userImage" src="" alt="">
-                        </div>
                         <div class="item-header-info">
-                            <h3 id="userName"></h3>
-                            <p id="userRole"></p>
+                            <h3 id="reason"></h3>
+                            <p id="description"></p>
                         </div>
                     </div>
                     <div class="details-content">
-                        <h4>Personal Info</h4>
+                        <h4>Transaction Info</h4>
                         <div id="personal-info">
                             <div class="personal-info-row">
-                                <p id="userId" hidden></p>
-                                <p id="roleId" hidden></p>
-                                <p id="age"><strong>Age</strong></p>
-                                <p id="displayAge"></p>
+                                <p id="transactionId" hidden></p>
+                                <p id="itemId" hidden></p>
+                                <p id="type"><strong>Type</strong></p>
+                                <p id="displayType"></p>
                             </div>
                             <div class="personal-info-row">
-                                <p id="nationality"><strong>Nationality</strong></p>
-                                <p id="displayNationality"></p>
+                                <p id="amount"><strong>Amount</strong></p>
+                                <p id="displayAmount"></p>
                             </div>
                             <div class="personal-info-row">
-                                <p id="email"><strong>Email</strong></p>
-                                <p id="displayEmail"></p>
-                            </div>
-                            <div class="personal-info-row">
-                                <p id="specialization"><strong>Specialization</strong></p>
-                                <p id="displaySpecialization"></p>
+                                <p id="description"><strong>Description</strong></p>
+                                <p id="displayDescription"></p>
                             </div>
                         </div>
-                        <h4>Contract Info</h4>
+                        <h4>Item Info</h4>
                         <div id="contract-info">
                             <div class="contract-info-row">
-                                <p id="salary"><strong>Salary</strong></p>
-                                <p id="displaySalary"></p>
+                                <p id="itemName"><strong>ITEM</strong></p>
+                                <p id="displayItemName"></p>
                             </div>
                             <div class="contract-info-row">
                                 <p id="end"><strong>Contract end</strong></p>
