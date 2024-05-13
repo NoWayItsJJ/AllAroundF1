@@ -42,7 +42,9 @@ if(isset($_SESSION['user_id'])) {
 				<div class="card-content">
 					<h1>Siamo lieti di rivederti</h1>
 					<div class="user-info">
-						<img id="user-img" src="" alt="">
+						<div class="user-img">
+							<img id="user-img" src="" alt="">
+						</div>
 						<p id="user-email"></p>
 					</div>
 					<form id="passwordForm" action="" method="post">
