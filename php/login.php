@@ -10,7 +10,7 @@ if(isset($_SESSION['user_id'])) {
 		<title>Login</title>
 		<link rel="icon" href="../img/logo/white-horse.svg" type="image/x-icon">
 
-		<link rel="stylesheet" type="text/css" href="../css/login.css">
+		<link rel="stylesheet" type="text/css" href="../css/login-signup.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
