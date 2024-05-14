@@ -23,6 +23,8 @@ if ($searchTerm != '') {
     $sql .= " AND (causale LIKE '{$searchTerm}%' OR descrizione LIKE '{$searchTerm}%' OR tipo LIKE '{$searchTerm}%')";
 }
 
+$sql .= " ORDER BY id_transazione DESC";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

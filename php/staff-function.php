@@ -75,6 +75,25 @@ if (isset($_POST['action'])) {
             $roleStmt->bind_param('ii', $_POST['role'], $_POST['id']);
             $roleStmt->execute();
 
+            $getUserName = $conn->prepare("SELECT nome, cognome FROM contratti
+                                           JOIN utenti ON contratti.fk_id_utente = utenti.id_utente
+                                           WHERE contratti.fk_id_utente = ?");
+            $getUserName->bind_param('i', $_POST['id']);
+            $getUserName->execute();
+            $result = $getUserName->get_result()->fetch_assoc();
+            $userName = $result['nome'].' '.$result['cognome'];
+
+            $getContractId = $conn->prepare("SELECT id_contratto FROM contratti WHERE fk_id_utente = ?");
+            $getContractId->bind_param('i', $_POST['id']);
+            $getContractId->execute();
+            $itemId = $getContractId->get_result()->fetch_assoc()['id_contratto'];
+
+            $type = 'uscita';
+            $reason = 'contratto';
+            $transactionStmt = $conn->prepare("INSERT INTO finanze (tipo, importo, causale, descrizione, fk_id_item) VALUES (?, ?, ?, ?, ?)");
+            $transactionStmt->bind_param('sissi', $type, $_POST['salary'], $reason, $userName, $itemId);
+            $transactionStmt->execute();
+
             echo json_encode(array('updateContract' => true));
             break;
         
