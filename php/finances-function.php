@@ -52,22 +52,25 @@ function getDetails($transactionId, $conn) {
         }
     }
 
-    $sql = "SELECT * FROM ";
     switch ($details['causale']) {
         case 'contratto':
-            $sql .= ' contratti WHERE id_contratto = ?';
+            $sql = 'SELECT nome as "Name", cognome as Surname, nome_ruolo as Position, stipendio as Salary, bonus as Bonus, data_inizio as "Contract start", data_fine as "Contract end"
+                    FROM contratti 
+                    JOIN utenti ON contratti.fk_id_utente = utenti.id_utente
+                    JOIN ruoli ON utenti.fk_id_ruolo = ruoli.id_ruolo
+                    WHERE id_contratto = ?';
             break;
         case 'nuovo componente':
-            $sql .= ' componenti WHERE id_componente = ?';
+            $sql = ' componenti WHERE id_componente = ?';
             break;
         case 'logistica':
-            $sql .= ' logistica WHERE id_spostamento = ?';
+            $sql = ' logistica WHERE id_spostamento = ?';
             break;
         case 'sponsor':
-            $sql .= ' sponsor WHERE id_sponsor = ?';
+            $sql = 'SELECT tipologia as Category, importo as Prize, data_inizio as "Begin date", data_fine as "End date" FROM sponsor WHERE id_sponsor = ?';
             break;
         case 'ordini':
-            $sql .= ' ordinazioni WHERE id_ordine = ?';
+            $sql = ' ordinazioni WHERE id_ordine = ?';
             break;
         default:
             break;

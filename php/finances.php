@@ -115,20 +115,8 @@
                                 <p id="displayDescription"></p>
                             </div>
                         </div>
-                        <h4>Item Info</h4>
+                        <h4>More Info</h4>
                         <div id="contract-info">
-                            <div class="contract-info-row">
-                                <p id="itemName"><strong>ITEM</strong></p>
-                                <p id="displayItemName"></p>
-                            </div>
-                            <div class="contract-info-row">
-                                <p id="end"><strong>Contract end</strong></p>
-                                <p id="displayEnd"></p>
-                            </div>
-                            <div class="contract-info-row">
-                                <p id="bonus"><strong>Bonus</strong></p>
-                                <p id="displayBonus"></p>
-                            </div>
                         </div>
                     </div>
                     <div class="details-footer">

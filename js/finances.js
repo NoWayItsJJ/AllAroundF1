@@ -14,6 +14,12 @@ $(document).ready(function () {
 			},
 			dataType: "json",
 			success: function (response) {
+				var itemDetailsKey = [];
+				var itemDetails = [];
+				for(var key in response.item){
+					itemDetailsKey.push(key);
+					itemDetails.push(response.item[key]);
+				}
 				if (response.getDetails) {
 					$("#detailsBlock").css("display", "");
 					$("#transactionId").val(transactionId);
@@ -36,9 +42,15 @@ $(document).ready(function () {
 						.append(
 							" <strong>" + ucfirst(response.details.descrizione) + "</strong>"
 						);
-					$("#displayItemName")
-						.empty()
-						.append(" <strong>" + response.details.fk_id_item + "</strong>");
+					$("#contract-info").empty();
+					for (let i = 0; i < itemDetails.length; i++) {
+						$("#contract-info").append(`
+							<div class="contract-info-row">
+								<p id="itemName${i}"><strong>${itemDetailsKey[i]}</strong></p>
+								<p id="displayItemName${i}">${(typeof itemDetails[i] === 'string') ? ucfirst(itemDetails[i]) : itemDetails[i]}</p>
+							</div>
+						`);
+					}
 				} else {
 					console.log("Error");
 				}
