@@ -21,31 +21,45 @@ if(isset($_SESSION['user_id'])) {
 		<div class="right-side">
 			<div id="card-email-password" class="card">
 				<div class="card-content">
-					<p>Passaggio 1 di 2</p>
-					<h1>Crea un account</h1>
-					<p>Hai già un account? <a class="link" href="./login.php">Accedi</a></p>
+					<p>Step 1 of 2</p>
+					<h1>Create an account</h1>
+					<p>Already have an account? <a class="link" href="./login.php">Sign in</a></p>
 					<form id="firstSigninForm" action="" method="post">
-						<div class="input-email">
-							<label for="email">Indirizzo e-mail</label>
-							<input type="email" id="email" name="email" placeholder="Email" />
-							<label for="password">Password</label>
-							<input type="password" id="password" name="password" placeholder="Password" />
+						<div class="input-email email-password">
+							<div class="width-100">
+								<label for="email">Email address</label>
+								<div class="email-row">
+									<input type="email" id="email" name="email" />
+									<i id="emailErrorIcon" class="bi bi-exclamation-triangle" style="display: none;"></i>
+									<i id="emailCorrectIcon" class="bi bi-check" style="display: none;"></i>
+								</div>
+								<span id="emailError" class="invalid"></span>
+							</div>
+							<div class="width-100">
+								<label for="password">Password</label>
+								<div class="email-row">
+									<input type="password" id="password" name="password" />
+									<i class="bi bi-eye-slash"></i>
+								</div>
+								<span id="passwordError" class="invalid"></span>
+								<div id="passwordCriteria"></div>
+							</div>
 						</div>
-						<button id="confirmFirstStep" class="button-primary">Continua</button>
+						<button id="confirmFirstStep" class="button-primary">Continue</button>
 					</form>
 				</div>
-				<div class="line"><div><span>Oppure</span></div></div>
+				<div class="line"><div><span>Or</span></div></div>
 				<div class="other-login">
-					<button id="googleLogin"><img src="../img/logo/google.png" alt="">Accedi con Google</button>
-					<button id="facebookLogin"><img src="../img/logo/facebook.png" alt="">Accedi con Facebook</button>
-					<button id="appleLogin"><img src="../img/logo/apple.png" alt="">Accedi con Apple</button>
+					<button id="googleLogin"><img src="../img/logo/google.png" alt="">Continue with Google</button>
+					<button id="facebookLogin"><img src="../img/logo/facebook.png" alt="">Continue with Facebook</button>
+					<button id="appleLogin"><img src="../img/logo/apple.png" alt="">Continue with Apple</button>
 				</div>
 			</div>
 			<div id="card-more-info" class="card" style="display: none;">
 				<div class="card-content">
-					<p>Passaggio 2 di 2</p>
-					<h1>Crea un account</h1>
-					<p>Hai già un account? <a class="link" href="./login.php">Accedi</a></p>
+					<p>Step 2 of 2</p>
+					<h1>Create an account</h1>
+					<p>Already have an account? <a class="link" href="./login.php">Sign in</a></p>
 					<div class="user-info">
 						<div class="user-img">
 							<img id="user-img" src="" alt="">
@@ -57,7 +71,7 @@ if(isset($_SESSION['user_id'])) {
 						<p id="user-email"></p>
 					</div>
 					<form id="secondSigninForm" action="" method="post">
-						<div class="input-email">
+						<div class="input-email email-password">
 							<div class="row">
 								<div class="width-100">
 									<label for="name">Name</label>
@@ -67,6 +81,10 @@ if(isset($_SESSION['user_id'])) {
 									<label for="surname">Surname</label>
 									<input type="text" id="surname" name="surname" placeholder="Surname"/>
 								</div>
+							</div>
+							<div class="width-100">
+								<label for="birthdate">Birthdate</label>
+								<input type="date" id="birthdate" name="birthdate"/>
 							</div>
 							<div class="width-100">
 								<label for="address">Address</label>

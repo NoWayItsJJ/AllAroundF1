@@ -72,6 +72,10 @@ body{
                     color: var(--secondary-color);
                     cursor: pointer;
                     text-decoration: none;
+
+                    &:hover{
+                        text-decoration: underline;
+                    }
                 }
             }
 
@@ -163,6 +167,82 @@ body{
                     flex-direction: column;
                     width: 100%;
                     height: auto;
+                    gap: 8px;
+
+                    label{
+                        color: var(--primary-color);
+                        font-size: var(--m-font-size);
+                        margin: 0;
+                    }
+
+                    .email-row{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: start;
+                        width: 100%;
+                        position: relative;
+
+                        i{
+                            color: var(--error-color);
+                            position: absolute;
+                            right: 4px;
+                        }
+
+                        .bi-eye-slash, .bi-eye{
+                            color: var(--primary-color);
+                            font-size: var(--l-font-size);
+                            position: absolute;
+                            right: 4px;
+                            cursor: pointer;
+                        }
+
+                        .bi-check{
+                            color: var(--success-color);
+                            font-size: var(--l-font-size);
+                            position: absolute;
+                            right: 4px;
+                        }
+                    }
+
+                    #passwordCriteria{
+                        font-size: var(--m-font-size);
+
+                        .text-green{
+                            color: var(--success-color);
+                            gap: 4px;
+                        }
+
+                        .text-red{
+                            color: var(--error-color);
+                            gap: 4px;
+                        }
+
+                        i{
+                            font-size: var(--l-font-size);
+                        }
+                    }
+
+                    #emailError{
+                        font-size: var(--m-font-size);
+
+                        a{
+                            color: var(--primary-color);
+                            cursor: pointer;
+                            text-decoration: none;
+
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    .invalid{
+                        color: var(--error-color);
+                    }
+                }
+
+                .email-password{
                     gap: 16px;
                 }
 
@@ -178,6 +258,7 @@ body{
                     height: auto;
                     display: flex;
                     flex-direction: column;
+                    gap: 8px;
                 }
 
                 .width-50{
@@ -194,14 +275,14 @@ body{
             align-items: center;
             text-align: center;
             justify-content: center;
-            margin: 64px 0;
+            margin: 32px 0;
             height: 1px;
 
             div{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 75px;
+                width: 48px;
                 margin: 0 16px;
                 background-color: var(--primary-text-color);
 
