@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2024 at 07:32 PM
+-- Generation Time: May 14, 2024 at 05:09 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -70,6 +70,13 @@ CREATE TABLE `componenti` (
   `fk_id_utente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `componenti`
+--
+
+INSERT INTO `componenti` (`id_componente`, `numero_inventario`, `tipologia`, `versione`, `fk_id_utente`) VALUES
+(1, '123', 'floor', 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -96,7 +103,7 @@ INSERT INTO `contratti` (`id_contratto`, `stipendio`, `bonus`, `data_inizio`, `d
 (4, 12000000, 500000, '2024-09-01', '2025-06-07', 5),
 (5, 50000, 20000, '2024-05-05', '2024-05-11', 6),
 (6, 30000, 30000, '2024-05-12', '2024-05-18', 7),
-(7, 10, 20000, '2024-05-05', '2024-05-05', 8);
+(7, 50000, 1000, '2024-05-05', '2024-05-28', 8);
 
 -- --------------------------------------------------------
 
@@ -110,8 +117,22 @@ CREATE TABLE `finanze` (
   `importo` double NOT NULL,
   `causale` set('contratto','nuovo componente','logistica','multa','sponsor','sviluppo','marketing','ordini') NOT NULL,
   `descrizione` varchar(128) NOT NULL,
-  `fk_id_item` int(11) NOT NULL
+  `fk_id_item` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `finanze`
+--
+
+INSERT INTO `finanze` (`id_transazione`, `tipo`, `importo`, `causale`, `descrizione`, `fk_id_item`) VALUES
+(1, 'entrata', 500000, 'sponsor', 'hp sponsor', 1),
+(2, 'uscita', 12000000, 'contratto', 'ayrton senna', 4),
+(3, 'uscita', 10000000, 'contratto', 'riccardo saro', 1),
+(4, 'uscita', 500000, 'contratto', 'fabio pauletta', 2),
+(5, 'uscita', 150000, 'contratto', 'pippo de pippis', 3),
+(6, 'uscita', 50000, 'contratto', 'fatturo tanto', 5),
+(7, 'uscita', 30000, 'contratto', 'ocyo kecasko', 6),
+(8, 'uscita', 50000, 'contratto', 'test ingegnere', 7);
 
 -- --------------------------------------------------------
 
@@ -129,6 +150,13 @@ CREATE TABLE `logistica` (
   `tipo` set('person','item') NOT NULL,
   `fk_id_item` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `logistica`
+--
+
+INSERT INTO `logistica` (`id_spostamento`, `partenza`, `destinazione`, `mezzo_trasporto`, `data_partenza`, `data_arrivo`, `tipo`, `fk_id_item`) VALUES
+(1, 'miami', 'imola', 'airplane', '2024-05-06 16:50:10.000000', '2024-05-15 16:50:10.000000', 'item', 1);
 
 -- --------------------------------------------------------
 
@@ -233,6 +261,13 @@ CREATE TABLE `sponsor` (
   `img` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `sponsor`
+--
+
+INSERT INTO `sponsor` (`id_sponsor`, `tipologia`, `importo`, `data_inizio`, `data_fine`, `img`) VALUES
+(1, 'tecnologia', 50000, '2024-05-14', '2025-05-14', '');
+
 -- --------------------------------------------------------
 
 --
@@ -262,14 +297,14 @@ CREATE TABLE `utenti` (
 --
 
 INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `data_nascita`, `indirizzo`, `citta`, `CAP`, `stato`, `img`, `email`, `password`, `archiviato`, `specializzazione`, `fk_id_ruolo`, `fk_id_nazionalita`) VALUES
-(1, 'riccardo', 'saro', '0000-00-00', 'via amalteo 25', 'fontanafredda', 33074, 'italia', '1_sus.jpg', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'hr', 4, 17),
-(2, 'fabio', 'pauletta', '0000-00-00', 'via tasso 14', 'maniago', 33085, 'italia', '', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'freni', 3, 8),
+(1, 'riccardo', 'saro', '2005-12-17', 'via amalteo 25', 'fontanafredda', 33074, 'italia', '1_sus.jpg', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'hr', 4, 17),
+(2, 'fabio', 'pauletta', '2005-06-17', 'via tasso 14', 'maniago', 33085, 'italia', '2_png.jpg', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'freni', 3, 8),
 (3, 'pippo', 'de pippis', '2000-04-20', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'termocoperte', 2, 3),
 (4, 'paperon', 'de paperoni', '2000-01-23', 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'spendere', 5, 12),
-(5, 'ayrton', 'senna', '0000-00-00', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
-(6, 'fatturo', 'tanto', '0000-00-00', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
-(7, 'ocyo', 'kecasko', '0000-00-00', 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
-(8, 'test', 'ingegnere', '0000-00-00', 'via testing 5', 'maniago', 33085, 'italia', '', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11);
+(5, 'ayrton', 'senna', '1960-03-21', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
+(6, 'fatturo', 'tanto', '2016-05-01', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
+(7, 'ocyo', 'kecasko', '1999-04-01', 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
+(8, 'test', 'ingegnere', '2000-01-01', 'via testing 5', 'maniago', 33085, 'italia', '', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11);
 
 --
 -- Indexes for dumped tables
@@ -304,7 +339,10 @@ ALTER TABLE `contratti`
 -- Indexes for table `finanze`
 --
 ALTER TABLE `finanze`
-  ADD PRIMARY KEY (`id_transazione`);
+  ADD PRIMARY KEY (`id_transazione`),
+  ADD KEY `fk_id_item` (`fk_id_item`),
+  ADD KEY `fk_id_item_2` (`fk_id_item`),
+  ADD KEY `fk_id_item_3` (`fk_id_item`);
 
 --
 -- Indexes for table `logistica`
@@ -370,25 +408,25 @@ ALTER TABLE `calendario`
 -- AUTO_INCREMENT for table `componenti`
 --
 ALTER TABLE `componenti`
-  MODIFY `id_componente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_componente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `contratti`
 --
 ALTER TABLE `contratti`
-  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `finanze`
 --
 ALTER TABLE `finanze`
-  MODIFY `id_transazione` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `logistica`
 --
 ALTER TABLE `logistica`
-  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `nazionalita`
@@ -418,13 +456,13 @@ ALTER TABLE `ruoli`
 -- AUTO_INCREMENT for table `sponsor`
 --
 ALTER TABLE `sponsor`
-  MODIFY `id_sponsor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sponsor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
