@@ -258,7 +258,7 @@ function newUser() {
 
 	$.ajax({
 		type: "POST",
-		url: "../php/staff-function.php",
+		url: "../php/finances-function.php",
 		data: {
 			image: image,
 			name: name,
@@ -271,7 +271,7 @@ function newUser() {
 			salary: salary,
 			contractEnd: contractEnd,
 			bonus: bonus,
-			action: "newUser",
+			action: "newTransaction", //tutto ancora da fare
 		},
 		dataType: "json",
 		success: function () {

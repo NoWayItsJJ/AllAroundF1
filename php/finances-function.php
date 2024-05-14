@@ -9,7 +9,7 @@ if (isset($_POST['action'])) {
         case 'getDetails':
             getDetails($_POST['id'], $conn);
             break;
-        case 'newUser':
+        case 'newTransaction':
             newUser($_POST['image'],
                     $_POST['name'],
                     $_POST['surname'],

@@ -81,7 +81,7 @@ if (isset($_POST['action'])) {
             $getUserName->bind_param('i', $_POST['id']);
             $getUserName->execute();
             $result = $getUserName->get_result()->fetch_assoc();
-            $userName = $result['nome'].' '.$result['cognome'];
+            $userName = ucfirst($result['nome']).' '.ucfirst($result['cognome']);
 
             $getContractId = $conn->prepare("SELECT id_contratto FROM contratti WHERE fk_id_utente = ?");
             $getContractId->bind_param('i', $_POST['id']);
@@ -90,8 +90,9 @@ if (isset($_POST['action'])) {
 
             $type = 'uscita';
             $reason = 'contratto';
+            $description = "Modifica contratto - " . $userName;
             $transactionStmt = $conn->prepare("INSERT INTO finanze (tipo, importo, causale, descrizione, fk_id_item) VALUES (?, ?, ?, ?, ?)");
-            $transactionStmt->bind_param('sissi', $type, $_POST['salary'], $reason, $userName, $itemId);
+            $transactionStmt->bind_param('sissi', $type, $_POST['salary'], $reason, $description, $itemId);
             $transactionStmt->execute();
 
             echo json_encode(array('updateContract' => true));
@@ -108,7 +109,7 @@ if (isset($_POST['action'])) {
             $getUserName->bind_param('i', $_POST['id']);
             $getUserName->execute();
             $result = $getUserName->get_result()->fetch_assoc();
-            $userName = $result['nome'].' '.$result['cognome'];
+            $userName = ucfirst($result['nome']).' '.ucfirst($result['cognome']);
             $salary = $result['stipendio'];
 
             $getContractId = $conn->prepare("SELECT id_contratto FROM contratti WHERE fk_id_utente = ?");
@@ -118,8 +119,9 @@ if (isset($_POST['action'])) {
 
             $type = 'uscita';
             $reason = 'contratto';
+            $description = "Rinnovo contratto - " . $userName;
             $transactionStmt = $conn->prepare("INSERT INTO finanze (tipo, importo, causale, descrizione, fk_id_item) VALUES (?, ?, ?, ?, ?)");
-            $transactionStmt->bind_param('sissi', $type, $salary, $reason, $userName, $itemId);
+            $transactionStmt->bind_param('sissi', $type, $salary, $reason, $description, $itemId);
             $transactionStmt->execute();
 
             echo json_encode(array('renewContract' => true));
@@ -256,8 +258,16 @@ function newUser($image, $name, $surname, $dateOfBirth, $nationality, $email, $s
     $getContractId->bind_param('iisi', $salary, $bonus, $contractEnd, $userId);
     $getContractId->execute();
     $checkContractResult = $getContractId->get_result();
+    $itemId = $checkContractResult->fetch_assoc()['id_contratto'];
     $contractSuccess = $checkContractResult->num_rows;
     $checkContractResult->free();  // Free the result set
+
+    $transactionType = 'uscita';
+    $reason = 'contratto';
+    $description = "Nuovo contratto - " . ucfirst($name).' '.ucfirst($surname);
+    $transactionStmt = $conn->prepare("INSERT INTO finanze (tipo, importo, causale, descrizione, fk_id_item) VALUES (?, ?, ?, ?, ?)");
+    $transactionStmt->bind_param('sissi', $transactionType, $salary, $reason, $description, $itemId);
+    $transactionStmt->execute();
 
     if($userSuccess > 0 && $contractSuccess > 0){
         echo json_encode(array('newUser' => true));
