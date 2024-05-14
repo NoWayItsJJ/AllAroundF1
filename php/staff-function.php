@@ -102,6 +102,26 @@ if (isset($_POST['action'])) {
             $contractStmt->bind_param('si', $_POST['contractEnd'], $_POST['id']);
             $contractStmt->execute();
 
+            $getUserName = $conn->prepare("SELECT nome, cognome, stipendio FROM contratti
+                                           JOIN utenti ON contratti.fk_id_utente = utenti.id_utente
+                                           WHERE contratti.fk_id_utente = ?");
+            $getUserName->bind_param('i', $_POST['id']);
+            $getUserName->execute();
+            $result = $getUserName->get_result()->fetch_assoc();
+            $userName = $result['nome'].' '.$result['cognome'];
+            $salary = $result['stipendio'];
+
+            $getContractId = $conn->prepare("SELECT id_contratto FROM contratti WHERE fk_id_utente = ?");
+            $getContractId->bind_param('i', $_POST['id']);
+            $getContractId->execute();
+            $itemId = $getContractId->get_result()->fetch_assoc()['id_contratto'];
+
+            $type = 'uscita';
+            $reason = 'contratto';
+            $transactionStmt = $conn->prepare("INSERT INTO finanze (tipo, importo, causale, descrizione, fk_id_item) VALUES (?, ?, ?, ?, ?)");
+            $transactionStmt->bind_param('sissi', $type, $salary, $reason, $userName, $itemId);
+            $transactionStmt->execute();
+
             echo json_encode(array('renewContract' => true));
             break;
 
