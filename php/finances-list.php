@@ -23,13 +23,15 @@ if ($searchTerm != '') {
     $sql .= " AND (causale LIKE '{$searchTerm}%' OR descrizione LIKE '{$searchTerm}%' OR tipo LIKE '{$searchTerm}%')";
 }
 
+$sql .= " ORDER BY id_transazione DESC";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $icon = $row['tipo'] == 'uscita' ? 'bi-arrow-up' : 'bi-arrow-down';
         echo '<tr class="staff-list-row">
-                <td data-type="' . $row["id_transazione"] . '"><i class="bi '. $icon .'"></i></td>
+                <td data-id="' . $row["id_transazione"] . '"><i class="bi '. $icon .'"></i></td>
                 <td>' . $row['importo'] . '</td>
                 <td>' . $row['causale'] . '</td>
                 <td>' . $row['descrizione'] . '</td>
