@@ -162,7 +162,7 @@ $(document).ready(function() {
         e.preventDefault();
         var fields = ['email', 'password', 'name', 'surname', 'address', 'city', 'cap', 'state', 'birthdate'];
         var allFieldsFilled = true;
-        var data = {};
+        var data = new FormData();
 
         fields.forEach(function(field) {
             var value = $('#' + field).val();
@@ -173,31 +173,28 @@ $(document).ready(function() {
             } else {
                 $('#' + field).removeClass('invalid');
                 $('label[for=' + field + ']').removeClass('invalid');
-
-                if (field === 'cap' && !isCap(value)) {
-                    $('#' + field).addClass('invalid');
-                    $('label[for=' + field + ']').addClass('invalid');
-                    allFieldsFilled = false;
-                } else if (field === 'birthdate' && !isBirthdate(value)) {
-                    $('#' + field).addClass('invalid');
-                    $('label[for=' + field + ']').addClass('invalid');
-                    allFieldsFilled = false;
-                }
             }
-            data[field] = value;
+            data.append(field, value);
         });
+
+        var fileInput = $('#fileInput')[0];
+        if (fileInput.files.length > 0) {
+            data.append('img', fileInput.files[0]);
+        }
 
         if (!allFieldsFilled) {
             return;
         }
 
-        data['action'] = 'registerUser';
+        data.append('action', 'registerUser');
 
         $.ajax({
             type: 'POST',
             url: '../php/signin-function.php',
             data: data,
             dataType: 'json',
+            processData: false,
+            contentType: false,
             success: function(response) {
                 if (response.SignedIn) {
                     if (response.userType != 5) {
