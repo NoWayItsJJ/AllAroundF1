@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
     <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../css/staff.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../js/staff.js"></script>
@@ -57,7 +58,7 @@
                 ?>
                 </div>
             </div>
-            <div class="dynamic-dashboard-card popup-open" data-form-type="newForm" data-header="New employee">
+            <div class="dynamic-dashboard-card popup-open buttonNew" data-form-type="newForm" data-header="New employee">
                 <div class="new-button">
                     <i class="bi bi-plus"></i>
                     <h3>New</h3>

@@ -50,18 +50,14 @@
     </div>
     <section id="dynamic-dashboard">
         <div class="dynamic-dashboard-grid">
-            <div class="dynamic-dashboard-card grid-col-span-4">
+            <div class="dynamic-dashboard-card grid-col-span-2">
                 <div class="card-row">
                 <?php 
                     include('finances_count.php'); 
                 ?>
                 </div>
             </div>
-            <div class="dynamic-dashboard-card popup-open" data-form-type="newForm" data-header="New employee">
-                <div class="new-button">
-                    <i class="bi bi-plus"></i>
-                    <h3>New</h3>
-                </div>
+            <div class="dynamic-dashboard-card grid-col-span-3">
             </div> 
             <div class="dynamic-dashboard-card grid-col-span-4 grid-row-span-5">
                 <div class="list">
