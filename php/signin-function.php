@@ -10,6 +10,7 @@ if (isset($_POST['action'])) {
             registerUser(
                          $_POST['email'],
                          $_POST['password'],
+                         $_POST['birthdate'],
                          $_POST['name'],
                          $_POST['surname'],
                          $_POST['address'],
@@ -26,7 +27,7 @@ if (isset($_POST['action'])) {
     echo json_encode(array('error' => 'No action specified'));
 }
 
-function registerUser( $email, $password, $name, $surname, $address, $city, $cap, $state, $conn) {
+function registerUser($email, $password, $birthdate, $name, $surname, $address, $city, $cap, $state, $conn) {
     $img = 'default.jpg';
     $target_dir = "../img/utenti/";
     $target_file = basename($_FILES["img"]["name"]);
@@ -40,17 +41,18 @@ function registerUser( $email, $password, $name, $surname, $address, $city, $cap
     // Check extension
     if( in_array($imageFileType,$extensions_arr) ){
         // Upload file
-        if(move_uploaded_file($_FILES['img']['tmp_name'],$target_file)){
-            echo "Upload successfully.";
-        }else{
-            echo "File upload failed.";
+        $changedLocation = move_uploaded_file($_FILES['img']['tmp_name'],$target_dir.$target_file);
+        if($changedLocation){
+            $target_file = $target_dir . basename($_FILES["img"]["name"]);  // update $target_file with the new location
         }
     }
 
-    $stmt = $conn->prepare("INSERT INTO utenti (nome, cognome, indirizzo, citta, CAP, stato, img, email, password, archiviato, fk_id_ruolo)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 5)");
+    $archiviato = 0;
+    $fk_id_ruolo = 5;
+    $stmt = $conn->prepare("INSERT INTO utenti (nome, cognome, data_nascita, indirizzo, citta, CAP, stato, img, email, password, archiviato, fk_id_ruolo)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $hashed_password = md5($password);
-    $stmt->bind_param('sssssssss', $name, $surname, $address, $city, $cap, $state, $img, $email, $hashed_password);
+    $stmt->bind_param('ssssssssssii', $name, $surname, $birthdate, $address, $city, $cap, $state, $img, $email, $hashed_password, $archiviato, $fk_id_ruolo);
 
     $stmt->execute();
 
@@ -60,7 +62,7 @@ function registerUser( $email, $password, $name, $surname, $address, $city, $cap
     // Rename the uploaded file
     if (isset($_FILES['img'])) {
         $newfilename = $last_id . '_' . $_FILES['img']['name'];
-        rename($target_dir . $target_file, $target_dir . $newfilename);
+        rename($target_file, $target_dir . $newfilename);
     
         // Aggiorna l'img nel database
         $stmt = $conn->prepare("UPDATE utenti SET img = ? WHERE id_utente = ?");
