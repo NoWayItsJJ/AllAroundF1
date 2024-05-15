@@ -12,32 +12,36 @@ utenti:
 - marketing (7)
 */
 
+$currentFile = basename($_SERVER['PHP_SELF']);
+
+// Dashboard
+$isActive = ($currentFile == 'backend.php') ? 'red-text' : '';
 echo '
-<li>
-    <a href="./backend.php" class="red-text">
+<li >
+    <a href="./backend.php" class="'.$isActive.'">
         <i class="bi bi-house"></i>
         <span class="nav-text">Dashboard</span>
     </a>
 </li>';
 
 // Factory
+$isActive = ($currentFile == 'factory.php' && $userType == 4) ? 'red-text' : '';
 if($userType == 4) {
     echo '
     <li>
-        <a href="./factory.php">
+        <a href="./factory.php" class="'.$isActive.'">
             <i class="bi bi-gear"></i>
-            <span class="nav-text">
-
-            Factory</span>
+            <span class="nav-text">Factory</span>
         </a>
     </li>';
 }
 
 // Logistics
+$isActive = ($currentFile == 'logistics.php' && ($userType == 4 || $userType == 6)) ? 'red-text' : '';
 if($userType == 4 || $userType == 6) {
     echo '
     <li>
-        <a href="./logistics.php">
+        <a href="./logistics.php" class="'.$isActive.'">
             <i class="bi bi-box"></i>
             <span class="nav-text">Logistics</span>
         </a>
@@ -45,10 +49,11 @@ if($userType == 4 || $userType == 6) {
 }
 
 // Staff
+$isActive = ($currentFile == 'staff.php' && ($userType == 4 || $userType == 6)) ? 'red-text' : '';
 if($userType == 4 || $userType == 6) {
     echo '
     <li>
-        <a href="./staff.php">
+        <a href="./staff.php" class="'.$isActive.'">
             <i class="bi bi-people"></i>
             <span class="nav-text">Staff</span>
         </a>
@@ -56,10 +61,11 @@ if($userType == 4 || $userType == 6) {
 }
 
 // Finances
+$isActive = ($currentFile == 'finances.php' && ($userType == 4 || $userType == 6)) ? 'red-text' : '';
 if($userType == 4 || $userType == 6) {
     echo '
     <li>
-        <a href="./finances.php">
+        <a href="./finances.php" class="'.$isActive.'">
             <i class="bi bi-currency-exchange"></i>
             <span class="nav-text">Finances</span>
         </a>
@@ -67,10 +73,11 @@ if($userType == 4 || $userType == 6) {
 }
 
 // Marketing
+$isActive = ($currentFile == 'marketing.php' && ($userType == 4 || $userType == 7)) ? 'red-text' : '';
 if($userType == 4 || $userType == 7) {
     echo '
     <li>
-        <a href="./marketing.php">
+        <a href="./marketing.php" class="'.$isActive.'">
             <i class="bi bi-megaphone"></i>
             <span class="nav-text">Marketing</span>
         </a>
@@ -78,10 +85,11 @@ if($userType == 4 || $userType == 7) {
 }
 
 // Calendar
+$isActive = ($currentFile == 'calendar.php' && $userType == 4) ? 'red-text' : '';
 if($userType == 4) {
     echo '
     <li>
-        <a href="./calendar.php">
+        <a href="./calendar.php" class="'.$isActive.'">
             <i class="bi bi-calendar-week"></i>
             <span class="nav-text">Calendar</span>
         </a>
@@ -89,10 +97,11 @@ if($userType == 4) {
 }
 
 // Orders
+$isActive = ($currentFile == 'orders.php' && $userType == 7) ? 'red-text' : '';
 if($userType == 7) {
     echo '
     <li>
-        <a href="./orders.php">
+        <a href="./orders.php" class="'.$isActive.'">
             <i class="bi bi-cart"></i>
             <span class="nav-text">Orders</span>
         </a>
@@ -100,43 +109,23 @@ if($userType == 7) {
 }
 
 // Articles
+$isActive = ($currentFile == 'articles.php' && $userType == 7) ? 'red-text' : '';
 if($userType == 7) {
     echo '
     <li>
-        <a href="./articles.php">
+        <a href="./articles.php" class="'.$isActive.'">
             <i class="bi bi-newspaper"></i>
             <span class="nav-text">Articles</span>
         </a>
     </li>';
 }
 
-// Social
-if($userType == 7) {
-    echo '
-    <li>
-        <a href="./social.php">
-            <i class="bi bi-people"></i>
-            <span class="nav-text">Social</span>
-        </a>
-    </li>';
-}
-
-// Clients
-if($userType == 7) {
-    echo '
-    <li>
-        <a href="./clients.php">
-            <i class="bi bi-person"></i>
-            <span class="nav-text">Clients</span>
-        </a>
-    </li>';
-}
-
 // Events
+$isActive = ($currentFile == 'events.php' && $userType == 7) ? 'red-text' : '';
 if($userType == 7) {
     echo '
     <li>
-        <a href="./events.php">
+        <a href="./events.php" class="'.$isActive.'">
             <i class="bi bi-calendar-week"></i>
             <span class="nav-text">Events</span>
         </a>
@@ -144,54 +133,35 @@ if($userType == 7) {
 }
 
 // Contracts
+$isActive = ($currentFile == 'contracts.php' && $userType == 6) ? 'red-text' : '';
 if($userType == 6) {
     echo '
     <li>
-        <a href="./contracts.php">
+        <a href="./contracts.php" class="'.$isActive.'">
             <i class="bi bi-file-earmark-text"></i>
             <span class="nav-text">Contracts</span>
         </a>
     </li>';
 }
 
-// Car
-if($userType == 3) {
-    echo '
-    <li>
-        <a href="./car.php">
-            <i class="bi bi-gear"></i>
-            <span class="nav-text">Car</span>
-        </a>
-    </li>';
-}
-
 // Production 
+$isActive = ($currentFile == 'production.php' && $userType == 3) ? 'red-text' : '';
 if($userType == 3) {
     echo '
     <li>
-        <a href="./production.php">
+        <a href="./production.php" class="'.$isActive.'">
             <i class="bi bi-gear"></i>
             <span class="nav-text">Production</span>
         </a>
     </li>';
 }
 
-// Development
-if($userType == 3) {
-    echo '
-    <li>
-        <a href="./development.php">
-            <i class="bi bi-tools"></i>
-            <span class="nav-text">Development</span>
-        </a>
-    </li>';
-}
-
 // Components
+$isActive = ($currentFile == 'components.php' && $userType == 3) ? 'red-text' : '';
 if($userType == 3) {
     echo '
     <li>
-        <a href="./components.php">
+        <a href="./components.php" class="'.$isActive.'">
             <i class="bi bi-gear-wide-connected"></i>
             <span class="nav-text">Components</span>
         </a>

@@ -13,12 +13,15 @@ $(document).ready(function() {
             dataType: 'json',
             success: function (response) {
                 if (response.emailExists) {
-                    $('#email').prop('readonly', true);
-                    $('#password').css('display', 'block');
-                    $('#confirmEmail').css('display', 'none');
-                    $('#confirmPassword').css('display', 'block');
-                } else {
-                    $('#email').css('border-color', 'red');
+                    $('#card-password').css('display', 'block');
+                    $('#card-email').css('display', 'none');
+                    document.querySelector('#user-img').src = "../img/utenti/"+response.userImage;
+                    document.querySelector('#user-email').innerHTML = response.userEmail;
+                }else {
+                    $('#email').addClass("invalid");
+                    $('label[for="email"]').addClass("invalid");
+                    $('#emailError').text("We don't have an account with that email address.");
+                    $('#emailErrorIcon').show();
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -26,6 +29,15 @@ $(document).ready(function() {
                 console.error('Response:', jqXHR.responseText);
             }
         });
+    });
+
+    document.querySelector('#email').addEventListener('keyup', function(e) {
+        if (e.key !== 'Enter' && this.value.trim() !== '') {
+            this.classList.remove('invalid');
+            $('label[for="email"]').removeClass("invalid");
+            $('#emailError').text("");
+            $('#emailErrorIcon').hide();
+        }
     });
 
     $('#confirmPassword').click(function (e) {
@@ -50,7 +62,9 @@ $(document).ready(function() {
                         window.location.href = '../index.php';
                     }
                 } else {
-                    $('#password').css('border-color', 'red');
+                    $('#password').addClass("invalid");
+                    $('label[for="password"]').addClass("invalid");
+                    $('#passwordError').text("Password not correct.");
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -58,5 +72,26 @@ $(document).ready(function() {
                 console.error('Response:', jqXHR.responseText);
             }
         });
+    });
+
+    document.querySelector('#password').addEventListener('keyup', function(e) {
+        if (e.key !== 'Enter' && this.value.trim() !== '') {
+            this.classList.remove('invalid');
+            $('label[for="password"]').removeClass("invalid");
+            $('#passwordError').text("");
+        }
+    });
+
+    $('.bi-eye-slash').click(function() {
+        var passwordInput = $('#password');
+        var passwordType = passwordInput.attr('type');
+
+        if (passwordType === 'password') {
+            passwordInput.attr('type', 'text');
+            $(this).removeClass('bi-eye-slash').addClass('bi-eye');
+        } else {
+            passwordInput.attr('type', 'password');
+            $(this).removeClass('bi-eye').addClass('bi-eye-slash');
+        }
     });
 });

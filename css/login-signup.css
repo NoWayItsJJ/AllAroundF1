@@ -1,0 +1,326 @@
+@import url("AllAroundF1.css");
+
+body{
+    background-color: var(--primary-text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+}
+
+.left-side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 65%;
+    height: 100%;
+
+    #greyhorse {
+        height: 70%;
+        width: auto;
+    }
+
+    #car{
+        position: absolute;
+        z-index: 1;
+        height: 25%;
+        width: auto;
+    }
+}
+
+
+.right-side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 35%;
+    height: 100%;
+
+    .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: calc(100% - 128px);
+        height: auto;
+        margin: 64px;
+        padding: 32px;
+        max-width: 500px;
+
+        .card-content{
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+
+            h1{
+                color: var(--primary-color);
+                font-weight: 600;
+                margin: 0;
+            }
+
+            p{
+                color: var(--primary-color);
+                margin: 0;
+
+                .link{
+                    color: var(--secondary-color);
+                    cursor: pointer;
+                    text-decoration: none;
+
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .step{
+                color: var(--secondary-text-color);
+                font-weight: 600;
+            }
+
+            .user-info{
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                flex-direction: row;
+                width: 100%;
+                height: auto;
+                gap: 16px;
+                margin-top: 32px;
+
+                .user-img{
+                    width: 80px;
+                    height: 80px;
+                    min-width: 80px;
+                    min-height: 80px;
+                    border-radius: 50%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    .overlay{
+                        background-color: rgba(255, 255, 255, 0.616);
+                    }
+
+                    .overlay i {
+                        color: var(--secondary-color);
+                        font-size: 48px;
+                    }
+
+                    &:hover .overlay {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+
+                p{
+                    color: var(--primary-color);
+                    font-size: var(--xl-font-size);
+                    font-weight: 600;
+                    margin: 0;
+                }
+
+            }
+
+            form{
+                display: flex;
+                justify-content: center;
+                align-items: start;
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                gap: 16px;
+                margin-top: 32px;
+
+                #confirmEmail, #confirmPassword, #confirmFirstStep, #confirmSignin{
+                    align-self: flex-end;
+                }
+
+                .input-email{
+                    display: flex;
+                    justify-content: center;
+                    align-items: start;
+                    flex-direction: column;
+                    width: 100%;
+                    height: auto;
+                    gap: 4px;
+
+                    label{
+                        color: var(--primary-color);
+                        font-size: var(--s-font-size);
+                        margin: 0;
+                    }
+
+                    input[type="email"], input[type="password"], input[type="text"], input[type="date"]{
+                        width: 100%;
+                        color: var(--primary-color);
+                    }
+
+                    .email-row{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: start;
+                        width: 100%;
+                        position: relative;
+
+                        i{
+                            color: var(--error-color);
+                            position: absolute;
+                            right: 4px;
+                        }
+
+                        .bi-eye-slash, .bi-eye{
+                            color: var(--primary-color);
+                            font-size: var(--l-font-size);
+                            position: absolute;
+                            right: 4px;
+                            cursor: pointer;
+                        }
+
+                        .bi-check{
+                            color: var(--success-color);
+                            font-size: var(--l-font-size);
+                            position: absolute;
+                            right: 4px;
+                        }
+                    }
+
+                    #passwordCriteria{
+                        font-size: var(--m-font-size);
+
+                        .text-green{
+                            color: var(--success-color);
+                            gap: 4px;
+                        }
+
+                        .text-red{
+                            color: var(--error-color);
+                            gap: 4px;
+                        }
+
+                        i{
+                            font-size: var(--l-font-size);
+                        }
+                    }
+
+                    #emailError{
+                        font-size: var(--m-font-size);
+
+                        a{
+                            color: var(--primary-color);
+                            cursor: pointer;
+                            text-decoration: none;
+
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    .invalid{
+                        color: var(--error-color);
+                    }
+                }
+
+                .email-password{
+                    gap: 16px;
+                }
+
+                .row{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 8px;
+                    width: 100%;
+                }
+
+                .width-100{
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .width-50{
+                    width: 50%;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+
+        .line{
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            margin: 32px 0;
+            height: 1px;
+
+            div{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 48px;
+                margin: 0 16px;
+                background-color: var(--primary-text-color);
+
+                span{
+                    color: var(--secondary-text-color);
+                    font-size: var(--xl-font-size);
+                }
+            }
+        }
+
+        .other-login{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+            gap: 16px;
+
+            button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 48px;
+                background-color: transparent;
+                color: var(--primary-color);
+                border: 2px solid #e2e2e2;
+                border-radius: var(--border-radius);
+                cursor: pointer;
+                font-size: var(--m-font-size);
+                font-weight: 600;
+                transition: border-color 0.3s;
+
+                img{
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 8px;
+                }
+
+                &:hover{
+                    border-color: #bebebe;
+                }
+            }
+        }
+        
+    }
+}
