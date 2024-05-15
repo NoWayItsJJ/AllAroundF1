@@ -9,7 +9,7 @@
 	--quaternary-color: #181818;
 
 	--primary-text-color: #fcfcfc;
-	--secondary-text-color: #bababa;
+	--secondary-text-color: #a3a3a3;
 
 	--red-text-color: #da2119;
 	--red-secondary-text-color: #9d0000;
@@ -363,7 +363,7 @@ h5 {
 
 input[type="text"],
 [type="password"],
-[type="email"] {
+[type="email"], [type="date"], [type="number"]{
 	background-color: transparent;
 	color: var(--primary-text-color);
 	border: none;
@@ -384,6 +384,11 @@ input[type="text"],
 	&.valid {
 		border-bottom: 2px solid var(--success-color);
 	}
+}
+
+::selection {
+    background: var(--secondary-color);
+    color: var(--primary-text-color);
 }
 
 .line {

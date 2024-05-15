@@ -21,7 +21,7 @@ if(isset($_SESSION['user_id'])) {
 		<div class="right-side">
 			<div id="card-email-password" class="card">
 				<div class="card-content">
-					<p>Step 1 of 2</p>
+					<p class="step">Step 1 of 2</p>
 					<h1>Create an account</h1>
 					<p>Already have an account? <a class="link" href="./login.php">Sign in</a></p>
 					<form id="firstSigninForm" action="" method="post">
@@ -29,7 +29,7 @@ if(isset($_SESSION['user_id'])) {
 							<div class="width-100">
 								<label for="email">Email address</label>
 								<div class="email-row">
-									<input type="email" id="email" name="email" />
+									<input type="email" id="email" name="email" required/>
 									<i id="emailErrorIcon" class="bi bi-exclamation-triangle" style="display: none;"></i>
 									<i id="emailCorrectIcon" class="bi bi-check" style="display: none;"></i>
 								</div>
@@ -57,7 +57,7 @@ if(isset($_SESSION['user_id'])) {
 			</div>
 			<div id="card-more-info" class="card" style="display: none;">
 				<div class="card-content">
-					<p>Step 2 of 2</p>
+					<p class="step">Step 2 of 2</p>
 					<h1>Create an account</h1>
 					<p>Already have an account? <a class="link" href="./login.php">Sign in</a></p>
 					<div class="user-info">
@@ -97,7 +97,7 @@ if(isset($_SESSION['user_id'])) {
 								</div>
 								<div class="width-100">
 									<label for="cap">Cap</label>
-									<input type="text" id="cap" name="cap" placeholder="Cap"/>
+									<input type="text" id="cap" name="cap" placeholder="Cap" maxlength="5" required/>
 								</div>
 							</div>
 							<div class="width-50">

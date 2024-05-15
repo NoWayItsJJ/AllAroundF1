@@ -31,6 +31,7 @@ body{
     }
 }
 
+
 .right-side{
     display: flex;
     justify-content: center;
@@ -79,6 +80,11 @@ body{
                 }
             }
 
+            .step{
+                color: var(--secondary-text-color);
+                font-weight: 600;
+            }
+
             .user-info{
                 display: flex;
                 justify-content: start;
@@ -92,8 +98,9 @@ body{
                 .user-img{
                     width: 80px;
                     height: 80px;
+                    min-width: 80px;
+                    min-height: 80px;
                     border-radius: 50%;
-                    
 
                     img {
                         width: 100%;
@@ -137,6 +144,10 @@ body{
                 gap: 16px;
                 margin-top: 32px;
 
+                #confirmEmail, #confirmPassword, #confirmFirstStep, #confirmSignin{
+                    align-self: flex-end;
+                }
+
                 .input-email{
                     display: flex;
                     justify-content: center;
@@ -151,28 +162,10 @@ body{
                         font-size: var(--s-font-size);
                         margin: 0;
                     }
-    
-                    input[type="email"], input[type="password"], input[type="text"]{
+
+                    input[type="email"], input[type="password"], input[type="text"], input[type="date"]{
                         width: 100%;
                         color: var(--primary-color);
-                    }
-                }
-
-                #confirmEmail, #confirmPassword, #confirmFirstStep, #confirmSignin{
-                    align-self: flex-end;
-                }
-
-                .input-email{
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    height: auto;
-                    gap: 8px;
-
-                    label{
-                        color: var(--primary-color);
-                        font-size: var(--m-font-size);
-                        margin: 0;
                     }
 
                     .email-row{

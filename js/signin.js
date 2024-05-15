@@ -11,18 +11,22 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function (response) {
-                if (response.emailExists) {
+                if (response.emailExists || email == '' || !isEmail(email)) {
                     $('#email').addClass("invalid");
                     $('label[for="email"]').addClass("invalid");
-                    $('#emailError').html("An account with this email address already exists. <a class=\"link\" href=\"./login.php\">Sign in</a>");
+                    if (email == '') {
+                        $('#emailError').html("Please enter an email.");
+                    } else if (!isEmail(email)) {
+                        $('#emailError').html("That's an invalid email.");
+                    } else {
+                        $('#emailError').html("An account with this email address already exists. <a class=\"link\" href=\"./login.php\">Sign in</a>");
+                    }
                     $('#emailErrorIcon').show();
                     $('#emailCorrectIcon').hide();
                 } else {
                     $('#email').removeClass("invalid");
                     $('label[for="email"]').removeClass("invalid");
-                    if (email != '') {
-                        $('#emailCorrectIcon').show();
-                    }
+                    $('#emailCorrectIcon').show();
                     $('#emailErrorIcon').hide();
                 }
             },
@@ -79,7 +83,7 @@ $(document).ready(function() {
         var hasNumberOrSymbol = /\d/.test(password) || /\W/.test(password);
         var doesNotContainEmail = !password.includes(email);
 
-        if (email === '') {
+        if (!isEmail(email)) {
             $('#email').addClass("invalid");
             $('#emailError').text("Please enter an email.");
             $('#emailErrorIcon').show();
@@ -140,6 +144,11 @@ $(document).ready(function() {
     function isCap(value) {
         var capRegex = /^[0-9]{5}$/;
         return capRegex.test(value);
+    }
+
+    function isEmail(email) {
+        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
     }
 
     function isBirthdate(value) {
