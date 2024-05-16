@@ -90,7 +90,7 @@ h5 {
 }
 
 .scrollable-section::-webkit-scrollbar {
-	width: 10px;
+	width: 8px;
 }
 
 .scrollable-section::-webkit-scrollbar-track {
@@ -191,9 +191,26 @@ h5 {
 	padding: 8px 16px;
 	text-align: center;
 	border-radius: var(--border-radius);
+	transition: all 0.3s ease;
 
 	&:hover {
-		background-color: #da2119;
+		transform: scale(1.05);
+	}
+}
+
+.button-squadrato{
+	border-radius: 8px;
+	border: 3px solid var(--tertiary-color);
+	background-color: transparent;
+	color: var(--tertiary-color);
+	font-weight: 500;
+	letter-spacing: 1;
+	padding: 4px 32px;
+
+	&:hover {
+		transform: scale(1.05);
+		background-color: var(--tertiary-color);
+		color: var(--primary-color);
 	}
 }
 
@@ -406,11 +423,11 @@ input[type="text"],
 	padding: 8px 16px;
 	border-radius: var(--border-radius);
 	background-color: transparent;
-	border: 2px solid var(--tertiary-color);
+	border: 3px solid var(--tertiary-color);
 
 	input {
 		background-color: transparent;
-		border: none;
+		border: transparent;
 		color: var(--primary-text-color);
 		font-size: var(--m-font-size);
 		outline: none;

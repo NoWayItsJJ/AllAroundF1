@@ -26,6 +26,7 @@ $(document).ready(function () {
 						age--;
 					}
 
+					$("#no-result").css("display", "none");
 					$("#detailsBlock").css("display", "");
 					$("#userId").val(staffId);
 					$("#roleId").val(response.details.fk_id_ruolo);
@@ -41,7 +42,7 @@ $(document).ready(function () {
 						);
 					$("#userRole")
 						.empty()
-						.append(" <strong>" + ucfirst(response.details.nome_ruolo) + "</strong>");
+						.append(ucfirst(response.details.nome_ruolo));
 					$("#displayAge")
 						.empty()
 						.append(" <strong>" + age + "</strong>");
@@ -78,21 +79,17 @@ $(document).ready(function () {
 		});
 	});
 
-	$(".statistic").first().find(".statistic-icon").addClass("active");
+	$(".statistic").first().addClass("active");
 
 	$(document).on("click", ".statistic", function () {
 		var search = $("#search").val();
 		var roleId = $(this).data("role-id");
 
-		$(".statistic-icon").each(function () {
+		$(".statistic").each(function () {
 			$(this).removeClass("active");
 		});
 
-		$(this)
-			.find(".statistic-icon")
-			.each(function () {
-				$(this).addClass("active");
-			});
+		$(this).addClass("active");
 
 		$.ajax({
 			url: "staff-list.php",
@@ -106,7 +103,7 @@ $(document).ready(function () {
 
 	$(document).on("keyup", "#search", function () {
 		var search = $(this).val();
-		var roleId = $(".statistic-icon.active").parent().data("role-id");
+		var roleId = $(".statistic.active").data("role-id");
 
 		$.ajax({
 			url: "staff-list.php",
