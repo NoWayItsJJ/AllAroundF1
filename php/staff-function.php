@@ -90,9 +90,10 @@ if (isset($_POST['action'])) {
 
             $type = 'uscita';
             $reason = 'contratto';
+            $charge = -($_POST['salary']);
             $description = "Modifica contratto - " . $userName;
             $transactionStmt = $conn->prepare("INSERT INTO finanze (tipo, importo, causale, descrizione, fk_id_item) VALUES (?, ?, ?, ?, ?)");
-            $transactionStmt->bind_param('sissi', $type, $_POST['salary'], $reason, $description, $itemId);
+            $transactionStmt->bind_param('sissi', $type, $charge, $reason, $description, $itemId);
             $transactionStmt->execute();
 
             echo json_encode(array('updateContract' => true));
@@ -111,6 +112,7 @@ if (isset($_POST['action'])) {
             $result = $getUserName->get_result()->fetch_assoc();
             $userName = ucfirst($result['nome']).' '.ucfirst($result['cognome']);
             $salary = $result['stipendio'];
+            $charge = -($salary);
 
             $getContractId = $conn->prepare("SELECT id_contratto FROM contratti WHERE fk_id_utente = ?");
             $getContractId->bind_param('i', $_POST['id']);
@@ -121,7 +123,7 @@ if (isset($_POST['action'])) {
             $reason = 'contratto';
             $description = "Rinnovo contratto - " . $userName;
             $transactionStmt = $conn->prepare("INSERT INTO finanze (tipo, importo, causale, descrizione, fk_id_item) VALUES (?, ?, ?, ?, ?)");
-            $transactionStmt->bind_param('sissi', $type, $salary, $reason, $description, $itemId);
+            $transactionStmt->bind_param('sissi', $type, $charge, $reason, $description, $itemId);
             $transactionStmt->execute();
 
             echo json_encode(array('renewContract' => true));
@@ -264,9 +266,10 @@ function newUser($image, $name, $surname, $dateOfBirth, $nationality, $email, $s
 
     $transactionType = 'uscita';
     $reason = 'contratto';
+    $charge = -($salary);
     $description = "Nuovo contratto - " . ucfirst($name).' '.ucfirst($surname);
     $transactionStmt = $conn->prepare("INSERT INTO finanze (tipo, importo, causale, descrizione, fk_id_item) VALUES (?, ?, ?, ?, ?)");
-    $transactionStmt->bind_param('sissi', $transactionType, $salary, $reason, $description, $itemId);
+    $transactionStmt->bind_param('sissi', $transactionType, $charge, $reason, $description, $itemId);
     $transactionStmt->execute();
 
     if($userSuccess > 0 && $contractSuccess > 0){
