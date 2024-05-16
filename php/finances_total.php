@@ -4,23 +4,20 @@
 
     // Query per ottenere il conteggio totale dello Transaction
     $totalAccountSql = "SELECT SUM(importo) as total FROM finanze";
-    $totalTransactionResult = $conn->query($totalTransactionSql);
-    $totalTransactionRow = $totalTransactionResult->fetch_assoc();
-    $totalTransaction = $totalTransactionRow['total'];
+    $totalAccountResult = $conn->query($totalAccountSql);
+    $totalAccountRow = $totalAccountResult->fetch_assoc();
+    $totalAccount = $totalAccountRow['total'];
 
     // Stampa il conteggio totale delle transazioni
-    echo'<div class="statistic" data-role-id="all">
-            <div class="statistic-icon">
-                <i class="bi bi-arrow-down-up"></i>
-            </div>
+    echo'<div class="statistic">
             <div class="statistic-data">
-                <h2><strong>'.$totalTransaction.'</strong></h2>
                 <p>All</p>
+                <h2><strong>€'.$totalAccount.'</strong></h2>
             </div>
         </div>';
 
-    $countSql = "SELECT tipo, COUNT(*) as contatore FROM finanze GROUP BY tipo";
-    $countResult = $conn->query($countSql);
+    $countEntrateSql = "SELECT tipo, SUM(importo) as contatore FROM finanze GROUP BY tipo";
+    $countResult = $conn->query($countEntrateSql);
 
     if ($countResult->num_rows > 0) {
         while($row = $countResult->fetch_assoc()) {
