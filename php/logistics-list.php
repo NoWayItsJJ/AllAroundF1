@@ -39,13 +39,13 @@ while($firstRow = $firstResult->fetch_assoc()) {
             $secondSql = "SELECT * FROM componenti WHERE id_componente = " . $firstRow["fk_id_item"];
             $secondResult = $conn->query($secondSql);
             $secondRow = $secondResult->fetch_assoc();
-            $itemDetails = ucfirst($secondRow['tipologia']) . " " . $secondRow['versione'];
+            $itemDetails = ucfirst($secondRow['tipologia']) . " v" . $secondRow['versione'];
         break;
         case "articolo":
             $secondSql = "SELECT * FROM articoli WHERE id_articolo = " . $firstRow["fk_id_item"];
             $secondResult = $conn->query($secondSql);
             $secondRow = $secondResult->fetch_assoc();
-            $itemDetails = ucfirst($secondRow['nome']) . " " . $secondRow['versione'];
+            $itemDetails = ucfirst($secondRow['tipologia']) . " - " . $secondRow['quantita'] . " pcs";
     }
     echo '<tr class="staff-list-row">
                 <td data-id="' . $firstRow["id_spostamento"] . '"><i class="'. $icon .'"></i></td>
