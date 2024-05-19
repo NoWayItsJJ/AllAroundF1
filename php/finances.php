@@ -58,6 +58,11 @@
                 </div>
             </div>
             <div class="dynamic-dashboard-card grid-col-span-3">
+            <div class="card-row">
+                <?php 
+                    include('finances_total.php'); 
+                ?>
+                </div>
             </div> 
             <div class="dynamic-dashboard-card grid-col-span-4 grid-row-span-5">
                 <div class="list">
