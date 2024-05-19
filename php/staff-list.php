@@ -41,15 +41,16 @@ if ($result->num_rows > 0) {
         $data_fine = new DateTime($row['data_fine']);
 
         echo '<div class="staff-list-row">
-                <input data-id="' . $row["id_utente"] . '" type="checkbox">
-                <img src="../img/utenti/' . $row['img'] . '" alt="">
-                <p>' . ucfirst($row['nome']) . ' ' . ucfirst($row['cognome']) . '</p>
-                <p>' . $row['email'] . '</p>
-                <p>' . ucfirst($row['nome_ruolo']) . '</p>
-                <p>' . $row['specializzazione'] . '</p>
-                <p>' . $row['stipendio'] . '</p>
-                <p>Available</p>
-                <p>' . $data_fine->format('d-m-Y') . '</p>
+                <span class="img-name" data-id="' . $row["id_utente"] . '">
+                    <img src="../img/utenti/' . $row['img'] . '" alt="">
+                    <p>' . ucfirst($row['nome']) . ' ' . ucfirst($row['cognome']) . '</p>
+                </span>
+                <span><p>' . $row['email'] . '</p></span>
+                <span><p>' . ucfirst($row['nome_ruolo']) . '</p></span>
+                <span><p>' . $row['specializzazione'] . '</p></span>
+                <span><p>Available</p></span>
+                <span><p>' . $row['stipendio'] . '</p></span>
+                <span><p>' . $data_fine->format('d-m-Y') . '</p></span>
               </div>';
     }
 } else {

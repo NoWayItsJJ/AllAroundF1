@@ -42,7 +42,7 @@
     <div id="screen-overlay" class="screen-overlay">
         <div id="popup" class="popup">
             <div class="popup-header">
-            <span class="popup-title"></span>
+                <h3 class="popup-title"></h3>
                 <i class="bi bi-x" onclick="closePopup()"></i>
             </div>
             <div id="popup-content" class="popup-content">
@@ -114,10 +114,11 @@
                     </div>
                     <div class="list-content">
                         <div class="table-header">
-                            <p><input type="checkbox"></p>
-                            <p>First Name</p>
-                            <p>Last Name</p>
+                            <p>Name</p>
+                            <p>Email</p>
                             <p>Position</p>
+                            <p>Specialization</p>
+                            <p>Status</p>
                             <p>Salary</p>
                             <p>Contract end</p>
                         </div>

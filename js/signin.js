@@ -125,7 +125,7 @@ $(document).ready(function() {
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            document.getElementById('user-img').src = "";
+            document.getElementById('user-img').src = "../img/utenti/user-default.jpg";
         }
     });
 

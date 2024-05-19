@@ -124,23 +124,33 @@ $(document).ready(function () {
 			case "newForm":
 				formContent = `
 					<form id="newForm" style="display: none;">
-						<div class="form-row">
+						<div class="form-row info-contract">
 							<div class="form-col">
-								<h3>Employee Info</h3>
-								<div>
-									<input id="newUserImage" type="file" name="image" placeholder="Image">
-									<input id="newUserName" type="text" name="name" placeholder="First Name">
-									<input id="newUserSurname" type="text" name="surname" placeholder="Last Name">
+								<h4>Employee Info</h4>
+								<div class="img-name">
+									<div class="img-new">
+										<img id="employee-img" src="../img/utenti/user-default.jpg" alt="">
+										<input type="file" id="fileInput" style="display: none;">
+										<div class="overlay" onclick="document.getElementById('fileInput').click()">
+											<i class="bi bi-plus"></i>
+										</div>
+									</div>
+									<div class="form-col">
+										<input id="newUserName" type="text" name="name" placeholder="First Name">
+										<input id="newUserSurname" type="text" name="surname" placeholder="Last Name">
+									</div>
 								</div>
-								<input id="newUserDateOfBirth" type="date" name="date-birth" placeholder="Date of birth">
-								<select id="newUserNationality" name="nationality" placeholder="Nationality">
-									<option value="" disabled selected>Nationality</option>
-								</select>
+								<div class="form-row">
+									<input id="newUserDateOfBirth" type="date" name="date-birth" placeholder="Date of birth">
+									<select id="newUserNationality" name="nationality" placeholder="Nationality">
+										<option value="" disabled selected>Nationality</option>
+									</select>
+								</div>
 								<input id="newUserEmail" type="text" name="email" placeholder="Email">
 								<input id="newUserSpec" type="text" name="specialization" placeholder="Specialization">
 							</div>
 							<div class="form-col">
-								<h3>Employee Contract</h3>
+								<h4>Employee Contract</h4>
 								<select id="newUserRole" type="text" name="role" placeholder="Position">
 									<option value="" disabled selected>Position</option>
 								</select>
@@ -149,9 +159,9 @@ $(document).ready(function () {
 								<input id="newUserBonus" type="text" name="bonus" placeholder="Bonus">
 							</div>
 						</div>
-						<div class="form-buttons">
-							<input type="reset" value="Reset">
-							<input id="newUserSubmit" type="button" value="Invia">
+						<div class="form-footer">
+							<button type="reset" class="button-primary red-button small-button">Cancel</button>
+							<button id="newUserSubmit" class="button-primary green-button small-button">Save</button>
 						</div>
 					</form>
 				`;
@@ -159,30 +169,34 @@ $(document).ready(function () {
 			case "fireForm":
 				formContent = `
 					<form id="fireForm" style="display: none;">
-						<div class="form-row">
+						<div class="form-row info-contract">
 							<div class="form-col">
-								<h3>Employee Info</h3>
-								<div>
-									<img src="" alt="">
-									<p id="currentName"></p>
-									<p id="currentSurname"></p>
+								<h4>Employee Info</h4>
+								<div class="img-name">
+									<div class="img-new">
+										<img id="employee-img" src="../img/utenti/user-default.jpg" alt="">
+									</div>
+									<div class="form-col">
+										<p id="currentName"></p>
+										<p id="currentSurname"></p>
+									</div>
 								</div>
-								<div class="form-row"><p id="current-date-birth"></p></div>
-								<div class="form-row"><p id="currentNationality"></p></div>
-								<div class="form-row"><p id="currentEmail"></p></div>
-								<div class="form-row"><p id="currentSpecialization"></p></div>
+								<div class="details-row"><p><strong>Birth date</strong></p><p id="current-date-birth"></p></div>
+								<div class="details-row"><p><strong>Nationality</strong></p><p id="currentNationality"></p></div>
+								<div class="details-row"><p><strong>Email</strong></p><p id="currentEmail"></p></div>
+								<div class="details-row"><p><strong>Specialization</strong></p><p id="currentSpecialization"></p></div>
 							</div>
 							<div class="form-col">
-								<h3>Employee Contract</h3>
-								<div class="form-info"><p id="currentRole"></p></div>
-								<div class="form-info"><p id="currentSalary"></p></div>
-								<div class="form-info"><p id="current-contract-end"></p></div>
-								<div class="form-info"><p id="currentBonus"></p></div>
+								<h4>Employee Contract</h4>
+								<div class="details-row"><p><strong>Position</strong></p><p id="currentRole"></p></div>
+								<div class="details-row"><p><strong>Salary</strong></p><p id="currentSalary"></p></div>
+								<div class="details-row"><p><strong>Contract end</strong> end</p><p id="current-contract-end"></p></div>
+								<div class="details-row"><p><strong>Bonus</strong></p><p id="currentBonus"></p></div>
 							</div>
 						</div>
-						<div class="form-buttons">
-							<button class="button-primary red-button button-max-width">Cancel</button>
-							<input id="fireFormSubmit" class="button-primary green-button button-max-width" type="submit" value="Fire">
+						<div class="form-footer">
+							<button class="button-outline button-max-width">Cancel</button>
+							<input id="fireFormSubmit" class="button-primary red-button button-max-width" type="submit" value="Fire">
 						</div>
 					</form>
 				`;
@@ -190,37 +204,43 @@ $(document).ready(function () {
 			case "renewForm":
 				formContent = `
 					<form id="renewForm" style="display: none;">
-						<div class="form-row">
+						<div class="form-row info-contract">
 							<div class="form-col">
-								<h3>Employee Info</h3>
-								<div>
-									<img src="" alt="">
-									<p id="currentName"></p>
-									<p id="currentSurname"></p>
+								<h4>Employee Info</h4>
+								<div class="img-name">
+									<div class="img-new">
+										<img id="employee-img" src="../img/utenti/user-default.jpg" alt="">
+									</div>
+									<div class="form-col">
+										<p id="currentName"></p>
+										<p id="currentSurname"></p>
+									</div>
 								</div>
-								<div class="form-row"><p id="current-date-birth"></p></div>
-								<div class="form-row"><p id="currentNationality"></p></div>
-								<div class="form-row"><p id="currentEmail"></p></div>
-								<div class="form-row"><p id="currentSpecialization"></p></div>
+								<div class="details-row"><p><strong>Birth date</strong></p><p id="current-date-birth"></p></div>
+								<div class="details-row"><p><strong>Nationality</strong></p><p id="currentNationality"></p></div>
+								<div class="details-row"><p><strong>Email</strong></p><p id="currentEmail"></p></div>
+								<div class="details-row"><p><strong>Specialization</strong></p><p id="currentSpecialization"></p></div>
 							</div>
 							<div class="form-col">
-								<h3>Employee Contract</h3>
-								<div class="form-info"><p id="currentRole"></p></div>
-								<div class="form-info"><p id="currentSalary"></p></div>
-								<div class="form-info"><p id="current-contract-end"></p></div>
-								<div class="form-info"><p id="currentBonus"></p></div>
+								<h4>Employee Contract</h4>
+								<div class="details-row"><p><strong>Position</strong></p><p id="currentRole"></p></div>
+								<div class="details-row"><p><strong>Salary</strong></p><p id="currentSalary"></p></div>
+								<div class="details-row"><p><strong>Contract end</strong> end</p><p id="current-contract-end"></p></div>
+								<div class="details-row"><p><strong>Bonus</strong></p><p id="currentBonus"></p></div>
 							</div>
 						</div>
 						<div id="form-more-info" style="display: none;">
-							<div class="form-col">
-								<h3>New contract</h3>
-								<select id="newUserRole" type="text" name="currentRole" placeholder="Position">
-								<input id="updatedSalary" type="text" name="salary" placeholder="Salary">
-								<input id="updatedEnd" type="date" name="contract-end" placeholder="Contract end">
-								<input id="updatedBonus" type="text" name="bonus" placeholder="Bonus">
+							<div class="form-row">
+								<div class="form-col">
+									<h4>New contract</h4>
+									<select id="newUserRole" type="text" name="currentRole" placeholder="Position">
+									<input id="updatedSalary" type="text" name="salary" placeholder="Salary">
+									<input id="updatedEnd" type="date" name="contract-end" placeholder="Contract end">
+									<input id="updatedBonus" type="text" name="bonus" placeholder="Bonus">
+								</div>
 							</div>
 						</div>
-						<div class="form-buttons">
+						<div class="form-footer">
 							<button class="button-primary red-button button-max-width">Cancel</button>
 							<button class="button-outline button-max-width" onclick="showMoreInfo(event)">Change</button>
 							<input id="renewFormSubmit" class="button-primary green-button button-max-width" type="submit" value="Renew">
@@ -261,6 +281,19 @@ $(document).ready(function () {
 		$("#" + formType).css("display", "block");
 
 		$("#screen-overlay").addClass("open-overlay");
+
+		document.getElementById('fileInput').addEventListener('change', function(e) {
+			var file = e.target.files[0];
+			var reader = new FileReader();
+			reader.onloadend = function() {
+				document.getElementById('employee-img').src = reader.result;
+			}
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				document.getElementById('employee-img').src = "../img/utenti/user-default.jpg";
+			}
+		});
 	});
 
 	$(".bi-x").click(function () {
@@ -320,30 +353,16 @@ function displayUserDetails(id_received) {
 		dataType: "json",
 		success: function (response) {
 			console.log(response);
-			$("#currentName").append("<strong>" + ucfirst(response.user.nome) + "</strong>");
-			$("#currentSurname").append(
-				"<strong>" + ucfirst(response.user.cognome) + "</strong>"
-			);
-			$("#current-date-birth").append(
-				"<strong>" + response.user.data_nascita + "</strong>"
-			);
-			$("#currentNationality").append(
-				"<strong>" + ucfirst(response.user.nome_nazionalita) + "</strong>"
-			);
-			$("#currentEmail").append("<strong>" + response.user.email + "</strong>");
-			$("#currentSpecialization").append(
-				"<strong>" + ucfirst(response.user.specializzazione) + "</strong>"
-			);
-			$("#currentRole").append(
-				"<strong>" + ucfirst(response.user.nome_ruolo) + "</strong>"
-			);
-			$("#currentSalary").append(
-				"<strong>" + response.user.stipendio + "</strong>"
-			);
-			$("#current-contract-end").append(
-				"<strong>" + response.user.data_fine + "</strong>"
-			);
-			$("#currentBonus").append("<strong>" + response.user.bonus + "</strong>");
+			$("#currentName").append(ucfirst(response.user.nome));
+			$("#currentSurname").append(ucfirst(response.user.cognome));
+			$("#current-date-birth").append(response.user.data_nascita);
+			$("#currentNationality").append(ucfirst(response.user.nome_nazionalita));
+			$("#currentEmail").append(response.user.email);
+			$("#currentSpecialization").append(ucfirst(response.user.specializzazione));
+			$("#currentRole").append(ucfirst(response.user.nome_ruolo));
+			$("#currentSalary").append(response.user.stipendio);
+			$("#current-contract-end").append(response.user.data_fine);
+			$("#currentBonus").append(response.user.bonus);
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
 			console.error("Error:", textStatus, errorThrown);

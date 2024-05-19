@@ -36,6 +36,36 @@
 		grid-row: span 7;
 	}
 
+	.screen-overlay{
+		.popup{
+			.popup-content{
+	
+				form{
+					.form-row{
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						align-items: center;
+						gap: 16px;
+						width: 100%;
+						margin: 16px 0;
+	
+						.form-col{
+							display: flex;
+							flex-direction: column;
+							justify-content: start;
+							align-items: start;
+							gap: 8px;
+							width: 100%;
+	
+						}
+					}
+				}
+			}
+			
+		}
+	}
+
 
 	.dynamic-dashboard-card {
 		background-color: var(--primary-color);
@@ -274,7 +304,6 @@
 					display: flex;
 					justify-content: start;
 					align-items: center;
-					gap: 32px;
 					width: calc(100% - 48px);
 					margin: 0 24px;
 					height: 32px;
@@ -283,6 +312,15 @@
 						text-align: left;
 						font-size: 16px;
 						color: var(--yellow-text-color);
+						white-space: nowrap;
+					}
+
+					p:nth-child(1) {
+						width: 20%;
+					}
+
+					p:nth-child(n+2) {
+						width: 15%;
 					}
 				}
 
@@ -300,23 +338,48 @@
 						width: 100%;
 						height: 54px;
 						padding: 0 24px;
-						gap: 32px;
 
-						img{
-							width: 38px;
-							height: 38px;
-							border-radius: 50%;
+						.img-name{
+							display: flex;
+							justify-content: start;
+							align-items: center;
+							flex-direction: row;
+							gap: 16px;
+
+							img{
+								width: 38px;
+								height: 38px;
+								border-radius: 50%;
+							}
 						}
 
 						p {
 							text-align: left;
 							font-size: 16px;
 							color: var(--white-text-color);
+							white-space: nowrap;
+							overflow: hidden;
+    						text-overflow: ellipsis;
+						}
+	
+						span:nth-child(1) {
+							width: 20%;
+						}
+	
+						span:nth-child(n+2) {
+							width: 15%;
 						}
 
 						&:hover {
-							background-color: var(--secondary-text-color);
-							color: var(--primary-color);
+							background-color: #00000029;
+						}
+						
+						&:nth-child(odd) {
+							background-color: #00000016;
+
+							&:hover {
+								background-color: #00000029;
+							}
 						}
 					}
 				}
