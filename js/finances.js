@@ -21,6 +21,7 @@ $(document).ready(function () {
 					itemDetails.push(response.item[key]);
 				}
 				if (response.getDetails) {
+					$("#no-result").css("display", "none");
 					$("#detailsBlock").css("display", "");
 					$("#transactionId").val(transactionId);
 					$("#itemId").val(response.details.fk_id_item);
@@ -62,21 +63,17 @@ $(document).ready(function () {
 		});
 	});
 
-	$(".statistic").first().find(".statistic-icon").addClass("active");
+	$(".statistic").first().addClass("active");
 
 	$(document).on("click", ".statistic", function () {
 		var search = $("#search").val();
 		var transaction = $(this).data("transaction-name");
 
-		$(".statistic-icon").each(function () {
+		$(".statistic").each(function () {
 			$(this).removeClass("active");
 		});
 
-		$(this)
-			.find(".statistic-icon")
-			.each(function () {
-				$(this).addClass("active");
-			});
+		$(this).addClass("active");
 
 		$.ajax({
 			url: "finances-list.php",

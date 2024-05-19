@@ -9,10 +9,14 @@
     $totalAccount = $totalAccountRow['total'];
 
     // Stampa il conteggio totale delle transazioni
-    echo'<div class="statistic">
-            <div class="statistic-data">
-                <p>All</p>
-                <h2><strong>€'.$totalAccount.'</strong></h2>
+    echo'
+        <div class="card">
+            <div class="card-icon">
+                <i class="bi bi-arrow-down-up"></i>
+            </div>
+            <div class="card-data">
+                <p>Total budget</p>
+                <span>'.$totalAccount.'€</span>
             </div>
         </div>';
 
@@ -33,13 +37,14 @@
                 $icon = 'bi-arrow-left-right';
             }
 
-            echo'<div class="statistic" data-transaction-name="'.$tipoTransazione.'">
-                    <div class="statistic-icon">
+            echo'
+                <div class="card">
+                    <div class="card-icon">
                         <i class="bi '.$icon.'"></i>
                     </div>
-                    <div class="statistic-data">
-                        <h2><strong>'.$numTransaction.'</strong></h2>
-                        <p>'.$tipoTransazione.'</p>
+                    <div class="card-data">
+                        <p>Total '.$tipoTransazione.'</p>
+                        <span>'.$numTransaction.'€</span>
                     </div>
                 </div>';
         }

@@ -14,7 +14,6 @@
                 <i class="bi bi-arrow-down-up"></i>
             </div>
             <div class="statistic-data">
-                <h2><strong>'.$totalTransaction.'</strong></h2>
                 <p>All</p>
             </div>
         </div>';
@@ -41,8 +40,7 @@
                         <i class="bi '.$icon.'"></i>
                     </div>
                     <div class="statistic-data">
-                        <h2><strong>'.$numTransaction.'</strong></h2>
-                        <p>'.$tipoTransazione.'</p>
+                        <p>'.$tipoTransazione.' '.$numTransaction.'</p>
                     </div>
                 </div>';
         }
