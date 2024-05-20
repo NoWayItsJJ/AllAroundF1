@@ -77,6 +77,7 @@
                     </div>
                     <div class="list-content">
                         <div class="table-header">
+                            <p>Transaction</p>
                             <p>Amount</p>
                             <p>Reason</p>
                             <p>Description</p>
@@ -98,9 +99,9 @@
             </div>
             <div class="dynamic-dashboard-card grid-row-span-7">
                 <div id="tab-details" class="tab-details">
-                    <h3>Employee details</h3>
+                    <h3>Transaction details</h3>
                     <div id="no-result" class="zero-result" style="display: flex;">
-                        <p>Select an employee to see more details</p>
+                        <p>Select a transaction to see more details</p>
                     </div>
                     <div class="details" id="detailsBlock" style="display: none;">
                         <div class="details-header">
@@ -131,12 +132,7 @@
                                 </div>
                             </div>
                             <h4>More Info</h4>
-                            <div id="contract-info">
-                            </div>
-                        </div>
-                        <div class="details-footer">
-                            <button class="button-primary red-button button-max-width popup-open" data-form-type="fireForm" data-header="Fire employee">Fire</button>
-                            <button class="button-primary green-button button-max-width popup-open" data-form-type="renewForm" data-header="Renew contract">Renew</button>
+                            <div id="contract-info"></div>
                         </div>
                     </div>
                 </div>

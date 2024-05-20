@@ -71,7 +71,15 @@
                                 </div>
                                 <div class="card-data">
                                     <p>Total employees</p>
-                                    <span>8</span>
+                                    <span>
+                                        <?php
+                                            include 'db.php';
+                                            $sql = "SELECT COUNT(*) AS total FROM utenti WHERE fk_id_ruolo != 5";
+                                            $result = mysqli_query($conn, $sql);
+                                            $data = mysqli_fetch_assoc($result);
+                                            echo $data['total'];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
@@ -80,7 +88,15 @@
                                 </div>
                                 <div class="card-data">
                                     <p>Available employees</p>
-                                    <span>8</span>
+                                    <span>
+                                    <?php
+                                            include 'db.php';
+                                            $sql = "SELECT COUNT(*) AS available FROM utenti WHERE fk_id_ruolo != 5 AND occupato = 0";
+                                            $result = mysqli_query($conn, $sql);
+                                            $data = mysqli_fetch_assoc($result);
+                                            echo $data['available'];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
@@ -89,7 +105,15 @@
                                 </div>
                                 <div class="card-data">
                                     <p>Ending contracts</p>
-                                    <span>8</span>
+                                    <span>
+                                    <?php
+                                            include 'db.php';
+                                            $sql = "SELECT COUNT(*) AS ending FROM contratti WHERE data_fine <= DATE_ADD(CURDATE(), INTERVAL 1 MONTH)";
+                                            $result = mysqli_query($conn, $sql);
+                                            $data = mysqli_fetch_assoc($result);
+                                            echo $data['ending'];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
@@ -98,7 +122,15 @@
                                 </div>
                                 <div class="card-data">
                                     <p>Total salaries</p>
-                                    <span>8</span>
+                                    <span>
+                                    <?php
+                                            include 'db.php';
+                                            $sql = "SELECT SUM(stipendio) AS total_salary FROM contratti";
+                                            $result = mysqli_query($conn, $sql);
+                                            $data = mysqli_fetch_assoc($result);
+                                            echo $data['total_salary'];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
