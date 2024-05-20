@@ -14,7 +14,6 @@
                 <i class="bi bi-people"></i>
             </div>
             <div class="statistic-data">
-                <h2><strong>'.$totalMoving.'</strong></h2>
                 <p>All</p>
             </div>
         </div>';
@@ -43,8 +42,7 @@
                         <i class="bi '.$icon.'"></i>
                     </div>
                     <div class="statistic-data">
-                        <h2><strong>'.$numType.'</strong></h2>
-                        <p>'.$tipoItem.'</p>
+                        <p>'.$tipoItem.' '.$numType.'</p>
                     </div>
                 </div>';
         }

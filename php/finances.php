@@ -80,10 +80,6 @@
                             <p>Amount</p>
                             <p>Reason</p>
                             <p>Description</p>
-                            <p>Specialization</p>
-                            <p>Status</p>
-                            <p>Salary</p>
-                            <p>Contract end</p>
                         </div>
                         <div id="list-result" class="table-body scrollable-section">
                             <?php include 'finances-list.php'; ?>

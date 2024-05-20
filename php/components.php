@@ -1,7 +1,7 @@
 <?php include 'security.php'; ?>
 <html>
 <head>
-    <title>Ferrari Logistics</title>
+    <title>Ferrari Components</title>
     <link rel="icon" href="../img/logo/white-horse.svg" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../js/logistics.js"></script>
+    <script src="../js/components.js"></script>
 </head>
 <body>
     <nav>
@@ -56,11 +56,11 @@
                         <div class="title">
                             <div class="title-text">
                                 <i class="bi bi-people"></i>
-                                <h2>Logistics</h2>
+                                <h2>Components</h2>
                             </div>
-                            <p>Manage the logistics of the Scuderia Ferrari</p>
+                            <p>Manage the components of the Scuderia Ferrari</p>
                         </div>
-                        <button class="button-primary button-squadrato popup-open" data-form-type="newForm" data-header="New shift"><i class="bi bi-plus"></i>New shift</button>
+                        <button class="button-primary button-squadrato popup-open" data-form-type="newForm" data-header="New component"><i class="bi bi-plus"></i>New component</button>
                     </div>
                     <div class="list-card">
                         <div class="big-card">
@@ -103,7 +103,7 @@
                         </div>
                         <div class="filter-card">
                             <div class="card-row">
-                                <?php include('logistics_count.php'); ?>
+                                <?php //include('components_count.php'); ?>
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
@@ -120,7 +120,7 @@
                             <p>Arrival date</p>
                         </div>
                         <div id="list-result" class="table-body scrollable-section">
-                            <?php include 'logistics-list.php'; ?>
+                            <?php //include 'components-list.php'; ?>
                         </div>
                     </div>
                 </div>
@@ -136,9 +136,9 @@
             </div>
             <div class="dynamic-dashboard-card grid-row-span-7">
                 <div id="tab-details" class="tab-details">
-                    <h3>Shift details</h3>
+                    <h3>Component details</h3>
                     <div id="no-result" class="zero-result" style="display: flex;">
-                        <p>Select a shift to see more details</p>
+                        <p>Select a component to see more details</p>
                     </div>
                     <div class="details" id="detailsBlock" style="display: none;">
                         <div class="details-header">

@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
+    <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
 </head>
 <body>
     <nav>
@@ -34,6 +35,17 @@
             </ul>
         </div>
     </nav>
-    
+    <section id="dynamic-dashboard">
+        <div class="dynamic-dashboard-grid marketing"> 
+            <div class="dynamic-dashboard-card grid-col-span-3 grid-row-span-6">
+            </div>
+            <div class="dynamic-dashboard-card grid-col-span-3 grid-row-span-2">
+            </div>
+            <div class="dynamic-dashboard-card grid-col-span-3 grid-row-span-6">
+            </div>
+            <div class="dynamic-dashboard-card grid-col-span-3 grid-row-span-2">
+            </div>
+        </div>
+    </section>
 </body>
 </html>

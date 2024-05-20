@@ -47,14 +47,14 @@ while($firstRow = $firstResult->fetch_assoc()) {
             $secondRow = $secondResult->fetch_assoc();
             $itemDetails = ucfirst($secondRow['tipologia']) . " - " . $secondRow['quantita'] . " pcs";
     }
-    echo '<tr class="staff-list-row">
-                <td data-id="' . $firstRow["id_spostamento"] . '"><i class="'. $icon .'"></i></td>
-                <td>' . $itemDetails . '</td>
-                <td>' . ucfirst($firstRow['partenza']) . '</td>
-                <td>' . ucfirst($firstRow['destinazione']) . '</td>
-                <td>' . $firstRow['data_partenza'] . '</td>
-                <td>' . $firstRow['data_arrivo'] . '</td>
-              </tr>';
+    echo '<div class="staff-list-row">
+                <span data-id="' . $firstRow["id_spostamento"] . '"><i class="'. $icon .'"></i></span>
+                <span><p>' . $itemDetails . '</p></span>
+                <span><p>' . ucfirst($firstRow['partenza']) . '</p></span>
+                <span><p>' . ucfirst($firstRow['destinazione']) . '</p></span>
+                <span><p>' . $firstRow['data_partenza'] . '</p></span>
+                <span><p>' . $firstRow['data_arrivo'] . '</p></span>
+              </div>';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $roleId != '') {
