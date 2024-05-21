@@ -144,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="list-content">
+                    <div class="list-content scrollable-section">
                         <div class="table-header">
                             <p>Name</p>
                             <p>Email</p>
@@ -154,7 +154,7 @@
                             <p>Salary</p>
                             <p>Contract end</p>
                         </div>
-                        <div id="list-result" class="table-body scrollable-section">
+                        <div id="list-result" class="table-body">
                             <?php include './staff/staff-list.php'; ?>
                         </div>
                     </div>

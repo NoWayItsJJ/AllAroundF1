@@ -75,14 +75,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="list-content">
+                    <div class="list-content scrollable-section">
                         <div class="table-header">
                             <p>Transaction</p>
                             <p>Amount</p>
                             <p>Reason</p>
                             <p>Description</p>
                         </div>
-                        <div id="list-result" class="table-body scrollable-section">
+                        <div id="list-result" class="table-body">
                             <?php include './finances/finances-list.php'; ?>
                         </div>
                     </div>

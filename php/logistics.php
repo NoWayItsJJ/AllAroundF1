@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="list-content">
+                    <div class="list-content scrollable-section">
                         <div class="table-header">
                             <p>Moved</p>
                             <p>From</p>
@@ -119,7 +119,7 @@
                             <p>Departure date</p>
                             <p>Arrival date</p>
                         </div>
-                        <div id="list-result" class="table-body scrollable-section">
+                        <div id="list-result" class="table-body">
                             <?php include './logistics/logistics-list.php'; ?>
                         </div>
                     </div>
