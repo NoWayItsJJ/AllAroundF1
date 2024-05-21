@@ -1,0 +1,7 @@
+.fa-arrow-trend-up {
+  color: var(--success-color);
+}
+
+.fa-arrow-trend-down {
+  color: var(--error-color);
+}

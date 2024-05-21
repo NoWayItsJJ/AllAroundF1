@@ -12,7 +12,7 @@
     echo'
         <div class="card">
             <div class="card-icon">
-                <i class="bi bi-arrow-down-up"></i>
+                <i class="fa-regular fa-building-columns"></i>
             </div>
             <div class="card-data">
                 <p>Total budget</p>
@@ -30,17 +30,17 @@
 
             $icon = '';
             if ($tipoTransazione == 'entrata') {
-                $icon = 'bi-arrow-down';
+                $icon = '<i class="fa-regular fa-arrow-trend-up"></i>';
             } elseif($tipoTransazione == 'uscita') {
-                $icon = 'bi-arrow-up';
+                $icon = '<i class="fa-regular fa-arrow-trend-down"></i>';
             } else {
-                $icon = 'bi-arrow-left-right';
+                $icon = '<i class="fa-regular fa-money-bill"></i>';
             }
 
             echo'
                 <div class="card">
                     <div class="card-icon">
-                        <i class="bi '.$icon.'"></i>
+                        '.$icon.'
                     </div>
                     <div class="card-data">
                         <p>Total '.$tipoTransazione.'</p>

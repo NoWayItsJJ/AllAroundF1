@@ -82,16 +82,16 @@ $(document).ready(function() {
         }
     });
 
-    $('.bi-eye-slash').click(function() {
+    $('.fa-eye-slash').click(function() {
         var passwordInput = $('#password');
         var passwordType = passwordInput.attr('type');
 
         if (passwordType === 'password') {
             passwordInput.attr('type', 'text');
-            $(this).removeClass('bi-eye-slash').addClass('bi-eye');
+            $(this).removeClass('fa-eye-slash').addClass('fa-eye');
         } else {
             passwordInput.attr('type', 'password');
-            $(this).removeClass('bi-eye').addClass('bi-eye-slash');
+            $(this).removeClass('fa-eye').addClass('fa-eye-slash');
         }
     });
 });

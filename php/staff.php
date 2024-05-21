@@ -27,13 +27,13 @@
             <ul>
                 <li>
                     <a href="./logout.php">
-                        <i class="bi bi-box-arrow-right"></i>
+                        <i class="fa-regular fa-arrow-right-from-bracket"></i>
                         <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
                     <a href="./account-backend.php">
-                        <i class="bi bi-person"></i>
+                        <i class="fa-regular fa-user"></i>
                         <span class="nav-text">Account</span>
                     </a>
                 </li>
@@ -44,7 +44,7 @@
         <div id="popup" class="popup">
             <div class="popup-header">
                 <h3 class="popup-title"></h3>
-                <i class="bi bi-x" onclick="closePopup()"></i>
+                <i class="fa-regular fa-xmark" onclick="closePopup()"></i>
             </div>
             <div id="popup-content" class="popup-content">
             </div>
@@ -57,18 +57,18 @@
                     <div class="list-header">
                         <div class="title">
                             <div class="title-text">
-                                <i class="bi bi-people"></i>
+                                <i class="fa-regular fa-user-group"></i>
                                 <h2>Staff</h2>
                             </div>
                             <p>Manage the staff of the Scuderia Ferrari</p>
                         </div>
-                        <button class="button-primary button-squadrato popup-open" data-form-type="newForm" data-header="New employee"><i class="bi bi-plus"></i>New employee</button>
+                        <button class="button-primary button-squadrato popup-open" data-form-type="newForm" data-header="New employee"><i class="fa-regular fa-user-plus"></i>New employee</button>
                     </div>
                     <div class="list-card">
                         <div class="big-card">
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="fa-regular fa-user-group"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Total employees</p>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-person-check"></i>
+                                    <i class="fa-regular fa-user-check"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Available employees</p>
@@ -102,7 +102,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-person-exclamation"></i>
+                                    <i class="fa-regular fa-person-circle-exclamation"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Ending contracts</p>
@@ -119,7 +119,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-coin"></i>
+                                    <i class="fa-regular fa-money-check-dollar-pen"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Total salaries</p>
@@ -141,7 +141,7 @@
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
-                                <i class="bi bi-search"></i>
+                                <i class="fa-regular fa-magnifying-glass"></i>
                             </div>
                         </div>
                     </div>
@@ -172,7 +172,10 @@
             </div>
             <div class="dynamic-dashboard-card grid-row-span-7">
                 <div id="tab-details" class="tab-details">
-                    <h3>Employee details</h3>
+                    <div class="tab-details-title">
+                        <i class="fa-regular fa-user-magnifying-glass"></i>
+                        <h3>Employee details</h3>
+                    </div>
                     <div id="no-result" class="zero-result" style="display: flex;">
                         <p>Select an employee to see more details</p>
                     </div>

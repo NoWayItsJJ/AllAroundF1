@@ -29,9 +29,9 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $icon = $row['tipo'] == 'uscita' ? 'bi-arrow-up' : 'bi-arrow-down';
+        $icon = $row['tipo'] == 'uscita' ? '<i class="fa-regular fa-arrow-trend-down"></i>' : '<i class="fa-regular fa-arrow-trend-up"></i>';
         echo '<div class="staff-list-row">
-                <span data-id="' . $row["id_transazione"] . '"><i class="bi '. $icon .'"></i></span>
+                <span data-id="' . $row["id_transazione"] . '">'. $icon .'</span>
                 <span><p>' . $row['importo'] . '</p></span>
                 <span><p>' . $row['causale'] . '</p></span>
                 <span><p>' . $row['descrizione'] . '</p></span>

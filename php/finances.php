@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
     <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../css/finances.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -26,13 +27,13 @@
             <ul>
                 <li>
                     <a href="./logout.php">
-                        <i class="bi bi-box-arrow-right"></i>
+                        <i class="fa-regular fa-arrow-right-from-bracket"></i>
                         <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
                     <a href="./account-backend.php">
-                        <i class="bi bi-person"></i>
+                        <i class="fa-regular fa-user"></i>
                         <span class="nav-text">Account</span>
                     </a>
                 </li>
@@ -56,7 +57,7 @@
                     <div class="list-header">
                         <div class="title">
                             <div class="title-text">
-                                <i class="bi bi-currency-exchange"></i>
+                                <i class="fa-regular fa-chart-mixed-up-circle-dollar"></i>
                                 <h2>Finances</h2>
                             </div>
                             <p>Manage the finances of the Scuderia Ferrari</p>
@@ -72,7 +73,7 @@
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
-                                <i class="bi bi-search"></i>
+                                <i class="fa-regular fa-magnifying-glass"></i>
                             </div>
                         </div>
                     </div>
@@ -100,14 +101,17 @@
             </div>
             <div class="dynamic-dashboard-card grid-row-span-7">
                 <div id="tab-details" class="tab-details">
-                    <h3>Transaction details</h3>
+                    <div class="tab-details-title">
+                        <i class="fa-regular fa-landmark-magnifying-glass"></i>
+                        <h3>Transaction details</h3>
+                    </div>
                     <div id="no-result" class="zero-result" style="display: flex;">
                         <p>Select a transaction to see more details</p>
                     </div>
                     <div class="details" id="detailsBlock" style="display: none;">
                         <div class="details-header">
                             <div class="item-img">
-                                <i class="bi bi-person"></i><!-- mettere l icona del senso della tranzazione con colore e amount in grande-->
+                                <i class=""></i><!-- mettere l icona del senso della tranzazione con colore e amount in grande-->
                             </div>
                         </div>
                         <div class="details-content scrollable-section">

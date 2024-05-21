@@ -66,10 +66,10 @@ $(document).ready(function() {
 
         $('#passwordCriteria').html(
             'Create a password that:<br>' +
-            (hasEightCharacters ? '<span class="text-green"><i class="bi bi-check"></i> contains at least 8 characters</span><br>' : '<span class="text-red"><i class="bi bi-x"></i> contains at least 8 characters</span><br>') +
-            (hasLowerAndUpperCase ? '<span class="text-green"><i class="bi bi-check"></i> contains both lower (a-z) and upper case letters (A-Z)</span><br>' : '<span class="text-red"><i class="bi bi-x"></i> contains both lower (a-z) and upper case letters (A-Z)</span><br>') +
-            (hasNumberOrSymbol ? '<span class="text-green"><i class="bi bi-check"></i> contains at least one number (0-9) or a symbol</span><br>' : '<span class="text-red"><i class="bi bi-x"></i> contains at least one number (0-9) or a symbol</span><br>') +
-            (doesNotContainEmail ? '<span class="text-green"><i class="bi bi-check"></i> does not contain your email address</span><br>' : '<span class="text-red"><i class="bi bi-x"></i> does not contain your email address</span><br>')
+            (hasEightCharacters ? '<span class="text-green"><i class="fa-regular fa-check"></i> contains at least 8 characters</span><br>' : '<span class="text-red"><i class="fa-regular fa-xmark"></i> contains at least 8 characters</span><br>') +
+            (hasLowerAndUpperCase ? '<span class="text-green"><i class="fa-regular fa-check"></i> contains both lower (a-z) and upper case letters (A-Z)</span><br>' : '<span class="text-red"><i class="fa-regular fa-xmark"></i> contains both lower (a-z) and upper case letters (A-Z)</span><br>') +
+            (hasNumberOrSymbol ? '<span class="text-green"><i class="fa-regular fa-check"></i> contains at least one number (0-9) or a symbol</span><br>' : '<span class="text-red"><i class="fa-regular fa-xmark"></i> contains at least one number (0-9) or a symbol</span><br>') +
+            (doesNotContainEmail ? '<span class="text-green"><i class="fa-regular fa-check"></i> does not contain your email address</span><br>' : '<span class="text-red"><i class="fa-regular fa-xmark"></i> does not contain your email address</span><br>')
         );
     });
     
@@ -223,16 +223,16 @@ $(document).ready(function() {
     });
 
 
-    $('.bi-eye-slash').click(function() {
+    $('.fa-eye-slash').click(function() {
         var passwordInput = $('#password');
         var passwordType = passwordInput.attr('type');
 
         if (passwordType === 'password') {
             passwordInput.attr('type', 'text');
-            $(this).removeClass('bi-eye-slash').addClass('bi-eye');
+            $(this).removeClass('fa-eye-slash').addClass('fa-eye');
         } else {
             passwordInput.attr('type', 'password');
-            $(this).removeClass('bi-eye').addClass('bi-eye-slash');
+            $(this).removeClass('fa-eye').addClass('fa-eye-slash');
         }
     });
 

@@ -4,7 +4,7 @@
 
     echo'<div class="statistic" data-role-id="all">
             <div class="statistic-icon">
-                <i class="bi bi-people"></i>
+                <i class="fa-regular fa-user-group"></i>
             </div>
             <div class="statistic-data">
                 <p>All</p>
@@ -34,22 +34,24 @@
             $idruolo = $row['id_ruolo'];
 
             $icon = '';
-            if ($nomeruolo == 'marketing') {
-                $icon = 'bi-shield-lock';
+            if ($nomeruolo == 'dirigente') {
+                $icon = '<i class="fa-regular fa-user-secret"></i>';
+            } elseif ($nomeruolo == 'marketing') {
+                $icon = '<i class="fa-regular fa-bullhorn"></i>';
             } elseif ($nomeruolo == 'pilota') {
-                $icon = 'bi-pencil-square';
+                $icon = '<i class="fa-kit fa-driver-helmet"></i>';
             } elseif ($nomeruolo == 'amministrazione') {
-                $icon = 'bi-person-gear';
+                $icon = '<i class="fa-regular fa-user-tie-hair"></i>';
             } elseif ($nomeruolo == 'Ingegneri') {
-                $icon = 'bi-person-gear';
+                $icon = '<i class="fa-regular fa-user-helmet-safety"></i>';
             } else {
-                $icon = 'bi-people';
+                $icon = '<i class="fa-regular fa-user"></i>';
             }
                 
 
             echo'<div class="statistic" data-role-id="'.$idruolo.'">
                     <div class="statistic-icon">
-                        <i class="bi '.$icon.'"></i>
+                        '.$icon.'
                     </div>
                     <div class="statistic-data">
                         <p>'.$nomeruolo.' <strong>'.$numstaff.'</strong></p>

@@ -30,13 +30,13 @@
             <ul>
                 <li>
                     <a href="./logout.php">
-                        <i class="bi bi-box-arrow-right"></i>
+                        <i class="fa-regular fa-arrow-right-from-bracket"></i>
                         <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
                     <a href="./account-backend.php">
-                        <i class="bi bi-person"></i>
+                        <i class="fa-regular fa-user"></i>
                         <span class="nav-text">Account</span>
                     </a>
                 </li>
@@ -47,7 +47,7 @@
         <div class="dashboard-grid">
             <div class="dashboard-card red grid-col-span-2">
                 <div class="card-header" onclick="window.location.href='calendar.php';">
-                    <i class="bi bi-calendar-week"></i>
+                    <i class="fa-regular fa-calendar-lines"></i>
                     <h4>Calendar</h4>
                 </div>
                 <div class="card-content">
@@ -80,84 +80,85 @@
                 </div>
                 <div class="card-footer">
                     <div class="card-link" onclick="window.location.href='calendar.php';">
-                        <i class="bi bi-arrow-down-right"></i>
+                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
             <div class="dashboard-card">
                 <div class="card-header" onclick="window.location.href='finances.php';">
-                    <i class="bi bi-currency-exchange"></i>
+                    <i class="fa-regular fa-chart-mixed-up-circle-dollar"></i>
                     <h4>Finances</h4>
                 </div>
                 <div class="card-content">
                 </div>
                 <div class="card-footer">
                     <div class="card-link">
-                        <i class="bi bi-arrow-down-right"></i>
+                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
             <div class="dashboard-card grid-row-span-2" onclick="window.location.href='staff.php';">
                 <div class="card-header">
-                    <i class="bi bi-people"></i>
+                    <i class="fa-regular fa-user-group"></i>
                     <h4>Staff</h4>
                 </div>
                 <div class="card-content">
                 </div>
                 <div class="card-footer">
-                    <div class="card-link" onclick="window.location.href='finances.php';">
-                        <i class="bi bi-arrow-down-right"></i>
+                    <div class="card-link" onclick="window.location.href='staff.php';">
+                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
             <div class="dashboard-card grid-row-span-2">
                 <div class="card-header"  onclick="window.location.href='logistics.php';">
-                    <i class="bi bi-box"></i>
+                    <i class="fa-regular fa-truck-fast"></i>
                     <h4>Logistics</h4>
                 </div>
                 <div class="card-content">
                 </div>
                 <div class="card-footer">
                     <div class="card-link"  onclick="window.location.href='logistics.php';">
-                        <i class="bi bi-arrow-down-right"></i>
+                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
             <div class="dashboard-card grid-col-span-2">
                 <div class="card-header"  onclick="window.location.href='factory.php';">
-                    <i class="bi bi-gear"></i>
+                    <i class="fa-regular fa-industry"></i>
                     <h4>Factory</h4>
                 </div>
                 <div class="card-content">
                 </div>
                 <div class="card-footer">
                     <div class="card-link" onclick="window.location.href='factory.php';">
-                        <i class="bi bi-arrow-down-right"></i>
+                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
             <div class="dashboard-card">
                 <div class="card-header" onclick="window.location.href='marketing.php';">
-                    <i class="bi bi-megaphone"></i>
+                    <i class="fa-regular fa-bullhorn"></i>
                     <h4>Marketing</h4>
                 </div>
                 <div class="card-content">
                 </div>
                 <div class="card-footer">
                     <div class="card-link" onclick="window.location.href='marketing.php';">
-                        <i class="bi bi-arrow-down-right"></i>
+                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
             <div class="dashboard-card grid-col-span-2">
                 <div class="card-header" onclick="window.location.href='drivers.php';">
+                    <i class="fa-kit fa-driver-helmet"></i>
                     <h4>Drivers</h4>
                 </div>
                 <div class="card-content">
                 </div>
                 <div class="card-footer">
                     <div class="card-link" onclick="window.location.href='drivers.php';">
-                        <i class="bi bi-arrow-down-right"></i>
+                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
