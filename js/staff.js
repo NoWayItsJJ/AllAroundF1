@@ -306,7 +306,7 @@ $(document).ready(function () {
 });
 
 function newUser() {
-	var image = $("#newUserImage").val();
+	var image = ($("#newUserImage").val() == undefined) ? "user-default.jpg" : $("#newUserImage").val();
 	var name = $("#newUserName").val();
 	var surname = $("#newUserSurname").val();
 	var dateOfBirth = $("#newUserDateOfBirth").val();
@@ -318,6 +318,7 @@ function newUser() {
 	var contractEnd = $("#newUserContractEnd").val();
 	var bonus = $("#newUserBonus").val();
 
+	console.log(image);
 	$.ajax({
 		type: "POST",
 		url: "../php/staff/staff-function.php",

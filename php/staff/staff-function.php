@@ -235,11 +235,11 @@ function newUser($image, $name, $surname, $dateOfBirth, $nationality, $email, $s
 
     $defaultPassword = 'default';
     $defaultEncryptedPassword = md5($defaultPassword);
-    $archived = 0;
+    $busy = 0;
 
-    $userStmt = $conn->prepare("INSERT INTO utenti (nome, cognome, data_nascita, img, email, password, archiviato, specializzazione, fk_id_ruolo, fk_id_nazionalita) 
+    $userStmt = $conn->prepare("INSERT INTO utenti (nome, cognome, data_nascita, img, email, password, occupato, specializzazione, fk_id_ruolo, fk_id_nazionalita) 
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $userStmt->bind_param('ssssssisii', $name, $surname, $dateOfBirth, $image, $email, $defaultEncryptedPassword, $archived, $specialization, $role, $nationality);
+    $userStmt->bind_param('ssssssisii', $name, $surname, $dateOfBirth, $image, $email, $defaultEncryptedPassword, $busy, $specialization, $role, $nationality);
 
     $userStmt->execute();
 
