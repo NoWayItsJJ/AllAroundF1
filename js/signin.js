@@ -4,7 +4,7 @@ $(document).ready(function() {
     
         $.ajax({
             type: 'POST',
-            url: '../php/login-function.php',
+            url: '../php/access/login-function.php',
             data: { 
                 email: email, 
                 action: 'checkEmail' 
@@ -199,7 +199,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../php/signin-function.php',
+            url: '../php/access/signin-function.php',
             data: data,
             dataType: 'json',
             processData: false,

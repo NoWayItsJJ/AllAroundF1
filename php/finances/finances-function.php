@@ -1,6 +1,6 @@
 <?php
-// Connessione al database
-require_once('db.php');
+include __DIR__ . '/../security.php';
+include __DIR__ . '/../db.php';
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -32,44 +32,45 @@ if (isset($_POST['action'])) {
     echo json_encode(array('error' => 'No action specified'));
 }
 
-function getDetails($movingId, $conn) {
+function getDetails($transactionId, $conn) {
     if (!isset($_POST['id'])) {
         echo json_encode(array('error' => 'No id provided'));
         exit;
     }
 
-    $movingStmt = $conn->prepare("SELECT * FROM logistica
-                                       WHERE id_spostamento = ?");
-    $movingStmt->bind_param('i', $movingId);
+    $transactionStmt = $conn->prepare("SELECT * FROM finanze
+                                       WHERE id_transazione = ?");
+    $transactionStmt->bind_param('i', $transactionId);
 
-    $movingStmt->execute();
+    $transactionStmt->execute();
 
-    $movingResult = $movingStmt->get_result();
+    $transactionResult = $transactionStmt->get_result();
 
-    while ($row = $movingResult->fetch_assoc()) {
+    while ($row = $transactionResult->fetch_assoc()) {
         foreach ($row as $key => $value) {
             $details[$key] = $value;
         }
     }
 
-    switch ($details['tipo']) {
-        case 'componente':
-            $sql = 'SELECT numero_inventario as "Inventory number", tipologia as "Component", versione as "Version", CONCAT(nome, " ", cognome) as "Builder"
-                    FROM componenti c
-                    JOIN utenti u ON c.fk_id_utente = u.id_utente
-                    WHERE id_componente = ?';
+    switch ($details['causale']) {
+        case 'contratto':
+            $sql = 'SELECT nome as "Name", cognome as Surname, nome_ruolo as Position, stipendio as Salary, bonus as Bonus, data_inizio as "Contract start", data_fine as "Contract end"
+                    FROM contratti 
+                    JOIN utenti ON contratti.fk_id_utente = utenti.id_utente
+                    JOIN ruoli ON utenti.fk_id_ruolo = ruoli.id_ruolo
+                    WHERE id_contratto = ?';
             break;
-        case 'dipendente':
-            $sql = 'SELECT CONCAT(nome, " ", cognome) as "Employee", nome_ruolo as "Position", nome_nazionalita as "Nationality"
-                    FROM utenti u
-                    JOIN ruoli r ON u.fk_id_ruolo = r.id_ruolo
-                    JOIN nazionalita n ON u.fk_id_nazionalita = n.id_nazionalita
-                    WHERE id_utente = ?';
+        case 'nuovo componente':
+            $sql = ' componenti WHERE id_componente = ?';
             break;
-        case 'articolo':
-            $sql = 'SELECT tipologia as "Article", numero_inventario as "Inventory number", quantita as "Quantity"
-                    FROM articoli
-                    WHERE id_articolo = ?';
+        case 'logistica':
+            $sql = ' logistica WHERE id_spostamento = ?';
+            break;
+        case 'sponsor':
+            $sql = 'SELECT tipologia as Category, importo as Prize, data_inizio as "Begin date", data_fine as "End date" FROM sponsor WHERE id_sponsor = ?';
+            break;
+        case 'ordini':
+            $sql = ' ordinazioni WHERE id_ordine = ?';
             break;
         default:
             break;
@@ -88,7 +89,7 @@ function getDetails($movingId, $conn) {
         }
     }
 
-    if($movingResult->num_rows > 0){
+    if($transactionResult->num_rows > 0){
         echo json_encode(array('getDetails' => true, 'details' => $details, 'item' => $itemDetails));
     } else {
         echo json_encode(array('getDetails' => false));

@@ -5,7 +5,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../php/login-function.php',
+            url: '../php/access/login-function.php',
             data: { 
                 email: email, 
                 action: 'checkEmail' 
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../php/login-function.php',
+            url: '../php/access/login-function.php',
             data: { 
                 email: email, 
                 password: password, 

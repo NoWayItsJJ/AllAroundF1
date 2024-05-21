@@ -1,6 +1,6 @@
 <?php
-include 'security.php';
-include 'db.php';
+include __DIR__ . '/../security.php';
+include __DIR__ . '/../db.php';
 
 $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
 $roleId = isset($_POST['fk_id_ruolo']) ? $_POST['fk_id_ruolo'] : '';
@@ -55,7 +55,9 @@ if ($result->num_rows > 0) {
               </div>';
     }
 } else {
-    echo "0 results";
+    echo "<div class='no-result'>
+            <p>No results found</p>
+          </div>";
 }
 
 $conn->close();

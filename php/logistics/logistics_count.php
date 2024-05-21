@@ -1,6 +1,6 @@
 <?php 
-    include 'security.php';
-    include 'db.php';
+    include __DIR__ . '/../security.php';
+    include __DIR__ . '/../db.php';
 
     // Query per ottenere il conteggio totale dello staff
     $totalMovingSql = "SELECT COUNT(*) as total FROM logistica";

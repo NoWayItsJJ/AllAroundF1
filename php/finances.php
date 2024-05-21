@@ -63,11 +63,11 @@
                     </div>
                     <div class="list-card">
                         <div class="big-card">
-                            <?php include('finances_total.php'); ?>
+                            <?php include('./finances/finances_total.php'); ?>
                         </div>
                         <div class="filter-card">
                             <div class="card-row">
-                                <?php include('finances_count.php'); ?>
+                                <?php include('./finances/finances_count.php'); ?>
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
@@ -83,7 +83,7 @@
                             <p>Description</p>
                         </div>
                         <div id="list-result" class="table-body scrollable-section">
-                            <?php include 'finances-list.php'; ?>
+                            <?php include './finances/finances-list.php'; ?>
                         </div>
                     </div>
                 </div>
@@ -106,11 +106,7 @@
                     <div class="details" id="detailsBlock" style="display: none;">
                         <div class="details-header">
                             <div class="item-img">
-                                <img id="userImage" src="" alt="">
-                            </div>
-                            <div class="item-header-info">
-                                <h3 id="userName"></h3>
-                                <p id="userRole"></p>
+                                <i class="bi bi-person"></i><!-- mettere l icona del senso della tranzazione con colore e amount in grande-->
                             </div>
                         </div>
                         <div class="details-content scrollable-section">

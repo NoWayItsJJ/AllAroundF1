@@ -1,7 +1,7 @@
 <?php
 
-include 'security.php';
-include_once 'db.php';
+include __DIR__ . '/../security.php';
+include __DIR__ . '/../db.php';
 
 $userID = $_SESSION['user_id'];
 $userRole = $_SESSION['user_type'];

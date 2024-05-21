@@ -1,7 +1,7 @@
 <?php 
-    include 'security.php';
-    include 'db.php';
-    
+    include __DIR__ . '/../security.php';
+    include __DIR__ . '/../db.php';
+
     echo'<div class="statistic" data-role-id="all">
             <div class="statistic-icon">
                 <i class="bi bi-people"></i>
@@ -34,14 +34,14 @@
             $idruolo = $row['id_ruolo'];
 
             $icon = '';
-            if ($nomeruolo == 'dirigente') {
+            if ($nomeruolo == 'marketing') {
                 $icon = 'bi-shield-lock';
             } elseif ($nomeruolo == 'pilota') {
                 $icon = 'bi-pencil-square';
-            } elseif ($nomeruolo == 'ingegnere di pista') {
-                $icon = 'bi-person-check';
-            } elseif ($nomeruolo == 'ingegnere meccanico') {
-                $icon = 'bi-person-check';
+            } elseif ($nomeruolo == 'amministrazione') {
+                $icon = 'bi-person-gear';
+            } elseif ($nomeruolo == 'Ingegneri') {
+                $icon = 'bi-person-gear';
             } else {
                 $icon = 'bi-people';
             }

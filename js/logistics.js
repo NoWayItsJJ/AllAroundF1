@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 		$.ajax({
 			type: "POST",
-			url: "../php/logistics-function.php",
+			url: "../php/logistics/logistics-function.php",
 			data: {
 				id: movedId,
 				action: "getDetails",
@@ -95,7 +95,7 @@ $(document).ready(function () {
 		$(this).addClass("active");
 
 		$.ajax({
-			url: "logistics-list.php",
+			url: "../php/logistics/logistics-list.php",
 			type: "POST",
 			data: { search: search, tipo: transaction },
 			success: function (response) {
@@ -109,7 +109,7 @@ $(document).ready(function () {
 		var transaction = $(".statistic-icon.active").parent().data("transaction-name");
 
 		$.ajax({
-			url: "logistics-list.php",
+			url: "../php/logistics/logistics-list.php",
 			type: "POST",
 			data: { search: search, tipo: transaction },
 			success: function (response) {

@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 		$.ajax({
 			type: "POST",
-			url: "../php/staff-function.php",
+			url: "../php/staff/staff-function.php",
 			data: {
 				id: staffId,
 				action: "getDetails",
@@ -92,11 +92,15 @@ $(document).ready(function () {
 		$(this).addClass("active");
 
 		$.ajax({
-			url: "staff-list.php",
+			url: "../php/staff/staff-list.php",
 			type: "POST",
 			data: { search: search, fk_id_ruolo: roleId },
 			success: function (response) {
 				$("#list-result").html(response);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				console.error("Error:", textStatus, errorThrown);
+				console.error("Response:", jqXHR.responseText);
 			},
 		});
 	});
@@ -106,7 +110,7 @@ $(document).ready(function () {
 		var roleId = $(".statistic.active").data("role-id");
 
 		$.ajax({
-			url: "staff-list.php",
+			url: "../php/staff/staff-list.php",
 			type: "POST",
 			data: { search: search, fk_id_ruolo: roleId },
 			success: function (response) {
@@ -316,7 +320,7 @@ function newUser() {
 
 	$.ajax({
 		type: "POST",
-		url: "../php/staff-function.php",
+		url: "../php/staff/staff-function.php",
 		data: {
 			image: image,
 			name: name,
@@ -348,7 +352,7 @@ function displayUserDetails(id_received) {
 
 	$.ajax({
 		type: "POST",
-		url: "../php/staff-function.php",
+		url: "../php/staff/staff-function.php",
 		data: { id: id_received, action: "getUserDetails" },
 		dataType: "json",
 		success: function (response) {
@@ -388,7 +392,7 @@ function closePopup() {
 function getNationalities() {
 	$.ajax({
 		type: "POST",
-		url: "../php/staff-function.php",
+		url: "../php/staff/staff-function.php",
 		data: { action: "getNationalities" },
 		dataType: "json",
 		success: function (response) {
@@ -412,7 +416,7 @@ function getNationalities() {
 function getRoles(id_role) {
 	$.ajax({
 		type: "POST",
-		url: "../php/staff-function.php",
+		url: "../php/staff/staff-function.php",
 		data: { action: "getRoles" },
 		dataType: "json",
 		success: function (response) {
@@ -464,7 +468,7 @@ function updateContract() {
 	{
 		$.ajax({
 			type: "POST",
-			url: "../php/staff-function.php",
+			url: "../php/staff/staff-function.php",
 			data: {
 				id: id,
 				role: role,
@@ -486,7 +490,7 @@ function updateContract() {
 	} else {
 		$.ajax({
 			type: "POST",
-			url: "../php/staff-function.php",
+			url: "../php/staff/staff-function.php",
 			data: {
 				id: id,
 				contractEnd: renewEnd,
@@ -508,7 +512,7 @@ function updateContract() {
 function fireEmployee(id) {
 	$.ajax({
 		type: "POST",
-		url: "../php/staff-function.php",
+		url: "../php/staff/staff-function.php",
 		data: {
 			id: id,
 			action: "fireEmployee",

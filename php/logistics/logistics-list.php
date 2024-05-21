@@ -1,6 +1,6 @@
 <?php
-include 'security.php';
-include 'db.php';
+include __DIR__ . '/../security.php';
+include __DIR__ . '/../db.php';
 
 $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
 $itemType = isset($_POST['item_type']) ? $_POST['item_type'] : '';

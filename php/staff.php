@@ -84,7 +84,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-person-check"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Available employees</p>
@@ -101,7 +101,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-person-exclamation"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Ending contracts</p>
@@ -118,7 +118,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-coin"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Total salaries</p>
@@ -128,7 +128,7 @@
                                             $sql = "SELECT SUM(stipendio) AS total_salary FROM contratti";
                                             $result = mysqli_query($conn, $sql);
                                             $data = mysqli_fetch_assoc($result);
-                                            echo $data['total_salary'];
+                                            echo ''.$data['total_salary'].' €';
                                         ?>
                                     </span>
                                 </div>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="filter-card">
                             <div class="card-row">
-                                <?php include('staff_count.php'); ?>
+                                <?php include('./staff/staff_count.php'); ?>
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
@@ -155,7 +155,7 @@
                             <p>Contract end</p>
                         </div>
                         <div id="list-result" class="table-body scrollable-section">
-                            <?php include 'staff-list.php'; ?>
+                            <?php include './staff/staff-list.php'; ?>
                         </div>
                     </div>
                 </div>

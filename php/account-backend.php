@@ -38,7 +38,7 @@
             </ul>
         </div>
     </nav>
-    <?php include 'account-info.php'; ?>
+    <?php include './account/account-info.php'; ?>
     <div id="screen-overlay" class="screen-overlay">
         <div id="popup" class="popup">
             <div class="popup-header">
@@ -46,7 +46,7 @@
                 <i class="bi bi-x" onclick="closePopup()"></i>
             </div>
             <div class="popup-content">
-                <form action="account-changes.php" method="post" enctype="multipart/form-data">
+                <form action="./account/account-changes.php" method="post" enctype="multipart/form-data">
                     <div class="form-img">
                         <img id="preview" src="" alt="Image preview" style="display: none;">
                         <p id="filename" style="display: none;"></p>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formNome" action="account-changes.php" method="post">
+                    <form id="formNome" action="./account/account-changes.php" method="post">
                         <label for="name">New Name</label>
                         <div class="form-row">
                             <input id="inputNome" type="text" name="name" placeholder="<?php echo ucfirst($userName); ?>">
@@ -118,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formCognome" action="account-changes.php" method="post">
+                    <form id="formCognome" action="./account/account-changes.php" method="post">
                         <label for="surname">New Surname</label>
                         <div class="form-row">
                             <input id="inputCognome" type="text" name="surname" placeholder="<?php echo ucfirst($userSurname); ?>">
@@ -140,7 +140,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formEmail" action="account-changes.php" method="post">
+                    <form id="formEmail" action="./account/account-changes.php" method="post">
                         <label for="email">New Email</label>
                         <div class="form-row">
                             <input id="inputEmail" type="email" name="email" placeholder="<?php echo $userEmail; ?>">
@@ -171,7 +171,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formPassword" action="account-changes.php" method="post">
+                    <form id="formPassword" action="./account/account-changes.php" method="post">
                         <label for="confirm">Confirm Password</label>
                         <div class="form-row">
                             <div class="form-col">
@@ -200,7 +200,7 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formAddress" action="account-changes.php" method="post">
+                    <form id="formAddress" action="./account/account-changes.php" method="post">
                         <label for="address">New Address</label>
                         <div class="form-row">
                             <input id="inputAddress" type="text" name="address" placeholder="<?php echo $userAddress; ?>">

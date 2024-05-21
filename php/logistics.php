@@ -103,7 +103,7 @@
                         </div>
                         <div class="filter-card">
                             <div class="card-row">
-                                <?php include('logistics_count.php'); ?>
+                                <?php include('./logistics/logistics_count.php'); ?>
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
@@ -120,7 +120,7 @@
                             <p>Arrival date</p>
                         </div>
                         <div id="list-result" class="table-body scrollable-section">
-                            <?php include 'logistics-list.php'; ?>
+                            <?php include './logistics/logistics-list.php'; ?>
                         </div>
                     </div>
                 </div>

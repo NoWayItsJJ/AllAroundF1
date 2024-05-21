@@ -1,6 +1,6 @@
 <?php 
-    include 'security.php';
-    include_once 'db.php';
+    include __DIR__ . '/../security.php';
+    include __DIR__ . '/../db.php';
 
     if(isset($_POST['name']))
     {
@@ -72,7 +72,7 @@
         if (move_uploaded_file($file['tmp_name'], $uploadDir . $newFileName)) {
             $sql = "UPDATE utenti SET img = '$newFileName' WHERE id_utente = $userID";
             if ($conn->query($sql) === TRUE) {
-                header('Location: ./account-backend.php');
+                header('Location: ../account-backend.php');
             } else {
                 echo "Error updating profile image: " . $conn->error;
             }
@@ -81,5 +81,5 @@
         }
     }
 
-    header('Location: account-backend.php');
+    header('Location: ../account-backend.php');
 ?>

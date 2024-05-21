@@ -12,6 +12,7 @@ if(isset($_SESSION['user_id'])) {
 
 		<link rel="stylesheet" type="text/css" href="../css/login-signup.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="../js/signin.js"></script>
 	</head>
 	<body>
 		<div class="left-side">
@@ -111,5 +112,4 @@ if(isset($_SESSION['user_id'])) {
 			</div>
 		</div>
 	</body>
-	<script src="../js/signin.js"></script>
 </html>

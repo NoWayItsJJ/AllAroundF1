@@ -1,6 +1,6 @@
 <?php
-// Connessione al database
-require_once('db.php');
+include __DIR__ . '/../security.php';
+include __DIR__ . '/../db.php';
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
