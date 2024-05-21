@@ -47,13 +47,16 @@ while($firstRow = $firstResult->fetch_assoc()) {
             $secondRow = $secondResult->fetch_assoc();
             $itemDetails = ucfirst($secondRow['tipologia']) . " - " . $secondRow['quantita'] . " pcs";
     }
+    $data_partenza = new DateTime($firstRow['data_partenza']);
+    $data_arrivo = new DateTime($firstRow['data_arrivo']);
+
     echo '<div class="staff-list-row">
                 <span data-id="' . $firstRow["id_spostamento"] . '"><i class="'. $icon .'"></i></span>
                 <span><p>' . $itemDetails . '</p></span>
                 <span><p>' . ucfirst($firstRow['partenza']) . '</p></span>
                 <span><p>' . ucfirst($firstRow['destinazione']) . '</p></span>
-                <span><p>' . $firstRow['data_partenza'] . '</p></span>
-                <span><p>' . $firstRow['data_arrivo'] . '</p></span>
+                <span><p>' . $data_partenza->format("d-m-Y G:i") . '</p></span>
+                <span><p>' . $data_arrivo->format("d-m-Y G:i") . '</p></span>
               </div>';
 }
 

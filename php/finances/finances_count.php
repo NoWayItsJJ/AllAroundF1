@@ -40,7 +40,7 @@
                         <i class="bi '.$icon.'"></i>
                     </div>
                     <div class="statistic-data">
-                        <p>'.$tipoTransazione.' '.$numTransaction.'</p>
+                        <p>'. ucfirst($tipoTransazione) .' '.$numTransaction.'</p>
                     </div>
                 </div>';
         }

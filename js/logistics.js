@@ -119,149 +119,50 @@ $(document).ready(function () {
 	});
 
 	$(".popup-open").click(function () {
-		var id = $("#userId").val();
-		var header = $(this).data("header");
-		var formType = $(this).data("form-type");
-		var formContent;
-		switch (formType) {
-			case "newForm":
-				formContent = `
-					<form id="newForm" style="display: none;">
-						<div class="form-row">
-							<div class="form-col">
-								<h3>Employee Info</h3>
-								<div>
-									<input id="newUserImage" type="file" name="image" placeholder="Image">
-									<input id="newUserName" type="text" name="name" placeholder="First Name">
-									<input id="newUserSurname" type="text" name="surname" placeholder="Last Name">
-								</div>
-								<input id="newUserDateOfBirth" type="date" name="date-birth" placeholder="Date of birth">
-								<select id="newUserNationality" name="nationality" placeholder="Nationality">
-									<option value="" disabled selected>Nationality</option>
-								</select>
-								<input id="newUserEmail" type="text" name="email" placeholder="Email">
-								<input id="newUserSpec" type="text" name="specialization" placeholder="Specialization">
-							</div>
-							<div class="form-col">
-								<h3>Employee Contract</h3>
-								<select id="newUserRole" type="text" name="role" placeholder="Position">
-									<option value="" disabled selected>Position</option>
-								</select>
-								<input id="newUserSalary" type="text" name="salary" placeholder="Salary">
-								<input id="newUserContractEnd" type="date" name="contract-end" placeholder="Contract end">
-								<input id="newUserBonus" type="text" name="bonus" placeholder="Bonus">
-							</div>
+		var id = $("#movingId").val();
+		var formContent = `
+			<form id="newForm" style="display: none;">
+				<div class="form-row">
+					<div class="form-col">
+						<h3>Shift Info</h3>
+						<div>
+							<input id="newFromLocation" type="text" placeholder="From">
+							<input id="newToLocation" type="text" placeholder="To">
 						</div>
-						<div class="form-buttons">
-							<input type="reset" value="Reset">
-							<input id="newUserSubmit" type="button" value="Invia">
-						</div>
-					</form>
-				`;
-				break;
-			case "fireForm":
-				formContent = `
-					<form id="fireForm" style="display: none;">
-						<div class="form-row">
-							<div class="form-col">
-								<h3>Employee Info</h3>
-								<div>
-									<img src="" alt="">
-									<p id="currentName"></p>
-									<p id="currentSurname"></p>
-								</div>
-								<div class="form-row"><p id="current-date-birth"></p></div>
-								<div class="form-row"><p id="currentNationality"></p></div>
-								<div class="form-row"><p id="currentEmail"></p></div>
-								<div class="form-row"><p id="currentSpecialization"></p></div>
-							</div>
-							<div class="form-col">
-								<h3>Employee Contract</h3>
-								<div class="form-info"><p id="currentRole"></p></div>
-								<div class="form-info"><p id="currentSalary"></p></div>
-								<div class="form-info"><p id="current-contract-end"></p></div>
-								<div class="form-info"><p id="currentBonus"></p></div>
-							</div>
-						</div>
-						<div class="form-buttons">
-							<button class="button-primary red-button button-max-width">Cancel</button>
-							<input id="fireFormSubmit" class="button-primary green-button button-max-width" type="submit" value="Fire">
-						</div>
-					</form>
-				`;
-				break;
-			case "renewForm":
-				formContent = `
-					<form id="renewForm" style="display: none;">
-						<div class="form-row">
-							<div class="form-col">
-								<h3>Employee Info</h3>
-								<div>
-									<img src="" alt="">
-									<p id="currentName"></p>
-									<p id="currentSurname"></p>
-								</div>
-								<div class="form-row"><p id="current-date-birth"></p></div>
-								<div class="form-row"><p id="currentNationality"></p></div>
-								<div class="form-row"><p id="currentEmail"></p></div>
-								<div class="form-row"><p id="currentSpecialization"></p></div>
-							</div>
-							<div class="form-col">
-								<h3>Employee Contract</h3>
-								<div class="form-info"><p id="currentRole"></p></div>
-								<div class="form-info"><p id="currentSalary"></p></div>
-								<div class="form-info"><p id="current-contract-end"></p></div>
-								<div class="form-info"><p id="currentBonus"></p></div>
-							</div>
-						</div>
-						<div id="form-more-info" style="display: none;">
-							<div class="form-col">
-								<h3>New contract</h3>
-								<select id="newUserRole" type="text" name="currentRole" placeholder="Position">
-								<input id="updatedSalary" type="text" name="salary" placeholder="Salary">
-								<input id="updatedEnd" type="date" name="contract-end" placeholder="Contract end">
-								<input id="updatedBonus" type="text" name="bonus" placeholder="Bonus">
-							</div>
-						</div>
-						<div class="form-buttons">
-							<button class="button-primary red-button button-max-width">Cancel</button>
-							<button class="button-outline button-max-width" onclick="showMoreInfo(event)">Change</button>
-							<input id="renewFormSubmit" class="button-primary green-button button-max-width" type="submit" value="Renew">
-						</div>
-					</form>
-				`;
-				break;
-		}
+						<input id="newDepartureDate" type="date" placeholder="Departure date">
+						<input id="newArrivalDate" type="date" placeholder="Arrival date">
+					</div>
+					<div class="form-col">
+						<h3>Shift subject</h3>
+						<select id="newItemCategory" type="text" name="category" placeholder="Category">
+							<option value="" disabled selected>Category</option>
+						</select>
+						<select id="newItem" type="text" name="item" placeholder="Subject">
+							<option value="" disabled selected>Subject</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-buttons">
+					<input type="reset" value="Reset">
+					<input id="newShiftSubmit" type="button" value="Invia">
+				</div>
+			</form>
+		`;
 
-		$(".popup-title").text(header);
 		$(".popup-content").html(formContent);
-
-		switch (formType) {
-			case "newForm":
-				$("#newUserSubmit").click(function (e) {
-					e.preventDefault();
-					newUser();
-				});
-				getNationalities();
-				getRoles();
-				break;
-			case "fireForm":
-				displayUserDetails(id);
-				$("#fireFormSubmit").click(function (e) {
-					e.preventDefault();
-					fireEmployee(id);
-				});
-				break;
-			case "renewForm":
-				getRoles($("#roleId").val());
-				displayUserDetails(id);
-				$("#renewFormSubmit").click(function (e) {
-					e.preventDefault();
-					updateContract(toUpdate);
-				});
-				break;
-		}
-		$("#" + formType).css("display", "block");
+		$("#newShiftSubmit").click(function (e) {
+			e.preventDefault();
+			newShift();
+		});
+		getCategories();
+		$("#newItemCategory").change(function () {
+			var selectedOption = $(this).val();
+			if (selectedOption) {
+				getItems(selectedOption);
+			}
+		});
+		
+		$("#newForm").css("display", "block");
 
 		$("#screen-overlay").addClass("open-overlay");
 	});
@@ -271,7 +172,53 @@ $(document).ready(function () {
 	});
 });
 
-function newUser() {
+function getCategories() {
+	$.ajax({
+		type: "POST",
+		url: "../php/logistics/logistics-function.php",
+		data: { action: "getCategories" },
+		dataType: "json",
+		success: function (response) {
+			response.categories.forEach(function (category) {
+				$("#newItemCategory").append(
+					'<option value="' +
+						category +
+						'">' +
+						ucfirst(category) +
+						"</option>"
+				);
+			});
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("Error:", textStatus, errorThrown);
+			console.error("Response:", jqXHR.responseText);
+		},
+	});
+}
+
+function getItems(category) {
+	$.ajax({
+		type: "POST",
+		url: "../php/logistics/logistics-function.php",
+		data: { action: "getItems", category: category },
+		dataType: "json",
+		success: function (response) {
+			$("#newItem").empty();
+			response.items.forEach(function (item) {
+				console.log(item);
+				$("#newItem").append(
+					'<option value="' + item.id + '">' + ucevery(item.name) + "</option>"
+				);
+			});
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("Error:", textStatus, errorThrown);
+			console.error("Response:", jqXHR.responseText);
+		},
+	});
+}
+
+function newShift() {
 	var image = $("#newUserImage").val();
 	var name = $("#newUserName").val();
 	var surname = $("#newUserSurname").val();
@@ -313,48 +260,6 @@ function newUser() {
 	});
 }
 
-function displayUserDetails(id_received) {
-	toUpdate = false;
-
-	$.ajax({
-		type: "POST",
-		url: "../php/staff-function.php",
-		data: { id: id_received, action: "getUserDetails" },
-		dataType: "json",
-		success: function (response) {
-			console.log(response);
-			$("#currentName").append("<strong>" + ucfirst(response.user.nome) + "</strong>");
-			$("#currentSurname").append(
-				"<strong>" + ucfirst(response.user.cognome) + "</strong>"
-			);
-			$("#current-date-birth").append(
-				"<strong>" + response.user.data_nascita + "</strong>"
-			);
-			$("#currentNationality").append(
-				"<strong>" + ucfirst(response.user.nome_nazionalita) + "</strong>"
-			);
-			$("#currentEmail").append("<strong>" + response.user.email + "</strong>");
-			$("#currentSpecialization").append(
-				"<strong>" + ucfirst(response.user.specializzazione) + "</strong>"
-			);
-			$("#currentRole").append(
-				"<strong>" + ucfirst(response.user.nome_ruolo) + "</strong>"
-			);
-			$("#currentSalary").append(
-				"<strong>" + response.user.stipendio + "</strong>"
-			);
-			$("#current-contract-end").append(
-				"<strong>" + response.user.data_fine + "</strong>"
-			);
-			$("#currentBonus").append("<strong>" + response.user.bonus + "</strong>");
-		},
-		error: function (jqXHR, textStatus, errorThrown) {
-			console.error("Error:", textStatus, errorThrown);
-			console.error("Response:", jqXHR.responseText);
-		},
-	});
-}
-
 function ucfirst(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -386,144 +291,4 @@ function showMoreInfo(event) {
 
 function closePopup() {
 	$("#screen-overlay").removeClass("open-overlay");
-}
-
-function getNationalities() {
-	$.ajax({
-		type: "POST",
-		url: "../php/staff-function.php",
-		data: { action: "getNationalities" },
-		dataType: "json",
-		success: function (response) {
-			response.nationalities.forEach(function (nationality) {
-				$("#newUserNationality").append(
-					'<option value="' +
-						nationality.id_nazionalita +
-						'">' +
-						ucfirst(nationality.nome_nazionalita) +
-						"</option>"
-				);
-			});
-		},
-		error: function (jqXHR, textStatus, errorThrown) {
-			console.error("Error:", textStatus, errorThrown);
-			console.error("Response:", jqXHR.responseText);
-		},
-	});
-}
-
-function getRoles(id_role) {
-	$.ajax({
-		type: "POST",
-		url: "../php/staff-function.php",
-		data: { action: "getRoles" },
-		dataType: "json",
-		success: function (response) {
-			response.roles.forEach(function (role) {
-				if(role.id_ruolo == id_role){
-					$("#newUserRole").append(
-						'<option value="' +
-							role.id_ruolo +
-							'" selected>' +
-							ucfirst(role.nome_ruolo) +
-							"</option>"
-					);
-				} else {
-					$("#newUserRole").append(
-						'<option value="' +
-							role.id_ruolo +
-							'">' +
-							ucfirst(role.nome_ruolo) +
-							"</option>"
-					);
-				}
-			});
-		},
-		error: function (jqXHR, textStatus, errorThrown) {
-			console.error("Error:", textStatus, errorThrown);
-			console.error("Response:", jqXHR.responseText);
-		},
-	});
-}
-
-function updateContract() {
-	var id = $("#userId").val();
-	var role = $("select[name='currentRole'").val();
-	var salary = $("#updatedSalary").val();
-	var oldEnd = $("#current-contract-end").text();
-	var contractEnd = $("#updatedEnd").val();
-	var bonus = $("#updatedBonus").val();
-
-	var renewEnd = new Date(oldEnd);
-	renewEnd.setMonth(renewEnd.getMonth() + 3);
-
-	var dd = String(renewEnd.getDate()).padStart(2, '0');
-	var mm = String(renewEnd.getMonth() + 1).padStart(2, '0'); //January is 0!
-	var yyyy = renewEnd.getFullYear();
-
-	renewEnd = yyyy + '-' + mm + '-' + dd;
-
-	if(toUpdate)
-	{
-		$.ajax({
-			type: "POST",
-			url: "../php/staff-function.php",
-			data: {
-				id: id,
-				role: role,
-				salary: salary,
-				contractEnd: contractEnd,
-				bonus: bonus,
-				action: "updateContract",
-			},
-			dataType: "json",
-			success: function () {
-				closePopup();
-				location.reload();
-			},
-			error: function (jqXHR, textStatus, errorThrown) {
-				console.error("Error:", textStatus, errorThrown);
-				console.error("Response:", jqXHR.responseText);
-			},
-		});
-	} else {
-		$.ajax({
-			type: "POST",
-			url: "../php/staff-function.php",
-			data: {
-				id: id,
-				contractEnd: renewEnd,
-				action: "renewContract",
-			},
-			dataType: "json",
-			success: function () {
-				closePopup();
-				location.reload();
-			},
-			error: function (jqXHR, textStatus, errorThrown) {
-				console.error("Error:", textStatus, errorThrown);
-				console.error("Response:", jqXHR.responseText);
-			},
-		});
-	}
-}
-
-function fireEmployee(id) {
-	$.ajax({
-		type: "POST",
-		url: "../php/staff-function.php",
-		data: {
-			id: id,
-			action: "fireEmployee",
-		},
-		dataType: "json",
-		success: function () {
-			closePopup();
-			location.reload();
-		},
-		error: function (jqXHR, textStatus, errorThrown) {
-			console.error("Error:", textStatus, errorThrown);
-			console.error("Response:", jqXHR.responseText);
-		},
-	});
 }

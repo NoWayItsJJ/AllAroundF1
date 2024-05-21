@@ -42,7 +42,7 @@
                         <i class="bi '.$icon.'"></i>
                     </div>
                     <div class="statistic-data">
-                        <p>'.$tipoItem.' '.$numType.'</p>
+                        <p>'.ucfirst($tipoItem).' '.$numType.'</p>
                     </div>
                 </div>';
         }

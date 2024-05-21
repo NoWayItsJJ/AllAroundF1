@@ -9,6 +9,46 @@ if (isset($_POST['action'])) {
         case 'getDetails':
             getDetails($_POST['id'], $conn);
             break;
+        case 'getCategories':
+            $sql = "SELECT COLUMN_TYPE 
+            FROM INFORMATION_SCHEMA.COLUMNS 
+            WHERE TABLE_NAME = 'logistica' 
+            AND COLUMN_NAME = 'tipo'";
+    
+            $result = mysqli_query($conn, $sql);
+    
+            if ($result) {
+                $row = mysqli_fetch_assoc($result);
+                $categories = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
+            }
+            echo json_encode(array('categories' => $categories));
+            break;
+        case 'getItems':
+            $category = $_POST['category'];
+            $sql = '';
+            switch ($category) {
+                case 'componente':
+                    $sql = 'SELECT id_componente as id, CONCAT(tipologia, " v", versione) as name FROM componenti';
+                    break;
+                case 'dipendente':
+                    $sql = 'SELECT id_utente as id, CONCAT(nome, " ", cognome) as name FROM utenti';
+                    break;
+                case 'articolo':
+                    $sql = 'SELECT id_articolo as id, tipologia as name FROM articoli';
+                    break;
+                default:
+                    break;
+            }
+    
+            $result = mysqli_query($conn, $sql);
+    
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $items[] = $row;
+                }
+            }
+            echo json_encode(array('items' => $items));
+            break;
         case 'newTransaction':
             newUser($_POST['image'],
                     $_POST['name'],

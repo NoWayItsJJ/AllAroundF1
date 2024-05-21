@@ -60,7 +60,7 @@
                             </div>
                             <p>Manage the logistics of the Scuderia Ferrari</p>
                         </div>
-                        <button class="button-primary button-squadrato popup-open" data-form-type="newForm" data-header="New shift"><i class="bi bi-plus"></i>New shift</button>
+                        <button class="button-primary button-squadrato popup-open"><i class="bi bi-plus"></i>New shift</button>
                     </div>
                     <div class="list-card">
                         <div class="big-card">
@@ -113,6 +113,7 @@
                     </div>
                     <div class="list-content scrollable-section">
                         <div class="table-header">
+                            <p>Transport</p>
                             <p>Moved</p>
                             <p>From</p>
                             <p>To</p>

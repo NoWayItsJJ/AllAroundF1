@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 09:57 PM
+-- Generation Time: May 21, 2024 at 09:21 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -150,7 +150,7 @@ CREATE TABLE `logistica` (
   `mezzo_trasporto` set('airplane','ship','truck','car','bus') NOT NULL,
   `data_partenza` datetime(6) NOT NULL,
   `data_arrivo` datetime(6) NOT NULL,
-  `tipo` set('person','item') NOT NULL,
+  `tipo` set('componente','dipendente','articolo') NOT NULL,
   `fk_id_item` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -159,7 +159,7 @@ CREATE TABLE `logistica` (
 --
 
 INSERT INTO `logistica` (`id_spostamento`, `partenza`, `destinazione`, `mezzo_trasporto`, `data_partenza`, `data_arrivo`, `tipo`, `fk_id_item`) VALUES
-(1, 'miami', 'imola', 'airplane', '2024-05-06 16:50:10.000000', '2024-05-15 16:50:10.000000', 'item', 1);
+(1, 'miami', 'imola', 'airplane', '2024-05-06 16:50:10.000000', '2024-05-15 16:50:10.000000', 'componente', 1);
 
 -- --------------------------------------------------------
 
@@ -303,13 +303,13 @@ CREATE TABLE `utenti` (
 INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `data_nascita`, `indirizzo`, `citta`, `CAP`, `stato`, `img`, `email`, `password`, `occupato`, `specializzazione`, `fk_id_ruolo`, `fk_id_nazionalita`) VALUES
 (1, 'riccardo', 'saro', '2005-12-17', 'via amalteo 25', 'fontanafredda', 33074, 'italia', '1_sus.jpg', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'hr', 4, 17),
 (2, 'fabio', 'pauletta', '2005-06-17', 'via tasso 14', 'maniago', 33085, 'italia', '2_png.jpg', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 1, 'freni', 3, 8),
-(3, 'pippo', 'de pippis', '2000-04-20', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'termocoperte', 2, 3),
-(4, 'paperon', 'de paperoni', '2000-01-23', 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'spendere', 5, 12),
-(5, 'ayrton', 'senna', '1960-03-21', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
-(6, 'fatturo', 'tanto', '2016-05-01', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
-(7, 'ocyo', 'kecasko', '1999-04-01', 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
-(8, 'test', 'ingegnere', '2000-01-01', 'via testing 5', 'maniago', 33085, 'italia', '', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11),
-(11, 'test', 'finanze', '2024-05-13', '', '', 0, '', '', 'test@finances.it', 'c21f969b5f03d33d43e04f8f136e7682', 0, 'spec', 7, 13);
+(3, 'pippo', 'de pippis', '2000-04-20', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', 'user-default.jpg', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'termocoperte', 2, 3),
+(4, 'paperon', 'de paperoni', '2000-01-23', 'piazza cavour 69', 'pordenone', 33170, 'italia', 'user-default.jpg', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'spendere', 5, 12),
+(5, 'ayrton', 'senna', '1960-03-21', 'via imola 1994', 'imola', 40026, 'italia', 'user-default.jpg', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
+(6, 'fatturo', 'tanto', '2016-05-01', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', 'user-default.jpg', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
+(7, 'ocyo', 'kecasko', '1999-04-01', 'via metenho dhuro 000', 'sacile', 33077, 'italia', 'user-default.jpg', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
+(8, 'test', 'ingegnere', '2000-01-01', 'via testing 5', 'maniago', 33085, 'italia', 'user-default.jpg', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11),
+(11, 'test', 'finanze', '2024-05-13', '', '', 0, '', 'user-default.jpg', 'test@finances.it', 'c21f969b5f03d33d43e04f8f136e7682', 0, 'spec', 7, 13);
 
 --
 -- Indexes for dumped tables

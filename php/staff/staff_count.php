@@ -52,7 +52,7 @@
                         <i class="bi '.$icon.'"></i>
                     </div>
                     <div class="statistic-data">
-                        <p>'.$nomeruolo.' <strong>'.$numstaff.'</strong></p>
+                        <p>'. ucfirst($nomeruolo).' <strong>'.$numstaff.'</strong></p>
                     </div>
                 </div>';
         }
