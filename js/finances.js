@@ -45,6 +45,7 @@ $(document).ready(function () {
 						);
 					$("#contract-info").empty();
 					for (let i = 0; i < itemDetails.length; i++) {
+						console.log(typeof itemDetails[i]);
 						$("#contract-info").append(`
 							<div class="contract-info-row">
 								<p id="itemName${i}"><strong>${itemDetailsKey[i]}</strong></p>

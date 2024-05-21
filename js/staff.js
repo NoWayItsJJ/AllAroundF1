@@ -64,7 +64,7 @@ $(document).ready(function () {
 						.append(" <strong>" + response.contract.stipendio + "</strong>");
 					$("#displayEnd")
 						.empty()
-						.append(" <strong>" + response.contract.data_fine + "</strong>");
+						.append(" <strong>" + moment(response.contract.data_fine).format("DD-MM-YYYY") + "</strong>");
 					$("#displayBonus")
 						.empty()
 						.append(" <strong>" + response.contract.bonus + "</strong>");
@@ -360,13 +360,13 @@ function displayUserDetails(id_received) {
 			console.log(response);
 			$("#currentName").append(ucfirst(response.user.nome));
 			$("#currentSurname").append(ucfirst(response.user.cognome));
-			$("#current-date-birth").append(response.user.data_nascita);
+			$("#current-date-birth").append(moment(response.user.data_nascita).format("DD-MM-YYYY"));
 			$("#currentNationality").append(ucfirst(response.user.nome_nazionalita));
 			$("#currentEmail").append(response.user.email);
 			$("#currentSpecialization").append(ucfirst(response.user.specializzazione));
 			$("#currentRole").append(ucfirst(response.user.nome_ruolo));
 			$("#currentSalary").append(response.user.stipendio);
-			$("#current-contract-end").append(response.user.data_fine);
+			$("#current-contract-end").append(moment(response.user.data_fine).format("DD-MM-YYYY"));
 			$("#currentBonus").append(response.user.bonus);
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
