@@ -37,6 +37,18 @@
 		grid-row: span 2;
 	}
 
+	.grid-row-span-3 {
+		grid-row: span 3;
+	}
+
+	.grid-row-span-4 {
+		grid-row: span 4;
+	}
+
+	.grid-row-span-5 {
+		grid-row: span 5;
+	}
+
 	.grid-row-span-6 {
 		grid-row: span 6;
 	}
@@ -394,6 +406,31 @@
 								background-color: #00000029;
 							}
 						}
+					}
+				}
+			}
+
+			.list-footer {
+				display: flex;
+				align-items: end;
+				justify-content: end;
+				margin: 0 16px;
+	
+				.list-link {
+					border: 2px solid var(--primary-text-color);
+					border-radius: calc(var(--border-radius) - 16px);
+					width: 32px;
+					height: 32px;
+					transition: all 0.3s ease;
+					padding: 4px;
+					cursor: pointer;
+	
+					i {
+						transition: all 0.3s ease;
+						width: 100%;
+						height: 100%;
+						font-size: var(--xl-font-size);
+						color: var(--primary-text-color);
 					}
 				}
 			}
