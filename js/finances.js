@@ -24,25 +24,28 @@ $(document).ready(function () {
 					$("#no-result").css("display", "none");
 					$("#detailsBlock").css("display", "");
 					$("#transactionId").val(transactionId);
+
+					$("#icon-transaction").removeClass("fa-regular fa-arrow-trend-down fa-arrow-trend-up");
+					if(response.details.tipo === "uscita"){
+						$("#icon-transaction").addClass("fa-regular fa-arrow-trend-down");
+						$("#value-transaction").empty().append(response.details.importo+" &euro;");
+					} else {
+						$("#icon-transaction").addClass("fa-regular fa-arrow-trend-up");
+						$("#value-transaction").empty().append(response.details.importo+" &euro;");
+					}
 					$("#itemId").val(response.details.fk_id_item);
 					$("#reason")
 						.empty()
-						.append(
-							" <strong>" +
-								ucfirst(response.details.causale) +
-								"</strong>"
-						);
+						.append(ucfirst(response.details.causale));
 					$("#displayType")
 						.empty()
-						.append(" <strong>" + ucfirst(response.details.tipo) + "</strong>");
+						.append(ucfirst(response.details.tipo));
 					$("#displayAmount")
 						.empty()
-						.append(" <strong>" + response.details.importo + "</strong>");
+						.append(response.details.importo+" &euro;");
 					$("#displayDescription")
 						.empty()
-						.append(
-							" <strong>" + ucfirst(response.details.descrizione) + "</strong>"
-						);
+						.append(ucfirst(response.details.descrizione));
 					$("#contract-info").empty();
 					for (let i = 0; i < itemDetails.length; i++) {
 						console.log(typeof itemDetails[i]);

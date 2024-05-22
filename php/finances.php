@@ -79,7 +79,7 @@
                     </div>
                     <div class="list-content scrollable-section">
                         <div class="table-header">
-                            <p>Transaction</p>
+                            <p>Type</p>
                             <p>Amount</p>
                             <p>Reason</p>
                             <p>Description</p>
@@ -111,7 +111,8 @@
                     <div class="details" id="detailsBlock" style="display: none;">
                         <div class="details-header">
                             <div class="item-img">
-                                <i class=""></i><!-- mettere l icona del senso della tranzazione con colore e amount in grande-->
+                                <i id="icon-transaction" class="fa-regular fa-arrow-trend-up"></i>
+                                <p id="value-transaction">3000000</p>
                             </div>
                         </div>
                         <div class="details-content scrollable-section">

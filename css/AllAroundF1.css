@@ -255,6 +255,10 @@ h5 {
 	padding: 4px 8px;
 }
 
+.border-angol{
+	border-radius: 8px;
+}
+
 .overlay {
 	display: none;
 	position: relative;
@@ -297,15 +301,30 @@ h5 {
 		border-bottom: 1px solid var(--secondary-text-color);
 		border: 0;
 
+		.popup-header-row{
+			display: flex;
+			justify-content: start;
+			align-items: center;
+			flex-direction: row;
+			gap: 16px;
+
+			.popup-title{
+				font-size: var(--xxl-font-size);
+				color: var(--tertiary-color);
+			}
+
+			i{
+				font-size: var(--xl-font-size);
+				color: var(--tertiary-color);
+				cursor: text;
+			}
+		}
+
 		h3 {
 			font-size: var(--xl-font-size);
 			color: var(--primary-text-color);
 		}
-
-		.popup-title{
-			font-size: var(--xxl-font-size);
-			color: var(--tertiary-color);
-		}
+		
 
 		i {
 			cursor: pointer;

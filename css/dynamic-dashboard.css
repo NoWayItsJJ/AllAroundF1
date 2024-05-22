@@ -344,14 +344,6 @@
 						color: var(--yellow-text-color);
 						white-space: nowrap;
 					}
-
-					p:nth-child(1) {
-						width: 20%;
-					}
-
-					p:nth-child(n+2) {
-						width: 15%;
-					}
 				}
 
 				.table-body {
@@ -392,16 +384,6 @@
 							overflow: hidden;
     						text-overflow: ellipsis;
 						}
-	
-						span:nth-child(1) {
-							width: 20%;
-						}
-	
-						span:nth-child(n+2) {
-							width: 15%;
-						}
-
-						
 
 						&:hover {
 							background-color: #00000029;
@@ -515,6 +497,21 @@
 					.item-img {
 						width: 128px;
 						height: 128px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						flex-direction: column;
+
+						i{
+							font-size: 100px;
+						}
+
+						p{
+							font-size: 32px;
+							color: var(--primary-text-color);
+							font-weight: 600;
+							white-space: nowrap;
+						}
 	
 						img {
 							width: 100%;

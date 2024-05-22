@@ -16,7 +16,7 @@
             </div>
             <div class="card-data">
                 <p>Total budget</p>
-                <span>'.$totalAccount.'€</span>
+                <span>'.$totalAccount.' &euro;</span>
             </div>
         </div>';
 
@@ -44,7 +44,7 @@
                     </div>
                     <div class="card-data">
                         <p>Total '.$tipoTransazione.'</p>
-                        <span>'.$numTransaction.'€</span>
+                        <span>'.$numTransaction.' &euro;</span>
                     </div>
                 </div>';
         }
