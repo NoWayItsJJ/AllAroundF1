@@ -14,7 +14,6 @@ $(document).ready(function () {
 			},
 			dataType: "json",
 			success: function (response) {
-                console.log(response.details.mezzo_trasporto);
                 switch(response.details.mezzo_trasporto){
                     case "car":
                         $("#movingIcon").removeClass().addClass("bi-car-front-fill"); //da rivedere
@@ -130,7 +129,12 @@ $(document).ready(function () {
 							<input id="newToLocation" type="text" placeholder="To">
 						</div>
 						<input id="newDepartureDate" type="date" placeholder="Departure date">
+						<input id="newDepartureTime" type="time" placeholder="Departure time">
 						<input id="newArrivalDate" type="date" placeholder="Arrival date">
+						<input id="newArrivalTime" type="time" placeholder="Arrival date">
+						<select id="newTransportMean" type="text" name="transport" placeholder="Transport">
+							<option value="" disabled selected>Transport</option>
+						</select>
 					</div>
 					<div class="form-col">
 						<h3>Shift subject</h3>
@@ -154,6 +158,7 @@ $(document).ready(function () {
 			e.preventDefault();
 			newShift();
 		});
+		getTransportMeans();
 		getCategories();
 		$("#newItemCategory").change(function () {
 			var selectedOption = $(this).val();
@@ -171,6 +176,30 @@ $(document).ready(function () {
 		$("#screen-overlay").removeClass("open-overlay");
 	});
 });
+
+function getTransportMeans() {
+	$.ajax({
+		type: "POST",
+		url: "../php/logistics/logistics-function.php",
+		data: { action: "getTransportMeans" },
+		dataType: "json",
+		success: function (response) {
+			response.transportMeans.forEach(function (transport) {
+				$("#newTransportMean").append(
+					'<option value="' +
+						transport +
+						'">' +
+						ucfirst(transport) +
+						"</option>"
+				);
+			});
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("Error:", textStatus, errorThrown);
+			console.error("Response:", jqXHR.responseText);
+		},
+	});
+}
 
 function getCategories() {
 	$.ajax({
@@ -205,7 +234,6 @@ function getItems(category) {
 		success: function (response) {
 			$("#newItem").empty();
 			response.items.forEach(function (item) {
-				console.log(item);
 				$("#newItem").append(
 					'<option value="' + item.id + '">' + ucevery(item.name) + "</option>"
 				);
@@ -219,34 +247,28 @@ function getItems(category) {
 }
 
 function newShift() {
-	var image = $("#newUserImage").val();
-	var name = $("#newUserName").val();
-	var surname = $("#newUserSurname").val();
-	var dateOfBirth = $("#newUserDateOfBirth").val();
-	var nationality = $("#newUserNationality").val();
-	var email = $("#newUserEmail").val();
-	var specialization = $("#newUserSpec").val();
-	var role = $("#newUserRole").val();
-	var salary = $("#newUserSalary").val();
-	var contractEnd = $("#newUserContractEnd").val();
-	var bonus = $("#newUserBonus").val();
+	var from = $("#newFromLocation").val();
+	var to = $("#newToLocation").val();
+	var departure = $("#newDepartureDate").val();
+	departure += " " + $("#newDepartureTime").val();
+	var arrival = $("#newArrivalDate").val();
+	arrival += " " + $("#newArrivalTime").val();
+	var transport = $("#newTransportMean").val();
+	var itemCategory = $("#newItemCategory").val();
+	var item = $("#newItem").val();
 
 	$.ajax({
 		type: "POST",
-		url: "../php/finances-function.php",
+		url: "../php/logistics/logistics-function.php",
 		data: {
-			image: image,
-			name: name,
-			surname: surname,
-			dateOfBirth: dateOfBirth,
-			nationality: nationality,
-			email: email,
-			specialization: specialization,
-			role: role,
-			salary: salary,
-			contractEnd: contractEnd,
-			bonus: bonus,
-			action: "newTransaction", //tutto ancora da fare
+			from: from,
+			to: to,
+			departure: departure,
+			arrival: arrival,
+			transport: transport,
+			itemCategory: itemCategory,
+			item: item,
+			action: "newShift",
 		},
 		dataType: "json",
 		success: function () {
