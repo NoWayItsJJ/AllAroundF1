@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
         echo '<div class="staff-list-row">
                 <span class="img-name" data-id="' . $row["id_utente"] . '">
                     <img src="../img/utenti/' . $row['img'] . '" alt="">
-                    <p>' . ucfirst($row['nome']) . ' ' . ucfirst($row['cognome']) . '</p>
+                    <p><strong>' . ucfirst($row['nome']) . ' ' . ucfirst($row['cognome']) . '</strong></p>
                 </span>
                 <span><p>' . $row['email'] . '</p></span>
                 <span><p>' . ucfirst($row['nome_ruolo']) . '</p></span>

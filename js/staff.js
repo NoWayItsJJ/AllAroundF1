@@ -34,40 +34,37 @@ $(document).ready(function () {
 					$("#userName")
 						.empty()
 						.append(
-							" <strong>" +
-								ucfirst(response.details.nome) +
-								" " +
-								ucfirst(response.details.cognome) +
-								"</strong>"
+							ucfirst(response.details.nome) +
+							ucfirst(response.details.cognome)
 						);
 					$("#userRole")
 						.empty()
 						.append(ucfirst(response.details.nome_ruolo));
 					$("#displayAge")
 						.empty()
-						.append(" <strong>" + age + "</strong>");
+						.append(age);
 					$("#displayNationality")
 						.empty()
 						.append(
-							" <strong>" + ucfirst(response.details.nome_nazionalita) + "</strong>"
+							ucfirst(response.details.nome_nazionalita)
 						);
 					$("#displayEmail")
 						.empty()
-						.append(" <strong>" + response.details.email + "</strong>");
+						.append(response.details.email);
 					$("#displaySpecialization")
 						.empty()
 						.append(
-							" <strong>" + ucfirst(response.details.specializzazione) + "</strong>"
+							ucfirst(response.details.specializzazione)
 						);
 					$("#displaySalary")
 						.empty()
-						.append(" <strong>" + response.contract.stipendio + "</strong>");
+						.append(response.contract.stipendio + " &euro;");
 					$("#displayEnd")
 						.empty()
-						.append(" <strong>" + moment(response.contract.data_fine).format("DD-MM-YYYY") + "</strong>");
+						.append(moment(response.contract.data_fine).format("DD-MM-YYYY"));
 					$("#displayBonus")
 						.empty()
-						.append(" <strong>" + response.contract.bonus + "</strong>");
+						.append(response.contract.bonus+ " &euro;");
 				} else {
 					console.log("Error");
 				}
@@ -130,6 +127,7 @@ $(document).ready(function () {
 					<form id="newForm" style="display: none;">
 						<div class="form-row info-contract">
 							<div class="form-col">
+
 								<h4>Employee Info</h4>
 								<div class="img-name">
 									<div class="img-new">
@@ -164,8 +162,8 @@ $(document).ready(function () {
 							</div>
 						</div>
 						<div class="form-footer">
-							<button type="reset" class="button-primary red-button small-button">Cancel</button>
-							<button id="newUserSubmit" class="button-primary green-button small-button">Save</button>
+							<button type="reset" class="button-primary red-button">Cancel</button>
+							<button id="newUserSubmit" class="button-primary green-button">Save</button>
 						</div>
 					</form>
 				`;
@@ -245,15 +243,25 @@ $(document).ready(function () {
 							</div>
 						</div>
 						<div class="form-footer">
-							<button class="button-primary red-button button-max-width">Cancel</button>
-							<button class="button-outline button-max-width" onclick="showMoreInfo(event)">Change</button>
-							<input id="renewFormSubmit" class="button-primary green-button button-max-width" type="submit" value="Renew">
+							<button class="button-primary red-button">Cancel</button>
+							<button class="button-outline" onclick="showMoreInfo(event)">Change</button>
+							<input id="renewFormSubmit" class="button-primary green-button" type="submit" value="Renew">
 						</div>
 					</form>
 				`;
 				break;
 		}
 
+		$("#icon-header").removeClass();
+		console.log(header);
+		if (header == 'Fire employee') {
+			$("#icon-header").addClass("fa-regular fa-user-xmark");
+		} else if(header == 'Renew contract') {
+			$("#icon-header").addClass("fa-regular fa-user-clock");
+		} else {
+			$("#icon-header").addClass("fa-regular fa-user-plus");
+		}
+		
 		$(".popup-title").text(header);
 		$(".popup-content").html(formContent);
 

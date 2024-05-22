@@ -43,7 +43,10 @@
     <div id="screen-overlay" class="screen-overlay">
         <div id="popup" class="popup">
             <div class="popup-header">
-                <h3 class="popup-title"></h3>
+                <div class="popup-header-row">
+                    <i id="icon-header" class="fa-regular "></i>
+                    <h3 class="popup-title"></h3>
+                </div>
                 <i class="fa-regular fa-xmark" onclick="closePopup()"></i>
             </div>
             <div id="popup-content" class="popup-content">
@@ -124,12 +127,12 @@
                                 <div class="card-data">
                                     <p>Total salaries</p>
                                     <span>
-                                    <?php
+                                        <?php
                                             include 'db.php';
                                             $sql = "SELECT SUM(stipendio) AS total_salary FROM contratti";
                                             $result = mysqli_query($conn, $sql);
                                             $data = mysqli_fetch_assoc($result);
-                                            echo ''.$data['total_salary'].' €';
+                                            echo $data['total_salary'] . ' &euro;';
                                         ?>
                                     </span>
                                 </div>
@@ -228,8 +231,8 @@
                             </div>
                         </div>
                         <div class="details-footer">
-                            <button class="button-primary red-button button-max-width popup-open" data-form-type="fireForm" data-header="Fire employee">Fire</button>
-                            <button class="button-primary green-button button-max-width popup-open" data-form-type="renewForm" data-header="Renew contract">Renew</button>
+                            <button class="button-primary red-button button-max-width popup-open border-angol" data-form-type="fireForm" data-header="Fire employee">Fire</button>
+                            <button class="button-primary green-button button-max-width popup-open border-angol" data-form-type="renewForm" data-header="Renew contract">Renew</button>
                         </div>
                     </div>
                 </div>
