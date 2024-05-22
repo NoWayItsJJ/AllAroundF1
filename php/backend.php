@@ -32,17 +32,13 @@
             <ul>
                 <li>
                     <a href="./logout.php">
-                        <div class="icon">
-                            <i class="fa-regular fa-arrow-right-from-bracket"></i>
-                        </div>
+                        <i class="fa-regular fa-arrow-right-from-bracket"></i>
                         <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
                     <a href="./account-backend.php">
-                        <div class="icon">
-                            <i class="fa-regular fa-user"></i>
-                        </div>
+                        <i class="fa-regular fa-user"></i>
                         <span class="nav-text">Account</span>
                     </a>
                 </li>
