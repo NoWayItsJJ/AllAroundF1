@@ -3,15 +3,6 @@ $userType = $_SESSION['user_type'];
 
 include_once 'security.php';
 
-/*
-utenti:
-- dirigente (4)
-- ingegnere (3)(poi in base al tipo)
-- pilota (1)
-- amministrazione/risorse umane (6)
-- marketing (7)
-*/
-
 $currentFile = basename($_SERVER['PHP_SELF']);
 
 // Dashboard
@@ -19,7 +10,9 @@ $isActive = ($currentFile == 'backend.php') ? 'red-text' : '';
 echo '
 <li >
     <a href="./backend.php" class="'.$isActive.'">
-        <i class="fa-regular fa-house-blank"></i>
+        <div class="icon">
+            <i class="fa-regular fa-objects-column"></i>
+        </div>
         <span class="nav-text">Dashboard</span>
     </a>
 </li>';
@@ -30,7 +23,9 @@ if($userType == 4) {
     echo '
     <li>
         <a href="./factory.php" class="'.$isActive.'">
-            <i class="fa-regular fa-industry"></i>
+            <div class="icon">
+                <i class="fa-regular fa-industry"></i>
+            </div>
             <span class="nav-text">Factory</span>
         </a>
     </li>';
@@ -42,7 +37,9 @@ if($userType == 4 || $userType == 6) {
     echo '
     <li>
         <a href="./logistics.php" class="'.$isActive.'">
-            <i class="fa-regular fa-truck-fast"></i>
+            <div class="icon">
+                <i class="fa-regular fa-truck-fast"></i>
+            </div>
             <span class="nav-text">Logistics</span>
         </a>
     </li>';
@@ -54,7 +51,9 @@ if($userType == 4 || $userType == 6) {
     echo '
     <li>
         <a href="./staff.php" class="'.$isActive.'">
-            <i class="fa-regular fa-user-group"></i>
+            <div class="icon">
+                <i class="fa-regular fa-user-group"></i>
+            </div>
             <span class="nav-text">Staff</span>
         </a>
     </li>';
@@ -66,7 +65,9 @@ if($userType == 4 || $userType == 6) {
     echo '
     <li>
         <a href="./finances.php" class="'.$isActive.'">
-            <i class="fa-regular fa-chart-mixed-up-circle-dollar"></i>
+            <div class="icon">
+                <i class="fa-regular fa-chart-mixed-up-circle-dollar"></i>
+            </div>
             <span class="nav-text">Finances</span>
         </a>
     </li>';
@@ -78,7 +79,9 @@ if($userType == 4 || $userType == 7) {
     echo '
     <li>
         <a href="./marketing.php" class="'.$isActive.'">
-            <i class="fa-regular fa-bullhorn"></i>
+            <div class="icon">
+                <i class="fa-regular fa-bullhorn"></i>
+            </div>
             <span class="nav-text">Marketing</span>
         </a>
     </li>';
@@ -90,7 +93,9 @@ if($userType == 7) {
     echo '
     <li>
         <a href="./orders.php" class="'.$isActive.'">
-            <i class="fa-regular fa-bags-shopping"></i>
+            <div class="icon">
+                <i class="fa-regular fa-bags-shopping"></i>
+            </div>
             <span class="nav-text">Orders</span>
         </a>
     </li>';
@@ -102,7 +107,9 @@ if($userType == 7) {
     echo '
     <li>
         <a href="./articles.php" class="'.$isActive.'">
-            <i class="fa-regular fa-boxes-stacked"></i>
+            <div class="icon">
+                <i class="fa-regular fa-boxes-stacked"></i>
+            </div>
             <span class="nav-text">Articles</span>
         </a>
     </li>';
@@ -114,7 +121,9 @@ if($userType == 7) {
     echo '
     <li>
         <a href="./events.php" class="'.$isActive.'">
-            <i class="fa-regular fa-calendar-lines"></i>
+            <div class="icon">
+                <i class="fa-regular fa-calendar-lines"></i>
+            </div>
             <span class="nav-text">Events</span>
         </a>
     </li>';
@@ -126,7 +135,9 @@ if($userType == 3) {
     echo '
     <li>
         <a href="./production.php" class="'.$isActive.'">
-            <i class="fa-regular fa-conveyor-belt-arm"></i>
+            <div class="icon">
+                <i class="fa-regular fa-conveyor-belt-arm"></i>
+            </div>
             <span class="nav-text">Production</span>
         </a>
     </li>';
@@ -138,7 +149,9 @@ if($userType == 3) {
     echo '
     <li>
         <a href="./components.php" class="'.$isActive.'">
-            <i class="fa-regular fa-engine"></i>
+            <div class="icon">
+                <i class="fa-regular fa-engine"></i>
+            </div>
             <span class="nav-text">Components</span>
         </a>
     </li>';

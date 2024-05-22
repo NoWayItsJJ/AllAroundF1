@@ -10,6 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <script src="../js/calendar.js"></script>
+    <script src="../js/finances.js"></script>
+
 </head>
 <body>
     <div class="se-pre-con">
@@ -30,13 +32,17 @@
             <ul>
                 <li>
                     <a href="./logout.php">
-                        <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                        <div class="icon">
+                            <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                        </div>
                         <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
                     <a href="./account-backend.php">
-                        <i class="fa-regular fa-user"></i>
+                        <div class="icon">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
                         <span class="nav-text">Account</span>
                     </a>
                 </li>
@@ -90,6 +96,43 @@
                     <h4>Finances</h4>
                 </div>
                 <div class="card-content">
+                    <div class="finances">
+                        <div class="slider">
+                            <div class="slide" id="slide1">
+                                <div class="slide-row">
+                                    <i class="fa-regular fa-landmark"></i>
+                                    <div class="slide-col">
+                                        <h3 id="balance">100000 €</h3>
+                                        <p>Balance</p>
+                                    </div>
+                                </div>
+                                <div class="slide-row">
+                                    <i class="fa-regular fa-money-bill-transfer"></i>
+                                    <div class="slide-col">
+                                        <h3 id="income">100000 €</h3>
+                                        <p>Income</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide" id="slide2">
+                                <div class="slide-content">
+                                    <h5>Expenses</h5>
+                                    <h3 id="expenses">1000</h3>
+                                </div>
+                            </div>
+                            <div class="slide" id="slide3">
+                                <div class="slide-content">
+                                    <h5>Profit</h5>
+                                    <h1 id="profit">100000</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dots">
+                            <span class="dot" onclick="currentSlide('slide1', this)"></span>
+                            <span class="dot" onclick="currentSlide('slide2', this)"></span>
+                            <span class="dot" onclick="currentSlide('slide3', this)"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="card-link">
@@ -169,6 +212,25 @@
     $(window).load(function() {
 		// Animate loader off screen
 		$(".se-pre-con").fadeOut(1000);
+        currentSlide('slide1', document.getElementsByClassName('dot')[0]);
 	});
+
+    function currentSlide(slideId, dotElement) {
+        // Nascondi tutte le slide
+        var slides = document.getElementsByClassName('slide');
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+    
+        // Rimuovi la classe "active" da tutti i puntini
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+    
+        // Mostra la slide corrente e rendi il puntino corrispondente attivo
+        document.getElementById(slideId).style.display = "flex";  
+        dotElement.className += " active";
+    }
 </script>
 </html>
