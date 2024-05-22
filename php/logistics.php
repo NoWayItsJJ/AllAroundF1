@@ -66,38 +66,70 @@
                         <div class="big-card">
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-calendar-event"></i>
                                 </div>
                                 <div class="card-data">
-                                    <p>Total employees</p>
-                                    <span>8</span>
+                                    <p>Pending shifts</p>
+                                    <span>
+                                        <?php
+                                            include 'db.php';
+                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_partenza > CURDATE()";
+                                            $result = mysqli_query($conn, $sql);
+                                            $data = mysqli_fetch_assoc($result);
+                                            echo $data['total'];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-clock"></i>
                                 </div>
                                 <div class="card-data">
-                                    <p>Available employees</p>
-                                    <span>8</span>
+                                    <p>In progress shifts</p>
+                                    <span>
+                                        <?php
+                                            include 'db.php';
+                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_partenza < CURDATE() AND data_arrivo > CURDATE()";
+                                            $result = mysqli_query($conn, $sql);
+                                            $data = mysqli_fetch_assoc($result);
+                                            echo $data['total'];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-check-lg"></i>
                                 </div>
                                 <div class="card-data">
-                                    <p>Ending contracts</p>
-                                    <span>8</span>
+                                    <p>Completed shifts</p>
+                                    <span>
+                                        <?php
+                                            include 'db.php';
+                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_arrivo < CURDATE()";
+                                            $result = mysqli_query($conn, $sql);
+                                            $data = mysqli_fetch_assoc($result);
+                                            echo $data['total'];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-people"></i>
+                                    <i class="bi bi-briefcase"></i>
                                 </div>
                                 <div class="card-data">
-                                    <p>Total salaries</p>
-                                    <span>8</span>
+                                    <p>Total shifts</p>
+                                    <span>
+                                        <?php
+                                            include 'db.php';
+                                            $sql = "SELECT COUNT(*) AS total FROM logistica";
+                                            $result = mysqli_query($conn, $sql);
+                                            $data = mysqli_fetch_assoc($result);
+                                            echo $data['total'];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -119,6 +151,7 @@
                             <p>To</p>
                             <p>Departure date</p>
                             <p>Arrival date</p>
+                            <p>Status</p>
                         </div>
                         <div id="list-result" class="table-body">
                             <?php include './logistics/logistics-list.php'; ?>

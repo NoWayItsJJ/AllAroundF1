@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 09:21 PM
+-- Generation Time: May 22, 2024 at 10:09 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -159,7 +159,9 @@ CREATE TABLE `logistica` (
 --
 
 INSERT INTO `logistica` (`id_spostamento`, `partenza`, `destinazione`, `mezzo_trasporto`, `data_partenza`, `data_arrivo`, `tipo`, `fk_id_item`) VALUES
-(1, 'miami', 'imola', 'airplane', '2024-05-06 16:50:10.000000', '2024-05-15 16:50:10.000000', 'componente', 1);
+(1, 'miami', 'imola', 'airplane', '2024-05-06 16:50:10.000000', '2024-05-15 16:50:10.000000', 'componente', 1),
+(5, 'test', 'pending', 'bus', '2024-05-23 11:00:00.000000', '2024-05-24 00:00:00.000000', 'dipendente', 5),
+(6, 'test', 'in progress', 'airplane', '2024-05-21 11:00:00.000000', '2024-05-23 12:00:00.000000', 'dipendente', 2);
 
 -- --------------------------------------------------------
 
@@ -431,7 +433,7 @@ ALTER TABLE `finanze`
 -- AUTO_INCREMENT for table `logistica`
 --
 ALTER TABLE `logistica`
-  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `nazionalita`

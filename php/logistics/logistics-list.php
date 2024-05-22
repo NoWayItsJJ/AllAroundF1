@@ -49,6 +49,12 @@ while($firstRow = $firstResult->fetch_assoc()) {
     }
     $data_partenza = new DateTime($firstRow['data_partenza']);
     $data_arrivo = new DateTime($firstRow['data_arrivo']);
+    if($data_partenza > new DateTime())
+        $status = "Pending";
+    else if($data_arrivo > new DateTime())
+        $status = "In progress";
+    else
+        $status = "Completed";
 
     echo '<div class="staff-list-row">
                 <span data-id="' . $firstRow["id_spostamento"] . '"><i class="'. $icon .'"></i></span>
@@ -57,6 +63,7 @@ while($firstRow = $firstResult->fetch_assoc()) {
                 <span><p>' . ucfirst($firstRow['destinazione']) . '</p></span>
                 <span><p>' . $data_partenza->format("d-m-Y G:i") . '</p></span>
                 <span><p>' . $data_arrivo->format("d-m-Y G:i") . '</p></span>
+                <span><p>' . $status . '</p></span>
               </div>';
 }
 
