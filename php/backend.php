@@ -59,9 +59,9 @@
                                 <h5 id="month"></h5>
                             </div>
                             <div class="calendar-header-nav">
-                                <button class="button-invisible-background" onclick="prevMonth()"><i class="bi bi-chevron-left"></i></button>
+                                <button class="button-invisible-background" onclick="prevMonth()"><i class="fa-regular fa-chevron-left"></i></button>
                                 <button class="button-invisible-background" onclick="displayToday()">today</button>
-                                <button class="button-invisible-background" onclick="nextMonth()"><i class="bi bi-chevron-right"></i></button>
+                                <button class="button-invisible-background" onclick="nextMonth()"><i class="fa-regular fa-chevron-right"></i></button>
                             </div>
                         </div>
                         <div id="calendar"></div>
@@ -111,15 +111,21 @@
                                 </div>
                             </div>
                             <div class="slide" id="slide2">
-                                <div class="slide-content">
-                                    <h5>Expenses</h5>
-                                    <h3 id="expenses">1000</h3>
+                                <div class="slide-row">
+                                    <i class="fa-regular fa-money-bill-transfer"></i>
+                                    <div class="slide-col">
+                                        <h3 id="income">100000 €</h3>
+                                        <p>Last transaction</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="slide" id="slide3">
-                                <div class="slide-content">
-                                    <h5>Profit</h5>
-                                    <h1 id="profit">100000</h1>
+                                <div class="slide-row">
+                                    <i class="fa-regular fa-money-bill-transfer"></i>
+                                    <div class="slide-col">
+                                        <h3 id="income">100000 €</h3>
+                                        <p>something</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +137,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <div class="card-link">
+                    <div class="card-link" onclick="window.location.href='finances.php';">
                         <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
@@ -142,6 +148,45 @@
                     <h4>Staff</h4>
                 </div>
                 <div class="card-content">
+                    <div class="list">
+                        <div class="list-filters">
+                            <div class="filter active">
+                                <div class="icon">
+                                    <i class="fa-regular fa-user-helmet-safety"></i>
+                                </div>
+                                <span id="nstaff-ingegneri">17</span>
+                                <p>Engineers</p>
+                            </div>
+                            <div class="filter">
+                                <div class="icon">
+                                    <i class="fa-regular fa-bullhorn"></i>
+                                </div>
+                                <span id="nstaff-marketing">17</span>
+                                <p>Marketing</p>
+                            </div>
+                            <div class="filter">
+                                <div class="icon">
+                                    <i class="fa-regular fa-user-tie-hair"></i>
+                                </div>
+                                <span id="nstaff-admin">17</span>
+                                <p>Administration</p>
+                            </div>
+                        </div>
+                        <div class="table">
+                            <div class="line"></div>
+                            <div class="table-row">
+                                <i class="fa-regular fa-user-helmet-safety"></i>
+                                <p>Fabio Pauletta</p>
+                                <p>Engineer</p>
+                            </div>
+                            <div class="line"></div>
+                            <div class="table-row">
+                                <i class="fa-regular fa-user-helmet-safety"></i>
+                                <p>a b</p>
+                                <p>Engineer</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="card-link" onclick="window.location.href='staff.php';">
@@ -155,6 +200,74 @@
                     <h4>Logistics</h4>
                 </div>
                 <div class="card-content">
+                    <div class="list">
+                        <div class="list-filters">
+                            <div class="filter active-log">
+                                <div class="icon">
+                                    <i class="fa-regular fa-truck-container"></i>
+                                </div>
+                                <span id="nstaff-trucks">17</span>
+                                <p>Trucks</p>
+                            </div>
+                            <div class="filter">
+                                <div class="icon">
+                                    <i class="fa-regular fa-ship"></i>
+                                </div>
+                                <span id="nstaff-ships">17</span>
+                                <p>Ships</p>
+                            </div>
+                            <div class="filter">
+                                <div class="icon">
+                                    <i class="fa-regular fa-plane fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
+                                </div>
+                                <span id="nstaff-planes">17</span>
+                                <p>Planes</p>
+                            </div>
+                            <div class="filter">
+                                <div class="icon">
+                                    <i class="fa-regular fa-train"></i>
+                                </div>
+                                <span id="nstaff-trains">17</span>
+                                <p>Train</p>
+                            </div>
+                            <div class="filter">
+                                <div class="icon">
+                                    <i class="fa-regular fa-bus-simple"></i>
+                                </div>
+                                <span id="nstaff-bus">17</span>
+                                <p>Bus</p>
+                            </div>
+                            <div class="filter">
+                                <div class="icon">
+                                    <i class="fa-regular fa-car-side"></i>
+                                </div>
+                                <span id="nstaff-cars">17</span>
+                                <p>Cars</p>
+                            </div>
+                        </div>
+                        <div class="table">
+                            <div class="line"></div>
+                            <div class="table-row log-row">
+                                <i class="fa-regular fa-truck-container log"></i>
+                                <p>Rear wing</p>
+                                <div class="dep-arr">
+                                    <p>Maranello</p>
+                                    <i class="fa-regular fa-plane-departure log"></i>
+                                    <p>Monaco</p>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="table-row log-row">
+                                <i class="fa-regular fa-truck-container log"></i>
+                                <p>Front wing</p>
+                                <div class="dep-arr">
+                                    <p>Maranello</p>
+                                    <i class="fa-regular fa-plane-departure log"></i>
+                                    <p>Monaco</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="card-link"  onclick="window.location.href='logistics.php';">
@@ -181,6 +294,36 @@
                     <h4>Marketing</h4>
                 </div>
                 <div class="card-content">
+                    <div class="grid">
+                        <div class="grid-card">
+                            <i class="fa-regular fa-boxes-stacked"></i>
+                            <div class="data">
+                                <span>17</span>
+                                <p>Merchandising</p>
+                            </div>
+                        </div>
+                        <div class="grid-card">
+                            <i class="fa-regular fa-bags-shopping"></i>
+                            <div class="data">
+                                <span>17</span>
+                                <p>Orders</p>
+                            </div>
+                        </div>
+                        <div class="grid-card">
+                            <i class="fa-regular fa-comments"></i>
+                            <div class="data">
+                                <span>17</span>
+                                <p>Interview</p>
+                            </div>
+                        </div>
+                        <div class="grid-card">
+                            <i class="fa-regular fa-file-invoice-dollar"></i>
+                            <div class="data">
+                                <span>17</span>
+                                <p>Sponsor</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="card-link" onclick="window.location.href='marketing.php';">
