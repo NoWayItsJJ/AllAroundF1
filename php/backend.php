@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <script src="../js/calendar.js"></script>
     <script src="../js/finances.js"></script>
+    <script src="../js/backend.js"></script>
 
 </head>
 <body>
@@ -98,14 +99,14 @@
                                 <div class="slide-row">
                                     <i class="fa-regular fa-landmark"></i>
                                     <div class="slide-col">
-                                        <h3 id="balance">100000 €</h3>
+                                        <h3 id="balance"></h3>
                                         <p>Balance</p>
                                     </div>
                                 </div>
                                 <div class="slide-row">
                                     <i class="fa-regular fa-money-bill-transfer"></i>
                                     <div class="slide-col">
-                                        <h3 id="income">100000 €</h3>
+                                        <h3 id="income"></h3>
                                         <p>Income</p>
                                     </div>
                                 </div>
@@ -114,7 +115,7 @@
                                 <div class="slide-row">
                                     <i class="fa-regular fa-money-bill-transfer"></i>
                                     <div class="slide-col">
-                                        <h3 id="income">100000 €</h3>
+                                        <h3 id="lastTransaction"></h3>
                                         <p>Last transaction</p>
                                     </div>
                                 </div>
@@ -123,8 +124,8 @@
                                 <div class="slide-row">
                                     <i class="fa-regular fa-money-bill-transfer"></i>
                                     <div class="slide-col">
-                                        <h3 id="income">100000 €</h3>
-                                        <p>something</p>
+                                        <h3 id="income">70000000 €</h3>
+                                        <p>budget cap</p>
                                     </div>
                                 </div>
                             </div>
@@ -142,49 +143,37 @@
                     </div>
                 </div>
             </div>
-            <div class="dashboard-card grid-row-span-2" onclick="window.location.href='staff.php';">
-                <div class="card-header">
+            <div class="dashboard-card grid-row-span-2">
+                <div class="card-header" onclick="window.location.href='staff.php';">
                     <i class="fa-regular fa-user-group"></i>
                     <h4>Staff</h4>
                 </div>
                 <div class="card-content">
                     <div class="list">
                         <div class="list-filters">
-                            <div class="filter active">
+                            <div class="filter active" data-id="2">
                                 <div class="icon">
                                     <i class="fa-regular fa-user-helmet-safety"></i>
                                 </div>
-                                <span id="nstaff-ingegneri">17</span>
+                                <span id="nstaff-ingegneri"></span>
                                 <p>Engineers</p>
                             </div>
-                            <div class="filter">
+                            <div class="filter" data-id="7">
                                 <div class="icon">
                                     <i class="fa-regular fa-bullhorn"></i>
                                 </div>
-                                <span id="nstaff-marketing">17</span>
+                                <span id="nstaff-marketing"></span>
                                 <p>Marketing</p>
                             </div>
-                            <div class="filter">
+                            <div class="filter" data-id="4">
                                 <div class="icon">
                                     <i class="fa-regular fa-user-tie-hair"></i>
                                 </div>
-                                <span id="nstaff-admin">17</span>
+                                <span id="nstaff-admin"></span>
                                 <p>Administration</p>
                             </div>
                         </div>
-                        <div class="table">
-                            <div class="line"></div>
-                            <div class="table-row">
-                                <i class="fa-regular fa-user-helmet-safety"></i>
-                                <p>Fabio Pauletta</p>
-                                <p>Engineer</p>
-                            </div>
-                            <div class="line"></div>
-                            <div class="table-row">
-                                <i class="fa-regular fa-user-helmet-safety"></i>
-                                <p>a b</p>
-                                <p>Engineer</p>
-                            </div>
+                        <div id="staffList" class="table">
                         </div>
                     </div>
                 </div>
