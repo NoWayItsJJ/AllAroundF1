@@ -52,7 +52,7 @@
                     <i class="fa-regular fa-calendar-lines"></i>
                     <h4>Calendar</h4>
                 </div>
-                <div class="card-content">
+                <div class="card-content cal">
                     <div class="calendar">
                         <div class="calendar-header">
                             <div class="calendar-header-month">
@@ -281,12 +281,40 @@
                     <h4>Factory</h4>
                 </div>
                 <div class="card-content">
+                    <div class="factory">
+                        <div class="factory-col">
+                            <p>SF-24</p>
+                        </div>
+                        <div class="factory-col">
+                            <h5>Components</h5>
+                            <div class="component-stats">
+                                <div class="icon">
+                                    <i class="fa-regular fa-warehouse-full"></i>
+                                </div>
+                                <p><span>44</span>Warehouse</p>
+                            </div>
+                            <div class="component-stats">
+                                <div class="icon">
+                                    <i class="fa-regular fa-conveyor-belt-arm"></i>
+                                </div>
+                                <p><span>3</span>in Production</p>
+                            </div>
+                            <div class="component-stats">
+                                <div class="icon">
+                                    <i class="fa-regular fa-screwdriver-wrench"></i>
+                                </div>
+                                <p><span>22</span>Busy engineer</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="card-link" onclick="window.location.href='factory.php';">
                         <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
+                <img class="car" src="../img/car/half-car.png" alt="">
+                <div class="sfumatura"></div>
             </div>
             <div class="dashboard-card">
                 <div class="card-header" onclick="window.location.href='marketing.php';">
@@ -331,18 +359,89 @@
                     </div>
                 </div>
             </div>
-            <div class="dashboard-card grid-col-span-2">
+            <div class="dashboard-card grid-col-span-2 no-hover">
                 <div class="card-header" onclick="window.location.href='drivers.php';">
                     <i class="fa-kit fa-driver-helmet"></i>
                     <h4>Drivers</h4>
                 </div>
                 <div class="card-content">
-                </div>
-                <div class="card-footer">
-                    <div class="card-link" onclick="window.location.href='drivers.php';">
-                        <i class="fa-regular fa-arrow-down-right"></i>
+                    <div class="drivers">
+                        <div class="driver">
+                            <h5 class="lec">Charles Leclerc</h5>
+                            <div class="data">
+                                <div class="v-line red"></div>
+                                <div class="info">
+                                    <div class="info-title">
+                                        <i class="fa-regular fa-memo-circle-info"></i>
+                                        <span>Personal info</span>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Age</span>
+                                        <p>26</p>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Weight</span>
+                                        <p>69kg</p>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Height</span>
+                                        <p>1,80m</p>
+                                    </div>
+                                    <div class="info-title">
+                                        <i class="fa-regular fa-file-contract"></i>
+                                        <span>Contract info</span>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Salary</span>
+                                        <p>25mln&euro;</p>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Contract end</span>
+                                        <p>2028</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="driver">
+                            <h5 class="sai">Carlos Sainz</h5>
+                            <div class="data">
+                                <div class="v-line yellow"></div>
+                                <div class="info">
+                                    <div class="info-title">
+                                        <i class="fa-regular fa-memo-circle-info"></i>
+                                        <span>Personal info</span>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Age</span>
+                                        <p>28</p>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Weight</span>
+                                        <p>66kg</p>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Height</span>
+                                        <p>1,78m</p>
+                                    </div>
+                                    <div class="info-title">
+                                        <i class="fa-regular fa-file-contract"></i>
+                                        <span>Contract info</span>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Salary</span>
+                                        <p>15mln&euro;</p>
+                                    </div>
+                                    <div class="info-line">
+                                        <span>Contract end</span>
+                                        <p>2028</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <img class="lec" src="../img/drivers/leclerc.png" alt="">
+                <img class="sai" src="../img/drivers/sainz.png" alt="">
             </div>
         </div>
     </section>
