@@ -3,10 +3,27 @@ include __DIR__ . '/../security.php';
 include __DIR__ . '/../db.php';
 
 $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
-$itemType = isset($_POST['item_type']) ? $_POST['item_type'] : '';
+$itemType = isset($_POST['tipo']) ? $_POST['tipo'] : '';
 
-$firstSql = "SELECT * FROM logistica";
+$firstSql = "SELECT * FROM logistica WHERE id_spostamento IS NOT NULL";
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $itemType != '') {
+
+    if ($itemType == 'componente') {
+        $firstSql .= " AND tipo = 'componente'";
+    } else if ($itemType == 'dipendente') {
+        $firstSql .= " AND tipo = 'dipendente'";
+    } else if($itemType == 'articolo'){
+        $firstSql .= " AND tipo = 'articolo'";
+    }
+}
+
+if ($searchTerm != '') {
+    $searchTerm = $conn->real_escape_string($searchTerm);
+    $firstSql .= " AND (partenza LIKE '{$searchTerm}%' OR destinazione LIKE '{$searchTerm}%')";
+}
+
 $firstResult = $conn->query($firstSql);
+if ($firstResult->num_rows > 0) {
 while($firstRow = $firstResult->fetch_assoc()) {
     $itemDetails = '';
     switch($firstRow['mezzo_trasporto']){
@@ -66,21 +83,10 @@ while($firstRow = $firstResult->fetch_assoc()) {
                 <span><p>' . $status . '</p></span>
               </div>';
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $roleId != '') {
-
-    if ($roleId == 'all') {
-        $sql .= " AND u.fk_id_ruolo != 5";
-    } else if ($roleId == '2') {
-        $sql .= " AND u.fk_id_ruolo IN (2, 3)";
-    } else {
-        $sql .= " AND u.fk_id_ruolo = $roleId";
-    }
-}
-
-if ($searchTerm != '') {
-    $searchTerm = $conn->real_escape_string($searchTerm);
-    $sql .= " AND (nome LIKE '{$searchTerm}%' OR cognome LIKE '{$searchTerm}%' OR nome_ruolo LIKE '%{$searchTerm}%')";
+} else {
+    echo "<div class='no-result'>
+            <p>No results found</p>
+          </div>";
 }
 
 $conn->close();

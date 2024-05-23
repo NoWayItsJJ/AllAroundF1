@@ -73,8 +73,8 @@
                                     <span>
                                         <?php
                                             include 'db.php';
-                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_partenza > CURDATE()";
-                                            $result = mysqli_query($conn, $sql);
+                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_partenza > NOW()";
+                                            $result = $conn->query($sql);
                                             $data = mysqli_fetch_assoc($result);
                                             echo $data['total'];
                                         ?>
@@ -90,7 +90,7 @@
                                     <span>
                                         <?php
                                             include 'db.php';
-                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_partenza < CURDATE() AND data_arrivo > CURDATE()";
+                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_partenza < NOW() AND data_arrivo > NOW()";
                                             $result = mysqli_query($conn, $sql);
                                             $data = mysqli_fetch_assoc($result);
                                             echo $data['total'];
@@ -107,7 +107,7 @@
                                     <span>
                                         <?php
                                             include 'db.php';
-                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_arrivo < CURDATE()";
+                                            $sql = "SELECT COUNT(*) AS total FROM logistica WHERE data_arrivo < NOW()";
                                             $result = mysqli_query($conn, $sql);
                                             $data = mysqli_fetch_assoc($result);
                                             echo $data['total'];

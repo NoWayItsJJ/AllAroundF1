@@ -37,7 +37,7 @@ if (isset($_POST['action'])) {
                     $sql = 'SELECT id_utente as id, CONCAT(nome, " ", cognome) as name FROM utenti';
                     break;
                 case 'articolo':
-                    $sql = 'SELECT id_articolo as id, tipologia as name FROM articoli';
+                    $sql = 'SELECT id_articolo as id, CONCAT(numero_inventario, " - " ,tipologia) as name FROM articoli';
                     break;
                 default:
                     break;

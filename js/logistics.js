@@ -85,7 +85,7 @@ $(document).ready(function () {
 
 	$(document).on("click", ".statistic", function () {
 		var search = $("#search").val();
-		var transaction = $(this).data("transaction-name");
+		var category = $(this).data("item-type");
 
 		$(".statistic").each(function () {
 			$(this).removeClass("active");
@@ -96,7 +96,7 @@ $(document).ready(function () {
 		$.ajax({
 			url: "../php/logistics/logistics-list.php",
 			type: "POST",
-			data: { search: search, tipo: transaction },
+			data: { search: search, tipo: category },
 			success: function (response) {
 				$("#list-result").html(response);
 			},
