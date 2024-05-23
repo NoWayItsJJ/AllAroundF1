@@ -228,7 +228,7 @@
                                     <i class="fa-regular fa-train"></i>
                                 </div>
                                 <span id="nstaff-trains">17</span>
-                                <p>Train</p>
+                                <p>Trains</p>
                             </div>
                             <div class="filter">
                                 <div class="icon">
