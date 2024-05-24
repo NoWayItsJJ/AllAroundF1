@@ -18,6 +18,9 @@ $(document).ready(function () {
                     case "car":
                         $("#movingIcon").removeClass().addClass("bi-car-front-fill"); //da rivedere
                         break;
+					case 'train':
+						$("#movingIcon").removeClass().addClass("bi-train");
+						break;
                     case "airplane":
                         $("#movingIcon").removeClass().addClass("bi-airplane");
                         break;

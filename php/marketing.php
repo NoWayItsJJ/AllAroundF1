@@ -45,21 +45,14 @@
                 </div>
                 <div class="card-content">
                     <div class="list">
-                        <div class="list-card">
-                            <div class="filter-card">
-                                <div class="card-row">
-                                    <?php include('./staff/staff_count.php'); ?>
-                                </div>
-                            </div>
-                        </div>
                         <div class="list-content scrollable-section">
                             <div class="table-header">
+                                <p>Inventory Number</p>
                                 <p>Article</p>
-                                <p>Tipologia</p>
-                                <p>quantità</p>
+                                <p>Quantity</p>
                             </div>
                             <div id="list-result" class="table-body">
-                                <?php //include './staff/staff-list.php'; ?>
+                                <?php include './merchandise/merchandise-list.php'; ?>
                             </div>
                         </div>
                     </div>
@@ -70,15 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="dashboard-card grid-col-span-3 grid-row-span-3 no-hover">
-                <div class="card-header">
-                    <i class="fa-regular fa-comments"></i>
-                    <h4>Events</h4>
-                </div>
-                <div class="card-content">
-                </div>
-            </div>
-            <div class="dashboard-card grid-col-span-3 grid-row-span-5">
+            <div class="dashboard-card grid-col-span-3 grid-row-span-8">
                 <div class="card-header" onclick="window.location.href='orders.php';">
                     <i class="fa-regular fa-bags-shopping"></i>
                     <h4>Orders</h4>
@@ -117,13 +102,22 @@
                 </div>
                 <div class="card-content">
                     <div class="sponsors">
-                        <div class="sponsor">
-                            <div class="sponsor-img">
-                                <img src="../img/drivers/leclerc.png" alt="">
-                            </div>
-                            <span>Alfa Romeo</span>
-                            <p>170000&euro;</p>
-                        </div>
+                        <?php 
+                            $sql = "SELECT * FROM sponsor";
+                            $result = mysqli_query($conn, $sql);
+                            $resultCheck = mysqli_num_rows($result);
+                            if ($resultCheck > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<div class="sponsor">
+                                            <div class="sponsor-img">
+                                            <img src="../img/sponsors/'.$row['img'].'" alt="">
+                                        </div>
+                                        <span>'.$row['nome'].'</span>
+                                        <p>'.$row['importo'].'&euro;</p>
+                                        </div>';
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

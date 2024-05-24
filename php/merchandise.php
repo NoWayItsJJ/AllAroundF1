@@ -69,8 +69,16 @@
                                     <i class="bi bi-people"></i>
                                 </div>
                                 <div class="card-data">
-                                    <p>Total employees</p>
-                                    <span>8</span>
+                                    <p>Total articles</p>
+                                    <span>
+                                        <?php
+                                            include 'db.php';
+                                            $sql = "SELECT COUNT(*) FROM articoli";
+                                            $result = mysqli_query($conn, $sql);
+                                            $row = mysqli_fetch_array($result);
+                                            echo $row[0];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
@@ -78,8 +86,15 @@
                                     <i class="bi bi-people"></i>
                                 </div>
                                 <div class="card-data">
-                                    <p>Available employees</p>
-                                    <span>8</span>
+                                    <p>Excessive articles</p>
+                                    <span>
+                                        <?php
+                                            $sql = "SELECT COUNT(*) FROM articoli WHERE quantita > 40";
+                                            $result = mysqli_query($conn, $sql);
+                                            $row = mysqli_fetch_array($result);
+                                            echo $row[0];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
@@ -87,8 +102,15 @@
                                     <i class="bi bi-people"></i>
                                 </div>
                                 <div class="card-data">
-                                    <p>Ending contracts</p>
-                                    <span>8</span>
+                                    <p>Re-stock articles</p>
+                                    <span>
+                                        <?php
+                                            $sql = "SELECT COUNT(*) FROM articoli WHERE quantita < 10";
+                                            $result = mysqli_query($conn, $sql);
+                                            $row = mysqli_fetch_array($result);
+                                            echo $row[0];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card">
@@ -96,8 +118,15 @@
                                     <i class="bi bi-people"></i>
                                 </div>
                                 <div class="card-data">
-                                    <p>Total salaries</p>
-                                    <span>8</span>
+                                    <p>Finished articles</p>
+                                    <span>
+                                        <?php
+                                            $sql = "SELECT COUNT(*) FROM articoli WHERE quantita = 0";
+                                            $result = mysqli_query($conn, $sql);
+                                            $row = mysqli_fetch_array($result);
+                                            echo $row[0];
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>

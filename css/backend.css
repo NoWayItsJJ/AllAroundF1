@@ -156,6 +156,10 @@ nav {
 		grid-row: span 2;
 	}
 
+	.grid-col-span-8 {
+		grid-column: span 8;
+	}
+
 	.dashboard-card {
 		position: relative;
 		background-color: var(--primary-color);
