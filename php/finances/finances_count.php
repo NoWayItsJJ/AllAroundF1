@@ -11,7 +11,7 @@
     // Stampa il conteggio totale delle transazioni
     echo'<div class="statistic" data-role-id="all">
             <div class="statistic-icon">
-                <i class="bi bi-arrow-down-up"></i>
+                <i class="fa-regular fa-chart-line-up-down"></i>
             </div>
             <div class="statistic-data">
                 <p>All</p>
@@ -28,16 +28,16 @@
 
             $icon = '';
             if ($tipoTransazione == 'entrata') {
-                $icon = 'bi-arrow-down';
+                $icon = '<i class="fa-regular fa-arrow-trend-up"></i>';
             } elseif($tipoTransazione == 'uscita') {
-                $icon = 'bi-arrow-up';
+                $icon = '<i class="fa-regular fa-arrow-trend-down"></i>';
             } else {
-                $icon = 'bi-arrow-left-right';
+                $icon = '<i class="fa-regular fa-money-bill"></i>';
             }
 
             echo'<div class="statistic" data-transaction-name="'.$tipoTransazione.'">
                     <div class="statistic-icon">
-                        <i class="bi '.$icon.'"></i>
+                        '.$icon.'
                     </div>
                     <div class="statistic-data">
                         <p>'. ucfirst($tipoTransazione) .' '.$numTransaction.'</p>

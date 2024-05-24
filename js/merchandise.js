@@ -3,68 +3,35 @@ $(document).ready(function () {
 
 	$(document).on("click", ".staff-list-row", function (e) {
 		e.preventDefault();
-		var staffId = $(this).children().first().data("id");
+		var articleId = $(this).children().first().data("id");
 
 		$.ajax({
 			type: "POST",
-			url: "../php/staff/staff-function.php",
+			url: "../php/merchandise/merchandise-function.php",
 			data: {
-				id: staffId,
+				id: articleId,
 				action: "getDetails",
 			},
 			dataType: "json",
 			success: function (response) {
-				if (response.getDetails) {
-					var birthDate = new Date(response.details.data_nascita);
-					var currentDate = new Date();
-					var age = currentDate.getFullYear() - birthDate.getFullYear();
-					var m = currentDate.getMonth() - birthDate.getMonth();
-					if (
-						m < 0 ||
-						(m === 0 && currentDate.getDate() < birthDate.getDate())
-					) {
-						age--;
-					}
-
+                if (response.getDetails) {
 					$("#no-result").css("display", "none");
 					$("#detailsBlock").css("display", "");
-					$("#userId").val(staffId);
-					$("#roleId").val(response.details.fk_id_ruolo);
-					$("#userImage").attr("src", "../img/utenti/" + response.details.img);
-					$("#userName")
+					$("#articleId").val(articleId);
+					$("#articleImage").attr("src", "../img/articles/" + response.details.img);
+					$("#displayInventoryNumber")
 						.empty()
 						.append(
-							ucfirst(response.details.nome) +
-							ucfirst(response.details.cognome)
+							" <strong>" +
+								response.details.numero_inventario +
+								"</strong>"
 						);
-					$("#userRole")
+					$("#displayArticleType")
 						.empty()
-						.append(ucfirst(response.details.nome_ruolo));
-					$("#displayAge")
+						.append(" <strong>" + ucfirst(response.details.tipologia) + "</strong>");
+					$("#displayQuantity")
 						.empty()
-						.append(age);
-					$("#displayNationality")
-						.empty()
-						.append(
-							ucfirst(response.details.nome_nazionalita)
-						);
-					$("#displayEmail")
-						.empty()
-						.append(response.details.email);
-					$("#displaySpecialization")
-						.empty()
-						.append(
-							ucfirst(response.details.specializzazione)
-						);
-					$("#displaySalary")
-						.empty()
-						.append(response.contract.stipendio + " &euro;");
-					$("#displayEnd")
-						.empty()
-						.append(moment(response.contract.data_fine).format("DD-MM-YYYY"));
-					$("#displayBonus")
-						.empty()
-						.append(response.contract.bonus+ " &euro;");
+						.append(" <strong>" + response.details.quantita + "</strong>");
 				} else {
 					console.log("Error");
 				}
@@ -80,7 +47,7 @@ $(document).ready(function () {
 
 	$(document).on("click", ".statistic", function () {
 		var search = $("#search").val();
-		var roleId = $(this).data("role-id");
+		var tipologia = $(this).data("article-type");
 
 		$(".statistic").each(function () {
 			$(this).removeClass("active");
@@ -89,27 +56,24 @@ $(document).ready(function () {
 		$(this).addClass("active");
 
 		$.ajax({
-			url: "../php/staff/staff-list.php",
+			url: "../php/merchandise/merchandise-list.php",
 			type: "POST",
-			data: { search: search, fk_id_ruolo: roleId },
+			data: { search: search, tipologia: tipologia },
 			success: function (response) {
 				$("#list-result").html(response);
-			},
-			error: function (jqXHR, textStatus, errorThrown) {
-				console.error("Error:", textStatus, errorThrown);
-				console.error("Response:", jqXHR.responseText);
 			},
 		});
 	});
 
 	$(document).on("keyup", "#search", function () {
 		var search = $(this).val();
-		var roleId = $(".statistic.active").data("role-id");
+		var tipologia = $(".statistic.active").data("article-type");
+        console.log(tipologia);
 
 		$.ajax({
-			url: "../php/staff/staff-list.php",
+			url: "../php/merchandise/merchandise-list.php",
 			type: "POST",
-			data: { search: search, fk_id_ruolo: roleId },
+			data: { search: search, tipologia: tipologia },
 			success: function (response) {
 				$("#list-result").html(response);
 			},
@@ -125,34 +89,23 @@ $(document).ready(function () {
 			case "newForm":
 				formContent = `
 					<form id="newForm" style="display: none;">
-						<div class="form-row info-contract">
+						<div class="form-row">
 							<div class="form-col">
-
-								<h4>Employee Info</h4>
-								<div class="img-name">
-									<div class="img-new">
-										<img id="employee-img" src="../img/utenti/user-default.jpg" alt="">
-										<input type="file" id="fileInput" style="display: none;">
-										<div class="overlay" onclick="document.getElementById('fileInput').click()">
-											<i class="bi bi-plus"></i>
-										</div>
-									</div>
-									<div class="form-col">
-										<input id="newUserName" type="text" name="name" placeholder="First Name">
-										<input id="newUserSurname" type="text" name="surname" placeholder="Last Name">
-									</div>
+								<h3>Employee Info</h3>
+								<div>
+									<input id="newUserImage" type="file" name="image" placeholder="Image">
+									<input id="newUserName" type="text" name="name" placeholder="First Name">
+									<input id="newUserSurname" type="text" name="surname" placeholder="Last Name">
 								</div>
-								<div class="form-row">
-									<input id="newUserDateOfBirth" type="date" name="date-birth" placeholder="Date of birth">
-									<select id="newUserNationality" name="nationality" placeholder="Nationality">
-										<option value="" disabled selected>Nationality</option>
-									</select>
-								</div>
+								<input id="newUserDateOfBirth" type="date" name="date-birth" placeholder="Date of birth">
+								<select id="newUserNationality" name="nationality" placeholder="Nationality">
+									<option value="" disabled selected>Nationality</option>
+								</select>
 								<input id="newUserEmail" type="text" name="email" placeholder="Email">
 								<input id="newUserSpec" type="text" name="specialization" placeholder="Specialization">
 							</div>
 							<div class="form-col">
-								<h4>Employee Contract</h4>
+								<h3>Employee Contract</h3>
 								<select id="newUserRole" type="text" name="role" placeholder="Position">
 									<option value="" disabled selected>Position</option>
 								</select>
@@ -161,9 +114,9 @@ $(document).ready(function () {
 								<input id="newUserBonus" type="text" name="bonus" placeholder="Bonus">
 							</div>
 						</div>
-						<div class="form-footer">
-							<button type="reset" class="button-primary red-button">Cancel</button>
-							<button id="newUserSubmit" class="button-primary green-button">Save</button>
+						<div class="form-buttons">
+							<input type="reset" value="Reset">
+							<input id="newUserSubmit" type="button" value="Invia">
 						</div>
 					</form>
 				`;
@@ -171,34 +124,30 @@ $(document).ready(function () {
 			case "fireForm":
 				formContent = `
 					<form id="fireForm" style="display: none;">
-						<div class="form-row info-contract">
+						<div class="form-row">
 							<div class="form-col">
-								<h4>Employee Info</h4>
-								<div class="img-name">
-									<div class="img-new">
-										<img id="employee-img" src="../img/utenti/user-default.jpg" alt="">
-									</div>
-									<div class="form-col">
-										<p id="currentName"></p>
-										<p id="currentSurname"></p>
-									</div>
+								<h3>Employee Info</h3>
+								<div>
+									<img src="" alt="">
+									<p id="currentName"></p>
+									<p id="currentSurname"></p>
 								</div>
-								<div class="details-row"><p><strong>Birth date</strong></p><p id="current-date-birth"></p></div>
-								<div class="details-row"><p><strong>Nationality</strong></p><p id="currentNationality"></p></div>
-								<div class="details-row"><p><strong>Email</strong></p><p id="currentEmail"></p></div>
-								<div class="details-row"><p><strong>Specialization</strong></p><p id="currentSpecialization"></p></div>
+								<div class="form-row"><p id="current-date-birth"></p></div>
+								<div class="form-row"><p id="currentNationality"></p></div>
+								<div class="form-row"><p id="currentEmail"></p></div>
+								<div class="form-row"><p id="currentSpecialization"></p></div>
 							</div>
 							<div class="form-col">
-								<h4>Employee Contract</h4>
-								<div class="details-row"><p><strong>Position</strong></p><p id="currentRole"></p></div>
-								<div class="details-row"><p><strong>Salary</strong></p><p id="currentSalary"></p></div>
-								<div class="details-row"><p><strong>Contract end</strong> end</p><p id="current-contract-end"></p></div>
-								<div class="details-row"><p><strong>Bonus</strong></p><p id="currentBonus"></p></div>
+								<h3>Employee Contract</h3>
+								<div class="form-info"><p id="currentRole"></p></div>
+								<div class="form-info"><p id="currentSalary"></p></div>
+								<div class="form-info"><p id="current-contract-end"></p></div>
+								<div class="form-info"><p id="currentBonus"></p></div>
 							</div>
 						</div>
-						<div class="form-footer">
-							<button class="button-outline button-max-width">Cancel</button>
-							<input id="fireFormSubmit" class="button-primary red-button button-max-width" type="submit" value="Fire">
+						<div class="form-buttons">
+							<button class="button-primary red-button button-max-width">Cancel</button>
+							<input id="fireFormSubmit" class="button-primary green-button button-max-width" type="submit" value="Fire">
 						</div>
 					</form>
 				`;
@@ -206,62 +155,46 @@ $(document).ready(function () {
 			case "renewForm":
 				formContent = `
 					<form id="renewForm" style="display: none;">
-						<div class="form-row info-contract">
+						<div class="form-row">
 							<div class="form-col">
-								<h4>Employee Info</h4>
-								<div class="img-name">
-									<div class="img-new">
-										<img id="employee-img" src="../img/utenti/user-default.jpg" alt="">
-									</div>
-									<div class="form-col">
-										<p id="currentName"></p>
-										<p id="currentSurname"></p>
-									</div>
+								<h3>Employee Info</h3>
+								<div>
+									<img src="" alt="">
+									<p id="currentName"></p>
+									<p id="currentSurname"></p>
 								</div>
-								<div class="details-row"><p><strong>Birth date</strong></p><p id="current-date-birth"></p></div>
-								<div class="details-row"><p><strong>Nationality</strong></p><p id="currentNationality"></p></div>
-								<div class="details-row"><p><strong>Email</strong></p><p id="currentEmail"></p></div>
-								<div class="details-row"><p><strong>Specialization</strong></p><p id="currentSpecialization"></p></div>
+								<div class="form-row"><p id="current-date-birth"></p></div>
+								<div class="form-row"><p id="currentNationality"></p></div>
+								<div class="form-row"><p id="currentEmail"></p></div>
+								<div class="form-row"><p id="currentSpecialization"></p></div>
 							</div>
 							<div class="form-col">
-								<h4>Employee Contract</h4>
-								<div class="details-row"><p><strong>Position</strong></p><p id="currentRole"></p></div>
-								<div class="details-row"><p><strong>Salary</strong></p><p id="currentSalary"></p></div>
-								<div class="details-row"><p><strong>Contract end</strong> end</p><p id="current-contract-end"></p></div>
-								<div class="details-row"><p><strong>Bonus</strong></p><p id="currentBonus"></p></div>
+								<h3>Employee Contract</h3>
+								<div class="form-info"><p id="currentRole"></p></div>
+								<div class="form-info"><p id="currentSalary"></p></div>
+								<div class="form-info"><p id="current-contract-end"></p></div>
+								<div class="form-info"><p id="currentBonus"></p></div>
 							</div>
 						</div>
 						<div id="form-more-info" style="display: none;">
-							<div class="form-row">
-								<div class="form-col">
-									<h4>New contract</h4>
-									<select id="newUserRole" type="text" name="currentRole" placeholder="Position">
-									<input id="updatedSalary" type="text" name="salary" placeholder="Salary">
-									<input id="updatedEnd" type="date" name="contract-end" placeholder="Contract end">
-									<input id="updatedBonus" type="text" name="bonus" placeholder="Bonus">
-								</div>
+							<div class="form-col">
+								<h3>New contract</h3>
+								<select id="newUserRole" type="text" name="currentRole" placeholder="Position">
+								<input id="updatedSalary" type="text" name="salary" placeholder="Salary">
+								<input id="updatedEnd" type="date" name="contract-end" placeholder="Contract end">
+								<input id="updatedBonus" type="text" name="bonus" placeholder="Bonus">
 							</div>
 						</div>
-						<div class="form-footer">
-							<button class="button-primary red-button">Cancel</button>
-							<button class="button-outline" onclick="showMoreInfo(event)">Change</button>
-							<input id="renewFormSubmit" class="button-primary green-button" type="submit" value="Renew">
+						<div class="form-buttons">
+							<button class="button-primary red-button button-max-width">Cancel</button>
+							<button class="button-outline button-max-width" onclick="showMoreInfo(event)">Change</button>
+							<input id="renewFormSubmit" class="button-primary green-button button-max-width" type="submit" value="Renew">
 						</div>
 					</form>
 				`;
 				break;
 		}
 
-		$("#icon-header").removeClass();
-		console.log(header);
-		if (header == 'Fire employee') {
-			$("#icon-header").addClass("fa-regular fa-user-xmark");
-		} else if(header == 'Renew contract') {
-			$("#icon-header").addClass("fa-regular fa-user-clock");
-		} else {
-			$("#icon-header").addClass("fa-regular fa-user-plus");
-		}
-		
 		$(".popup-title").text(header);
 		$(".popup-content").html(formContent);
 
@@ -293,19 +226,6 @@ $(document).ready(function () {
 		$("#" + formType).css("display", "block");
 
 		$("#screen-overlay").addClass("open-overlay");
-
-		document.getElementById('fileInput').addEventListener('change', function(e) {
-			var file = e.target.files[0];
-			var reader = new FileReader();
-			reader.onloadend = function() {
-				document.getElementById('employee-img').src = reader.result;
-			}
-			if (file) {
-				reader.readAsDataURL(file);
-			} else {
-				document.getElementById('employee-img').src = "../img/utenti/user-default.jpg";
-			}
-		});
 	});
 
 	$(".bi-x").click(function () {
@@ -314,7 +234,7 @@ $(document).ready(function () {
 });
 
 function newUser() {
-	var image = ($("#newUserImage").val() == undefined) ? "user-default.jpg" : $("#newUserImage").val();
+	var image = $("#newUserImage").val();
 	var name = $("#newUserName").val();
 	var surname = $("#newUserSurname").val();
 	var dateOfBirth = $("#newUserDateOfBirth").val();
@@ -326,10 +246,9 @@ function newUser() {
 	var contractEnd = $("#newUserContractEnd").val();
 	var bonus = $("#newUserBonus").val();
 
-	console.log(image);
 	$.ajax({
 		type: "POST",
-		url: "../php/staff/staff-function.php",
+		url: "../php/finances-function.php",
 		data: {
 			image: image,
 			name: name,
@@ -342,7 +261,7 @@ function newUser() {
 			salary: salary,
 			contractEnd: contractEnd,
 			bonus: bonus,
-			action: "newUser",
+			action: "newTransaction", //tutto ancora da fare
 		},
 		dataType: "json",
 		success: function () {
@@ -361,21 +280,35 @@ function displayUserDetails(id_received) {
 
 	$.ajax({
 		type: "POST",
-		url: "../php/staff/staff-function.php",
+		url: "../php/staff-function.php",
 		data: { id: id_received, action: "getUserDetails" },
 		dataType: "json",
 		success: function (response) {
 			console.log(response);
-			$("#currentName").append(ucfirst(response.user.nome));
-			$("#currentSurname").append(ucfirst(response.user.cognome));
-			$("#current-date-birth").append(moment(response.user.data_nascita).format("DD-MM-YYYY"));
-			$("#currentNationality").append(ucfirst(response.user.nome_nazionalita));
-			$("#currentEmail").append(response.user.email);
-			$("#currentSpecialization").append(ucfirst(response.user.specializzazione));
-			$("#currentRole").append(ucfirst(response.user.nome_ruolo));
-			$("#currentSalary").append(response.user.stipendio);
-			$("#current-contract-end").append(moment(response.user.data_fine).format("DD-MM-YYYY"));
-			$("#currentBonus").append(response.user.bonus);
+			$("#currentName").append("<strong>" + ucfirst(response.user.nome) + "</strong>");
+			$("#currentSurname").append(
+				"<strong>" + ucfirst(response.user.cognome) + "</strong>"
+			);
+			$("#current-date-birth").append(
+				"<strong>" + response.user.data_nascita + "</strong>"
+			);
+			$("#currentNationality").append(
+				"<strong>" + ucfirst(response.user.nome_nazionalita) + "</strong>"
+			);
+			$("#currentEmail").append("<strong>" + response.user.email + "</strong>");
+			$("#currentSpecialization").append(
+				"<strong>" + ucfirst(response.user.specializzazione) + "</strong>"
+			);
+			$("#currentRole").append(
+				"<strong>" + ucfirst(response.user.nome_ruolo) + "</strong>"
+			);
+			$("#currentSalary").append(
+				"<strong>" + response.user.stipendio + "</strong>"
+			);
+			$("#current-contract-end").append(
+				"<strong>" + response.user.data_fine + "</strong>"
+			);
+			$("#currentBonus").append("<strong>" + response.user.bonus + "</strong>");
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
 			console.error("Error:", textStatus, errorThrown);
@@ -386,6 +319,25 @@ function displayUserDetails(id_received) {
 
 function ucfirst(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function ucevery(string) {
+    return string.replace(/\b\w/g, function (char) {
+        return char.toUpperCase();
+    }
+    );
+}
+function formatDateTime(datetimeString) {
+    const parts = datetimeString.split(/[- :]/);
+    const date = new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return day + '/' + month + '/' + year + ' ' + hours + ':' + minutes;
 }
 
 function showMoreInfo(event) {
@@ -401,7 +353,7 @@ function closePopup() {
 function getNationalities() {
 	$.ajax({
 		type: "POST",
-		url: "../php/staff/staff-function.php",
+		url: "../php/staff-function.php",
 		data: { action: "getNationalities" },
 		dataType: "json",
 		success: function (response) {
@@ -425,7 +377,7 @@ function getNationalities() {
 function getRoles(id_role) {
 	$.ajax({
 		type: "POST",
-		url: "../php/staff/staff-function.php",
+		url: "../php/staff-function.php",
 		data: { action: "getRoles" },
 		dataType: "json",
 		success: function (response) {
@@ -477,7 +429,7 @@ function updateContract() {
 	{
 		$.ajax({
 			type: "POST",
-			url: "../php/staff/staff-function.php",
+			url: "../php/staff-function.php",
 			data: {
 				id: id,
 				role: role,
@@ -499,7 +451,7 @@ function updateContract() {
 	} else {
 		$.ajax({
 			type: "POST",
-			url: "../php/staff/staff-function.php",
+			url: "../php/staff-function.php",
 			data: {
 				id: id,
 				contractEnd: renewEnd,
@@ -521,7 +473,7 @@ function updateContract() {
 function fireEmployee(id) {
 	$.ajax({
 		type: "POST",
-		url: "../php/staff/staff-function.php",
+		url: "../php/staff-function.php",
 		data: {
 			id: id,
 			action: "fireEmployee",

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 10:09 PM
+-- Generation Time: May 24, 2024 at 06:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,6 +34,16 @@ CREATE TABLE `articoli` (
   `quantita` int(64) NOT NULL,
   `img` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `articoli`
+--
+
+INSERT INTO `articoli` (`id_articolo`, `numero_inventario`, `tipologia`, `quantita`, `img`) VALUES
+(1, '123', 'felpa', 50, 'felpa123.jpg'),
+(2, '12345', 'cappellino', 25, ''),
+(3, '45', 'bomber', 34, ''),
+(4, '78', 'maglietta', 45, '');
 
 -- --------------------------------------------------------
 
@@ -104,7 +114,8 @@ INSERT INTO `contratti` (`id_contratto`, `stipendio`, `bonus`, `data_inizio`, `d
 (5, 50000, 20000, '2024-05-05', '2024-05-11', 6),
 (6, 30000, 30000, '2024-05-12', '2024-08-18', 7),
 (7, 50000, 5000, '2024-05-05', '2024-05-27', 8),
-(9, 400000, 5000, '0000-00-00', '2024-05-28', 11);
+(9, 400000, 5000, '0000-00-00', '2024-05-28', 11),
+(10, 124576, 223, '0000-00-00', '2024-05-30', 32);
 
 -- --------------------------------------------------------
 
@@ -128,14 +139,15 @@ CREATE TABLE `finanze` (
 INSERT INTO `finanze` (`id_transazione`, `tipo`, `importo`, `causale`, `descrizione`, `fk_id_item`) VALUES
 (1, 'entrata', 70000000, 'sponsor', 'budget', 1),
 (2, 'entrata', 500000, 'sponsor', 'hp sponsor', 2),
-(3, 'uscita', 12000000, 'contratto', 'ayrton senna', 4),
-(4, 'uscita', 10000000, 'contratto', 'riccardo saro', 1),
-(5, 'uscita', 500000, 'contratto', 'fabio pauletta', 2),
-(6, 'uscita', 150000, 'contratto', 'pippo de pippis', 3),
-(7, 'uscita', 50000, 'contratto', 'fatturo tanto', 5),
-(8, 'uscita', 30000, 'contratto', 'ocyo kecasko', 6),
-(9, 'uscita', 50000, 'contratto', 'test ingegnere', 7),
-(14, 'uscita', 400000, 'contratto', 'Nuovo contratto - test finanze', 9);
+(3, 'uscita', -12000000, 'contratto', 'ayrton senna', 4),
+(4, 'uscita', -10000000, 'contratto', 'riccardo saro', 1),
+(5, 'uscita', -500000, 'contratto', 'fabio pauletta', 2),
+(6, 'uscita', -150000, 'contratto', 'pippo de pippis', 3),
+(7, 'uscita', -50000, 'contratto', 'fatturo tanto', 5),
+(8, 'uscita', -30000, 'contratto', 'ocyo kecasko', 6),
+(9, 'uscita', -50000, 'contratto', 'test ingegnere', 7),
+(14, 'uscita', -400000, 'contratto', 'Nuovo contratto - test finanze', 9),
+(15, 'uscita', -124576, 'contratto', 'Nuovo contratto - Test Sign', 10);
 
 -- --------------------------------------------------------
 
@@ -403,7 +415,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT for table `articoli`
 --
 ALTER TABLE `articoli`
-  MODIFY `id_articolo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_articolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `calendario`
@@ -421,13 +433,13 @@ ALTER TABLE `componenti`
 -- AUTO_INCREMENT for table `contratti`
 --
 ALTER TABLE `contratti`
-  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `finanze`
 --
 ALTER TABLE `finanze`
-  MODIFY `id_transazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_transazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `logistica`
@@ -469,7 +481,7 @@ ALTER TABLE `sponsor`
 -- AUTO_INCREMENT for table `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables

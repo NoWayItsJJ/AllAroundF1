@@ -31,8 +31,8 @@ if(isset($_SESSION['user_id'])) {
 								<label for="email">Email address</label>
 								<div class="email-row">
 									<input type="email" id="email" name="email" required/>
-									<i id="emailErrorIcon" class="bi bi-exclamation-triangle" style="display: none;"></i>
-									<i id="emailCorrectIcon" class="bi bi-check" style="display: none;"></i>
+									<i id="emailErrorIcon" class="fa-regular fa-triangle-exclamation" style="display: none;"></i>
+									<i id="emailCorrectIcon" class="fa-regular fa-check" style="display: none;"></i>
 								</div>
 								<span id="emailError" class="invalid"></span>
 							</div>
@@ -40,7 +40,7 @@ if(isset($_SESSION['user_id'])) {
 								<label for="password">Password</label>
 								<div class="email-row">
 									<input type="password" id="password" name="password" />
-									<i class="bi bi-eye-slash"></i>
+									<i class="fa-regular fa-eye-slash"></i>
 								</div>
 								<span id="passwordError" class="invalid"></span>
 								<div id="passwordCriteria"></div>
@@ -66,7 +66,7 @@ if(isset($_SESSION['user_id'])) {
 							<img id="user-img" src="" alt="">
 							<input type="file" id="fileInput" style="display: none;">
 							<div class="overlay" onclick="document.getElementById('fileInput').click()">
-								<i class="bi bi-plus"></i>
+								<i class="fa-regular fa-plus"></i>
 							</div>
 						</div>
 						<p id="user-email"></p>

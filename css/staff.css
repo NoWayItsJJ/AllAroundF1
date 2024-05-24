@@ -2,3 +2,23 @@
     box-shadow: 2px 4px 16px #00000029;
     transform: scale3d(1.05, 1.05, 1.05);
 }
+
+.table-header {
+    p:nth-child(1) {
+        width: 20%;
+    }
+
+    p:nth-child(n+2) {
+        width: 15%;
+    }
+}
+
+.table-body {
+    span:nth-child(1) {
+        width: 20%;
+    }
+
+    span:nth-child(n+2) {
+        width: 15%;
+    }
+}
