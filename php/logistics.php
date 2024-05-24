@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
     <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../css/logistics.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../js/logistics.js"></script>
@@ -25,13 +26,13 @@
             <ul>
                 <li>
                     <a href="./logout.php">
-                        <i class="bi bi-box-arrow-right"></i>
+                        <i class="fa-regular fa-arrow-right-from-bracket"></i>
                         <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
                     <a href="./account-backend.php">
-                        <i class="bi bi-person"></i>
+                        <i class="fa-regular fa-user"></i>
                         <span class="nav-text">Account</span>
                     </a>
                 </li>
@@ -55,18 +56,18 @@
                     <div class="list-header">
                         <div class="title">
                             <div class="title-text">
-                                <i class="bi bi-people"></i>
+                                <i class="fa-regular fa-truck-fast"></i>
                                 <h2>Logistics</h2>
                             </div>
                             <p>Manage the logistics of the Scuderia Ferrari</p>
                         </div>
-                        <button class="button-primary button-squadrato popup-open"><i class="bi bi-plus"></i>New shift</button>
+                        <button class="button-primary button-squadrato popup-open"><i class="fa-regular fa-plus"></i></i>New shift</button>
                     </div>
                     <div class="list-card">
                         <div class="big-card">
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-calendar-event"></i>
+                                    <i class="fa-regular fa-truck-clock"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Pending shifts</p>
@@ -83,7 +84,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-clock"></i>
+                                    <i class="fa-regular fa-truck-arrow-right"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>In progress shifts</p>
@@ -100,7 +101,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-check-lg"></i>
+                                    <i class="fa-regular fa-box-circle-check"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Completed shifts</p>
@@ -117,7 +118,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-icon">
-                                    <i class="bi bi-briefcase"></i>
+                                    <i class="fa-regular fa-cart-flatbed-boxes"></i>
                                 </div>
                                 <div class="card-data">
                                     <p>Total shifts</p>
@@ -139,7 +140,7 @@
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
-                                <i class="bi bi-search"></i>
+                                <i class="fa-regular fa-magnifying-glass"></i>
                             </div>
                         </div>
                     </div>
@@ -176,12 +177,8 @@
                     </div>
                     <div class="details" id="detailsBlock" style="display: none;">
                         <div class="details-header">
-                            <div class="item-img">
-                                <img id="userImage" src="" alt="">
-                            </div>
-                            <div class="item-header-info">
-                                <h3 id="userName"></h3>
-                                <p id="userRole"></p>
+                        <div class="item-img">
+                                <i class="fa-regular fa-truck-container"></i>
                             </div>
                         </div>
                         <div class="details-content scrollable-section">

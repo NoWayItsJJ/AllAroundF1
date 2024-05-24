@@ -11,7 +11,7 @@
     // Stampa il conteggio totale dello staff
     echo'<div class="statistic" data-item-type="all">
             <div class="statistic-icon">
-                <i class="bi bi-people"></i>
+                <i class="fa-regular fa-cart-flatbed-boxes"></i>
             </div>
             <div class="statistic-data">
                 <p>All</p>
@@ -28,18 +28,18 @@
 
             $icon = '';
             if ($tipoItem == 'dipendente') {
-                $icon = 'bi-person';
+                $icon = '<i class="fa-regular fa-user"></i>';
             } elseif($tipoItem == 'componente') {
-                $icon = 'bi-gear';
+                $icon = '<i class="fa-regular fa-engine"></i>';
             } elseif($tipoItem == 'articolo') {
-                $icon = 'bi-box-seam';
+                $icon = '<i class="fa-regular fa-boxes-stacked"></i>';
             } else {
-                $icon = 'bi-arrow-left-right';
+                $icon = '<i class="fa-regular fa-cart-flatbed-empty"></i>';
             }
 
             echo'<div class="statistic" data-item-type="'.$tipoItem.'">
                     <div class="statistic-icon">
-                        <i class="bi '.$icon.'"></i>
+                        '.$icon.'
                     </div>
                     <div class="statistic-data">
                         <p>'.ucfirst($tipoItem).' '.$numType.'</p>

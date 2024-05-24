@@ -28,19 +28,22 @@ while($firstRow = $firstResult->fetch_assoc()) {
     $itemDetails = '';
     switch($firstRow['mezzo_trasporto']){
         case 'airplane':
-            $icon = 'bi-airplane';
+            $icon = '<i class="fa-regular fa-plane fa-rotate-by" style="--fa-rotate-angle: -45deg;""></i>';
+            break;
+        case 'truck':
+            $icon = '<i class="fa-regular fa-truck-container"></i>';
             break;
         case 'car':
-            $icon = 'bi-car-front-fill';//da rivedere
+            $icon = '<i class="fa-regular fa-car-side"></i>';//da rivedere
             break;
         case 'ship':
-            $icon = 'bi-rocket-takeoff';//da cambiare
+            $icon = '<i class="fa-regular fa-ship"></i>';//da cambiare
             break;
         case 'bus':
-            $icon = 'bi-bus-front';//da rivedere
+            $icon = '<i class="fa-regular fa-bus-simple"></i>';//da rivedere
             break;
         default:
-            $icon = 'bi-truck';
+            $icon = '<i class="fa-regular fa-car-side"></i>';
     }
     switch($firstRow["tipo"])
     {
@@ -74,7 +77,7 @@ while($firstRow = $firstResult->fetch_assoc()) {
         $status = "Completed";
 
     echo '<div class="staff-list-row">
-                <span data-id="' . $firstRow["id_spostamento"] . '"><i class="'. $icon .'"></i></span>
+                <span data-id="' . $firstRow["id_spostamento"] . '">'. $icon .'</i></span>
                 <span><p>' . $itemDetails . '</p></span>
                 <span><p>' . ucfirst($firstRow['partenza']) . '</p></span>
                 <span><p>' . ucfirst($firstRow['destinazione']) . '</p></span>

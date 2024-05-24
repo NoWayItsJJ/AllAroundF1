@@ -1,0 +1,19 @@
+.table-header{
+    p:nth-child(1) {
+      width: 50px;
+    }
+  
+    p:nth-child(n+2) {
+      width: 15%;
+    }
+  }
+  
+  .table-body{
+    span:nth-child(1) {
+      width: 50px;
+    }
+  
+    span:nth-child(n+2) {
+      width: 15%;
+    }
+  }

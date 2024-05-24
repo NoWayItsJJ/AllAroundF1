@@ -7,7 +7,6 @@
 }
 
 .table-header{
-  background-color: var(--error-color);
   p:nth-child(1) {
     width: 50px;
   }
