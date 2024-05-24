@@ -151,10 +151,7 @@ function getDetails($id, $conn) {
         exit;
     }
 
-    $userStmt = $conn->prepare("SELECT * FROM utenti 
-                                JOIN ruoli ON utenti.fk_id_ruolo = ruoli.id_ruolo 
-                                JOIN nazionalita ON utenti.fk_id_nazionalita = nazionalita.id_nazionalita
-                                WHERE id_utente = ?");
+    $userStmt = $conn->prepare("SELECT * FROM articoli WHERE id_articolo = ?");
     $userStmt->bind_param('i', $id);
 
     $userStmt->execute();
@@ -162,26 +159,11 @@ function getDetails($id, $conn) {
     $userResult = $userStmt->get_result();
 
     while ($row = $userResult->fetch_assoc()) {
-        foreach ($row as $key => $value) {
-            $details[$key] = $value;
-        }
+        $details = $row;
     }
 
-    $contractStmt = $conn->prepare("SELECT * FROM contratti WHERE fk_id_utente = ?");
-    $contractStmt->bind_param('i', $id);
-
-    $contractStmt->execute();
-
-    $result = $contractStmt->get_result();
-
-    while ($row = $result->fetch_assoc()) {
-        foreach ($row as $key => $value) {
-            $contract[$key] = $value;
-        }
-    }
-
-    if($result->num_rows > 0){
-        echo json_encode(array('getDetails' => true, 'details' => $details, 'contract' => $contract));
+    if($userResult->num_rows > 0){
+        echo json_encode(array('getDetails' => true, 'details' => $details));
     } else {
         echo json_encode(array('getDetails' => false));
     }

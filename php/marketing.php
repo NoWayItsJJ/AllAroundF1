@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <div class="card-link" onclick="window.location.href='merchandising.php';">
+                    <div class="card-link" onclick="window.location.href='merchandise.php';">
                         <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>

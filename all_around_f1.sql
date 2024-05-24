@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 09:57 PM
+-- Generation Time: May 24, 2024 at 06:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,6 +34,16 @@ CREATE TABLE `articoli` (
   `quantita` int(64) NOT NULL,
   `img` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `articoli`
+--
+
+INSERT INTO `articoli` (`id_articolo`, `numero_inventario`, `tipologia`, `quantita`, `img`) VALUES
+(1, '123', 'felpa', 50, 'felpa123.jpg'),
+(2, '12345', 'cappellino', 25, ''),
+(3, '45', 'bomber', 34, ''),
+(4, '78', 'maglietta', 45, '');
 
 -- --------------------------------------------------------
 
@@ -104,7 +114,8 @@ INSERT INTO `contratti` (`id_contratto`, `stipendio`, `bonus`, `data_inizio`, `d
 (5, 50000, 20000, '2024-05-05', '2024-05-11', 6),
 (6, 30000, 30000, '2024-05-12', '2024-08-18', 7),
 (7, 50000, 5000, '2024-05-05', '2024-05-27', 8),
-(9, 400000, 5000, '0000-00-00', '2024-05-28', 11);
+(9, 400000, 5000, '0000-00-00', '2024-05-28', 11),
+(10, 124576, 223, '0000-00-00', '2024-05-30', 32);
 
 -- --------------------------------------------------------
 
@@ -128,14 +139,15 @@ CREATE TABLE `finanze` (
 INSERT INTO `finanze` (`id_transazione`, `tipo`, `importo`, `causale`, `descrizione`, `fk_id_item`) VALUES
 (1, 'entrata', 70000000, 'sponsor', 'budget', 1),
 (2, 'entrata', 500000, 'sponsor', 'hp sponsor', 2),
-(3, 'uscita', 12000000, 'contratto', 'ayrton senna', 4),
-(4, 'uscita', 10000000, 'contratto', 'riccardo saro', 1),
-(5, 'uscita', 500000, 'contratto', 'fabio pauletta', 2),
-(6, 'uscita', 150000, 'contratto', 'pippo de pippis', 3),
-(7, 'uscita', 50000, 'contratto', 'fatturo tanto', 5),
-(8, 'uscita', 30000, 'contratto', 'ocyo kecasko', 6),
-(9, 'uscita', 50000, 'contratto', 'test ingegnere', 7),
-(14, 'uscita', 400000, 'contratto', 'Nuovo contratto - test finanze', 9);
+(3, 'uscita', -12000000, 'contratto', 'ayrton senna', 4),
+(4, 'uscita', -10000000, 'contratto', 'riccardo saro', 1),
+(5, 'uscita', -500000, 'contratto', 'fabio pauletta', 2),
+(6, 'uscita', -150000, 'contratto', 'pippo de pippis', 3),
+(7, 'uscita', -50000, 'contratto', 'fatturo tanto', 5),
+(8, 'uscita', -30000, 'contratto', 'ocyo kecasko', 6),
+(9, 'uscita', -50000, 'contratto', 'test ingegnere', 7),
+(14, 'uscita', -400000, 'contratto', 'Nuovo contratto - test finanze', 9),
+(15, 'uscita', -124576, 'contratto', 'Nuovo contratto - Test Sign', 10);
 
 -- --------------------------------------------------------
 
@@ -150,7 +162,7 @@ CREATE TABLE `logistica` (
   `mezzo_trasporto` set('airplane','ship','truck','car','bus') NOT NULL,
   `data_partenza` datetime(6) NOT NULL,
   `data_arrivo` datetime(6) NOT NULL,
-  `tipo` set('person','item') NOT NULL,
+  `tipo` set('componente','dipendente','articolo') NOT NULL,
   `fk_id_item` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -159,7 +171,9 @@ CREATE TABLE `logistica` (
 --
 
 INSERT INTO `logistica` (`id_spostamento`, `partenza`, `destinazione`, `mezzo_trasporto`, `data_partenza`, `data_arrivo`, `tipo`, `fk_id_item`) VALUES
-(1, 'miami', 'imola', 'airplane', '2024-05-06 16:50:10.000000', '2024-05-15 16:50:10.000000', 'item', 1);
+(1, 'miami', 'imola', 'airplane', '2024-05-06 16:50:10.000000', '2024-05-15 16:50:10.000000', 'componente', 1),
+(5, 'test', 'pending', 'bus', '2024-05-23 11:00:00.000000', '2024-05-24 00:00:00.000000', 'dipendente', 5),
+(6, 'test', 'in progress', 'airplane', '2024-05-21 11:00:00.000000', '2024-05-23 12:00:00.000000', 'dipendente', 2);
 
 -- --------------------------------------------------------
 
@@ -303,13 +317,14 @@ CREATE TABLE `utenti` (
 INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `data_nascita`, `indirizzo`, `citta`, `CAP`, `stato`, `img`, `email`, `password`, `occupato`, `specializzazione`, `fk_id_ruolo`, `fk_id_nazionalita`) VALUES
 (1, 'riccardo', 'saro', '2005-12-17', 'via amalteo 25', 'fontanafredda', 33074, 'italia', '1_sus.jpg', 'rickysaro17@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'hr', 4, 17),
 (2, 'fabio', 'pauletta', '2005-06-17', 'via tasso 14', 'maniago', 33085, 'italia', '2_png.jpg', 'fabio.pauletta@gmail.com', '0c88028bf3aa6a6a143ed846f2be1ea4', 1, 'freni', 3, 8),
-(3, 'pippo', 'de pippis', '2000-04-20', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', '', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'termocoperte', 2, 3),
-(4, 'paperon', 'de paperoni', '2000-01-23', 'piazza cavour 69', 'pordenone', 33170, 'italia', '', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'spendere', 5, 12),
-(5, 'ayrton', 'senna', '1960-03-21', 'via imola 1994', 'imola', 40026, 'italia', '', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
-(6, 'fatturo', 'tanto', '2016-05-01', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', '', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
-(7, 'ocyo', 'kecasko', '1999-04-01', 'via metenho dhuro 000', 'sacile', 33077, 'italia', '', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
-(8, 'test', 'ingegnere', '2000-01-01', 'via testing 5', 'maniago', 33085, 'italia', '', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11),
-(11, 'test', 'finanze', '2024-05-13', '', '', 0, '', '', 'test@finances.it', 'c21f969b5f03d33d43e04f8f136e7682', 0, 'spec', 7, 13);
+(3, 'pippo', 'de pippis', '2000-04-20', 'via dalle palle 4', 'pramaggiore', 30020, 'italia', 'user-default.jpg', 'pippo@pippo.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'termocoperte', 2, 3),
+(4, 'paperon', 'de paperoni', '2000-01-23', 'piazza cavour 69', 'pordenone', 33170, 'italia', 'user-default.jpg', 'paperon@depaperoni.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'spendere', 5, 12),
+(5, 'ayrton', 'senna', '1960-03-21', 'via imola 1994', 'imola', 40026, 'italia', 'user-default.jpg', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
+(6, 'fatturo', 'tanto', '2016-05-01', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', 'user-default.jpg', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
+(7, 'ocyo', 'kecasko', '1999-04-01', 'via metenho dhuro 000', 'sacile', 33077, 'italia', 'user-default.jpg', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
+(8, 'test', 'ingegnere', '2000-01-01', 'via testing 5', 'maniago', 33085, 'italia', 'user-default.jpg', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11),
+(11, 'test', 'finanze', '2024-05-13', '', '', 0, '', 'user-default.jpg', 'test@finances.it', 'c21f969b5f03d33d43e04f8f136e7682', 0, 'spec', 7, 13),
+(32, 'test', 'sign', '2024-05-14', '', '', 0, '', 'user-default.jpg', 'test', 'c21f969b5f03d33d43e04f8f136e7682', 0, 'fmowfjowi\\', 3, 19);
 
 --
 -- Indexes for dumped tables
@@ -401,7 +416,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT for table `articoli`
 --
 ALTER TABLE `articoli`
-  MODIFY `id_articolo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_articolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `calendario`
@@ -419,19 +434,19 @@ ALTER TABLE `componenti`
 -- AUTO_INCREMENT for table `contratti`
 --
 ALTER TABLE `contratti`
-  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_contratto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `finanze`
 --
 ALTER TABLE `finanze`
-  MODIFY `id_transazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_transazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `logistica`
 --
 ALTER TABLE `logistica`
-  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `nazionalita`
@@ -467,7 +482,7 @@ ALTER TABLE `sponsor`
 -- AUTO_INCREMENT for table `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables

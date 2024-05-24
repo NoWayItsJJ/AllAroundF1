@@ -14,63 +14,24 @@ $(document).ready(function () {
 			},
 			dataType: "json",
 			success: function (response) {
-                console.log(response.details.mezzo_trasporto);
-                switch(response.details.mezzo_trasporto){
-                    case "car":
-                        $("#movingIcon").removeClass().addClass("bi-car-front-fill"); //da rivedere
-                        break;
-                    case "airplane":
-                        $("#movingIcon").removeClass().addClass("bi-airplane");
-                        break;
-                    case "ship":
-                        $("#movingIcon").removeClass().addClass("bi-rocket-takeoff"); //da cambiare
-                        break;
-                    case "truck":
-                        $("#movingIcon").removeClass().addClass("bi-truck");
-                        break;
-                    case "bus":
-                        $("#movingIcon").removeClass().addClass("bi-bus-front"); //da rivedere
-                        break;
-                }
-
-				var itemDetailsKey = [];
-				var itemDetails = [];
-				for(var key in response.item){
-					itemDetailsKey.push(key);
-					itemDetails.push(response.item[key]);
-				}
-				if (response.getDetails) {
+                if (response.getDetails) {
 					$("#no-result").css("display", "none");
 					$("#detailsBlock").css("display", "");
 					$("#articleId").val(articleId);
-					$("#itemId").val(response.details.fk_id_item);
-					$("#displayFrom")
+					$("#articleImage").attr("src", "../img/articles/" + response.details.img);
+					$("#displayInventoryNumber")
 						.empty()
 						.append(
 							" <strong>" +
-								ucfirst(response.details.partenza) +
+								response.details.numero_inventario +
 								"</strong>"
 						);
-					$("#displayTo")
+					$("#displayArticleType")
 						.empty()
-						.append(" <strong>" + ucfirst(response.details.destinazione) + "</strong>");
-					$("#displayDeparture")
+						.append(" <strong>" + ucfirst(response.details.tipologia) + "</strong>");
+					$("#displayQuantity")
 						.empty()
-						.append(" <strong>" + formatDateTime(response.details.data_partenza) + "</strong>");
-					$("#displayArrival")
-						.empty()
-						.append(
-							" <strong>" + formatDateTime(response.details.data_arrivo) + "</strong>"
-						);
-					$("#contract-info").empty();
-					for (let i = 0; i < itemDetails.length; i++) {
-						$("#contract-info").append(`
-							<div class="contract-info-row">
-								<p id="itemName${i}"><strong>${itemDetailsKey[i]}</strong></p>
-								<p id="displayItemName${i}">${(typeof itemDetails[i] === 'string') ? ucevery(itemDetails[i]) : itemDetails[i]}</p>
-							</div>
-						`);
-					}
+						.append(" <strong>" + response.details.quantita + "</strong>");
 				} else {
 					console.log("Error");
 				}
