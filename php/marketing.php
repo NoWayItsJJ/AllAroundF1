@@ -6,8 +6,8 @@
 
     <link rel="stylesheet" type="text/css" href="../css/AllAroundF1.css">
     <link rel="stylesheet" type="text/css" href="../css/backend.css">
-    <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
-    <link rel="stylesheet" type="text/css" href="../css/marketing.css">
+    <link rel="stylesheet" type="text/css" href="../css/factory-marketing.css">
+    <link rel="stylesheet" type="text/css" href="../css/staff.css">
 </head>
 <body>
     <nav>
@@ -23,125 +23,106 @@
             <ul>
                 <li>
                     <a href="./logout.php">
-                        <i class="bi bi-box-arrow-right"></i>
+                        <i class="fa-regular fa-arrow-right-from-bracket"></i>
                         <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
                     <a href="./account-backend.php">
-                        <i class="bi bi-person"></i>
+                        <i class="fa-regular fa-user"></i>
                         <span class="nav-text">Account</span>
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
-    <section id="dynamic-dashboard">
-        <div class="dynamic-dashboard-grid marketing"> 
-            <div class="dynamic-dashboard-card grid-col-span-3 grid-row-span-6">
-                <div class="list">
-                    <div class="list-header">
-                        <div class="title">
-                            <div class="title-text">
-                                <i class="bi bi-people"></i>
-                                <h4>Merchandise</h4>
+    <section id="dashboard">
+        <div class="factory-marketing-grid"> 
+            <div class="dashboard-card grid-col-span-3 grid-row-span-5">
+                <div class="card-header" onclick="window.location.href='merchandising.php';">
+                    <i class="fa-regular fa-boxes-stacked"></i>
+                    <h4>Merchandising</h4>
+                </div>
+                <div class="card-content">
+                    <div class="list">
+                        <div class="list-card">
+                            <div class="filter-card">
+                                <div class="card-row">
+                                    <?php include('./staff/staff_count.php'); ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="list-card">
-                        <div class="filter-card">
-                            <div class="card-row">
-                                <?php //include('merchandise_count.php'); ?>
+                        <div class="list-content scrollable-section">
+                            <div class="table-header">
+                                <p>Article</p>
+                                <p>Tipologia</p>
+                                <p>quantità</p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="list-content">
-                        <div class="table-header">
-                            <p>Name</p>
-                            <p>Email</p>
-                            <p>Position</p>
-                            <p>Specialization</p>
-                        </div>
-                        <div id="list-result" class="table-body scrollable-section">
-                            <?php //include 'merchandise-list.php'; ?> <!-- sarebbe da fare con meno campi -->
-                        </div>
-                    </div>
-                    <div class="list-footer">
-                        <div class="list-link" onclick="window.location.href='merchandise.php';">
-                            <i class="bi bi-arrow-down-right"></i>
+                            <div id="list-result" class="table-body">
+                                <?php //include './staff/staff-list.php'; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="dynamic-dashboard-card grid-col-span-3 grid-row-span-2">
-                <div class="list">
-                    <div class="list-header">
-                        <div class="title">
-                            <div class="title-text">
-                                <i class="bi bi-people"></i>
-                                <h4>Events</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-content">
-                    </div>
-                    <div class="list-footer">
-                        <div class="list-link" onclick="window.location.href='events.php';">
-                            <i class="bi bi-arrow-down-right"></i>
-                        </div>
+                <div class="card-footer">
+                    <div class="card-link" onclick="window.location.href='merchandise.php';">
+                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
-            <div class="dynamic-dashboard-card grid-col-span-3 grid-row-span-6">
-                <div class="list">
-                    <div class="list-header">
-                        <div class="title">
-                            <div class="title-text">
-                                <i class="bi bi-people"></i>
-                                <h4>Orders</h4>
+            <div class="dashboard-card grid-col-span-3 grid-row-span-3 no-hover">
+                <div class="card-header">
+                    <i class="fa-regular fa-comments"></i>
+                    <h4>Events</h4>
+                </div>
+                <div class="card-content">
+                </div>
+            </div>
+            <div class="dashboard-card grid-col-span-3 grid-row-span-5">
+                <div class="card-header" onclick="window.location.href='orders.php';">
+                    <i class="fa-regular fa-bags-shopping"></i>
+                    <h4>Orders</h4>
+                </div>
+                <div class="card-content">
+                    <div class="list">
+                        <div class="list-card">
+                            <div class="filter-card">
+                                <div class="card-row">
+                                    <?php include('./staff/staff_count.php'); ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="list-card">
-                        <div class="filter-card">
-                            <div class="card-row">
-                                <?php //include('order_count.php'); ?>
+                        <div class="list-content scrollable-section">
+                            <div class="table-header">
+                                <p>Article</p>
+                                <p>Tipologia</p>
+                                <p>quantità</p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="list-content">
-                        <div class="table-header">
-                            <p>Name</p>
-                            <p>Email</p>
-                            <p>Position</p>
-                            <p>Specialization</p>
-                        </div>
-                        <div id="list-result" class="table-body scrollable-section">
-                            <?php //include 'order-list.php'; ?> <!-- sarebbe da fare con meno campi -->
-                        </div>
-                    </div>
-                    <div class="list-footer">
-                        <div class="list-link" onclick="window.location.href='order.php';">
-                            <i class="bi bi-arrow-down-right"></i>
+                            <div id="list-result" class="table-body">
+                                <?php //include './staff/staff-list.php'; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <div class="card-link" onclick="window.location.href='orders.php';">
+                        <i class="fa-regular fa-arrow-down-right"></i>
+                    </div>
+                </div>
             </div>
-            <div class="dynamic-dashboard-card grid-col-span-3 grid-row-span-2">
-                <div class="list">
-                    <div class="list-header">
-                        <div class="title">
-                            <div class="title-text">
-                                <i class="bi bi-people"></i>
-                                <h4>Sponsor</h4>
+            <div class="dashboard-card grid-col-span-3 grid-row-span-3 no-hover">
+                <div class="card-header">
+                    <i class="fa-regular fa-file-invoice-dollar"></i>
+                    <h4>Sponsor</h4>
+                </div>
+                <div class="card-content">
+                    <div class="sponsors">
+                        <div class="sponsor">
+                            <div class="sponsor-img">
+                                <img src="../img/drivers/leclerc.png" alt="">
                             </div>
-                        </div>
-                    </div>
-                    <div class="list-content">
-                    </div>
-                    <div class="list-footer">
-                        <div class="list-link" onclick="window.location.href='sponsor.php';">
-                            <i class="bi bi-arrow-down-right"></i>
+                            <span>Alfa Romeo</span>
+                            <p>170000&euro;</p>
                         </div>
                     </div>
                 </div>

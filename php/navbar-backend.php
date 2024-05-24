@@ -3,15 +3,6 @@ $userType = $_SESSION['user_type'];
 
 include_once 'security.php';
 
-/*
-utenti:
-- dirigente (4)
-- ingegnere (3)(poi in base al tipo)
-- pilota (1)
-- amministrazione/risorse umane (6)
-- marketing (7)
-*/
-
 $currentFile = basename($_SERVER['PHP_SELF']);
 
 // Dashboard
@@ -19,7 +10,7 @@ $isActive = ($currentFile == 'backend.php') ? 'red-text' : '';
 echo '
 <li >
     <a href="./backend.php" class="'.$isActive.'">
-        <i class="bi bi-house"></i>
+        <i class="fa-regular fa-objects-column"></i>
         <span class="nav-text">Dashboard</span>
     </a>
 </li>';
@@ -30,7 +21,7 @@ if($userType == 4) {
     echo '
     <li>
         <a href="./factory.php" class="'.$isActive.'">
-            <i class="bi bi-gear"></i>
+            <i class="fa-regular fa-industry"></i>
             <span class="nav-text">Factory</span>
         </a>
     </li>';
@@ -42,7 +33,7 @@ if($userType == 4 || $userType == 6) {
     echo '
     <li>
         <a href="./logistics.php" class="'.$isActive.'">
-            <i class="bi bi-box"></i>
+            <i class="fa-regular fa-truck-fast"></i>
             <span class="nav-text">Logistics</span>
         </a>
     </li>';
@@ -54,7 +45,7 @@ if($userType == 4 || $userType == 6) {
     echo '
     <li>
         <a href="./staff.php" class="'.$isActive.'">
-            <i class="bi bi-people"></i>
+            <i class="fa-regular fa-user-group"></i>
             <span class="nav-text">Staff</span>
         </a>
     </li>';
@@ -66,7 +57,7 @@ if($userType == 4 || $userType == 6) {
     echo '
     <li>
         <a href="./finances.php" class="'.$isActive.'">
-            <i class="bi bi-currency-exchange"></i>
+            <i class="fa-regular fa-chart-mixed-up-circle-dollar"></i>
             <span class="nav-text">Finances</span>
         </a>
     </li>';
@@ -78,20 +69,8 @@ if($userType == 4 || $userType == 7) {
     echo '
     <li>
         <a href="./marketing.php" class="'.$isActive.'">
-            <i class="bi bi-megaphone"></i>
+            <i class="fa-regular fa-bullhorn"></i>
             <span class="nav-text">Marketing</span>
-        </a>
-    </li>';
-}
-
-// Calendar
-$isActive = ($currentFile == 'calendar.php' && $userType == 4) ? 'red-text' : '';
-if($userType == 4) {
-    echo '
-    <li>
-        <a href="./calendar.php" class="'.$isActive.'">
-            <i class="bi bi-calendar-week"></i>
-            <span class="nav-text">Calendar</span>
         </a>
     </li>';
 }
@@ -102,7 +81,7 @@ if($userType == 7) {
     echo '
     <li>
         <a href="./orders.php" class="'.$isActive.'">
-            <i class="bi bi-cart"></i>
+            <i class="fa-regular fa-bags-shopping"></i>
             <span class="nav-text">Orders</span>
         </a>
     </li>';
@@ -114,7 +93,7 @@ if($userType == 7) {
     echo '
     <li>
         <a href="./articles.php" class="'.$isActive.'">
-            <i class="bi bi-newspaper"></i>
+            <i class="fa-regular fa-boxes-stacked"></i>
             <span class="nav-text">Articles</span>
         </a>
     </li>';
@@ -126,20 +105,8 @@ if($userType == 7) {
     echo '
     <li>
         <a href="./events.php" class="'.$isActive.'">
-            <i class="bi bi-calendar-week"></i>
+            <i class="fa-regular fa-calendar-lines"></i>
             <span class="nav-text">Events</span>
-        </a>
-    </li>';
-}
-
-// Contracts
-$isActive = ($currentFile == 'contracts.php' && $userType == 6) ? 'red-text' : '';
-if($userType == 6) {
-    echo '
-    <li>
-        <a href="./contracts.php" class="'.$isActive.'">
-            <i class="bi bi-file-earmark-text"></i>
-            <span class="nav-text">Contracts</span>
         </a>
     </li>';
 }
@@ -150,7 +117,7 @@ if($userType == 3) {
     echo '
     <li>
         <a href="./production.php" class="'.$isActive.'">
-            <i class="bi bi-gear"></i>
+            <i class="fa-regular fa-conveyor-belt-arm"></i>
             <span class="nav-text">Production</span>
         </a>
     </li>';
@@ -162,7 +129,7 @@ if($userType == 3) {
     echo '
     <li>
         <a href="./components.php" class="'.$isActive.'">
-            <i class="bi bi-gear-wide-connected"></i>
+            <i class="fa-regular fa-engine"></i>
             <span class="nav-text">Components</span>
         </a>
     </li>';

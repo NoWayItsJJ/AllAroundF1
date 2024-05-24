@@ -28,7 +28,7 @@ if(isset($_SESSION['user_id'])) {
 							<label for="email">Email address</label>
 							<div class="email-row">
 								<input type="email" id="email" name="email" />
-								<i id="emailErrorIcon" class="bi bi-exclamation-triangle" style="display: none;"></i>
+								<i id="emailErrorIcon" class="fa-regular fa-triangle-exclamation" style="display: none;"></i>
 							</div>
 							<span id="emailError" class="invalid"></span>
 						</div>
@@ -56,7 +56,7 @@ if(isset($_SESSION['user_id'])) {
 							<label for="password">Password</label>
 							<div class="email-row">
 								<input type="password" id="password" name="password" />
-								<i class="bi bi-eye-slash"></i>
+								<i class="fa-regular fa-eye-slash"></i>
 							</div>
 							<span id="passwordError" class="invalid"></span>
 						</div>

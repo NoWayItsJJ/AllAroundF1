@@ -182,7 +182,7 @@ body{
                             right: 4px;
                         }
 
-                        .bi-eye-slash, .bi-eye{
+                        .fa-eye-slash, .fa-eye{
                             color: var(--primary-color);
                             font-size: var(--l-font-size);
                             position: absolute;
@@ -190,7 +190,7 @@ body{
                             cursor: pointer;
                         }
 
-                        .bi-check{
+                        .fa-check{
                             color: var(--success-color);
                             font-size: var(--l-font-size);
                             position: absolute;

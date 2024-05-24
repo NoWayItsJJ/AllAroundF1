@@ -131,11 +131,8 @@
 						flex-direction: row;
 
 						.password {
-							margin-right: 11px;
-
 							i {
-								font-size: 28px;
-								margin-right: -22px;
+								font-size: 10px;
 							}
 						}
 

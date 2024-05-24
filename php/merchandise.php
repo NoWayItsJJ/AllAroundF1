@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../js/components.js"></script>
+    <script src="../js/merchandise.js"></script>
 </head>
 <body>
     <nav>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="filter-card">
                             <div class="card-row">
-                                <?php //include('merchandise_count.php'); ?>
+                                <?php include('merchandise/merchandise_count.php'); ?>
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
@@ -113,14 +113,12 @@
                     </div>
                     <div class="list-content">
                         <div class="table-header">
-                            <p>Moved</p>
-                            <p>From</p>
-                            <p>To</p>
-                            <p>Departure date</p>
-                            <p>Arrival date</p>
+                            <p>Inventory Number</p>
+                            <p>Article</p>
+                            <p>Quantity</p>
                         </div>
                         <div id="list-result" class="table-body scrollable-section">
-                            <?php //include 'merchandise-list.php'; ?>
+                            <?php include 'merchandise/merchandise-list.php'; ?>
                         </div>
                     </div>
                 </div>
@@ -136,44 +134,36 @@
             </div>
             <div class="dynamic-dashboard-card grid-row-span-7">
                 <div id="tab-details" class="tab-details">
-                    <h3>Item details</h3>
+                    <h3>Article Details</h3>
                     <div id="no-result" class="zero-result" style="display: flex;">
-                        <p>Select an item to see more details</p>
+                        <p>Select an article to see more details</p>
                     </div>
                     <div class="details" id="detailsBlock" style="display: none;">
                         <div class="details-header">
                             <div class="item-img">
-                                <img id="userImage" src="" alt="">
+                                <img id="articleImage" src="" alt="">
                             </div>
                             <div class="item-header-info">
-                                <h3 id="userName"></h3>
+                                <h3 id="articleId"></h3>
                                 <p id="userRole"></p>
                             </div>
                         </div>
                         <div class="details-content scrollable-section">
-                            <h4>Transport Info</h4>
+                            <h4>Article Info</h4>
                             <div id="personal-info">
                                 <div class="personal-info-row">
-                                    <p id="movingId" hidden></p>
-                                    <p id="itemId" hidden></p>
-                                    <p id="from"><strong>From</strong></p>
-                                    <p id="displayFrom"></p>
+                                    <p id="articleId" hidden></p>
+                                    <p id="inventoryNumber"><strong>Inventory Number</strong></p>
+                                    <p id="displayInventoryNumber"></p>
                                 </div>
                                 <div class="personal-info-row">
-                                    <p id="to"><strong>To</strong></p>
-                                    <p id="displayTo"></p>
+                                    <p id="articleType"><strong>Article Type</strong></p>
+                                    <p id="displayArticleType"></p>
                                 </div>
                                 <div class="personal-info-row">
-                                    <p id="departure"><strong>Departure</strong></p>
-                                    <p id="displayDeparture"></p>
+                                    <p id="quantity"><strong>Quantity</strong></p>
+                                    <p id="displayQuantity"></p>
                                 </div>
-                                <div class="personal-info-row">
-                                    <p id="arrival"><strong>Arrival</strong></p>
-                                    <p id="displayArrival"></p>
-                                </div>
-                            </div>
-                            <h4>Subject Info</h4>
-                            <div id="contract-info">
                             </div>
                         </div>
                     </div>

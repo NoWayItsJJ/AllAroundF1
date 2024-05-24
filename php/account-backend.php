@@ -25,13 +25,13 @@
             <ul>
                 <li>
                     <a href="./logout.php">
-                        <i class="bi bi-box-arrow-right"></i>
+                        <i class="fa-regular fa-arrow-right-from-bracket"></i>
                         <span class="nav-text">Logout</span>
                     </a>
                 </li>
                 <li>
                     <a href="./account-backend.php">
-                        <i class="bi bi-person"></i>
+                        <i class="fa-regular fa-user"></i>
                         <span class="nav-text">Account</span>
                     </a>
                 </li>
@@ -43,7 +43,7 @@
         <div id="popup" class="popup">
             <div class="popup-header">
                 <h3>Modifica foto profilo</h3>
-                <i class="bi bi-x" onclick="closePopup()"></i>
+                <i class="fa-regular fa-xmark" onclick="closePopup()"></i>
             </div>
             <div class="popup-content">
                 <form action="./account/account-changes.php" method="post" enctype="multipart/form-data">
@@ -66,7 +66,7 @@
                 <div class="user-avatar">
                     <img src="../img/utenti/<?php echo $userImage; ?>" alt="">
                     <div class="overlay" onclick="openPopup()">
-                        <i class="bi bi-pencil"></i>
+                        <i class="fa-regular fa-pen"></i>
                     </div>
                 </div>
                 <div class="user-details">
@@ -92,7 +92,7 @@
                         <div class="account-card-row-dx">
                             <p><?php echo ucfirst($userName); ?></p>
                             <div class="i-button" onclick="toggleForm('formNome', 'cr-nome')">
-                                <i id="cr-nome" class="bi bi-chevron-right"></i>
+                                <i id="cr-nome" class="fa-regular fa-chevron-right"></i>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                         <div class="account-card-row-dx">
                             <p><?php echo ucfirst($userSurname); ?></p>
                             <div class="i-button" onclick="toggleForm('formCognome', 'cr-cognome')">
-                                <i id="cr-cognome" class="bi bi-chevron-right"></i>
+                                <i id="cr-cognome" class="fa-regular fa-chevron-right"></i>
                             </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         <div class="account-card-row-dx">
                             <p><?php echo $userEmail; ?></p>
                             <div class="i-button" onclick="toggleForm('formEmail', 'cr-email')">
-                                <i id="cr-email" class="bi bi-chevron-right"></i>
+                                <i id="cr-email" class="fa-regular fa-chevron-right"></i>
                             </div>
                         </div>
                     </div>
@@ -157,17 +157,17 @@
                         <p><strong>Password</strong></p>
                         <div class="account-card-row-dx">
                             <p class="password">
-                                <i class="bi bi-dot"></i>
-                                <i class="bi bi-dot"></i>
-                                <i class="bi bi-dot"></i>
-                                <i class="bi bi-dot"></i>
-                                <i class="bi bi-dot"></i>
-                                <i class="bi bi-dot"></i>
-                                <i class="bi bi-dot"></i>
-                                <i class="bi bi-dot"></i>
+                                <i class="fa-solid fa-circle-small"></i>
+                                <i class="fa-solid fa-circle-small"></i>
+                                <i class="fa-solid fa-circle-small"></i>
+                                <i class="fa-solid fa-circle-small"></i>
+                                <i class="fa-solid fa-circle-small"></i>
+                                <i class="fa-solid fa-circle-small"></i>
+                                <i class="fa-solid fa-circle-small"></i>
+                                <i class="fa-solid fa-circle-small"></i>
                             </p>
                             <div class="i-button" onclick="toggleForm('formPassword', 'cr-password')">
-                                <i id="cr-password" class="bi bi-chevron-right"></i>
+                                <i id="cr-password" class="fa-regular fa-chevron-right"></i>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                         <div class="account-card-row-dx">
                             <p><?php echo $userAddress; ?></p>
                             <div class="i-button" onclick="toggleForm('formAddress', 'cr-address')">
-                                <i id="cr-address" class="bi bi-chevron-right"></i>
+                                <i id="cr-address" class="fa-regular fa-chevron-right"></i>
                             </div>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
                         <div class="account-card-row-dx">
                             <p>Scadenza il <?php echo $endContract; ?></p>
                             <div class="i-button" onclick="toggleForm('contractDetails', 'cr-contract')">
-                                <i id="cr-contract" class="bi bi-chevron-right"></i>
+                                <i id="cr-contract" class="fa-regular fa-chevron-right"></i>
                             </div>
                         </div>
                     </div>
@@ -228,7 +228,7 @@
                 </div>
             </div>
         </div>
-        <a href="./logout.php" class="exit" role="button"><strong>Logout</strong></a>
+        <a href="./logout.php" class="exit" role="button"><strong>Log out</strong></a>
     </section>
 </body>
 <script>document.getElementById("file").addEventListener("change", function (e) {
