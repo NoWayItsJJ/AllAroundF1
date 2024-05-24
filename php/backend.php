@@ -307,7 +307,7 @@
                                 <div class="icon">
                                     <i class="fa-regular fa-screwdriver-wrench"></i>
                                 </div>
-                                <p><span>22</span>Busy engineer</p>
+                                <p><span>3</span>Busy engineer</p>
                             </div>
                         </div>
                     </div>
@@ -330,28 +330,28 @@
                         <div class="grid-card">
                             <i class="fa-regular fa-boxes-stacked"></i>
                             <div class="data">
-                                <span>17</span>
+                                <span>25</span>
                                 <p>Merchandising</p>
                             </div>
                         </div>
                         <div class="grid-card">
                             <i class="fa-regular fa-bags-shopping"></i>
                             <div class="data">
-                                <span>17</span>
+                                <span>0</span>
                                 <p>Orders</p>
                             </div>
                         </div>
                         <div class="grid-card">
                             <i class="fa-regular fa-comments"></i>
                             <div class="data">
-                                <span>17</span>
+                                <span>2</span>
                                 <p>Interview</p>
                             </div>
                         </div>
                         <div class="grid-card">
                             <i class="fa-regular fa-file-invoice-dollar"></i>
                             <div class="data">
-                                <span>17</span>
+                                <span>3</span>
                                 <p>Sponsor</p>
                             </div>
                         </div>

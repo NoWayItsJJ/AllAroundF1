@@ -34,7 +34,7 @@ $(document).ready(function () {
 					$("#userName")
 						.empty()
 						.append(
-							ucfirst(response.details.nome) +
+							ucfirst(response.details.nome) + " " +
 							ucfirst(response.details.cognome)
 						);
 					$("#userRole")

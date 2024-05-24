@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2024 at 06:02 PM
+-- Generation Time: May 24, 2024 at 08:59 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -63,8 +63,9 @@ CREATE TABLE `calendario` (
 --
 
 INSERT INTO `calendario` (`id_evento`, `tipologia`, `data_evento`, `fk_id_utente`) VALUES
-(1, 'Test', '2024-04-28 06:00:00.000000', 2),
-(2, 'Meeting', '2024-04-28 18:53:05.000000', 1);
+(1, 'Test', '2024-05-28 06:00:00.000000', 2),
+(2, 'Meeting', '2024-05-29 18:53:05.000000', 1),
+(3, 'Conference', '2024-05-24 18:38:21.000000', 2);
 
 -- --------------------------------------------------------
 
@@ -85,7 +86,8 @@ CREATE TABLE `componenti` (
 --
 
 INSERT INTO `componenti` (`id_componente`, `numero_inventario`, `tipologia`, `versione`, `fk_id_utente`) VALUES
-(1, '123', 'floor', 1, 2);
+(1, '123', 'floor', 1, 2),
+(2, '69', 'suspension', 2, 8);
 
 -- --------------------------------------------------------
 
@@ -113,9 +115,7 @@ INSERT INTO `contratti` (`id_contratto`, `stipendio`, `bonus`, `data_inizio`, `d
 (4, 12000000, 500000, '2024-09-01', '2025-09-07', 5),
 (5, 50000, 20000, '2024-05-05', '2024-05-11', 6),
 (6, 30000, 30000, '2024-05-12', '2024-08-18', 7),
-(7, 50000, 5000, '2024-05-05', '2024-05-27', 8),
-(9, 400000, 5000, '0000-00-00', '2024-05-28', 11),
-(10, 124576, 223, '0000-00-00', '2024-05-30', 32);
+(7, 50000, 5000, '2024-05-05', '2024-05-27', 8);
 
 -- --------------------------------------------------------
 
@@ -145,7 +145,7 @@ INSERT INTO `finanze` (`id_transazione`, `tipo`, `importo`, `causale`, `descrizi
 (6, 'uscita', -150000, 'contratto', 'pippo de pippis', 3),
 (7, 'uscita', -50000, 'contratto', 'fatturo tanto', 5),
 (8, 'uscita', -30000, 'contratto', 'ocyo kecasko', 6),
-(9, 'uscita', -50000, 'contratto', 'test ingegnere', 7),
+(9, 'uscita', -50000, 'contratto', 'Nuovo contratto - test ingegnere', 7),
 (14, 'uscita', -400000, 'contratto', 'Nuovo contratto - test finanze', 9),
 (15, 'uscita', -124576, 'contratto', 'Nuovo contratto - Test Sign', 10);
 
@@ -159,7 +159,7 @@ CREATE TABLE `logistica` (
   `id_spostamento` int(11) NOT NULL,
   `partenza` varchar(32) NOT NULL,
   `destinazione` varchar(32) NOT NULL,
-  `mezzo_trasporto` set('airplane','ship','truck','car','bus') NOT NULL,
+  `mezzo_trasporto` set('airplane','ship','truck','car','bus','train') NOT NULL,
   `data_partenza` datetime(6) NOT NULL,
   `data_arrivo` datetime(6) NOT NULL,
   `tipo` set('componente','dipendente','articolo') NOT NULL,
@@ -172,8 +172,9 @@ CREATE TABLE `logistica` (
 
 INSERT INTO `logistica` (`id_spostamento`, `partenza`, `destinazione`, `mezzo_trasporto`, `data_partenza`, `data_arrivo`, `tipo`, `fk_id_item`) VALUES
 (1, 'miami', 'imola', 'airplane', '2024-05-06 16:50:10.000000', '2024-05-15 16:50:10.000000', 'componente', 1),
-(5, 'test', 'pending', 'bus', '2024-05-23 11:00:00.000000', '2024-05-24 00:00:00.000000', 'dipendente', 5),
-(6, 'test', 'in progress', 'airplane', '2024-05-21 11:00:00.000000', '2024-05-23 12:00:00.000000', 'dipendente', 2);
+(5, 'test', 'pending', 'bus', '2024-05-23 11:00:00.000000', '2024-05-26 00:00:00.000000', 'dipendente', 5),
+(6, 'test', 'in progress', 'car', '2024-05-21 11:00:00.000000', '2024-05-23 12:00:00.000000', 'dipendente', 2),
+(7, 'monaco', 'ottawa', 'ship', '2024-05-27 20:55:57.000000', '2024-05-30 20:55:57.000000', 'componente', 2);
 
 -- --------------------------------------------------------
 
@@ -271,6 +272,7 @@ INSERT INTO `ruoli` (`id_ruolo`, `nome_ruolo`) VALUES
 
 CREATE TABLE `sponsor` (
   `id_sponsor` int(11) NOT NULL,
+  `nome` varchar(32) NOT NULL,
   `tipologia` varchar(32) NOT NULL,
   `importo` double NOT NULL,
   `data_inizio` date NOT NULL,
@@ -282,9 +284,10 @@ CREATE TABLE `sponsor` (
 -- Dumping data for table `sponsor`
 --
 
-INSERT INTO `sponsor` (`id_sponsor`, `tipologia`, `importo`, `data_inizio`, `data_fine`, `img`) VALUES
-(1, 'budget cap', 70000000, '2024-01-01', '2024-12-31', ''),
-(2, 'tecnologia', 50000, '2024-05-14', '2025-05-14', '');
+INSERT INTO `sponsor` (`id_sponsor`, `nome`, `tipologia`, `importo`, `data_inizio`, `data_fine`, `img`) VALUES
+(1, 'f1', 'budget cap', 70000000, '2024-01-01', '2024-12-31', 'f1.jpg'),
+(2, 'hp', 'tecnologia', 50000, '2024-05-14', '2025-05-14', 'hp.jpg'),
+(3, 'ceva', 'logistica', 150000, '2024-05-24', '2025-05-24', 'ceva.jpg');
 
 -- --------------------------------------------------------
 
@@ -322,8 +325,7 @@ INSERT INTO `utenti` (`id_utente`, `nome`, `cognome`, `data_nascita`, `indirizzo
 (5, 'ayrton', 'senna', '1960-03-21', 'via imola 1994', 'imola', 40026, 'italia', 'user-default.jpg', 'ayrton@senna.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'tamburello', 1, 19),
 (6, 'fatturo', 'tanto', '2016-05-01', 'via dei ricconi 777', 'montecarlo', 33170, 'monaco', 'user-default.jpg', 'fatturo@tanto.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'pubblicità', 7, 5),
 (7, 'ocyo', 'kecasko', '1999-04-01', 'via metenho dhuro 000', 'sacile', 33077, 'italia', 'user-default.jpg', 'ocyo@kecasko.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'burocrazia', 6, 20),
-(8, 'test', 'ingegnere', '2000-01-01', 'via testing 5', 'maniago', 33085, 'italia', 'user-default.jpg', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11),
-(11, 'test', 'finanze', '2024-05-13', '', '', 0, '', 'user-default.jpg', 'test@finances.it', 'c21f969b5f03d33d43e04f8f136e7682', 0, 'spec', 7, 13);
+(8, 'best', 'ingegnere', '2000-01-01', 'via testing 5', 'maniago', 33085, 'italia', 'user-default.jpg', 'test@ing.it', '0c88028bf3aa6a6a143ed846f2be1ea4', 0, 'testing', 3, 11);
 
 --
 -- Indexes for dumped tables
@@ -421,13 +423,13 @@ ALTER TABLE `articoli`
 -- AUTO_INCREMENT for table `calendario`
 --
 ALTER TABLE `calendario`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `componenti`
 --
 ALTER TABLE `componenti`
-  MODIFY `id_componente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_componente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contratti`
@@ -445,7 +447,7 @@ ALTER TABLE `finanze`
 -- AUTO_INCREMENT for table `logistica`
 --
 ALTER TABLE `logistica`
-  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_spostamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `nazionalita`
@@ -475,7 +477,7 @@ ALTER TABLE `ruoli`
 -- AUTO_INCREMENT for table `sponsor`
 --
 ALTER TABLE `sponsor`
-  MODIFY `id_sponsor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_sponsor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `utenti`

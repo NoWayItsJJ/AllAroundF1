@@ -58,7 +58,7 @@
                     <div class="layer-black"></div>
                 </div>
             </div>
-            <div class="dashboard-card grid-col-span-3 grid-row-span-5">
+            <div class="dashboard-card grid-col-span-3 grid-row-span-8">
                 <div class="card-header" onclick="window.location.href='components.php';">
                     <i class="fa-regular fa-engine"></i>
                     <h4>Components</h4>
@@ -118,19 +118,6 @@
                 </div>
                 <div class="card-footer">
                     <div class="card-link" onclick="window.location.href='staff.php';">
-                        <i class="fa-regular fa-arrow-down-right"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-card grid-col-span-3 grid-row-span-3">
-                <div class="card-header" onclick="window.location.href='production.php';">
-                    <i class="fa-regular fa-conveyor-belt-arm"></i>
-                    <h4>Production</h4>
-                </div>
-                <div class="card-content">
-                </div>
-                <div class="card-footer">
-                    <div class="card-link" onclick="window.location.href='production.php';">
                         <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>

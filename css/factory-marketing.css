@@ -330,4 +330,8 @@
     .grid-row-span-5 {
 		grid-row: span 5;
 	}
+
+    .grid-row-span-8{
+        grid-row: span 8;
+    }
 }

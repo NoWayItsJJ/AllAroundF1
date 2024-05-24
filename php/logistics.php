@@ -171,14 +171,17 @@
             </div>
             <div class="dynamic-dashboard-card grid-row-span-7">
                 <div id="tab-details" class="tab-details">
-                    <h3>Shift details</h3>
+                <div class="tab-details-title">
+                    <i class="fa-regular fa-magnifying-glass-location"></i>
+                        <h3>Shift details</h3>
+                    </div>
                     <div id="no-result" class="zero-result" style="display: flex;">
                         <p>Select a shift to see more details</p>
                     </div>
                     <div class="details" id="detailsBlock" style="display: none;">
                         <div class="details-header">
                         <div class="item-img">
-                                <i class="fa-regular fa-truck-container"></i>
+                                <i id="icon-transport" class=""></i>
                             </div>
                         </div>
                         <div class="details-content scrollable-section">

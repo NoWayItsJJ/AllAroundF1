@@ -14,28 +14,7 @@ $(document).ready(function () {
 			},
 			dataType: "json",
 			success: function (response) {
-                switch(response.details.mezzo_trasporto){
-                    case "car":
-                        $("#movingIcon").removeClass().addClass("bi-car-front-fill"); //da rivedere
-                        break;
-					case 'train':
-						$("#movingIcon").removeClass().addClass("bi-train");
-						break;
-                    case "airplane":
-                        $("#movingIcon").removeClass().addClass("bi-airplane");
-                        break;
-                    case "ship":
-                        $("#movingIcon").removeClass().addClass("bi-rocket-takeoff"); //da cambiare
-                        break;
-                    case "truck":
-                        $("#movingIcon").removeClass().addClass("bi-truck");
-                        break;
-                    case "bus":
-                        $("#movingIcon").removeClass().addClass("bi-bus-front"); //da rivedere
-                        break;
-                }
-
-				var itemDetailsKey = [];
+                var itemDetailsKey = [];
 				var itemDetails = [];
 				for(var key in response.item){
 					itemDetailsKey.push(key);
@@ -44,6 +23,20 @@ $(document).ready(function () {
 				if (response.getDetails) {
 					$("#no-result").css("display", "none");
 					$("#detailsBlock").css("display", "");
+					$("#icon-transport").removeClass("fa-regular fa-truck-container fa-plane fa-train fa-ship fa-car-side fa-bus-simple");
+					if(response.details.mezzo_trasporto === "truck"){
+						$("#icon-transport").addClass("fa-regular fa-truck-container");
+					} else if(response.details.mezzo_trasporto === "airplane"){
+						$("#icon-transport").addClass("fa-regular fa-plane");
+					} else if(response.details.mezzo_trasporto === "train"){
+						$("#icon-transport").addClass("fa-regular fa-train");
+					} else if(response.details.mezzo_trasporto === "ship"){
+						$("#icon-transport").addClass("fa-regular fa-ship");
+					} else if(response.details.mezzo_trasporto === "car"){
+						$("#icon-transport").addClass("fa-regular fa-car-side");
+					} else if(response.details.mezzo_trasporto === "bus"){
+						$("#icon-transport").addClass("fa-regular fa-bus-simple");
+					}
 					$("#movingId").val(movedId);
 					$("#itemId").val(response.details.fk_id_item);
 					$("#displayFrom")
