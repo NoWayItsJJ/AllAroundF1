@@ -18,7 +18,6 @@
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-links-left">
-                    <a href="./php/articoli.php">Articoli</a>
                 </div>
                 <div class="navbar-logo">
                     <a href="index.php"><img src="./img/logo/white-horse.svg" /></a>
@@ -28,7 +27,7 @@
                     session_start();
 
                     if(isset($_SESSION['user_id'])) {
-                        echo '<a href="./php/user.php"><i class="fa-regular fa-user"></i></a>';
+                        echo '<button class="button-primary red-button" role="button" onclick="window.location.href=\'./php/logout.php\'">Log out</button>';
                     } else {
                         echo '<button class="button-primary yellow-button" role="button" onclick="window.location.href=\'./php/login.php\'">Sign in</button>';
                     }
@@ -105,12 +104,6 @@
                 <span class="dot" onclick="currentSlide('slide3', this)"></span>
             </div>
         </section>
-        <footer class="footer">
-            <div class="socials">
-                <div class="social"></div>
-            </div>
-            <div class="diritti"></div>
-        </footer>
     </body>
     <script>
         $(window).load(function() {
