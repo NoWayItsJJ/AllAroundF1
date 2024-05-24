@@ -48,8 +48,8 @@
     </nav>
     <section id="dashboard" class="scrollable-section">
         <div class="dashboard-grid">
-            <div class="dashboard-card red grid-col-span-2">
-                <div class="card-header" onclick="window.location.href='calendar.php';">
+            <div class="dashboard-card red grid-col-span-2 no-hover">
+                <div class="card-header">
                     <i class="fa-regular fa-calendar-lines"></i>
                     <h4>Calendar</h4>
                 </div>
@@ -79,11 +79,6 @@
                         <div class="date-hours">
                             <div id="event"></div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="card-link" onclick="window.location.href='calendar.php';">
-                        <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
             </div>
@@ -302,7 +297,7 @@
                         <i class="fa-regular fa-arrow-down-right"></i>
                     </div>
                 </div>
-                <img class="car" src="../img/car/half-car.png" alt="">
+                <img class="img-absolute half-car" src="../img/car/half-car.png" alt="">
                 <div class="sfumatura"></div>
             </div>
             <div class="dashboard-card">
@@ -349,7 +344,7 @@
                 </div>
             </div>
             <div class="dashboard-card grid-col-span-2 no-hover">
-                <div class="card-header" onclick="window.location.href='drivers.php';">
+                <div class="card-header">
                     <i class="fa-kit fa-driver-helmet"></i>
                     <h4>Drivers</h4>
                 </div>
@@ -429,8 +424,8 @@
                         </div>
                     </div>
                 </div>
-                <img class="lec" src="../img/drivers/leclerc.png" alt="">
-                <img class="sai" src="../img/drivers/sainz.png" alt="">
+                <img class="img-absolute lec" src="../img/drivers/leclerc.png" alt="">
+                <img class="img-absolute sai" src="../img/drivers/sainz.png" alt="">
             </div>
         </div>
     </section>
