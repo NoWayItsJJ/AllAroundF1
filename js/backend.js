@@ -86,7 +86,6 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(response) {
             $("#staffList").empty();
-            console.log(response.staff.length);
             for (let i = 0; i < response.staff.length; i++) {
                 $("#staffList").append(`<div class="line"></div>
                                 <div class="table-row">
@@ -102,8 +101,8 @@ $(document).ready(function() {
         },
     });
 
-    $('.filter').on("click", function() {
-        $('.filter').removeClass('active');
+    $('.box1').on("click", function() {
+        $('.box1').removeClass('active');
         $(this).addClass('active');
         var idRuolo = $(this).data('id');
         $.ajax({
@@ -132,6 +131,55 @@ $(document).ready(function() {
                                     <div class="table-row">
                                         <i class="fa-regular ` + icon + `"></i>
                                         <p>` + ucfirst(response.staff[i].nome) + " " + ucfirst(response.staff[i].cognome) + `</p>
+                                        <p>` + ucfirst(response.staff[i].nome_ruolo) + `</p>
+                                    </div>`);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("Error:", textStatus, errorThrown);
+                console.error("Response:", jqXHR.responseText);
+            },
+        }); 
+    });
+
+    $('.box2').on("click", function() {
+        $('.box2').removeClass('active-log');
+        $(this).addClass('active-log');
+        var transport = $(this).data('transport');
+        $.ajax({
+            type: 'POST',
+            url: "../php/backend-function.php",
+            data: { transport : transport, action: 'getTransportList' },
+            dataType: 'json',
+            success: function(response) {
+                $("#transportList").empty();
+                console.log(response);
+                for (let i = 0; i < response.transport.length; i++) {
+                    var icon;
+                    switch (transport) {
+                        case 'airplane':
+                            icon = 'fa-airplane';
+                            break;
+                        case 'ship':
+                            icon = 'fa-user-helmet-safety';
+                            break;
+                        case 'truck':
+                            icon = 'fa-bullhorn';
+                            break;
+                        case 'train':
+                            icon = 'fa-user-tie-hair';
+                            break;
+                        case 'car':
+                            icon = 'fa-car';
+                            break;
+                        case 'bus':
+                            icon = 'fa-bus';
+                            break;
+                    }
+                    $("#transportList").append(`<div class="line"></div>
+                                    <div class="table-row">
+                                        <i class="fa-regular ` + icon + `"></i>
+                                        <p>` + ucfirst(response.transport[i].nome) + " " + ucfirst(response.staff[i].cognome) + `</p>
                                         <p>` + ucfirst(response.staff[i].nome_ruolo) + `</p>
                                     </div>`);
                 }

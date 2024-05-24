@@ -120,7 +120,7 @@
                                     <i class="fa-regular fa-money-bill-transfer"></i>
                                     <div class="slide-col">
                                         <h3 id="income">70000000 €</h3>
-                                        <p>budget cap</p>
+                                        <p>Budget Cap</p>
                                     </div>
                                 </div>
                             </div>
@@ -146,21 +146,21 @@
                 <div class="card-content">
                     <div class="list">
                         <div class="list-filters">
-                            <div class="filter active" data-id="2">
+                            <div id="filter1" class="filter box1 active" data-id="2">
                                 <div class="icon">
                                     <i class="fa-regular fa-user-helmet-safety"></i>
                                 </div>
                                 <span id="nstaff-ingegneri"></span>
                                 <p>Engineers</p>
                             </div>
-                            <div class="filter" data-id="7">
+                            <div id="filter1" class="filter box1" data-id="7">
                                 <div class="icon">
                                     <i class="fa-regular fa-bullhorn"></i>
                                 </div>
                                 <span id="nstaff-marketing"></span>
                                 <p>Marketing</p>
                             </div>
-                            <div class="filter" data-id="4">
+                            <div id="filter1" class="filter box1" data-id="4">
                                 <div class="icon">
                                     <i class="fa-regular fa-user-tie-hair"></i>
                                 </div>
@@ -186,50 +186,50 @@
                 <div class="card-content">
                     <div class="list">
                         <div class="list-filters">
-                            <div class="filter active-log">
+                            <div class="filter box2 active-log" data-transport="truck">
                                 <div class="icon">
                                     <i class="fa-regular fa-truck-container"></i>
                                 </div>
-                                <span id="nstaff-trucks">17</span>
+                                <span id="nstaff-trucks">4</span>
                                 <p>Trucks</p>
                             </div>
-                            <div class="filter">
+                            <div class="filter box2" data-transport="ship">
                                 <div class="icon">
                                     <i class="fa-regular fa-ship"></i>
                                 </div>
-                                <span id="nstaff-ships">17</span>
+                                <span id="nstaff-ships">0</span>
                                 <p>Ships</p>
                             </div>
-                            <div class="filter">
+                            <div class="filter box2" data-transport="airplane">
                                 <div class="icon">
                                     <i class="fa-regular fa-plane fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
                                 </div>
-                                <span id="nstaff-planes">17</span>
+                                <span id="nstaff-planes">0</span>
                                 <p>Planes</p>
                             </div>
-                            <div class="filter">
+                            <div class="filter box2" data-transport="train">
                                 <div class="icon">
                                     <i class="fa-regular fa-train"></i>
                                 </div>
-                                <span id="nstaff-trains">17</span>
+                                <span id="nstaff-trains">0</span>
                                 <p>Trains</p>
                             </div>
-                            <div class="filter">
+                            <div class="filter box2" data-transport="bus">
                                 <div class="icon">
                                     <i class="fa-regular fa-bus-simple"></i>
                                 </div>
-                                <span id="nstaff-bus">17</span>
+                                <span id="nstaff-bus">0</span>
                                 <p>Bus</p>
                             </div>
-                            <div class="filter">
+                            <div class="filter box2" data-transport="car">
                                 <div class="icon">
                                     <i class="fa-regular fa-car-side"></i>
                                 </div>
-                                <span id="nstaff-cars">17</span>
+                                <span id="nstaff-cars">0</span>
                                 <p>Cars</p>
                             </div>
                         </div>
-                        <div class="table">
+                        <div id="transportList" class="table">
                             <div class="line"></div>
                             <div class="table-row log-row">
                                 <i class="fa-regular fa-truck-container log"></i>
@@ -248,6 +248,26 @@
                                     <p>Maranello</p>
                                     <i class="fa-regular fa-plane-departure log"></i>
                                     <p>Monaco</p>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="table-row log-row">
+                                <i class="fa-regular fa-truck-container log"></i>
+                                <p>Riccardo Saro</p>
+                                <div class="dep-arr">
+                                    <p>Maranello</p>
+                                    <i class="fa-regular fa-plane-departure log"></i>
+                                    <p>Monaco</p>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="table-row log-row">
+                                <i class="fa-regular fa-truck-container log"></i>
+                                <p>Floor V1</p>
+                                <div class="dep-arr">
+                                    <p>Miami</p>
+                                    <i class="fa-regular fa-plane-departure log"></i>
+                                    <p>Imola</p>
                                 </div>
                             </div>
                         </div>

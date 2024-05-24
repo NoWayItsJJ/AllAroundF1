@@ -26,6 +26,10 @@ if (isset($_POST['action'])) {
             getStaffList($_POST['idRuolo'], $conn);
             break;
 
+        case 'getTransportList':
+            getTransportList($_POST['transport'], $conn);
+            break;
+
         default:
             echo json_encode(array('error' => 'Invalid action'));
             break;
@@ -138,5 +142,31 @@ function getStaffList($id, $conn) {
         echo json_encode(array('getStaffList' => true, 'staff' => $staffList));
     } else {
         echo json_encode(array('getStaffList' => false));
+    }
+}
+
+function getTransportList($transport, $conn) {
+    $sql = "SELECT partenza, destinazione, mezzo_trasporto, tipo, fk_id_item
+            FROM logistica
+            WHERE mezzo_trasporto = '$transport'";
+
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        $transportList[] = $row;
+        switch($row['tipo']){
+            case '1':
+                $transportList['tipo'] = 'Arrivo';
+                break;
+            case '2':
+                $transportList['tipo'] = 'Partenza';
+                break;
+        }
+    }
+
+    if($result->num_rows > 0){
+        echo json_encode(array('getTransportList' => true, 'transport' => $transportList));
+    } else {
+        echo json_encode(array('getTransportList' => false));
     }
 }
