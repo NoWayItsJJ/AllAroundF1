@@ -252,6 +252,11 @@ h5 {
 	}
 }
 
+.yellow-button {
+	background-color: var(--yellow-text-color);
+	color: var(--primary-color);
+}
+
 .small-button {
 	padding: 4px 8px;
 }
