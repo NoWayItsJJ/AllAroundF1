@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/dynamic-dashboard.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../js/components.js"></script>
+    <script src="../js/merchandise.js"></script>
 </head>
 <body>
     <nav>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="filter-card">
                             <div class="card-row">
-                                <?php //include('merchandise_count.php'); ?>
+                                <?php include('merchandise/merchandise_count.php'); ?>
                             </div>
                             <div class="search">
                                 <input type="text" id="search" placeholder="Search">                            
@@ -113,14 +113,12 @@
                     </div>
                     <div class="list-content">
                         <div class="table-header">
-                            <p>Moved</p>
-                            <p>From</p>
-                            <p>To</p>
-                            <p>Departure date</p>
-                            <p>Arrival date</p>
+                            <p>Inventory Number</p>
+                            <p>Article</p>
+                            <p>Quantity</p>
                         </div>
                         <div id="list-result" class="table-body scrollable-section">
-                            <?php //include 'merchandise-list.php'; ?>
+                            <?php include 'merchandise/merchandise-list.php'; ?>
                         </div>
                     </div>
                 </div>
